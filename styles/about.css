@@ -1,8 +1,9 @@
 body {
     margin:0;
     font-family:"Helvetica", "Arial", sans-serif;
-    
+    overflow: scroll;  
 }
+
 nav {
     position:fixed;
     left:0;
@@ -45,7 +46,7 @@ nav ul li:last-child a {
 }
 
 #Quote {
-    position: fixed;
+
     background: #2b2b2b;
     margin-top: 55px;
     height: 304px;
@@ -71,9 +72,26 @@ p {
 #Values {
     font-family:"Century Gothic", "Arial", sans-serif;
     font-size: 30px
-    color: #FFF;
-    margin-top: 359px;
     height: 862px;
-    position: fixed;
+    margin-top: 359px;
     width: 100%;
+}
+
+.OurValues{
+    color: #000;
+    margin-top:  175px;
+}
+
+.phValues{
+    color: #434344;
+    font-weight: bold;
+}
+
+.pbValues{
+    color: #434344;
+}
+
+#ferrisstudents{    
+    margin-top: 171px;
+    margin-left:353px;
 }
