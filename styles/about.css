@@ -67,8 +67,8 @@ h2 {
 p {
     font-family:"Century Gothic", "Arial", sans-serif;
     color:#FFF;
-    margin-left: 167px;
     font-size:30px;
+    margin-left: 33px;
 }
 
 #Values {
@@ -126,11 +126,11 @@ p {
 
 #calendarimg{
     padding-left: 76px;
+    transition:  0.2s ease-in-out;
 }
 
 #calendarimg:hover{
-    height: 101%;
-    width: 101%;
+    transform: scale(1.2);
 }
 
 hr{
@@ -147,4 +147,9 @@ hr{
     color: #3e62c9;
     margin-left: 960px;
     font-size:30px;
+    transition: color 0.5s ease-in-out;
+}
+
+#Bylaws:hover{
+    color: #132f7f;
 }
