@@ -77,9 +77,9 @@ nav ul li:last-child a {
     float:left;
 }
 .content .hr {
-    border-bottom:1px solid #DDD;
-    margin:0px px 20px;
-    padding:20px 0px 0px;
+    border-bottom:1px solid #CCC;
+    margin:0 0 20px;
+    padding:20px 0 0;
     clear:both;
     position:relative;
 }
