@@ -61,11 +61,66 @@ nav ul li:last-child a {
 }
 
 #picture {
-     color: #fff;
-     position: absolute;
-    top: 88px;
-    left: 290px;    
+    color: #fff;
+    position: absolute;
+    top: 467px;
+    left: 600px;    
     font-weight:bold;
     text-decoration:none;
-    color:#9c9c9c;
+    color:black;
+}
+
+#username {
+    color: #fff;
+    position: absolute;
+    top: 634px;
+    left: 600px;    
+    font-weight:bold;
+    text-decoration:none;
+    color:black;
+}
+}
+
+#title {
+    color: #fff;
+    position: absolute;
+    top: 801px;
+    left: 600px;    
+    font-weight:bold;
+    text-decoration:none;
+    color:black;
+}
+}
+
+#about {
+    color: #fff;
+    position: absolute;
+    top: 968px;
+    left: 600px;    
+    font-weight:bold;
+    text-decoration:none;
+    color:black;
+}
+}
+
+#resume {
+       color: #fff;
+     position: absolute;
+    top: 1565px;
+    left: 600px;    
+    font-weight:bold;
+    text-decoration:none;
+    color:black;
+}
+}
+
+#uploadproject {
+       color: #fff;
+     position: absolute;
+    top: 1732px;
+    left: 600px;    
+    font-weight:bold;
+    text-decoration:none;
+    color:black;
+}
 }
