@@ -43,3 +43,84 @@ nav ul li:last-child a {
     float:left;
     margin:13px 0 0 30px;
 }
+
+
+
+#background {
+     position:absolute;   
+    width:9000px;
+    height: 250px;   
+    background-color: black;
+}
+
+#background2 {
+     position:absolute;   
+    width:9000px;
+    height: 442px;   
+    background-color: black;
+}
+
+#picture {
+    color: #fff;
+    position: absolute;
+    top: 467px;
+    left: 600px;    
+    font-weight:bold;
+    text-decoration:none;
+    color:black;
+}
+
+#username {
+    color: #fff;
+    position: absolute;
+    top: 634px;
+    left: 600px;    
+    font-weight:bold;
+    text-decoration:none;
+    color:black;
+
+}
+
+#title {
+    color: #fff;
+    position: absolute;
+    top: 801px;
+    left: 600px;    
+    font-weight:bold;
+    text-decoration:none;
+    color:black;
+
+}
+
+#about {
+    color: #fff;
+    position: absolute;
+    top: 968px;
+    left: 600px;    
+    font-weight:bold;
+    text-decoration:none;
+    color:black;
+
+}
+
+#resume {
+       color: #fff;
+     position: absolute;
+    top: 1565px;
+    left: 600px;    
+    font-weight:bold;
+    text-decoration:none;
+    color:black;
+
+}
+
+#uploadproject {
+       color: #fff;
+     position: absolute;
+    top: 1732px;
+    left: 600px;    
+    font-weight:bold;
+    text-decoration:none;
+    color:black;
+
+}
