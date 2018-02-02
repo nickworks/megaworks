@@ -93,6 +93,27 @@ p {
     color: #434344;
 }
 
+.OurValues{
+    color: #000;
+}
+
+.UpcomingEvents{
+    color: #434344;
+    font-weight: bold;
+    margin-left: 0;
+}
+
+.pb2Values{
+    color: #434344;
+    margin-left: 0;
+}
+
+.ph2Values{
+    color: #434344;
+    font-weight: bold;
+    margin-left: 0;
+}
+
 #ferrisstudents{    
     float:left;
     margin-top: 171px;
@@ -100,7 +121,16 @@ p {
 }
 
 .calendar{
-        column-count: 2;
+    column-count: 2;
+}
+
+#calendarimg{
+    padding-left: 76px;
+}
+
+#calendarimg:hover{
+    height: 101%;
+    width: 101%;
 }
 
 hr{
