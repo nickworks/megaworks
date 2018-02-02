@@ -41,6 +41,7 @@
 #upcomingEvents ul li img {
     width: 300px;
     height 300px;
+    margin: 0 0 16px 0;
 }
 #upcomingEvents ul li figure {
     float: left;
@@ -49,10 +50,9 @@
     text-align: center;
     margin:0;
 }
-#upcomingEvents ul li figcaption {
+#upcomingEvents ul li time {
     font-weight: lighter;
     text-align: center;
-    margin: 16px 0 0 0;
 }
 
 #upcomingEvents ul li h2 {
@@ -64,7 +64,6 @@
 }
 
 #upcomingEvents ul li p {
-    position: absolute;
     font-weight: lighter;
     margin:0 0 0 400px;
     font-size: 20px;
