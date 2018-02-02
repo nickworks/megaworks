@@ -12,6 +12,7 @@ nav {
     background:#FFF;
     box-shadow:1px 1px 10px #000;
     min-width:480px;
+    z-index:9999;
 }
 
 
@@ -19,6 +20,12 @@ nav ul {
     list-style:none;
     margin:0;
     padding:0;
+}
+aside .split ul {
+    margin:0;
+    padding:0;
+    list-style:none;
+    line-height: 20px;
 }
 nav ul a {
     float:left;
@@ -135,6 +142,13 @@ nav ul li:last-child a {
     margin:0 auto;
     display:flex;
 }
+.avatar img {
+    object-fit:cover;
+    object-position:center;
+    width:50px;
+    height:50px;
+}
+
 .content {
     background:#FFF;
     box-shadow: 1px 1px 20px #000;
@@ -143,17 +157,18 @@ nav ul li:last-child a {
 .content article, .content section {
     width:66%;
     float:left;
-    margin:0 0 20px;
 }
 .content .hr {
-    border-top:1px solid #DDD;
-    margin:20px 0;
-    width:66%;
-    float:left;
+    border-bottom:1px solid #DDD;
+    margin:0 0 20px;
+    padding:20px 0 0;
+    clear:both;
+    position:relative;
 }
 .content aside {
     width:33%;
     float:right;
+    font-size:11px;
 }
 .content footer {
     clear:both;
@@ -171,6 +186,12 @@ footer.main {
     position:relative;
     min-height: 50px;
 }
+.comment .bubble {
+    margin:0 10px;
+}
+.comment .bubble {
+    flex-grow:3;
+}
 
 .bubble .arrow {
     position:absolute;
@@ -182,11 +203,16 @@ footer.main {
     left:15px;
     bottom:-10px;
 }
+.bubble .arrow.top-right {
+    right:15px;
+    top:-10px;
+}
 .bubble .arrow.left-top {
     left:-10px;
     top:15px;
 }
 .bubble .pointer {
+    display:block;
     width:20px;
     height:20px;
     background:#d7d7d7;
@@ -194,7 +220,7 @@ footer.main {
     border:1px solid #AAA;
 }
 .bubble .blocker {
-    
+    display:block;
     background:#d7d7d7;
     position:absolute;
     z-index:5;
@@ -204,6 +230,12 @@ footer.main {
     height:17px;
     left:-7px;
     top:-5px;
+}
+.bubble .top-right .blocker {
+    width:33px;
+    height:17px;
+    left:-7px;
+    top:10px;
 }
 .bubble .left-top .blocker {
     width:17px;
@@ -215,6 +247,7 @@ footer.main {
 .avatar {
     width:50px;
     height:50px;
+    min-width:50px;
     background:#d7d7d7;
     border-radius:50%;
     float:left;
@@ -222,6 +255,7 @@ footer.main {
     border:1px solid #AAA;
     overflow:hidden;
 }
+
 
 .creator {
     
@@ -238,4 +272,115 @@ footer.main {
     margin:0;
     font-weight:normal;
 >>>>>>> Added a content section
+}
+.hr h3 {
+    font-size:12px;
+    font-weight:normal;
+    margin:0;
+    text-align:center;
+    position:absolute;
+    top:13px;
+    left:0;
+    width:100%;
+    color:#999;
+}
+
+
+
+.stats > div {
+    
+}
+
+.stats {
+    font-size:10px;
+    padding:0 10%;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:nowrap;
+    justify-content:space-around;
+}
+
+.split > div {
+    width:60%;
+    float:left;
+}
+.split > div:first-child {
+    text-align:right;
+    width:30%;
+    margin-right:10%;
+    color:#575757;
+    font-size:16px;
+    padding:5px 0 0;
+}
+
+.content article h1 {
+    margin:0 0 20px;
+}
+
+a.button {
+    float:left;
+    margin:0 5px 5px 0;
+    font-size:10px;
+    letter-spacing:0.5px;
+    background:#00aeef;
+    padding:8px 10px;
+    border-radius:4px;
+    text-decoration:none;
+    color:#FFF;
+    text-shadow:1px 1px 2px rgba(0, 0, 0, .5);
+}
+
+a.button.license {
+    background:#ef6500;
+    position:relative;
+}
+
+a.license span.bubble {
+    display:none;
+    color:#000;
+    text-shadow:none;
+    position: absolute;
+    top:42px;
+    right:-6px;
+    width:200px;
+    padding:10px;
+    z-index:500;
+}
+.hr h3 span {
+    background:#FFF;
+    padding:0 10px;
+}
+a.license:hover span.bubble {
+    display:block;
+}
+
+span.p {
+    display:block;
+    padding:5px;
+}
+.license em {
+    font-weight:bold;
+}
+
+a.button.tag {
+    background:#CCC;
+    text-shadow:none;
+    color:#000;
+}
+
+.comment {
+    display:flex;
+    flex-direction:row;
+    flex-wrap:nowrap;
+    justify-content:space-between;
+    margin:0 0 20px
+}
+
+a.button.issue {
+    background:#F00;
+    color:#FFF;
+}
+
+.tags {
+    flex-grow:0;
 }
