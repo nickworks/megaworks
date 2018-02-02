@@ -1,7 +1,9 @@
 body {
     margin:0;
     font-family:"Helvetica", "Arial", sans-serif;
-    overflow: scroll;  
+    overflow: scroll;
+    height:2127;
+    box-shadow: 1px 1px 10px #000;
 }
 
 nav {
@@ -73,13 +75,13 @@ p {
     font-family:"Century Gothic", "Arial", sans-serif;
     font-size: 30px
     height: 862px;
-    margin-top: 359px;
+    margin-top: 175px;
     width: 100%;
+    column-count: 2;
 }
 
 .OurValues{
     color: #000;
-    margin-top:  175px;
 }
 
 .phValues{
@@ -92,6 +94,27 @@ p {
 }
 
 #ferrisstudents{    
+    float:left;
     margin-top: 171px;
-    margin-left:353px;
+    margin-left: 40px;
+}
+
+.calendar{
+        column-count: 2;
+}
+
+hr{
+    color: #b2b2b2;
+    margin-left: 19px;
+    margin-right: 19px;
+    margin-bottom: 55px;
+    margin-top: 55px;
+    line-height: 1px;
+}
+
+#Bylaws{
+    text-decoration: none;
+    color: #3e62c9;
+    margin-left: 960px;
+    font-size:30px;
 }
