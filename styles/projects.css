@@ -1,0 +1,38 @@
+.grid {
+    margin-top: 60px;
+    display: grid;
+    position: relative;
+    padding: 2px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-auto-flow: dense;
+    grid-auto-rows: 150px;
+}
+
+.horizontal {
+   grid-row: span 2;
+}
+
+.vertical {
+    /* Grid row start sets what row it will begin in.
+        Grid row end sets what row it ends in. Always set this to one value more than you want it to end in. */
+    grid-column: span 2;
+}
+
+.big {
+    grid-row: span 2;
+    grid-column: span 2;
+}
+
+.d {
+    grid-row: 1 / span 2;
+}
+
+.e {
+    grid-area: 3 / 3 / span 3 / span 3;
+}
+
+.box {
+    color: black;
+    border-radius: 5px;
+    border: 2px dodgerblue solid;
+}
