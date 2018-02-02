@@ -301,3 +301,7 @@ a.button.issue {
 .tags {
     flex-grow:0;
 }
+
+.clear {
+    clear:both;
+}
