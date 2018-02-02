@@ -1,7 +1,7 @@
 body {
     margin:0;
     font-family:"Helvetica", "Arial", sans-serif;
-    
+    background:#333;
 }
 nav {
     position:fixed;
@@ -11,6 +11,7 @@ nav {
     height:55px;
     background:#FFF;
     box-shadow:1px 1px 10px #000;
+    min-width:480px;
 }
 
 
@@ -35,11 +36,123 @@ nav ul li:last-child a {
     float:right;
     margin-right:20px;
 }
-
 #logo {
     background:url(../imgs/logo.png);
     width:112px;
     height:29px;
     float:left;
     margin:13px 0 0 30px;
+}
+.tray {
+    padding:80px 0 30px;
+}
+.feature img {
+    max-width:100vw;
+    height:auto;
+    max-height:50vh;
+    margin:0 auto;
+    display:flex;
+}
+.content {
+    background:#FFF;
+    box-shadow: 1px 1px 20px #000;
+    padding:30px;
+}
+.content article, .content section {
+    width:66%;
+    float:left;
+    margin:0 0 20px;
+}
+.content .hr {
+    border-top:1px solid #DDD;
+    margin:20px 0;
+    width:66%;
+    float:left;
+}
+.content aside {
+    width:33%;
+    float:right;
+}
+.content footer {
+    clear:both;
+    
+}
+footer.main {
+    
+}
+
+.bubble {
+    background:#d7d7d7;
+    border:1px solid #AAA;
+    border-radius: 6px;
+    padding:10px 20px;
+    position:relative;
+    min-height: 50px;
+}
+
+.bubble .arrow {
+    position:absolute;
+}
+.bubble.bottom {
+    margin-bottom: 20px;
+}
+.bubble .arrow.bottom-left {
+    left:15px;
+    bottom:-10px;
+}
+.bubble .arrow.left-top {
+    left:-10px;
+    top:15px;
+}
+.bubble .pointer {
+    width:20px;
+    height:20px;
+    background:#d7d7d7;
+    transform:rotate(45deg);
+    border:1px solid #AAA;
+}
+.bubble .blocker {
+    
+    background:#d7d7d7;
+    position:absolute;
+    z-index:5;
+}
+.bubble .bottom-left .blocker {
+    width:33px;
+    height:17px;
+    left:-7px;
+    top:-5px;
+}
+.bubble .left-top .blocker {
+    width:17px;
+    height:33px;
+    left:10px;
+    top:-5px;
+}
+
+.avatar {
+    width:50px;
+    height:50px;
+    background:#d7d7d7;
+    border-radius:50%;
+    float:left;
+    margin:0 10px 0 1px;
+    border:1px solid #AAA;
+    overflow:hidden;
+}
+
+.creator {
+    
+}
+
+.creator h2 {
+    font-size:20px;
+    margin:0;
+    padding:6px 0 0;
+}
+
+.creator h3 {
+    font-size:14px;
+    margin:0;
+    font-weight:normal;
 }
