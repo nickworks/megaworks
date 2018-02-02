@@ -1,0 +1,75 @@
+#calendar {
+    height: 800px;
+    width: 100%;
+    background-color: #222;
+    margin-top: 55px;
+    text-align: center;
+}
+
+#calendar iframe {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#upcomingEvents {
+    position: absolute;
+    margin-left: 54px;
+    margin-top: 56px;
+    margin-right: 210px;
+}
+
+#upcomingEvents h1 {
+    font-family: "CenturyGothic", sans-serif;
+    text-decoration: underline;
+    margin: 0;
+    font-weight: bold;
+    font-size: 63px;
+    white-space: nowrap;
+}
+
+#upcomingEvents ul {
+    list-style: none;
+    padding: 0;
+}
+#upcomingEvents ul li {
+    display: block;
+    margin-top: 23px;
+    margin-bottom: 46px;
+    height:335px;
+}
+
+#upcomingEvents ul li img {
+    width: 300px;
+    height 300px;
+}
+#upcomingEvents ul li figure {
+    float: left;
+    width: 300px;
+    font-weight: lighter;
+    text-align: center;
+    margin:0;
+}
+#upcomingEvents ul li figcaption {
+    font-weight: lighter;
+    text-align: center;
+    margin: 16px 0 0 0;
+}
+
+#upcomingEvents ul li h2 {
+    font-weight:normal;
+    margin: 0 0 34px 350px;
+    font-size: 45px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#upcomingEvents ul li p {
+    position: absolute;
+    font-weight: lighter;
+    margin:0 0 0 400px;
+    font-size: 20px;
+    overflow: hidden;
+    height: 250px;
+    width: 1266px;
+    line-height: 30px;
+}
