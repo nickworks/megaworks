@@ -43,3 +43,29 @@ nav ul li:last-child a {
     float:left;
     margin:13px 0 0 30px;
 }
+
+
+
+#background {
+     position:absolute;   
+    width:9000px;
+    height: 250px;   
+    background-color: black;
+}
+
+#background2 {
+     position:absolute;   
+    width:9000px;
+    height: 442px;   
+    background-color: black;
+}
+
+#picture {
+     color: #fff;
+     position: absolute;
+    top: 88px;
+    left: 290px;    
+    font-weight:bold;
+    text-decoration:none;
+    color:#9c9c9c;
+}
