@@ -129,6 +129,9 @@ footer.main {
 .bubble.bottom {
     margin-bottom: 20px;
 }
+.bubble.top {
+    margin-top: 20px;
+}
 .bubble .arrow.bottom-left {
     left:15px;
     bottom:-10px;
@@ -140,6 +143,11 @@ footer.main {
 .bubble .arrow.left-top {
     left:-10px;
     top:15px;
+}
+
+.bubble .arrow.top-left {
+    left:15px;
+    top:-10px;
 }
 .bubble .pointer {
     display:block;
@@ -160,6 +168,12 @@ footer.main {
     height:17px;
     left:-7px;
     top:-5px;
+}
+.bubble .top-left .blocker {
+    width:33px;
+    height:17px;
+    left:-7px;
+    bottom:-5px;
 }
 .bubble .top-right .blocker {
     width:33px;
