@@ -3,7 +3,7 @@ body {
     font-family:"Helvetica", "Arial", sans-serif;
     background:#333;
 }
-nav {
+nav.main {
     position:fixed;
     left:0;
     top:0;
@@ -53,6 +53,18 @@ nav ul li:last-child a {
 .tray {
     padding:80px 0 30px;
 }
+.tray > h2, .tray > p{
+    color: #FFF;
+    margin:0 30px 15px;
+    font-weight:normal;
+}
+.tray > h2 {
+    font-size: 30px;
+}
+.tray > p {
+    line-height:25px;
+}
+
 .feature img {
     max-width:100vw;
     height:auto;
@@ -304,4 +316,30 @@ a.button.issue {
 
 .clear {
     clear:both;
+}
+
+nav.secondary {
+    display:flex;
+    justify-content:space-around;
+    padding:20px 20px;
+    margin:0 0 40px;
+    border-top:1px solid #CCC;
+    border-bottom:1px solid #CCC;
+}
+
+.flex {
+    display:flex;
+    justify-content:space-between;
+}
+
+.crop {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position: center;
+}
+
+nav.secondary a {
+    text-decoration:none;
+    font-size:20px;
 }
