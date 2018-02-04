@@ -1,0 +1,16 @@
+
+.carasol img {
+    margin: 0 10px;
+    height: 75px;
+}
+
+.carasol{
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tray {
+    padding-bottom: 15px;
+}
