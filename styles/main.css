@@ -73,7 +73,7 @@ nav ul li:last-child a {
     padding:50px 50px 50px;
 }
 .content article, .content section {
-    width:100%;
+    width:66%;
     float:left;
 }
 .content .hr {
