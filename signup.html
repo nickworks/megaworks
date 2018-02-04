@@ -2,6 +2,7 @@
 <html>
     <head>
         <link href="styles/main.css" rel="stylesheet">
+        <link href="styles/login.css" rel="stylesheet">
     </head>
     <body>
         <nav>
@@ -13,9 +14,49 @@
                 <li><a href="events.html">about</a></li>
                 <li><a href="login.html">login</a></li>               
             </ul>              
-        </nav>
-    
-    
+        </nav>  
+        <div id="login">
+            
+            <section class="left">
+                <form class="signup" action="#" method="post">
+                <h1>Sign Up</h1>
+                
+                    <div>
+                    <h2>User Name</h2>
+                    <input type ="text" id ="username" name="user-name">
+                    <h2>First Name</h2>
+                    <input type ="text" id ="firstname" name="user-firstname">
+                    <h2>Last Name</h2>
+                    <input type ="text" id ="lastname" name="user-lastname">
+                    <h2>Email</h2>
+                    <input type ="text" id ="email" name="user-email">
+                     <h2>Password</h2>
+                    <input type ="text" id ="password" name="user-password">
+                     </div>
+                    <div class="button" id="confirm-login">
+                    <button type="submit">Sign Up</button>
+                </div>
+                <div>
+                    <p>Already have an account?<a href="login.html">Login!</a></p>
+                </div>
+                
+                    </form>
+            </section>
+                
+                <section class="right">
+                    <div class="centerLine"></div>
+                    <h1>Post a picture!</h1>
+                    <div><img src="imgs/placeholder-avatar1.jpg"></div>
+                    <div class="button" id="confirm-login">
+                    <button type="submit">Sign Up</button>
+                </div>
+                </section>
+        
+            
+        
+        
+        
+        </div>
     </body>
 
 
