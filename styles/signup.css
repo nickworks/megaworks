@@ -24,7 +24,7 @@ body {
     padding-top: 45px;
 }
 #signup h2 {
-    margin:15px 0 18px 0;
+    margin:15px 0 25px 0;
     font-size:15px;
     text-align:left;
     font-weight:normal;
@@ -38,12 +38,15 @@ body {
     color:#46b7ff;
     font-size:14px;
 }
+#signup .haveText{
+    padding-top: 15px;
+}
 #signup .left .linkText:hover{
     color:#2e79a8;
 }
 #confirm-signup button{
    position: relative;
-    top: 10px;
+    top: 15px;
     background-color:#53c025;
     color:#fff;
     
