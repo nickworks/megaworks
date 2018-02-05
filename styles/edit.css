@@ -3,7 +3,7 @@ body {
     font-family:"Helvetica", "Arial", sans-serif;
     background:#333;
 }
-nav.main {
+nav {
     position:fixed;
     left:0;
     top:0;
@@ -52,19 +52,8 @@ nav ul li:last-child a {
 }
 .tray {
     padding:80px 0 30px;
+    color:#FFF;
 }
-.tray > h2, .tray > p{
-    color: #FFF;
-    margin:0 30px 15px;
-    font-weight:normal;
-}
-.tray > h2 {
-    font-size: 30px;
-}
-.tray > p {
-    line-height:25px;
-}
-
 .feature img {
     max-width:100vw;
     height:auto;
@@ -85,13 +74,13 @@ nav ul li:last-child a {
     padding:50px 50px 50px;
 }
 .content article, .content section {
-    width:66%;
+    width:100%;
     float:left;
 }
 .content .hr {
-    border-bottom:1px solid #CCC;
-    margin:0 0 20px;
-    padding:20px 0 0;
+    border-bottom:1px solid #DDD;
+    margin:0px px 20px;
+    padding:20px 0px 0px;
     clear:both;
     position:relative;
 }
@@ -129,9 +118,6 @@ footer.main {
 .bubble.bottom {
     margin-bottom: 20px;
 }
-.bubble.top {
-    margin-top: 20px;
-}
 .bubble .arrow.bottom-left {
     left:15px;
     bottom:-10px;
@@ -143,11 +129,6 @@ footer.main {
 .bubble .arrow.left-top {
     left:-10px;
     top:15px;
-}
-
-.bubble .arrow.top-left {
-    left:15px;
-    top:-10px;
 }
 .bubble .pointer {
     display:block;
@@ -168,12 +149,6 @@ footer.main {
     height:17px;
     left:-7px;
     top:-5px;
-}
-.bubble .top-left .blocker {
-    width:33px;
-    height:17px;
-    left:-7px;
-    bottom:-5px;
 }
 .bubble .top-right .blocker {
     width:33px;
@@ -330,30 +305,4 @@ a.button.issue {
 
 .clear {
     clear:both;
-}
-
-nav.secondary {
-    display:flex;
-    justify-content:space-around;
-    padding:20px 20px;
-    margin:0 0 40px;
-    border-top:1px solid #CCC;
-    border-bottom:1px solid #CCC;
-}
-
-.flex {
-    display:flex;
-    justify-content:space-between;
-}
-
-.crop {
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position: center;
-}
-
-nav.secondary a {
-    text-decoration:none;
-    font-size:20px;
 }
