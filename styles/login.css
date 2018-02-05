@@ -1,22 +1,4 @@
-<<<<<<< HEAD
-#login {
-    
-    
-}
-#login section {
-    position:relative;
-    height:auto;
-    width:auto;
-    color:#fff;
-    top:70px;
-    background:#2b2b2b;
-    margin:0 66px;
-    padding:20px 32px;
-}
-#login h1 {
-    margin:auto;
-    font-size:60px;
-=======
+
 body {
     background:#fff;
 }
@@ -36,32 +18,10 @@ body {
     margin:auto;
     font-size:18px;
     font-weight:normal;
->>>>>>> master
     text-align:left;
 }
 #login h2 {
     margin:15px 0 10px 0;
-<<<<<<< HEAD
-    font-size:36px;
-    text-align:left;
-}
-#login input {
-    height:40px;
-    width:400px;
-}
-#forgot-password a {
-    color:#46b7ff;
-}
-
-#confirm-login button {
-    background-color:#22ef13;
-    color:#fff;
-    height:60px;
-    width:120px;
-    font-size:30px;
-    border-radius:10px;
-}
-=======
     font-size:15px;
     text-align:left;
     font-weight:normal;
@@ -109,4 +69,3 @@ body {
     left:0;
     top:10%;
 }
->>>>>>> master
