@@ -205,7 +205,7 @@ footer.main {
 
 
 .stats > div {
-    
+   
 }
 
 .stats {
@@ -304,4 +304,8 @@ a.button.issue {
 
 .clear {
     clear:both;
+}
+
+div {
+   text-align: center;
 }
