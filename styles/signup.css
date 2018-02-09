@@ -49,9 +49,7 @@ body {
     top: 15px;
     background-color:#53c025;
     color:#fff;
-    
     height:40px;
-    
     width:60px;
     font-size:12px;
     border-radius:5px;
@@ -62,16 +60,12 @@ body {
     top: 10px;
     background-color:#168342;
     color:#fff;
-    
     height:40px;
-    
     width:60px;
     font-size:12px;
     border-radius:5px;
     border:0px;
 }
-
-
 #signup .left {
     padding:25px 30px;
 }
