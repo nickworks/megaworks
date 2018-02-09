@@ -69,3 +69,11 @@ body {
     left:0;
     top:10%;
 }
+
+#submitB:hover{
+    background-color:#168342;
+}
+
+#CreateAnAccount:hover{
+    background-color: #303f8c;
+}
