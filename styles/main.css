@@ -14,8 +14,6 @@ nav.main {
     min-width:480px;
     z-index:9999;
 }
-
-
 nav ul {
     list-style:none;
     margin:0;
@@ -187,7 +185,6 @@ footer.main {
     left:10px;
     top:-5px;
 }
-
 .avatar {
     width:50px;
     height:50px;
@@ -199,18 +196,11 @@ footer.main {
     border:1px solid #AAA;
     overflow:hidden;
 }
-
-
-.creator {
-    
-}
-
 .creator h2 {
     font-size:20px;
     margin:0;
     padding:6px 0 0;
 }
-
 .creator h3 {
     font-size:14px;
     margin:0;
@@ -227,13 +217,6 @@ footer.main {
     width:100%;
     color:#999;
 }
-
-
-
-.stats > div {
-    
-}
-
 .stats {
     font-size:10px;
     padding:0 10%;
@@ -255,11 +238,9 @@ footer.main {
     font-size:16px;
     padding:5px 0 0;
 }
-
 .content article h1 {
     margin:0 10px 20px;
 }
-
 a.button {
     float:left;
     margin:0 5px 5px 0;
@@ -272,12 +253,10 @@ a.button {
     color:#FFF;
     text-shadow:1px 1px 2px rgba(0, 0, 0, .5);
 }
-
 a.button.license {
     background:#ef6500;
     position:relative;
 }
-
 a.license span.bubble {
     display:none;
     color:#000;
@@ -296,7 +275,6 @@ a.license span.bubble {
 a.license:hover span.bubble {
     display:block;
 }
-
 span.p {
     display:block;
     padding:5px;
@@ -304,13 +282,11 @@ span.p {
 .license em {
     font-weight:bold;
 }
-
 a.button.tag {
     background:#CCC;
     text-shadow:none;
     color:#000;
 }
-
 .comment {
     display:flex;
     flex-direction:row;
@@ -318,20 +294,16 @@ a.button.tag {
     justify-content:space-between;
     margin:0 0 20px
 }
-
 a.button.issue {
     background:#F00;
     color:#FFF;
 }
-
 .tags {
     flex-grow:0;
 }
-
 .clear {
     clear:both;
 }
-
 nav.secondary {
     display:flex;
     justify-content:space-around;
@@ -340,19 +312,16 @@ nav.secondary {
     border-top:1px solid #CCC;
     border-bottom:1px solid #CCC;
 }
-
 .flex {
     display:flex;
     justify-content:space-between;
 }
-
 .crop {
     width:100%;
     height:100%;
     object-fit:cover;
     object-position: center;
 }
-
 nav.secondary a {
     text-decoration:none;
     font-size:20px;
