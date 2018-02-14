@@ -1,17 +1,16 @@
 <?
 
 include "includes/templates.php";
+include "includes/profileFunctions.php";
 
 beginPage("home", array("styles/profile.css"));
 mainMenu();
 ?>
         <div class="tray">
             <div class="carasol">
-                <img src="imgs/placeholder-gallery-image.png">
-                <img src="imgs/placeholder-gallery-image.png">
-                <img src="imgs/placeholder-gallery-image.png">
-                <img src="imgs/placeholder-gallery-image.png">
-                <img src="imgs/placeholder-gallery-image.png">
+                    <?
+                     doThingMany(5, "addThumbnail", array("imgs/placeholder-gallery-image.png"));
+                    ?>
             </div>
         </div>
         <div class="content">
@@ -61,123 +60,18 @@ mainMenu();
             </aside>
             <section>
                 <div class="hr"><h3><span>Comments</span></h3></div>
-                <div class="comment">
-                    <div class="avatar">
-                        <img src="imgs/placeholder-avatar1.jpg">
-                    </div>
-                    <div class="bubble">
-                        <p>Lorem ipsum. lots of text goes here. This is the comment that the other user has typed in. Neat.</p>
-                        <div class="arrow left-top">
-                            <div class="blocker"></div>
-                            <div class="pointer"></div>
-                        </div>
-                    </div>
-                    <div class="tags">
-                        <a href="#" class="button tag">awesome!</a>
-                        <a href="#" class="button tag issue">possible license issues</a>
-                    </div>
-                </div>
-                <div class="comment">
-                    <div class="avatar">
-                        <img src="imgs/placeholder-avatar1.jpg">
-                    </div>
-                    <div class="bubble">
-                        <p>Lorem ipsum. lots of text goes here. This is the comment that the other user has typed in. Neat.</p>
-                        <div class="arrow left-top">
-                            <div class="blocker"></div>
-                            <div class="pointer"></div>
-                        </div>
-                    </div>
-                    <div class="tags">
-                        <a href="#" class="button tag">awesome!</a>
-                        <a href="#" class="button tag issue">possible license issues</a>
-                    </div>
-                </div>
-                <div class="comment">
-                    <div class="avatar">
-                        <img src="imgs/placeholder-avatar1.jpg">
-                    </div>
-                    <div class="bubble">
-                        <p>Lorem ipsum. lots of text goes here. This is the comment that the other user has typed in. Neat.</p>
-                        <div class="arrow left-top">
-                            <div class="blocker"></div>
-                            <div class="pointer"></div>
-                        </div>
-                    </div>
-                    <div class="tags">
-                        <a href="#" class="button tag">awesome!</a>
-                        <a href="#" class="button tag issue">possible license issues</a>
-                    </div>
-                </div>
+                
+                <?
+                doThingMany(3, "addComment", array("imgs/placeholder-avatar1.jpg", "Lorem ipsum. lots of text goes here. This is the comment that the other user has typed in. Neat."));
+                ?>
             </section>
             <section id="allProjectsSection">
                 <h3 id="allProjects">All Projects</h3>
                 <div class="hr"></div>
                 <div class="more">
-                    <div class="thumbnail">
-                        <img src="imgs/placeholder-gallery-image.png">
-                        <h1>Project Name</h1>
-                    </div>
-                    <div class="thumbnail">
-                        <img src="imgs/placeholder-gallery-image.png">
-                        <h1>Project Name</h1>
-                    </div>
-                    <div class="thumbnail">
-                        <img src="imgs/placeholder-gallery-image.png">
-                        <h1>Project Name</h1>
-                    </div>
-                    <div class="thumbnail">
-                        <img src="imgs/placeholder-gallery-image.png">
-                        <h1>Project Name</h1>
-                    </div>
-                    <div class="thumbnail">
-                        <img src="imgs/placeholder-gallery-image.png">
-                        <h1>Project Name</h1>
-                    </div>
-                    <div class="thumbnail">
-                        <img src="imgs/placeholder-gallery-image.png">
-                        <h1>Project Name</h1>
-                    </div>
-                    <div class="thumbnail">
-                        <img src="imgs/placeholder-gallery-image.png">
-                        <h1>Project Name</h1>
-                    </div>
-                    <div class="thumbnail">
-                        <img src="imgs/placeholder-gallery-image.png">
-                        <h1>Project Name</h1>
-                    </div>
-                    <div class="thumbnail">
-                        <img src="imgs/placeholder-gallery-image.png">
-                        <h1>Project Name</h1>
-                    </div>
-                    <div class="thumbnail">
-                        <img src="imgs/placeholder-gallery-image.png">
-                        <h1>Project Name</h1>
-                    </div>
-                    <div class="thumbnail">
-                        <img src="imgs/placeholder-gallery-image.png">
-                        <h1>Project Name</h1>
-                    </div>
-                    <div class="thumbnail">
-                        <img src="imgs/placeholder-gallery-image.png">
-                        <h1>Project Name</h1>
-                    </div>
-                    <div class="thumbnail">
-                        <img src="imgs/placeholder-gallery-image.png">
-                        <h1>Project Name</h1>
-                    </div>
-                    <div class="thumbnail">
-                        <img src="imgs/placeholder-gallery-image.png">
-                        <h1>Project Name</h1>
-                    </div>
-                    <div class="thumbnail">
-                        <img src="imgs/placeholder-gallery-image.png">
-                        <h1>Project Name</h1>
-                    </div>
-                    <div class="thumbnail">
-                        <img src="imgs/placeholder-gallery-image.png">
-                        <h1>Project Name</h1>
-                    </div>
+                    <? 
+                    doThingMany(16, "addThumbnail", array("imgs/placeholder-gallery-image.png", "Project Name"));
+                    ?>
                 </div>
             </section>
             <footer>neat</footer>
