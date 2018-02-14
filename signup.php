@@ -5,23 +5,24 @@ include "includes/templates.php";
 beginPage("signup", "styles/signup.css");
 mainMenu();
 ?>
-<div class="tray">
+
+
         
 <div id="signup">
             <section class="left">
                 <form class="signup" action="#" method="post">
                     <h1>Sign Up</h1>
                     <div>
-                        <h2>User Name</h2>
+                        <h2>What should we call you?</h2>
                         <input type ="text" id ="username" name="user-name">
-                        <h2>First Name</h2>
+                        <h2>What is your name?</h2>
                         <input type ="text" id ="firstname" name="user-firstname">
                         <h2>Last Name</h2>
                         <input type ="text" id ="lastname" name="user-lastname">
                         <h2>Email</h2>
                         <input type ="text" id ="email" name="user-email">
                         <h2>Password</h2>
-                        <input type ="text" id ="password" name="user-password">
+                        <input type ="password" id ="password" name="user-password">
                     </div>
                     <div class="button" id="confirm-signup">
                         <button type="submit">Sign Up</button>
@@ -31,14 +32,7 @@ mainMenu();
                     </div>
                 </form>
             </section>
-            <section class="right">
-                <div class="centerLine"></div>
-                <h1>Upload a profile picture!</h1>
-                <div><img src="imgs/placeholder-avatar1.jpg"></div>
-                <div class="button" id="confirm-signup">
-                    <button type="submit">Upload picture</button>
-                </div>   
-                </section>
+            
         </div>
-</div>
+
 <? endPage(); ?>   
