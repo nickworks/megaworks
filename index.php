@@ -11,8 +11,6 @@ mainMenu();
     </div>
 </div>
 <div class="content">
-
-
     <footer>neat</footer>
 </div>
 <? endPage(); ?>        
