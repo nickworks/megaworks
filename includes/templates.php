@@ -1,10 +1,20 @@
 <?
 
-function beginPage($class){
+function beginPage(string $class, $css = null){
+    
+    if(is_string($css)) $css = array($css);
+    
 ?><!doctype html>
 <html>
     <head>
         <link href="styles/main.css" rel="stylesheet">
+<?
+if(is_array($css)){
+    foreach($css as $file){
+        echo "<link href='{$file}' rel='stylesheet'>";
+    }
+}
+?>
     </head>
     <body class="<? echo $class; ?>">  
 <?}
