@@ -2,7 +2,7 @@
 
 include "includes/templates.php";
 
-beginPage("home");
+beginPage("home", "styles/main.css");
 mainMenu();
 ?>
 <div class="tray">

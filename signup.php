@@ -1,21 +1,13 @@
-<!doctype html>
-<html>
-    <head>
-        <link href="styles/main.css" rel="stylesheet">
-        <link href="styles/signup.css" rel="stylesheet">
-    </head>
-    <body>
-        <nav class="main">
-            <a href="index.html"><div id="logo"></div></a>
-            <ul>
-                <li><a href="about.html">about</a></li>
-                <li><a href="projects.html">projects</a></li>
-                <li><a href="talk.html">talk</a></li>
-                <li><a href="events.html">about</a></li>
-                <li><a href="login.html">login</a></li>               
-            </ul>              
-        </nav>  
-        <div id="signup">
+<?
+
+include "includes/templates.php";
+
+beginPage("signup", "styles/signup.css");
+mainMenu();
+?>
+<div class="tray">
+        
+<div id="signup">
             <section class="left">
                 <form class="signup" action="#" method="post">
                     <h1>Sign Up</h1>
@@ -48,5 +40,5 @@
                 </div>   
                 </section>
         </div>
-    </body>
-</html>
+</div>
+<? endPage(); ?>   
