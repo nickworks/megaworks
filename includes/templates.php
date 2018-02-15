@@ -30,11 +30,11 @@ function mainMenu(){?>
 <nav class="main">
     <a href="index.html"><div id="logo"></div></a>
     <ul>
-        <li><a href="about.html">about</a></li>
-        <li><a href="projects.html">projects</a></li>
-        <li><a href="talk.html">talk</a></li>
-        <li><a href="events.html">events</a></li>
-        <li><a href="login.html">login</a></li>
+        <li><a href="about.php">about</a></li>
+        <li><a href="projects.php">projects</a></li>
+        <li><a href="talk.php">talk</a></li>
+        <li><a href="events.php">events</a></li>
+        <li><a href="login.php">login</a></li>
     </ul>
 </nav>
 <?}
