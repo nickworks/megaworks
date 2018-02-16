@@ -1,20 +1,11 @@
-<!doctype html>
-<html>
-    <head>
-        <link href="styles/main.css" rel="stylesheet">
-        <link href="styles/projects.css" rel="stylesheet">
-    </head>
-    <body>
-        <nav class="main">
-            <a href="index.html"><div id="logo"></div></a>
-            <ul>
-                <li><a href="about.html">about</a></li>
-                <li><a href="projects.html">projects</a></li>
-                <li><a href="talk.html">talk</a></li>
-                <li><a href="events.html">events</a></li>
-                <li><a href="login.html">login</a></li>
-            </ul>
-        </nav>
+<?
+
+include "includes/templates.php";
+
+beginPage("projects", "styles/projects.css");
+mainMenu();
+
+?>
 
         <div class="grid">
              <div class="imgBig"><img src="imgs/gallery/bloodborne.jpg" alt="bloodborne"/></div>
@@ -47,5 +38,4 @@
              <div class="box"><img src="imgs/gallery/windwaker.png" alt="windwaker"/></div>
              <div class="horizontal"><img src="imgs/gallery/zelda.jpg" alt="zelda"/></div>-->
         </div>
-    </body>
-</html>
+<? endPage(); ?>
