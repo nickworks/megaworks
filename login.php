@@ -30,11 +30,12 @@ mainMenu();
                 <div class="centerLine"></div>
                 <h1>I don't have an account</h1>
                 <div class="button" id="create-account">
-                    <a href="signup.html">
-                        <button id="CreateAnAccount" href="signup.html">Create an account</button>
+                    <a href="signup.php">
+                        <button id="CreateAnAccount" href="signup.php">Create an account</button>
                     </a>
                 </div>
             </section>
 
         </div>
 
+<? endPage(); ?> 
