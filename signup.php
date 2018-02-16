@@ -17,7 +17,7 @@ mainMenu();
                         <input type ="text" id ="username" name="user-name">
                         <h2>What is your name?</h2>
                         <input type ="text" id ="firstname" name="user-firstname">
-                        <h2>Last Name</h2>
+                        <h2>What is your last name?</h2>
                         <input type ="text" id ="lastname" name="user-lastname">
                         <h2>Email</h2>
                         <input type ="text" id ="email" name="user-email">
