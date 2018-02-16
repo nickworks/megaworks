@@ -1,12 +1,11 @@
 <?
 include "functions.php";
-include "CoolDB.php";
+include "class.CoolDB.php";
 
+/**
+ * This class provides simple methods for interacting with user model.
+ */
 class User {
-    
-    const ROLE_ADMIN = 1;
-    const ROLE_MOD = 2;
-    const ROLE_USER = 3;
     
     private static $current;
     private static function setCurrent(array $row){
@@ -24,9 +23,8 @@ class User {
         User::$current = $user;
     }
     static function current(){
-        
         if(!empty(User::$current)) return User::$current;
-        
+
         if(session_status() !== PHP_SESSION_ACTIVE) session_start();
         //if(array_key_exists('user', $_SESSION)) return $_SESSION['user'];
         if(array_key_exists('userid', $_SESSION)) {
@@ -44,7 +42,7 @@ class User {
     
     static function logout(){
         if(session_status() !== PHP_SESSION_ACTIVE) session_start();
-        unset($_SESSION['user']);
+        unset($_SESSION['userid']);
     }
     static function login(string $email, string $pass){
         $db = new CoolDB();
@@ -63,26 +61,32 @@ class User {
 
         return ["err"=>""];
     }   
-    
-    static function isAdmin():bool{
+    static function isLoggedIn():bool {
+        $user = User::current();
+        return (!empty($user));
+    }
+    static function isAdmin():bool {
         $user = User::current();
         if(!is_array($user)) return false;
-        if(!array_key_exists('role', $user)) return false;
-        $role = intval($user['role']);
-        
-        return ($role === User::ROLE_ADMIN);
+        if(!array_key_exists('is_admin', $user)) return false;  
+        return ($user['is_admin'] === '1');
     }
     static function isMod():bool {
         $user = User::current();
         if(!is_array($user)) return false;
-        if(!array_key_exists('role', $user)) return false;
-        $role = intval($user['role']);
-        return ($role === User::ROLE_ADMIN || $role === User::ROLE_MOD);
+        if(!array_key_exists('is_mod', $user)) return false;
+        return ($user['is_mod'] === '1');
+    }
+    static function isApproved():bool {
+        $user = User::current();
+        if(!is_array($user)) return false;
+        if(!array_key_exists('is_approved', $user)) return false;
+        return ($user['is_approved'] === '1');
+    }
+    static function validEmail(string $email):bool {
+        return preg_match("/^[a-zA-Z0-9\._]{4,20}@ferris\.edu$/", $email);
     }
     
-    static function approve($id){
-        
-    }
     static function new($email, $pass, $first, $last, $alias, $title){
 
         if(!is_string($email)) $email = "";
@@ -99,7 +103,7 @@ class User {
 
         $email = strtolower($email);
         
-        if(!preg_match("/^[a-zA-Z0-9\._]{4,20}@ferris\.edu$/", $email))
+        if(User::validEmail($email))
             return ["err" => "Your email must be a Ferris email address."];
 
         //$res = $db->select('id')->where(['email' => $email])->execute();
@@ -112,11 +116,12 @@ class User {
         
         if(strlen($pass) < 8) return ["err"=>"Your password must be at least 8 characters."];
         
-        if(!preg_match('/^[a-zA-Z0-9\s\[\]\{\}\;:\'\"\<\>\.\,\?\`\~\!\@\#\$\%\^\&\*\(\)\_\-\+\=\/\\\\|]+$/', $pass)) return ["err"=>"Your password can't use non-ascii characters."];
+        //if(!preg_match('/^[a-zA-Z0-9\s\[\]\{\}\;:\'\"\<\>\.\,\?\`\~\!\@\#\$\%\^\&\*\(\)\_\-\+\=\/\\\\|]+$/', $pass)) return ["err"=>"Your password can't use non-ascii characters."];
         
         if(!preg_match('/[a-z]/', $pass)) return ["err"=>"Your password must use at least one lowercase character."];
         if(!preg_match('/[A-Z]/', $pass)) return ["err"=>"Your password must use at least one uppercase character."];
         if(!preg_match('/[0-9]/', $pass)) return ["err"=>"Your password must use at least one number."];
+        if(!preg_match('/[^a-zA-Z0-9\s]/', $pass)) return ["err"=>"Your password must have at least one special character."];
         
         ///////////////////////////////////// MAKE HASH:
 

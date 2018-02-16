@@ -1,8 +1,8 @@
 <?
-include 'user.php';
+include 'class.User.php';
 
-print_r(User::login("patt41@ferris.edu", "DAGD420"));
+User::login("patt41@ferris.edu", "DAGD420");
 
-print_r(User::current());
+header('location:user_demo.php');
 
 ?>

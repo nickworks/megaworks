@@ -1,5 +1,5 @@
 <?
-include 'user.php';
+include 'class.User.php';
 
 $email = get('email');
 $pass = get('pass');

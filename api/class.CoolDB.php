@@ -1,35 +1,70 @@
 <?
 
-include("_db.php");
+include("class.DB.php");
 
+/**
+ * This is my attempt at a high-level, convenient abstraction for MySQL.
+ * Use with caution, as I'm sure it has some flaws.
+ *
+ * The CoolDB interface uses method-chaining for convenience.
+ */
 class CoolDB {
     
-    private $pdo;
+ 
+    /**
+     * This is the PDO object that maintains a connection to the database.
+     * I only want one of these, so I'm using the Singleton design pattern here.
+     */
+    private static $pdo;
     
+    /**
+     * This array stores multiple SQL objects (see below) that will be merged together to form the final query.
+     */
     private $parts = array();
+    
+    /**
+     * The current table we're working in. This isn't cleared after a call to execute(),
+     * so it isn't necessary to call table() for each consecutive query in the same table.
+     */
     private $table;
         
     function __construct(){
         $this->connect();
     }
+    /**
+     * Connects to the database, instantiating the PDO singleton if necessary.
+     */
     function connect(){
-        $this->pdo = new PDO(DB::HOST, DB::USER, DB::PASS);
-        return $this->pdo ? true : false;
+        if(empty(CoolDB::$pdo)) CoolDB::$pdo = new PDO(DB::HOST, DB::USER, DB::PASS);
+        
+        return CoolDB::$pdo ? true : false;
     }
-    function clear(){ // flushes the parts array
+    /**
+     * This flushes the array of SQL parts.
+     */
+    function clear(){
         $this->parts = array();
     }
+    /**
+     * Sets the table. This will cause the parts array to be flushed.
+     */
     function table($table){
         $this->clear();
         $this->table = SQL::escapeField($table);
         return $this;
     }
+    /**
+     * Begins a DELETE query.
+     */
     function delete() {
         
         $this->parts []= new SQL("DELETE FROM {$this->table}");
         
         return $this;
     }
+    /**
+     * Begins a SELECT query.
+     */
     function select($fields = "*", bool $filterFields = true) {
         
         if($filterFields === true){
@@ -49,6 +84,9 @@ class CoolDB {
         
         return $this;
     }
+    /**
+     * Begins an INSERT query.
+     */
     function insert($kvp){
         
         $cols = array();
@@ -74,6 +112,10 @@ class CoolDB {
         $this->parts []= new SQL("INSERT INTO {$this->table} ({$cols}) VALUES ({$vals})", $params);
         return $this;
     }
+    /**
+     * Begins an UPDATE query.
+     * @param kvp stands for KeyValuePair. You should pass in an associative where "key"=>"value" corresponds to "field"=>"value".
+     */
     function update($kvp){
                 
         $temp = "";
@@ -126,7 +168,7 @@ class CoolDB {
         
         
         // $stmt is a PDOStatement object
-        $stmt = $this->pdo->prepare($query);
+        $stmt = CoolDB::$pdo->prepare($query);
         $stmt->execute($params);
         
         $this->clear();
