@@ -9,18 +9,20 @@ include("class.DB.php");
  * The CoolDB interface uses method-chaining for convenience.
  */
 class CoolDB {
-    
- 
     /**
      * This is the PDO object that maintains a connection to the database.
      * I only want one of these, so I'm using the Singleton design pattern here.
      */
     private static $pdo;
-    
     /**
-     * This array stores multiple SQL objects (see below) that will be merged together to form the final query.
+     * This holds the query that will sent when calling execute().
+     * The various methods in this class build up the query string.
      */
-    private $parts = array();
+    private $query = "";
+    /**
+     * This array stores multiple parameters that will be fed to the PDO object.
+     */
+    private $params = array();
     
     /**
      * The current table we're working in. This isn't cleared after a call to execute(),
@@ -43,14 +45,15 @@ class CoolDB {
      * This flushes the array of SQL parts.
      */
     function clear(){
-        $this->parts = array();
+        $this->query = "";
+        $this->params = array();
     }
     /**
      * Sets the table. This will cause the parts array to be flushed.
      */
     function table($table){
         $this->clear();
-        $this->table = SQL::escapeField($table);
+        $this->table = CoolDB::escapeField($table);
         return $this;
     }
     /**
@@ -58,7 +61,7 @@ class CoolDB {
      */
     function delete() {
         
-        $this->parts []= new SQL("DELETE FROM {$this->table}");
+        $this->query = "DELETE FROM {$this->table}";
         
         return $this;
     }
@@ -68,19 +71,19 @@ class CoolDB {
     function select($fields = "*", bool $filterFields = true) {
         
         if($filterFields === true){
-            if (is_string($fields)) $fields = SQL::escapeField($fields);
+            if (is_string($fields)) $fields = CoolDB::escapeField($fields);
             if (empty($fields)) $fields = "*";
             if (is_array($fields)){
                 $temp = "";
                 foreach($fields as $field){
                     if(!empty($temp)) $temp .= ", ";
-                    $temp .= SQL::escapeField($field);
+                    $temp .= CoolDB::escapeField($field);
                 }
                 $fields = $temp;
             }
         }
                 
-        $this->parts []= new SQL("SELECT {$fields} FROM {$this->table}");
+        $this->query = "SELECT {$fields} FROM {$this->table}";
         
         return $this;
     }
@@ -91,10 +94,9 @@ class CoolDB {
         
         $cols = array();
         $vals = array();
-        $params = array();
         foreach($kvp as $key => $val){
             
-            $cols []= SQL::escapeField($key);
+            $cols []= CoolDB::escapeField($key);
             
             if      ($val === null ) $vals []= " NULL";
             elseif  ($val === true ) $vals []= " TRUE";
@@ -102,14 +104,15 @@ class CoolDB {
             
             else { // anything else uses a parameter:
                 $vals []= " ?";
-                $params []= $val;
+                $this->params []= $val;
             }
         }
         
         $cols = implode(",", $cols);
         $vals = implode(",", $vals);
         
-        $this->parts []= new SQL("INSERT INTO {$this->table} ({$cols}) VALUES ({$vals})", $params);
+        $this->query = "INSERT INTO {$this->table} ({$cols}) VALUES ({$vals})";
+
         return $this;
     }
     /**
@@ -119,53 +122,70 @@ class CoolDB {
     function update($kvp){
                 
         $temp = "";
-        $params = array();
         foreach($kvp as $key => $val){
             
             if(!empty($temp)) $temp .= ", ";
-            $field = SQL::escapeField($key);
+            $field = CoolDB::escapeField($key);
             if      ($val === null ) $temp .= " {$field} = NULL ";
             elseif  ($val === true ) $temp .= " {$field} = TRUE ";
             elseif  ($val === false) $temp .= " {$field} = FALSE ";
             
             else { // anything else uses a parameter:
                 $temp .= " {$field} = ? ";
-                $params []= $val;
+                $this->params []= $val;
             }
         }
         
-        $this->parts []= new SQL("UPDATE {$this->table} SET {$temp}", $params);
+        $this->query = "UPDATE {$this->table} SET {$temp}";
         
         return $this;
     }
     function where($conditions, $and = true){
         
         if(!empty($conditions)) {
-            $this->parts []= new SQL(" WHERE ");
-            $this->parts []= SQL::fromConditions($conditions, $and);
+            $this->query .= " WHERE ";
+            $this->fromConditions($conditions, $and);
         }
         return $this;
     }
+    private function fromConditions($conditions, $and = true) {
+        if (empty($conditions)) return ['', []];
+        $params = [];
+        $fields = [];
+        foreach ($conditions as $field => $val) {
+            
+            $field = CoolDB::escapeField($field);
+            
+            if      ($val === null ) $fields []= " {$field} IS NULL ";
+            elseif  ($val === true ) $fields []= " {$field} = TRUE ";
+            elseif  ($val === false) $fields []= " {$field} = FALSE ";
+            
+            else { // anything else uses a parameter:
+                $fields []= " {$field} = ? ";
+                $this->params []= $val;
+            }
+        }
+        
+        $glu = ($and == true) ? 'AND' : 'OR';
+        
+        $fields = implode($glu, $fields);
+        
+        $this->query .= "({$fields})";
+    }
     function limit($limit){
         $limit = intval($limit);
-        if($limit > 0) $this->parts []= new SQL(" LIMIT {$limit}");
+        if($limit > 0) $this->query .= " LIMIT {$limit}";
         return $this;
     }
     function execute(){
         
-        $sql = new SQL("");
-        foreach($this->parts as $part){
-            $sql->merge($part);
-        }
+        if(DB::DEBUG) echo $this->dump()."\n\n";
         
-        if(DB::DEBUG) echo $sql->toString()."\n\n";
-        
-        return $this->query($sql->query, $sql->params);
+        return $this->query($this->query, $this->params);
     }
     function query(string $query, array $params){
         
         // TODO: verify/sanitize values...
-        
         
         // $stmt is a PDOStatement object
         $stmt = CoolDB::$pdo->prepare($query);
@@ -177,23 +197,8 @@ class CoolDB {
 
         return $res;
     }
-}
+    function dump(bool $verbose = false){
 
-class SQL {
-    
-    public $query;
-    public $params;
-    
-    function __construct(string $query, array $params = []){
-        
-        if(empty($query)) $query = "";
-        if(empty($params)) $params = [];
-        
-        $this->query = $query;
-        $this->params = $params;
-    }
-    function toString($verbose = false):string {       
-        
         $dump = "";
         if($verbose){
             foreach($this->params as $key => $val){
@@ -211,35 +216,6 @@ class SQL {
         }
         return $this->query." \t\t ### PARAMS: ({$dump}) ###";
     }
-    function merge(SQL $other){
-        $this->query .= $other->query;
-        $this->params = array_merge($this->params, $other->params);
-        return $this;
-    }
-    static function fromConditions($conditions, $and = true):SQL{
-        if (empty($conditions)) return ['', []];
-        $params = [];
-        $fields = [];
-        foreach ($conditions as $field => $val) {
-            
-            $field = SQL::escapeField($field);
-            
-            if      ($val === null ) $fields []= " {$field} IS NULL ";
-            elseif  ($val === true ) $fields []= " {$field} = TRUE ";
-            elseif  ($val === false) $fields []= " {$field} = FALSE ";
-            
-            else { // anything else uses a parameter:
-                $fields []= " {$field} = ? ";
-                $params []= $val;
-            }
-        }
-        
-        $glu = ($and == true) ? 'AND' : 'OR';
-        
-        $fields = implode($glu, $fields);
-        
-        return new SQL("({$fields})", $params);
-    }
     static function escapeField(string $string): string {
         
         if(empty($string)) return "";
@@ -247,7 +223,7 @@ class SQL {
         if(strpos($string, '.') !== false){ // if multi-part (e.g.: "table.field"):
             $parts = explode('.', $string); // break apart
             foreach($parts as $index => $part){
-                $parts[$index] = SQL::escapeField($part); // escape each part
+                $parts[$index] = CoolDB::escapeField($part); // escape each part
             }
             return implode('.', $parts); // put back together
         }
@@ -257,5 +233,6 @@ class SQL {
         return "`{$string}`";
     }
 }
+
 
 ?>
