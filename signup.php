@@ -28,7 +28,7 @@ mainMenu();
                         <button type="submit">Sign Up</button>
                     </div>
                     <div class="haveText" >
-                        <p>Already have an account? <a class="linkText" href="login.html">Login!</a></p>
+                        <p>Already have an account? <a class="linkText" href="login.php">Login!</a></p>
                     </div>
                 </form>
             </section>

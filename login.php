@@ -1,21 +1,12 @@
-<!doctype html>
-<html>
-    <head>
-        <link href="styles/main.css" rel="stylesheet">
-        <link href="styles/login.css" rel="stylesheet">
-    </head>
-    <body>
-        <nav class="main">
-            <a href="index.html"><div id="logo"></div></a>
-            <ul>
-                <li><a href="about.html">about</a></li>
-                <li><a href="projects.html">projects</a></li>
-                <li><a href="talk.html">talk</a></li>
-                <li><a href="events.html">events</a></li>
-                <li><a href="login.html">login</a></li>
-            </ul>
-        </nav>
-        <div id="login">
+<?
+
+include "includes/templates.php";
+
+beginPage("login", "styles/login.css");
+mainMenu();
+?>
+
+<div id="login">
             <section class="left">
                 <h1>Login</h1>
                 <form class="login" action="#" method="post">
@@ -39,12 +30,12 @@
                 <div class="centerLine"></div>
                 <h1>I don't have an account</h1>
                 <div class="button" id="create-account">
-                    <a href="signup.html">
-                        <button id="CreateAnAccount" href="signup.html">Create an account</button>
+                    <a href="signup.php">
+                        <button id="CreateAnAccount" href="signup.php">Create an account</button>
                     </a>
                 </div>
             </section>
 
         </div>
-    </body>
-</html>
+
+<? endPage(); ?> 
