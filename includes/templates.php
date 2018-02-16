@@ -28,7 +28,7 @@ function endPage(){?>
 
 function mainMenu(){?>
 <nav class="main">
-    <a href="index.html"><div id="logo"></div></a>
+    <a href="index.php"><div id="logo"></div></a>
     <ul>
         <li><a href="about.php">about</a></li>
         <li><a href="projects.php">projects</a></li>
