@@ -3,81 +3,81 @@ body {
 }
 #signup {
     display:flex;
-    margin: 70px auto 0 auto;
-    width:600px;
+    top: 500px;
+    margin: 150px auto 10px auto;
+    width:900px;
+   
     background:#2b2b2b;
-    border-radius:4px;
+    border-radius:10px;
 }
+
+
 #signup section {
     color:#fff;
     position:relative;
-    width: 50%;
+    width: 100%;
+    
 }
 #signup h1 {
-    margin:auto;
+    padding-top: 15px;
+    margin: 25px;
     font-size:18px;
     font-weight:normal;
-    text-align:left;
+    text-align:center;
 }
-#signup img{
-    position: relative;
-    padding-top: 45px;
-}
+
 #signup h2 {
     margin:15px 0 25px 0;
     font-size:15px;
-    text-align:left;
+    text-align:center;
     font-weight:normal;
     color:#aaa;
 }
 #signup input {
+    position: relative;
+    top: -20px;
     height:25px;
     width:200px;
+    left: 350px;
+    align-content: center;
 }
 #signup a {
     color:#46b7ff;
     font-size:14px;
 }
-#signup .haveText{
-    padding-top: 15px;
-}
+
 #signup .left .linkText:hover{
     color:#2e79a8;
 }
 #confirm-signup button{
    position: relative;
-    top: 15px;
+    
     background-color:#53c025;
     color:#fff;
     height:40px;
-    width:60px;
+    width:50px;
+    left:  589px;
     font-size:12px;
     border-radius:5px;
     border:0px;
 }
-#confirm-signup:hover button {
-   position: relative;
-    top: 10px;
+#confirm-signup button:hover {
+   
+    
     background-color:#168342;
     color:#fff;
-    height:40px;
-    width:60px;
+    
+   
     font-size:12px;
     border-radius:5px;
     border:0px;
 }
-#signup .left {
-    padding:25px 30px;
+
+#signup .left .haveText{
+    
+    position: relative;
+    bottom: 30px;
+    left: 330px;
 }
-#signup .right {
-    padding:25px 30px ;
-}
-#signup .centerLine {
-    height:80%;
-    width:1px;
-    background:rgba(255, 255, 255, .5);
-    border-radius:10px;
-    position: absolute;
-    left:0;
-    top:10%;
-}
+
+
