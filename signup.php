@@ -2,7 +2,7 @@
 
 include "includes/templates.php";
 
-include 'class.User.php';
+include 'api/class.User.php';
 
 $email = post('user-email');
 $pass = post('user-password');
@@ -11,14 +11,17 @@ $last = post('user-lastname');
 $alias = post('user-name');
 $title = post('');
 
-print_r(User::new(
-    $email,
-    $pass,
-    $first,
-    $last,
-    $alias,
-    $title
-));
+if ($email != ''){
+    echo $email;
+    print_r(User::new(
+        $email,
+        $pass,
+        $first,
+        $last,
+        $alias,
+        $title
+    ));
+}
 
 beginPage("signup", "styles/signup.css");
 mainMenu();
