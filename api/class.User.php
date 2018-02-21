@@ -103,7 +103,7 @@ class User {
 
         $email = strtolower($email);
         
-        if(User::validEmail($email))
+        if(!User::validEmail($email))
             return ["err" => "Your email must be a Ferris email address."];
 
         //$res = $db->select('id')->where(['email' => $email])->execute();
