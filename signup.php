@@ -2,6 +2,27 @@
 
 include "includes/templates.php";
 
+include 'api/class.User.php';
+
+$email = post('user-email');
+$pass = post('user-password');
+$first = post('user-firstname');
+$last = post('user-lastname');
+$alias = post('user-name');
+$title = post('');
+
+if ($email != ''){
+    echo $email;
+    print_r(User::new(
+        $email,
+        $pass,
+        $first,
+        $last,
+        $alias,
+        $title
+    ));
+}
+
 beginPage("signup", "styles/signup.css");
 mainMenu();
 ?>
@@ -10,7 +31,7 @@ mainMenu();
         
 <div id="signup">
             <section class="left">
-                <form class="signup" action="#" method="post">
+                <form class="signup" action="signup.php" method="post">
                     <h1>Sign Up</h1>
                     <div>
                         <h2>What should we call you?</h2>
