@@ -1,26 +1,14 @@
-<!doctype html>
-<html>
-    <head>
-        <link href="styles/edit.css" rel="stylesheet">
-    </head>
-    <body>
-        <nav class="main">
-            <a href="index.html"><div id="logo"></div></a>
-            <ul>
-                <li><a href="about.html">about</a></li>
-                <li><a href="projects.html">projects</a></li>
-                <li><a href="talk.html">talk</a></li>
-                <li><a href="events.html">events</a></li>
-                <li><a href="login.html">login</a></li>
-            </ul>
-        </nav>
-        <div class="tray">
-            <div class="feature">
-                <img src="imgs/placeholder-gallery-image.png">
-            </div>
-        </div>
-        <div class="content">
-            
+<?
+
+include "includes/templates.php";
+
+beginPage("signup", "styles/edit.css");
+mainMenu();
+?>
+
+
+        
+  <div class="content">         
          
             <section>
                 <div id="name">
@@ -68,18 +56,9 @@
                     <div>
                     <button id="finishbutt" type="submit"><h1>Finish</h1></button> 
                     
-                    </div>
-                    
-                   
+                    </div>                
                     
                
-               
-                  
-                   
-                </div>
-            </section>
-            <footer></footer>
-        </div>
-        <footer class="main"></footer>
-    </body>
-</html>
+   
+
+<? endPage(); ?>   
