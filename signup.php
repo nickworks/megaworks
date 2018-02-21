@@ -13,14 +13,7 @@ $title = post('');
 
 if ($email != ''){
     echo $email;
-    print_r(User::new(
-        $email,
-        $pass,
-        $first,
-        $last,
-        $alias,
-        $title
-    ));
+    $errs = User::new;
 }
 
 beginPage("signup", "styles/signup.css");
