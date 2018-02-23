@@ -3,27 +3,24 @@
 include "includes/templates.php";
 include "api/class.User.php";
 
+// GET FORM DATA:
 $mail = post("user-email");
 $pass = post("user-password");
-
 $redirect = get("redirect");
-
 if($redirect !== htmlentities($redirect)) $redirect = "";
 
-
+// LOGIN THE USER:
 if(!empty($mail)){
     $result = User::login($mail, $pass);
 }
 
+// REDIRECT:
 if(User::isLoggedIn()) {
-    
-    
     if(empty($redirect)) $redirect = "profile.php";
-    
     header("location:{$redirect}");
 }
 
-
+// BUILD THE PAGE:
 beginPage("login", "styles/login.css");
 mainMenu();
 ?>
