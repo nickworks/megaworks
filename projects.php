@@ -53,7 +53,13 @@ if($num_files > 0)
   if($extension=='jpg' || $extension =='png' || $extension == 'gif' || $extension == 'bmp') 
   {
    ?>
-            <a href="<?php echo $file_path; ?>"  class="<?=assignCssClass()?>"><img src="<?php echo $file_path; ?>" /></a>
+            <a href="<?php echo $file_path; ?>"  class="<?=assignCssClass()?>"><img src="<?php echo $file_path; ?>" />
+                <span class="popup">
+                    <h1>Title</h1>
+                    <h2>Name</h2>
+                    <h3>Other</h3>
+                </span>
+            </a>
             <?php
   }
  }
