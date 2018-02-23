@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 23, 2018 at 07:57 PM
+-- Generation Time: Feb 23, 2018 at 09:52 PM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.1
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `mega`
 --
-CREATE DATABASE IF NOT EXISTS `mega` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `mega`;
 
 -- --------------------------------------------------------
 
@@ -126,6 +124,14 @@ CREATE TABLE `events` (
   `location` varchar(128) NOT NULL,
   `location_link` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`id`, `date_start`, `date_end`, `title`, `description`, `location`, `location_link`) VALUES
+(1, '2018-03-03 12:00:00', '2018-03-03 16:00:00', 'Game Jam', 'We are going to build a game!', 'Room 174, Grand Rapids Campus', 'https://www.google.com/'),
+(2, '2018-04-06 13:00:00', '2018-04-08 13:00:00', '48 Hour Game Jam', 'Come build a game with us! 48 Hours to build a game. Topic released on start of event.', 'Room 172, Grand Rapids Campus', 'https://www.google.com/');
 
 -- --------------------------------------------------------
 
@@ -421,7 +427,7 @@ ALTER TABLE `comments_projects_tags`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `licenses`
 --

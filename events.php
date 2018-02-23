@@ -1,5 +1,13 @@
 <?
-include"includes/templates.php";
+include_once "includes/templates.php";
+include_once "api/class.CoolDB.php";
+
+
+$db = new CoolDB();
+
+$events = $db->query("SELECT * FROM `events` ORDER BY `events`.`date_start` ASC;", array());
+
+//print_r($t); exit;
 
 beginPage("events", "styles/events.css");
 mainMenu();
@@ -13,10 +21,16 @@ mainMenu();
     </h1>
     <ul>
         <?
-        event("March 3rd", "Super Cool Event");
-        event("March 6th - March 8th", "An Even Better Event");
-        event("March 11th", "The Best Event");
-        event("March 18th - March 21st", "The Bestest Event");
+        foreach($events as $event) {
+            $sd = new DateTime($event["date_start"]);
+            $fsd = date_format($sd, 'M d, Y h:i A');
+            $ed = new DateTime($event["date_end"]);
+            $fed = date_format($ed, 'M d, Y h:i A');
+            //print_r($t); // month day, year time
+            //print_r(date_format($t, 'Y-m-d H:i:s')); 
+            //print_r(date_format($t, 'M d, Y h:i A ')); exit;
+            event($fsd." - ".$fed, $event["title"], $event["description"]);
+        }
         ?>
     </ul>
 </div>
