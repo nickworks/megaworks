@@ -1,5 +1,7 @@
 <?
 
+include_once "api/class.User.php";
+
 function beginPage(string $class, $css = null){
     
     if(is_string($css)) $css = array($css);
@@ -26,7 +28,11 @@ function endPage(){?>
 <?}
 
 
-function mainMenu(){?>
+function mainMenu(){
+
+$showProfile = User::isLoggedIn();
+
+?>
 <nav class="main">
     <a href="index.php"><div id="logo"></div></a>
     <ul>
@@ -34,7 +40,11 @@ function mainMenu(){?>
         <li><a href="projects.php">projects</a></li>
         <li><a href="talk.php">talk</a></li>
         <li><a href="events.php">events</a></li>
+        <? if($showProfile) { ?>
+        <li><a href="profile.php">profile</a></li>
+        <? } else { ?>
         <li><a href="login.php">login</a></li>
+        <? } ?>
     </ul>
 </nav>
 <?}
