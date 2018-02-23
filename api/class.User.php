@@ -138,7 +138,7 @@ class User {
             'email' => $email,
             'hash' => $hash,
             'salt' => $salt,
-            'approved' => false
+            'is_approved' => false
         ];
 
         $db->insert($values)->execute();
