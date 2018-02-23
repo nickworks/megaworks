@@ -7,7 +7,9 @@ function beginPage(string $class, $css = null){
     if(is_string($css)) $css = array($css);
     
 ?><!doctype html>
-<html>
+    
+<html lang="en-US">
+    
     <head>
         <link href="styles/main.css" rel="stylesheet">
 <?
