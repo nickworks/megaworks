@@ -74,7 +74,7 @@ mainMenu();
                     ?>
                 </div>
             </section>
-            <footer>neat</footer>
+            
         </div>
         <footer class="main"></footer>
 <? endPage(); ?>        

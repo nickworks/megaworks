@@ -15,7 +15,7 @@ mainMenu();
                 <a href="https://www.facebook.com/groups/31875193841/">Our Facebook</a>
                 <a href="https://discordapp.com/">Our Discord</a>
             </nav>
-            <footer>neat</footer>
+           
         </div>
 
 

@@ -93,8 +93,15 @@ nav ul li:last-child a {
     clear:both;
     
 }
-footer.main {
-    
+footer.main {   
+  
+   
+  
+    width:100%;   
+    background:#FFF;
+    box-shadow:1px 1px 10px #000;
+    min-width:480px;
+   
 }
 
 .bubble {

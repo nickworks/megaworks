@@ -97,6 +97,6 @@ mainMenu();
         comment();
         ?>
     </section>
-    <footer>neat</footer>
+  
 </div>
 <? endPage(); ?> 
