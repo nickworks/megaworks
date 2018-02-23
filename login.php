@@ -1,6 +1,17 @@
 <?
 
 include "includes/templates.php";
+include "api/class.User.php";
+
+$mail = post("user-email");
+$pass = post("user-password");
+
+if(!empty($mail)){
+    $result = User::login($mail, $pass);
+}
+
+if(User::isLoggedIn()) header("location:profile.php");
+
 
 beginPage("login", "styles/login.css");
 mainMenu();
@@ -11,8 +22,8 @@ mainMenu();
                 <h1>Login</h1>
                 <form class="login" action="#" method="post">
                     <div>
-                        <h2>Username*</h2>
-                        <input type="text" id="name" name="user-name">
+                        <h2>Email*</h2>
+                        <input type="text" id="name" name="user-email">
                     </div>
                     <div>
                         <h2>Password*</h2>
