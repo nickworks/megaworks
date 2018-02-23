@@ -41,5 +41,6 @@ mainMenu();
         }
         ?>
     </ul>
+    <footer>neat</footer>
 </div>
 <? endPage(); ?> 
