@@ -22,7 +22,7 @@ if(is_array($css)){
 <?}
 
 function endPage(){?>
-    <footer class="main"></footer>
+    <footer class="main">stuff</footer>
     </body>
 </html>
 <?}

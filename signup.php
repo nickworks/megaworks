@@ -53,7 +53,7 @@ mainMenu();
                     </div>
                 </form>
             </section>
-            <footer>neat</footer>
+            
         </div>
 
 <? endPage(); ?>   

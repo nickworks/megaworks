@@ -139,6 +139,6 @@ mainMenu();
                 
                 
             </section>
-            <footer>neat</footer>
+            <footer></footer>
         </div>
 <? endPage(); ?>

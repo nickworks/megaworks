@@ -39,5 +39,5 @@ mainMenu();
              <div class="horizontal"><img src="imgs/gallery/zelda.jpg" alt="zelda"/></div>-->
            
         </div>
- <footer></footer>
+ 
 <? endPage(); ?>
