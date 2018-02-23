@@ -19,5 +19,6 @@ mainMenu();
         event("March 18th - March 21st", "The Bestest Event");
         ?>
     </ul>
+    <footer>neat</footer>
 </div>
 <? endPage(); ?> 

@@ -55,7 +55,7 @@ mainMenu();
                     </a>
                 </div>
             </section>
-
+<footer>neat</footer>
         </div>
 
 <? endPage(); ?> 

@@ -37,5 +37,7 @@ mainMenu();
              <div class="vertical"><img src="imgs/gallery/vampyr.jpg" alt="vampyr"/></div>
              <div class="box"><img src="imgs/gallery/windwaker.png" alt="windwaker"/></div>
              <div class="horizontal"><img src="imgs/gallery/zelda.jpg" alt="zelda"/></div>-->
+           
         </div>
+ <footer></footer>
 <? endPage(); ?>
