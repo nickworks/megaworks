@@ -6,11 +6,22 @@ include "api/class.User.php";
 $mail = post("user-email");
 $pass = post("user-password");
 
+$redirect = get("redirect");
+
+if($redirect !== htmlentities($redirect)) $redirect = "";
+
+
 if(!empty($mail)){
     $result = User::login($mail, $pass);
 }
 
-if(User::isLoggedIn()) header("location:profile.php");
+if(User::isLoggedIn()) {
+    
+    
+    if(empty($redirect)) $redirect = "profile.php";
+    
+    header("location:{$redirect}");
+}
 
 
 beginPage("login", "styles/login.css");
@@ -20,14 +31,14 @@ mainMenu();
 <div id="login">
             <section class="left">
                 <h1>Login</h1>
-                <form class="login" action="#" method="post">
+                <form class="login" action="login.php?redirect=<?=htmlentities($redirect)?>" method="post">
                     <div>
                         <h2>Email*</h2>
                         <input type="text" id="name" name="user-email">
                     </div>
                     <div>
                         <h2>Password*</h2>
-                        <input type="text" id="password" name="user-password">
+                        <input type="password" id="password" name="user-password">
                     </div>
                     <div>
                         <p id="forgot-password"><a href="#">Forgot your password?</a></p>
