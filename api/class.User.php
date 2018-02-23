@@ -1,6 +1,5 @@
 <?
-include "functions.php";
-include "class.CoolDB.php";
+include_once "class.CoolDB.php";
 
 /**
  * This class provides simple methods for interacting with user model.

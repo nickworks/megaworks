@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 16, 2018 at 08:53 PM
+-- Generation Time: Feb 23, 2018 at 07:57 PM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.1
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `mega`
 --
+CREATE DATABASE IF NOT EXISTS `mega` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `mega`;
 
 -- --------------------------------------------------------
 
@@ -26,6 +28,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `announcements`
 --
 
+DROP TABLE IF EXISTS `announcements`;
 CREATE TABLE `announcements` (
   `id` int(11) NOT NULL,
   `title` int(64) NOT NULL,
@@ -40,6 +43,7 @@ CREATE TABLE `announcements` (
 -- Table structure for table `comments_announcements`
 --
 
+DROP TABLE IF EXISTS `comments_announcements`;
 CREATE TABLE `comments_announcements` (
   `id` int(11) NOT NULL,
   `announcement_id` int(11) NOT NULL,
@@ -54,6 +58,7 @@ CREATE TABLE `comments_announcements` (
 -- Table structure for table `comments_events`
 --
 
+DROP TABLE IF EXISTS `comments_events`;
 CREATE TABLE `comments_events` (
   `id` int(11) NOT NULL,
   `event_id` int(11) NOT NULL,
@@ -68,6 +73,7 @@ CREATE TABLE `comments_events` (
 -- Table structure for table `comments_projects`
 --
 
+DROP TABLE IF EXISTS `comments_projects`;
 CREATE TABLE `comments_projects` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -76,12 +82,41 @@ CREATE TABLE `comments_projects` (
   `comment` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `comments_projects`
+--
+
+INSERT INTO `comments_projects` (`id`, `user_id`, `project_id`, `date_posted`, `comment`) VALUES
+(1, 1, 1, '2018-02-23 13:10:24', 'This project sucks. Get good.'),
+(2, 1, 1, '2018-02-23 13:43:38', 'This is awesome!!!!');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments_projects_tags`
+--
+
+DROP TABLE IF EXISTS `comments_projects_tags`;
+CREATE TABLE `comments_projects_tags` (
+  `id` int(11) NOT NULL,
+  `comment_id` int(11) NOT NULL,
+  `tag_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `comments_projects_tags`
+--
+
+INSERT INTO `comments_projects_tags` (`id`, `comment_id`, `tag_id`) VALUES
+(1, 1, 5);
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `events`
 --
 
+DROP TABLE IF EXISTS `events`;
 CREATE TABLE `events` (
   `id` int(11) NOT NULL,
   `date_start` datetime NOT NULL,
@@ -98,6 +133,7 @@ CREATE TABLE `events` (
 -- Table structure for table `licenses`
 --
 
+DROP TABLE IF EXISTS `licenses`;
 CREATE TABLE `licenses` (
   `id` int(11) NOT NULL,
   `title` varchar(32) NOT NULL,
@@ -119,6 +155,7 @@ INSERT INTO `licenses` (`id`, `title`, `copy`, `link`) VALUES
 -- Table structure for table `projects`
 --
 
+DROP TABLE IF EXISTS `projects`;
 CREATE TABLE `projects` (
   `id` int(11) NOT NULL,
   `title` varchar(64) NOT NULL,
@@ -140,6 +177,7 @@ INSERT INTO `projects` (`id`, `title`, `description`, `user_id`, `license_id`) V
 -- Table structure for table `project_attribution`
 --
 
+DROP TABLE IF EXISTS `project_attribution`;
 CREATE TABLE `project_attribution` (
   `id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
@@ -150,12 +188,20 @@ CREATE TABLE `project_attribution` (
   `work_link` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `project_attribution`
+--
+
+INSERT INTO `project_attribution` (`id`, `project_id`, `work`, `creator`, `user_id`, `license_id`, `work_link`) VALUES
+(1, 1, 'Texture16.png', 'my uncle', 0, 1, 'http://google.com');
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `project_imgs`
 --
 
+DROP TABLE IF EXISTS `project_imgs`;
 CREATE TABLE `project_imgs` (
   `id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
@@ -170,11 +216,23 @@ CREATE TABLE `project_imgs` (
 -- Table structure for table `project_tags`
 --
 
+DROP TABLE IF EXISTS `project_tags`;
 CREATE TABLE `project_tags` (
   `id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
   `tag_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `project_tags`
+--
+
+INSERT INTO `project_tags` (`id`, `project_id`, `tag_id`) VALUES
+(1, 1, 2),
+(2, 1, 4),
+(3, 1, 8),
+(4, 1, 9),
+(5, 1, 11);
 
 -- --------------------------------------------------------
 
@@ -182,6 +240,7 @@ CREATE TABLE `project_tags` (
 -- Table structure for table `tags_comments`
 --
 
+DROP TABLE IF EXISTS `tags_comments`;
 CREATE TABLE `tags_comments` (
   `id` int(11) NOT NULL,
   `text` varchar(32) NOT NULL,
@@ -206,6 +265,7 @@ INSERT INTO `tags_comments` (`id`, `text`, `warn`) VALUES
 -- Table structure for table `tags_projects`
 --
 
+DROP TABLE IF EXISTS `tags_projects`;
 CREATE TABLE `tags_projects` (
   `id` int(11) NOT NULL,
   `text` varchar(32) NOT NULL
@@ -235,6 +295,7 @@ INSERT INTO `tags_projects` (`id`, `text`) VALUES
 -- Table structure for table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `alias` varchar(32) NOT NULL,
@@ -275,6 +336,12 @@ ALTER TABLE `announcements`
 -- Indexes for table `comments_projects`
 --
 ALTER TABLE `comments_projects`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `comments_projects_tags`
+--
+ALTER TABLE `comments_projects_tags`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -344,7 +411,12 @@ ALTER TABLE `announcements`
 -- AUTO_INCREMENT for table `comments_projects`
 --
 ALTER TABLE `comments_projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `comments_projects_tags`
+--
+ALTER TABLE `comments_projects_tags`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `events`
 --
@@ -364,7 +436,7 @@ ALTER TABLE `projects`
 -- AUTO_INCREMENT for table `project_attribution`
 --
 ALTER TABLE `project_attribution`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `project_imgs`
 --
@@ -374,7 +446,7 @@ ALTER TABLE `project_imgs`
 -- AUTO_INCREMENT for table `project_tags`
 --
 ALTER TABLE `project_tags`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tags_comments`
 --
