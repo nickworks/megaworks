@@ -1,41 +1,67 @@
 <?
 
-include "includes/templates.php";
+include_once "includes/templates.php";
+include_once "api/functions.php";
+include_once "api/class.CoolDB.php";
 
-beginPage("projects", "styles/projects.css");
+beginPage("projects", ["styles/projects.css"]);
 mainMenu();
+
 
 ?>
 
-        <div class="grid">
-             <div class="imgBig"><img src="imgs/gallery/bloodborne.jpg" alt="bloodborne"/></div>
-             <div class="imgHorizontal"><img src="imgs/gallery/codmw2.jpg" alt="codmw2"/></div>
-             <div class="imgBox"><img src="imgs/gallery/darksouls.jpg" alt="darksouls"/></div>
-             <div class="imgVertical"><img src="imgs/gallery/deliverance.jpg" alt="deliverance"/></div>
-             <div class="imgHorizontal"><img src="imgs/gallery/destiny.jpg" alt="destiny"/></div>
-             <div class="imgBig"><img src="imgs/gallery/few.jpg" alt="few"/></div>
-             <div class="imgVertical"><img src="imgs/gallery/galaxy.jpg" alt="galaxy"/></div>
-             <div class="imgBox"><img src="imgs/gallery/gdq.png" alt="gdq"/></div>
-             <div class="imgHorizontal"><img src="imgs/gallery/honor.jpg" alt="honor"/></div>
-             <div class="imgBig"><img src="imgs/gallery/journey.jpg" alt="journey"/></div>
-             <div class="imgHorizontal"><img src="imgs/gallery/lofu.jpg" alt="lofu"/></div>
-             <div class="imgBox"><img src="imgs/gallery/me2.jpg" alt="me2"/></div>
-             <div class="imgBig"><img src="imgs/gallery/metro.jpg" alt="metro"/></div>
-             <div class="imgVertical"><img src="imgs/gallery/minecraft.jpg" alt="minecraft"/></div>
-             <div class="imgBox"><img src="imgs/gallery/nes.jpg" alt="nes"/></div>
-             <div class="imgHorizontal"><img src="imgs/gallery/nioh.jpg" alt="nioh"/></div>
-             <div class="imgVertical"><img src="imgs/gallery/pokemon.jpg" alt="pokemon"/></div>
-             <div class="imgBig"><img src="imgs/gallery/portal.jpg" alt="portal"/></div>
-             <div class="imgBig"><img src="imgs/gallery/reach.jpg" alt="reach"/></div>
-            <div class="imgBig"><img src="imgs/gallery/skyrim.jpg" alt="skyrim"/></div>
-             <!--<div class="vertical"><img src="imgs/gallery/scalebound.jpg" alt="scalebound"/></div>
-             <div class="box"><img src="imgs/gallery/seal.png" alt="seal"/></div>
-             <div class="big"><img src="imgs/gallery/smash.jpg" alt="smash"/></div>
-             <div class="vertical"><img src="imgs/gallery/sod2.jpg" alt="sod2"/></div>
-             <div class="box"><img src="imgs/gallery/tf2.png" alt="tf2"/></div>
-             <div class="horizontal"><img src="imgs/gallery/thieves.jpg" alt="thieves"/></div>
-             <div class="vertical"><img src="imgs/gallery/vampyr.jpg" alt="vampyr"/></div>
-             <div class="box"><img src="imgs/gallery/windwaker.png" alt="windwaker"/></div>
-             <div class="horizontal"><img src="imgs/gallery/zelda.jpg" alt="zelda"/></div>-->
-        </div>
-<? endPage(); ?>
+<?
+
+function arrayRandom($arr, $num = 1) {
+    shuffle($arr);
+    
+    $r = array();
+    for($i = 0; $i < $num; $i++) {
+        $r[] = $arr[$i];
+    }
+    
+    return $num == 1 ? $r[0] : $r;
+}
+
+function assignCssClass(){
+    $cssArray = array( "imgHorizontal","imgVertical","imgBig","imgBox");
+    
+    $class = arrayRandom($cssArray);
+    
+    return $class;
+}
+
+
+
+?>
+
+<div class="grid">
+<?php
+$folder_path = 'imgs/gallery/'; //image's folder path
+
+$num_files = glob($folder_path . "*.{JPG,jpg,gif,png,bmp}", GLOB_BRACE);
+
+$folder = opendir($folder_path);
+ 
+if($num_files > 0)
+{
+ while(false !== ($file = readdir($folder))) 
+ {
+     
+  $file_path = $folder_path.$file;
+  $extension = strtolower(pathinfo($file ,PATHINFO_EXTENSION));
+  if($extension=='jpg' || $extension =='png' || $extension == 'gif' || $extension == 'bmp') 
+  {
+   ?>
+            <a href="<?php echo $file_path; ?>"  class="<?=assignCssClass()?>"><img src="<?php echo $file_path; ?>" /></a>
+            <?php
+  }
+ }
+}
+else
+{
+ echo "the folder was empty !";
+}
+closedir($folder);
+    ?></div>
+<? endPage(); ?>        
