@@ -10,6 +10,7 @@ $first = post('user-firstname');
 $last = post('user-lastname');
 $alias = post('user-name');
 $title = post('');
+$was_user_created = false;
 
 
 if ($email !== ''){
@@ -22,6 +23,9 @@ if ($email !== ''){
                 $alias,
                 $title
             ));
+    if($errors['err'] === ''){
+        $was_user_created = true;
+    }
 }
 
 beginPage("signup", "styles/signup.css");
@@ -35,6 +39,9 @@ mainMenu();
         <? }
     } ?>
     <section class="left">
+        <? if ($was_user_created) { ?>
+            <p class="errorMessage">Thanks for signing up! Please wait until your account is verified, and then try logging in.</p>
+        <? } else { ?>
         <form class="signup" action="signup.php" method="post">
             <h1>Sign Up</h1>
             <div>
@@ -56,6 +63,7 @@ mainMenu();
                 <p>Already have an account? <a class="linkText" href="login.php">Login!</a></p>
             </div>
         </form>
+        <? } ?>
     </section>        
 </div>
 
