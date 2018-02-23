@@ -1,7 +1,8 @@
 <?
 
-include "includes/templates.php";
-include "api/class.User.php";
+include_once "includes/templates.php";
+include_once "api/class.User.php";
+include_once "api/functions.php";
 
 // GET FORM DATA:
 $mail = post("user-email");
