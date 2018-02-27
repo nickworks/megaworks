@@ -24,12 +24,18 @@ mainMenu();
         foreach($events as $event) {
             $sd = new DateTime($event["date_start"]);
             $fsd = date_format($sd, 'M d, Y h:i A');
+            $psd = date_parse($fsd);
             $ed = new DateTime($event["date_end"]);
             $fed = date_format($ed, 'M d, Y h:i A');
-            //print_r($t); // month day, year time
+            $ped = date_parse($fed);
+            
+            if($psd['year'] == $ped['year'] && $psd['month'] == $ped['month'] && $psd['day'] == $ped['day']) {
+                $fed = date_format($ed, 'h:i A'); 
+            }
+            //print_r($psd); exit; // month day, year time
             //print_r(date_format($t, 'Y-m-d H:i:s')); 
             //print_r(date_format($t, 'M d, Y h:i A ')); exit;
-            event($fsd." - ".$fed, $event["title"], $event["description"]);
+            event($fsd." - ".$fed, $event["title"], $event["location"], $event["description"]);
         }
         ?>
     </ul>

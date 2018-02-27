@@ -52,9 +52,16 @@ body.events {
 }
 #upcomingEvents ul li time {
     font-weight: lighter;
-    text-align: center;
+    font-size: 16px;
     margin-left: 50px;
 }
+
+#upcomingEvents ul li h3 {
+    font-weight: lighter;
+    font-size: 16px;
+    margin: 0 0 0 250px;
+}
+
 
 #upcomingEvents ul li h2 {
     margin: 0 0 5px 0;
