@@ -62,6 +62,14 @@ body.events {
     margin: 0 0 0 250px;
 }
 
+#upcomingEvents ul li h3 a {
+    color: #000;
+    text-decoration: none;
+}
+
+#upcomingEvents ul li h3 a:hover {
+    text-decoration: underline;
+}
 
 #upcomingEvents ul li h2 {
     margin: 0 0 5px 0;
