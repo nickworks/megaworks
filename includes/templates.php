@@ -52,19 +52,20 @@ $showProfile = User::isLoggedIn();
 function event(string $time, string $title, string $location, string $location_link, string $description){?>
 <li>
     <figure>
-        <a href="event.php" id="eventPicture"></a>
+        <a href="event.php" id="eventPicture" style="background-image: url('../imgs/bulldog.jpg');"></a>
     </figure>
-    
-    <h2><a href="event.php"><? echo $title; ?></a></h2>
-    <time><? echo "Time: ".$time; ?></time>
-    <h3><a href="<? echo $location_link;?>"><? echo "Location: ".$location; ?></a></h3>
+    <div>
+        <h2><a href="event.php"><? echo $title; ?></a></h2>
+        <time><? echo "Time: ".$time; ?></time>
+        <h3><a href="<? echo $location_link;?>"><? echo "Location: ".$location; ?></a></h3>
     <!--
     title
     time
     location
     description
     -->
-    <p><? echo $description; ?></p>
+        <p><? echo $description; ?></p>
+    </div>
 </li>
 <?}
 

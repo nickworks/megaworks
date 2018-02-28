@@ -1,6 +1,8 @@
 body.events {
     background-color: #fff;
 }
+
+/* not currently in use, may become in use again in the future with the implementation of a calendar */
 #calendar {
     height: 800px;
     width: 100%;
@@ -9,15 +11,10 @@ body.events {
     text-align: center;
 }
 
-#calendar iframe {
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
 #upcomingEvents {
     position: absolute;
     margin-left: 54px;
-    margin-top: 45px;
+    margin-top: 80px;
     margin-right: 210px;
     background-color: #fff;
 }
@@ -38,8 +35,8 @@ body.events {
 }
 #upcomingEvents ul li {
     display: block;
-    margin-top: 45px;
-    margin-bottom: 45px;
+    margin-top: 25px;
+    margin-bottom: 25px;
     height:200px;
     overflow: hidden;
 }
@@ -53,13 +50,12 @@ body.events {
 #upcomingEvents ul li time {
     font-weight: lighter;
     font-size: 16px;
-    margin-left: 50px;
 }
 
 #upcomingEvents ul li h3 {
     font-weight: lighter;
     font-size: 16px;
-    margin: 0 0 0 250px;
+    margin: 0 0 0 0;
 }
 
 #upcomingEvents ul li h3 a {
@@ -77,7 +73,6 @@ body.events {
 
 #upcomingEvents ul li h2 a {
     font-weight:normal;
-    margin-left: 50px;
     font-size: 30px;
     white-space: nowrap;
     overflow: hidden;
@@ -92,7 +87,7 @@ body.events {
 
 #upcomingEvents ul li p {
     font-weight: lighter;
-    margin:0 0 0 250px;
+    margin:0 0 0 0;
     font-size: 15px;
     width: 1266px;
     line-height: 30px;
@@ -100,9 +95,15 @@ body.events {
 }
 
 #upcomingEvents #eventPicture {
-    background: url(../imgs/bulldog.jpg) no-repeat;
+    background-repeat: no-repeat;
+    background-position: center center;
     width: 200px;
-    height: 200px;
+    height: 196px;
     margin: 0;
     display:block;
+    border: 2px solid black;
+}
+
+#upcomingEvents ul li div {
+    margin-left: 250px;  
 }
