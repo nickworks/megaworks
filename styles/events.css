@@ -97,6 +97,7 @@ body.events {
 #upcomingEvents #eventPicture {
     background-repeat: no-repeat;
     background-position: center center;
+    background-size: cover;
     width: 200px;
     height: 196px;
     margin: 0;

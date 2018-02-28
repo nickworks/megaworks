@@ -49,10 +49,10 @@ $showProfile = User::isLoggedIn();
 </nav>
 <?}
 
-function event(string $time, string $title, string $location, string $location_link, string $description){?>
+function event(string $time, string $title, string $location, string $location_link, string $description, string $eventImage){?>
 <li>
     <figure>
-        <a href="event.php" id="eventPicture" style="background-image: url('../imgs/bulldog.jpg');"></a>
+        <a href="event.php" id="eventPicture" style="background-image: url('<? echo $eventImage?>');"></a>
     </figure>
     <div>
         <h2><a href="event.php"><? echo $title; ?></a></h2>
