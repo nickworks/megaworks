@@ -241,7 +241,7 @@ footer.main {
 .content article h1 {
     margin:0 10px 20px;
 }
-a.button {
+a.button, .tag-picker label {
     float:left;
     margin:0 5px 5px 0;
     font-size:10px;
@@ -282,7 +282,7 @@ span.p {
 .license em {
     font-weight:bold;
 }
-a.button.tag {
+a.button.tag, .tag-picker label {
     background:#CCC;
     text-shadow:none;
     color:#000;
@@ -294,7 +294,7 @@ a.button.tag {
     justify-content:space-between;
     margin:0 0 20px
 }
-a.button.issue {
+a.button.issue, .tag-picker label.issue {
     background:#F00;
     color:#FFF;
 }
@@ -325,4 +325,21 @@ nav.secondary {
 nav.secondary a {
     text-decoration:none;
     font-size:20px;
+}
+.tag-picker input[type="checkbox"] {
+    width:1px;
+    margin:0;
+}
+.tag-picker input[type="checkbox"] + label {
+    cursor: pointer;
+    user-select:none;
+}
+.tag-picker input[type="checkbox"]:not(:checked) + label {
+    opacity: 0.5;
+    background:#FFF;
+    color:#000;
+    border:1px solid #666;
+}
+.tag-picker input[type="checkbox"]:checked + label {
+    border:1px solid #FFF;
 }

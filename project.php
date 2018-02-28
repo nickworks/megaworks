@@ -2,33 +2,74 @@
 include_once "api/functions.php";
 include_once "includes/templates.php";
 include_once "api/class.CoolDB.php";
+include_once "api/class.User.php";
 
-// TODO: process comment form and insert comment into database
+//////////////////////////////////////////////// CHECK FOR VALID PROJECT ID:
+
+function redirect() { header("location:projects.php"); }
 
 $id = intval(get("id"));
-
-if($id <= 0 || empty($id)) header("location:projects.php");
+if($id <= 0 || empty($id)) redirect(); // invalid is, so redirect
 
 $db = new CoolDB();
 $sql = "SELECT projects.*, licenses.title AS 'license_title', licenses.copy AS 'license_copy', licenses.link AS 'license_link' FROM projects, licenses WHERE projects.id = ? AND licenses.id = projects.license_id;";
 
 $rows = $db->query($sql, array($id));
+if(count($rows) == 0) redirect(); // no rows were returned, so redirect
 
-if(count($rows) == 0) header("location:projects.php"); // no rows were returned, so redirect
+$project = $rows[0]; // <- project info
 
-$project = $rows[0];
+//////////////////////////////////////////////// PROCESS COMMENT FORM:
 
-$comments = $db->query("SELECT * FROM `comments_projects` WHERE `project_id`=?;", array($id));
+function processCommentForm($project_id){
+    $comment = post("comment");
+    
+    if(!User::isLoggedIn()) return;
+    $user_id = User::current()['id'];
+    
+    if(!empty($comment) && $user_id > 0){
+        
+        $db = new CoolDB();
+        $db->query("INSERT INTO `comments_projects` (`user_id`, `project_id`, `comment`) VALUES (?, ?, ?);", array($user_id, $project_id, $comment));
+        $comment_id = $db::$pdo->lastInsertId();        
+        
+        $values = '';
+        foreach($_POST as $key => $val) {
+            if(preg_match("/^commentFormTag([0-9]+)$/", $key, $matches)){
+                $tag_id = intval($matches[1]);
+                if(!empty($values)) $values .= ',';
+                $values .= " ({$comment_id}, {$tag_id})";
+            }
+        }
+        $sql = "INSERT INTO `comments_projects_tags` (`comment_id`, `tag_id`) VALUES {$values};";
+        $db->query($sql, array());
+    }
+}
 
-$tags = $db->query("SELECT tags_projects.* FROM project_tags, tags_projects WHERE project_tags.project_id=? AND project_tags.tag_id = tags_projects.id;", array($id));
+// putting all of this in its own function encapsulates it
+// and protects variables from leaking out into global scope
+
+processCommentForm($id);
+
+//////////////////////////////////////////////// BEGIN PULLING DATA FROM DB:
+
+
+$comments = $db->query("SELECT c.*, GROUP_CONCAT(t.text) AS 'tags' FROM comments_projects c, comments_projects_tags j, tags_comments t WHERE c.project_id=? AND t.id = j.tag_id AND j.comment_id = c.id GROUP BY c.id", array($id));
+
+$tags = $db->query("SELECT t.* FROM project_tags j, tags_projects t WHERE j.project_id=? AND j.tag_id = t.id;", array($id));
 
 $attribution = $db->query("SELECT * FROM `project_attribution` WHERE `project_id` = ?;", array($id));
 
-//print_r($attribution); exit;
+$creator = $db->query("SELECT * FROM `users` WHERE `id`=?;", array($project['user_id']))[0];
 
-// TODO: we need to pull the student data
-// TODO: we need to pull comment tags
+//print_r($creator); exit;
+
 // TODO: we need to pull media
+// TODO: we need to pull "likes", "faves", and "views" data
+
+//////////////////////////////////////////////// BUILD PAGE:
+
+// TODO: we need to make a way to "like" and/or "fave" a project
 
 beginPage("project");
 mainMenu();
@@ -50,8 +91,8 @@ mainMenu();
                 </div>
                 <div class="creator">
                     <div class="avatar"><img src="imgs/placeholder-avatar1.jpg"></div>
-                    <h2>Namey McStudent</h2>
-                    <h3>Texture Artist</h3>
+                    <h2><a href='profile.php?id=<?=$creator['id']?>' ><?=$creator['first'].' '.$creator['last']?></a></h2>
+                    <h3><?=$creator['title']?></h3>
                 </div>
             </article>
             <aside>
@@ -130,13 +171,38 @@ mainMenu();
                         </div>
                     </div>
                     <div class="tags">
-                        <a href="#" class="button tag">awesome!</a>
-                        <a href="#" class="button tag issue">possible license issues</a>
+                        <? $tags = explode(',', $comment['tags']);
+                        foreach($tags as $tag) { ?>
+                            <a class="button tag"><?=$tag?></a>
+                        <? } ?>
                     </div>
                 </div>
                 
                 <? } ?>
-                
+                <div class="hr"><h3><span>New Comment</span></h3></div>
+                <? if(User::isLoggedIn()) { ?>
+                <form method="post" action="project.php?id=<?=$id?>">
+                    <p>Choose some tags to accompany your comment:</p>
+                    <div class='tag-picker'>
+                    <?
+                    $commentTags = $db->query("SELECT * FROM `tags_comments` ORDER BY `warn` ASC;", array());
+                    foreach($commentTags as $tag){
+                        $name = "commentFormTag".$tag['id'];
+                        $value = $tag['text'];
+                        $class = $tag['warn'] ? "issue" : "";
+                        ?>
+                        <input type="checkbox" value="<?=$value?>" name="<?=$name?>" id="<?=$name?>">
+                        <label class="<?=$class?>" for="<?=$name?>"><?=$value?></label>
+                    <? } ?>
+                    </div>
+                    <div class="clear"></div>
+                    <p>What would you like to say?</p>
+                    <textarea name="comment" style="width:100%;max-width:100%;min-width:100%;min-height:50px;height:100px;max-height:300px;"></textarea>
+                    <input type="submit">
+                </form>
+                <? } else { ?>
+                <p>To add a new comment, please sign in!</p>
+                <? } ?>
                 
             </section>
             <footer>neat</footer>

@@ -13,7 +13,7 @@ class CoolDB {
      * This is the PDO object that maintains a connection to the database.
      * I only want one of these, so I'm using the Singleton design pattern here.
      */
-    private static $pdo;
+    static $pdo;
     /**
      * This holds the query that will sent when calling execute().
      * The various methods in this class build up the query string.
