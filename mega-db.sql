@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 28, 2018 at 03:47 AM
+-- Generation Time: Feb 28, 2018 at 04:41 AM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.1
 
@@ -86,7 +86,11 @@ CREATE TABLE `comments_projects` (
 
 INSERT INTO `comments_projects` (`id`, `user_id`, `project_id`, `date_posted`, `comment`) VALUES
 (1, 1, 1, '2018-02-23 13:10:24', 'This project sucks. Get good.'),
-(2, 1, 1, '2018-02-23 13:43:38', 'This is awesome!!!!');
+(2, 1, 1, '2018-02-23 13:43:38', 'This is awesome!!!!'),
+(9, 1, 1, '2018-02-27 22:49:50', 'This is a test.'),
+(10, 1, 1, '2018-02-27 22:52:10', 'This is a test.'),
+(11, 1, 1, '2018-02-27 22:52:28', 'This is a test.'),
+(12, 1, 1, '2018-02-27 23:15:25', 'So does this work now?');
 
 -- --------------------------------------------------------
 
@@ -106,7 +110,12 @@ CREATE TABLE `comments_projects_tags` (
 --
 
 INSERT INTO `comments_projects_tags` (`id`, `comment_id`, `tag_id`) VALUES
-(1, 1, 5);
+(1, 1, 5),
+(2, 11, 1),
+(3, 11, 2),
+(4, 11, 3),
+(5, 12, 1),
+(6, 12, 6);
 
 -- --------------------------------------------------------
 
@@ -123,7 +132,7 @@ CREATE TABLE `events` (
   `description` text NOT NULL,
   `location` varchar(128) NOT NULL,
   `location_link` varchar(128) NOT NULL,
-  `image` varchar(128) NOT NULL
+  `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -326,7 +335,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `alias`, `title`, `first`, `last`, `email`, `hash`, `salt`, `date_signup`, `is_approved`, `is_admin`, `is_mod`) VALUES
-(1, 'Nick', '', 'Nick', 'Pattison', 'patt41@ferris.edu', 'af3a0b99a3269b516a848b840fdf4c36', 1234, '2018-02-14 13:33:27', 1, 0, 0),
+(1, 'Nick', 'Instructor Extraordinaire!', 'Nick', 'Pattison', 'patt41@ferris.edu', 'af3a0b99a3269b516a848b840fdf4c36', 1234, '2018-02-14 13:33:27', 1, 0, 0),
 (2, '', '', '', '', 'nick@ferris.edu', 'bc4586081f58bd9127939f420a298dc0', 52969, '2018-02-14 13:33:27', 0, 0, 0),
 (4, '', '', '', '', 'collin@ferris.edu', '5f9449ba01fb3bf921996d83dd46e9de', 17704, '2018-02-14 13:33:27', 0, 0, 0),
 (5, '', '', '', '', 'collin@ferris.edu', 'ef926983fef6f9c7f1207289ac8a0331', 21318, '2018-02-14 13:33:27', 0, 0, 0),
@@ -358,7 +367,7 @@ ALTER TABLE `comments_projects_tags`
 -- Indexes for table `events`
 --
 ALTER TABLE `events`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `licenses`
@@ -421,12 +430,12 @@ ALTER TABLE `announcements`
 -- AUTO_INCREMENT for table `comments_projects`
 --
 ALTER TABLE `comments_projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `comments_projects_tags`
 --
 ALTER TABLE `comments_projects_tags`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `events`
 --
