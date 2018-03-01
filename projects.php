@@ -4,6 +4,18 @@ include_once "includes/templates.php";
 include_once "api/functions.php";
 include_once "api/class.CoolDB.php";
 
+
+
+$db = new CoolDB();
+$sql = "SELECT projects.title, projects.id, users.alias FROM projects, users WHERE users.id = projects.user_id ORDER BY projects.id DESC;";
+$img = "SELECT project_imgs.url, project_imgs.project_id FROM `project_imgs` ORDER BY project_imgs.ordering ASC, project_imgs.project_id ASC;";
+
+$imageURL = $db->query($img, array(""));
+$projects = $db->query($sql, array(""));
+
+//print_r($projects[0]["id"]);die;
+
+
 beginPage("projects", ["styles/projects.css"]);
 mainMenu();
 
@@ -37,37 +49,25 @@ function assignCssClass(){
 
 <div class="grid">
 <?php
-$folder_path = 'imgs/gallery/'; //image's folder path
+//$folder_path = 'imgs/gallery/'; //image's folder path
 
-$num_files = glob($folder_path . "*.{JPG,jpg,gif,png,bmp}", GLOB_BRACE);
+$num_files = $projects[0]["id"];
 
-$folder = opendir($folder_path);
+//$folder = opendir($folder_path);
  
-if($num_files > 0)
+while($num_files > 0)
 {
- while(false !== ($file = readdir($folder))) 
- {
-     
-  $file_path = $folder_path.$file;
-  $extension = strtolower(pathinfo($file ,PATHINFO_EXTENSION));
-  if($extension=='jpg' || $extension =='png' || $extension == 'gif' || $extension == 'bmp') 
-  {
    ?>
-            <a href="<?php echo $file_path; ?>"  class="<?=assignCssClass()?>"><img src="<?php echo $file_path; ?>" />
+            <a href="<?php echo 'project.php?id='.$num_files; ?>"  class="<?=assignCssClass()?>"><img src="<?php echo $imageURL[$num_files - 1]['url']; ?>" />
                 <span class="popup">
-                    <h1>Title</h1>
-                    <h2>Name</h2>
+                    <h1><? echo $projects[count($projects) - $num_files]["title"]?></h1>
+                    <h2><? echo $projects[count($projects) - $num_files]["alias"]?></h2>
                     <h3>Other</h3>
                 </span>
             </a>
             <?php
-  }
- }
+    $num_files--;
 }
-else
-{
- echo "the folder was empty !";
-}
-closedir($folder);
+//closedir($folder);
     ?></div>
 <? endPage(); ?>        

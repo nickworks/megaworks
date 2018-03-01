@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 28, 2018 at 04:41 AM
+-- Generation Time: Mar 01, 2018 at 04:29 AM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.1
 
@@ -26,7 +26,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `announcements`
 --
 
-DROP TABLE IF EXISTS `announcements`;
 CREATE TABLE `announcements` (
   `id` int(11) NOT NULL,
   `title` int(64) NOT NULL,
@@ -41,7 +40,6 @@ CREATE TABLE `announcements` (
 -- Table structure for table `comments_announcements`
 --
 
-DROP TABLE IF EXISTS `comments_announcements`;
 CREATE TABLE `comments_announcements` (
   `id` int(11) NOT NULL,
   `announcement_id` int(11) NOT NULL,
@@ -56,7 +54,6 @@ CREATE TABLE `comments_announcements` (
 -- Table structure for table `comments_events`
 --
 
-DROP TABLE IF EXISTS `comments_events`;
 CREATE TABLE `comments_events` (
   `id` int(11) NOT NULL,
   `event_id` int(11) NOT NULL,
@@ -71,7 +68,6 @@ CREATE TABLE `comments_events` (
 -- Table structure for table `comments_projects`
 --
 
-DROP TABLE IF EXISTS `comments_projects`;
 CREATE TABLE `comments_projects` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -98,7 +94,6 @@ INSERT INTO `comments_projects` (`id`, `user_id`, `project_id`, `date_posted`, `
 -- Table structure for table `comments_projects_tags`
 --
 
-DROP TABLE IF EXISTS `comments_projects_tags`;
 CREATE TABLE `comments_projects_tags` (
   `id` int(11) NOT NULL,
   `comment_id` int(11) NOT NULL,
@@ -123,7 +118,6 @@ INSERT INTO `comments_projects_tags` (`id`, `comment_id`, `tag_id`) VALUES
 -- Table structure for table `events`
 --
 
-DROP TABLE IF EXISTS `events`;
 CREATE TABLE `events` (
   `id` int(11) NOT NULL,
   `date_start` datetime NOT NULL,
@@ -152,7 +146,6 @@ INSERT INTO `events` (`id`, `date_start`, `date_end`, `title`, `description`, `l
 -- Table structure for table `licenses`
 --
 
-DROP TABLE IF EXISTS `licenses`;
 CREATE TABLE `licenses` (
   `id` int(11) NOT NULL,
   `title` varchar(32) NOT NULL,
@@ -174,7 +167,6 @@ INSERT INTO `licenses` (`id`, `title`, `copy`, `link`) VALUES
 -- Table structure for table `projects`
 --
 
-DROP TABLE IF EXISTS `projects`;
 CREATE TABLE `projects` (
   `id` int(11) NOT NULL,
   `title` varchar(64) NOT NULL,
@@ -188,7 +180,16 @@ CREATE TABLE `projects` (
 --
 
 INSERT INTO `projects` (`id`, `title`, `description`, `user_id`, `license_id`) VALUES
-(1, 'Tree of Life', 'In a giant tree, Nola embarks on an epic journey.\r\n\r\nIn Fall 2017, the DAGD 355 class created a prototype adventure-platformer in Unity.', 1, 1);
+(1, 'Tree of Life', 'In a giant tree, Nola embarks on an epic journey.\r\n\r\nIn Fall 2017, the DAGD 355 class created a prototype adventure-platformer in Unity.', 1, 1),
+(2, 'Tree of Life 2', 'In a giant tree, Nola embarks on an epic journey.\r\n\r\nIn Fall 2017, the DAGD 355 class created a prototype adventure-platformer in Unity.', 1, 1),
+(3, 'Wario Ware', 'In a giant tree, Nola embarks on an epic journey.\r\n\r\nIn Fall 2017, the DAGD 355 class created a prototype adventure-platformer in Unity.', 1, 1),
+(4, 'The Legend of Smellda', 'In a giant tree, Nola embarks on an epic journey.\r\n\r\nIn Fall 2017, the DAGD 355 class created a prototype adventure-platformer in Unity.', 1, 1),
+(5, 'Chatty Kathies', 'In a giant tree, Nola embarks on an epic journey.\r\n\r\nIn Fall 2017, the DAGD 355 class created a prototype adventure-platformer in Unity.', 1, 1),
+(6, 'SUPER SQL BROS', 'In a giant tree, Nola embarks on an epic journey.\r\n\r\nIn Fall 2017, the DAGD 355 class created a prototype adventure-platformer in Unity.', 1, 1),
+(7, 'IDK', 'In a giant tree, Nola embarks on an epic journey.\r\n\r\nIn Fall 2017, the DAGD 355 class created a prototype adventure-platformer in Unity.', 1, 1),
+(8, 'spaghetti', 'In a giant tree, Nola embarks on an epic journey.\r\n\r\nIn Fall 2017, the DAGD 355 class created a prototype adventure-platformer in Unity.', 1, 1),
+(9, 'rip Mollie', 'In a giant tree, Nola embarks on an epic journey.\r\n\r\nIn Fall 2017, the DAGD 355 class created a prototype adventure-platformer in Unity.', 1, 1),
+(10, 'woop there it is', 'In a giant tree, Nola embarks on an epic journey.\r\n\r\nIn Fall 2017, the DAGD 355 class created a prototype adventure-platformer in Unity.', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -196,7 +197,6 @@ INSERT INTO `projects` (`id`, `title`, `description`, `user_id`, `license_id`) V
 -- Table structure for table `project_attribution`
 --
 
-DROP TABLE IF EXISTS `project_attribution`;
 CREATE TABLE `project_attribution` (
   `id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
@@ -220,7 +220,6 @@ INSERT INTO `project_attribution` (`id`, `project_id`, `work`, `creator`, `user_
 -- Table structure for table `project_imgs`
 --
 
-DROP TABLE IF EXISTS `project_imgs`;
 CREATE TABLE `project_imgs` (
   `id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
@@ -229,13 +228,38 @@ CREATE TABLE `project_imgs` (
   `ordering` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `project_imgs`
+--
+
+INSERT INTO `project_imgs` (`id`, `project_id`, `url`, `description`, `ordering`) VALUES
+(1, 1, 'imgs/gallery/bloodborne.jpg', 'pictochat', 1),
+(2, 1, 'imgs/gallery/scalebound.jpg', 'pictochat', 2),
+(17, 2, 'imgs/gallery/codmw2.jpg', 'pictochat', 1),
+(18, 2, 'imgs/gallery/scalebound.jpg', 'pictochat', 2),
+(19, 3, 'imgs/gallery/darksouls.jpg', 'pictochat', 1),
+(20, 3, 'imgs/gallery/scalebound.jpg', 'pictochat', 2),
+(21, 4, 'imgs/gallery/deliverance.jpg', 'pictochat', 1),
+(22, 4, 'imgs/gallery/scalebound.jpg', 'pictochat', 2),
+(23, 5, 'imgs/gallery/destiny.jpg', 'pictochat', 1),
+(24, 5, 'imgs/gallery/scalebound.jpg', 'pictochat', 2),
+(25, 6, 'imgs/gallery/few.jpg', 'pictochat', 1),
+(26, 6, 'imgs/gallery/scalebound.jpg', 'pictochat', 2),
+(27, 7, 'imgs/gallery/galaxy.jpg', 'pictochat', 1),
+(28, 7, 'imgs/gallery/scalebound.jpg', 'pictochat', 2),
+(29, 8, 'imgs/gallery/gdq.png', 'pictochat', 1),
+(30, 8, 'imgs/gallery/scalebound.jpg', 'pictochat', 2),
+(31, 9, 'imgs/gallery/honor.jpg', 'pictochat', 1),
+(32, 9, 'imgs/gallery/scalebound.jpg', 'pictochat', 2),
+(33, 10, 'imgs/gallery/journey.jpg', 'pictochat', 1),
+(34, 10, 'imgs/gallery/scalebound.jpg', 'pictochat', 2);
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `project_tags`
 --
 
-DROP TABLE IF EXISTS `project_tags`;
 CREATE TABLE `project_tags` (
   `id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
@@ -259,7 +283,6 @@ INSERT INTO `project_tags` (`id`, `project_id`, `tag_id`) VALUES
 -- Table structure for table `tags_comments`
 --
 
-DROP TABLE IF EXISTS `tags_comments`;
 CREATE TABLE `tags_comments` (
   `id` int(11) NOT NULL,
   `text` varchar(32) NOT NULL,
@@ -284,7 +307,6 @@ INSERT INTO `tags_comments` (`id`, `text`, `warn`) VALUES
 -- Table structure for table `tags_projects`
 --
 
-DROP TABLE IF EXISTS `tags_projects`;
 CREATE TABLE `tags_projects` (
   `id` int(11) NOT NULL,
   `text` varchar(32) NOT NULL
@@ -314,7 +336,6 @@ INSERT INTO `tags_projects` (`id`, `text`) VALUES
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `alias` varchar(32) NOT NULL,
@@ -450,7 +471,7 @@ ALTER TABLE `licenses`
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `project_attribution`
 --
@@ -460,7 +481,7 @@ ALTER TABLE `project_attribution`
 -- AUTO_INCREMENT for table `project_imgs`
 --
 ALTER TABLE `project_imgs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `project_tags`
 --
