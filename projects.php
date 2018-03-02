@@ -22,13 +22,23 @@ mainMenu();
 
 <?
 function assignCssClass(){
-    $cssArray = array( "imgHorizontal","imgVertical","imgBig","imgBox");
     
-    shuffle($cssArray);
+    $random = rand(1, 10);
     
-    $class = $cssArray[0];
-    
-    return $class;
+    switch($random){
+        case 1:
+            return "imgHorizontal";
+            break;
+        case 2:
+            return "imgVertical";
+            break;
+        case 3:
+            return "imgBig";
+            break;
+        default:
+            return "imgBox";
+            break;
+    }
 }
 
 
@@ -46,12 +56,14 @@ function assignCssClass(){
 foreach($projects as $pro)
 {
    ?>
-            <a href="<?php echo 'project.php?id='.$pro["id"]; ?>"  class="<?=assignCssClass()?>"><img src="<?php echo $pro['url']; ?>" />
-                <li class="popup">
-                    <ul><span class="title"><? echo $pro["title"]?></span></ul>
-                    <ul><span class="creator"><? echo $pro["alias"]?></span></ul>
-                    <ul><span class="other">Other</span></ul>
-                </li>
+            <a href="<?php echo 'project.php?id='.$pro["id"]; ?>"  class="<?=assignCssClass()?>"><img src="<?php 
+                echo (file_exists($pro['url'])) ? $pro['url'] : 'imgs/placeholder-gallery-image.png'; 
+                ?>" />
+                <span class="popup">
+                    <span class="title"><? echo $pro["title"]?></span>
+                    <span class="creator"><? echo $pro["alias"]?></span>
+                    <span class="other">Other</span>
+                </span>
             </a>
             <?php
 }
