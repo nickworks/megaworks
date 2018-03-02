@@ -146,6 +146,6 @@ mainMenu();
         }
         ?>
     </section>
-    <footer></footer>
+  <footer></footer>
 </div>
 <? endPage(); ?> 

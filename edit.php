@@ -55,7 +55,7 @@ mainMenu();
                     </div>
                     <div>
                     <button id="finishbutt" type="submit"><h1>Finish</h1></button> 
-                    
+                    <footer>neat</footer>
                     </div>                
                     
                

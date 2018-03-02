@@ -46,9 +46,7 @@ function assignCssClass(){
 <?php
     
  
-foreach($projects as $pro)
-{
-   ?>
+foreach($projects as $pro) { ?>
             <a href="<?php echo 'project.php?id='.$pro["id"]; ?>"  class="<?=assignCssClass()?>"><img src="<?php 
                 echo (file_exists($pro['url'])) ? $pro['url'] : 'imgs/placeholder-gallery-image.png'; 
                 ?>" />
@@ -59,7 +57,5 @@ foreach($projects as $pro)
                 </span>
             </a>
             <?php
-}
-//closedir($folder);
-    ?></div>
-<? endPage(); ?>        
+} ?></div>
+<? endPage(); ?>

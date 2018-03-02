@@ -79,7 +79,7 @@ nav ul li:last-child a {
 }
 .content .hr {
     border-bottom:1px solid #DDD;
-    margin:0px px 20px;
+    margin:0px 0px 0px 20px;
     padding:20px 0px 0px;
     clear:both;
     position:relative;
@@ -93,8 +93,15 @@ nav ul li:last-child a {
     clear:both;
     
 }
-footer.main {
-    
+footer.main {   
+  
+   
+  
+    width:100%;   
+    background:#FFF;
+    box-shadow:1px 1px 10px #000;
+    min-width:480px;
+   
 }
 
 .bubble {
@@ -115,8 +122,9 @@ footer.main {
 .bubble .arrow {
     position:absolute;
 }
-.bubble.bottom {
+s.bubble.bottom {
     margin-bottom: 20px;
+    
 }
 .bubble .arrow.bottom-left {
     left:15px;
