@@ -29,10 +29,10 @@ function endPage(){?>
             
         <div class="top">
             <ul>
-                <li class="top_list">about</li>
-                <li class="top_list">projects</li>
-                <li class="top_list">talk</li>   
-                <li class="top_list">events</li> 
+                <li class="top_list"><a href="about.php">About</a></li>
+                <li class="top_list"><a href="Projects.php">Projects</a></li>
+                <li class="top_list"><a href="talk.php">Talk</a></li>   
+                <li class="top_list"><a href="events.php">Events</a></li> 
             </ul>
         </div>
             <div class="hr"><h3></h3></div>
