@@ -7,13 +7,11 @@ include_once "api/class.CoolDB.php";
 
 
 $db = new CoolDB();
-$sql = "SELECT projects.title, projects.id, users.alias FROM projects, users WHERE users.id = projects.user_id ORDER BY projects.id DESC;";
-$img = "SELECT project_imgs.url, project_imgs.project_id FROM `project_imgs` ORDER BY project_imgs.ordering ASC, project_imgs.project_id ASC;";
+$sql = "SELECT p.id, p.title, u.alias, i.url FROM projects p, users u, project_imgs i WHERE u.id = p.user_id AND i.project_id = p.id GROUP BY p.id ORDER BY p.id DESC;";
 
-$imageURL = $db->query($img, array(""));
 $projects = $db->query($sql, array(""));
 
-//print_r($projects[0]["id"]);die;
+//print_r($projects);die;
 
 
 beginPage("projects", ["styles/projects.css"]);
@@ -23,22 +21,12 @@ mainMenu();
 ?>
 
 <?
-
-function arrayRandom($arr, $num = 1) {
-    shuffle($arr);
-    
-    $r = array();
-    for($i = 0; $i < $num; $i++) {
-        $r[] = $arr[$i];
-    }
-    
-    return $num == 1 ? $r[0] : $r;
-}
-
 function assignCssClass(){
     $cssArray = array( "imgHorizontal","imgVertical","imgBig","imgBox");
     
-    $class = arrayRandom($cssArray);
+    shuffle($cssArray);
+    
+    $class = $cssArray[0];
     
     return $class;
 }
@@ -51,22 +39,21 @@ function assignCssClass(){
 <?php
 //$folder_path = 'imgs/gallery/'; //image's folder path
 
-$num_files = $projects[0]["id"];
+//$num_files = $projects[0]["id"];
 
 //$folder = opendir($folder_path);
  
-while($num_files > 0)
+foreach($projects as $pro)
 {
    ?>
-            <a href="<?php echo 'project.php?id='.$num_files; ?>"  class="<?=assignCssClass()?>"><img src="<?php echo $imageURL[$num_files - 1]['url']; ?>" />
+            <a href="<?php echo 'project.php?id='.$pro["id"]; ?>"  class="<?=assignCssClass()?>"><img src="<?php echo $pro['url']; ?>" />
                 <li class="popup">
-                    <ul><span class="title"><? echo $projects[count($projects) - $num_files]["title"]?></span></ul>
-                    <ul><span class="creator"><? echo $projects[count($projects) - $num_files]["alias"]?></span></ul>
+                    <ul><span class="title"><? echo $pro["title"]?></span></ul>
+                    <ul><span class="creator"><? echo $pro["alias"]?></span></ul>
                     <ul><span class="other">Other</span></ul>
                 </li>
             </a>
             <?php
-    $num_files--;
 }
 //closedir($folder);
     ?></div>
