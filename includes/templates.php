@@ -28,20 +28,24 @@ function endPage(){?>
         <div class="box">
             
         <div class="top">
+            
+            <div> <li class="top_list"><a href="about.php">About</a></li></div>
+            <div> <li class="top_list"><a href="Projects.php">Projects</a></li></div>
+            <div> <li class="top_list"><a href="talk.php">Talk</a></li> </div>
+            <div> <li class="top_list"><a href="events.php">Events</a></li> </div>
             <ul>
-                <li class="top_list"><a href="about.php">About</a></li>
-                <li class="top_list"><a href="Projects.php">Projects</a></li>
-                <li class="top_list"><a href="talk.php">Talk</a></li>   
-                <li class="top_list"><a href="events.php">Events</a></li> 
+               
+                
+                  
+                
             </ul>
         </div>
             <div class="hr"><h3></h3></div>
         <div class="bottom">
-              <ul>
-                <li class="bottom_list">nickstagram</li>
-                <li class="bottom_list">nicktube</li>
-                <li class="bottom_list">nickbook</li>
-            </ul>
+            <div> <li class="bottom_list"><a href="about.php">nickstagram</a></li></div>
+            <div> <li class="bottom_list"><a href="about.php">nicktube</a></li></div>
+            <div> <li class="bottom_list"><a href="about.php">nickbook</a></li></div>
+              
         </div>    
         
         
