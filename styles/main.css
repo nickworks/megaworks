@@ -355,7 +355,7 @@ nav.secondary a {
      list-style: none;
       float:left;
     line-height:55px;
-    margin-left:20px;
+    margin:0 30px 0 30px;
     font-size:14px;
     font-weight:bold;
     text-decoration:none;
@@ -366,7 +366,7 @@ nav.secondary a {
     list-style: none;
      float:left;
     line-height:55px;
-    margin-left:20px;
+    margin:0 30px 0 30px;
     font-size:14px;
     font-weight:bold;
     text-decoration:none;
@@ -374,7 +374,7 @@ nav.secondary a {
 }
 
 .top {
-    margin: 0px 35% 0 35%;
+   
 }
 
 .hr {
@@ -388,5 +388,9 @@ nav.secondary a {
 
 
 .bottom {
-     margin: 0px 35% 0 35%;
+    
+}
+
+.box {
+    margin: 0 30% 0 30%;
 }
