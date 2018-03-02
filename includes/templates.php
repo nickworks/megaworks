@@ -24,7 +24,24 @@ if(is_array($css)){
 <?}
 
 function endPage(){?>
-    <footer class="main">stuff</footer>
+    <footer class="footer">        
+        <div class="box">
+            
+        <div class="top">
+        </div>
+            
+        <div class="bottom">
+        </div>     
+        
+        
+        
+        
+        
+        
+        
+        
+        </div>       
+        </footer>
     </body>
 </html>
 <?}

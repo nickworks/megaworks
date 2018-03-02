@@ -205,6 +205,6 @@ mainMenu();
                 <? } ?>
                 
             </section>
-            <footer></footer>
+            
         </div>
 <? endPage(); ?>
