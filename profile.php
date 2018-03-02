@@ -5,6 +5,7 @@ include "includes/profileFunctions.php";
 
 // GET USER DATA:
 $user_id = 1;
+$avatar = "imgs/placeholder-avatar1.jpg";
 $first_name = "Firstname";
 $last_name = "Lastname";
 $title = "Title";
@@ -41,7 +42,7 @@ mainMenu();
         <div class="content">
             <article>
                 <div class="creator">
-                    <div class="avatar"><img src="imgs/placeholder-avatar1.jpg"></div>
+                    <div class="avatar"><img src="<?=$avatar ?>"></div>
                     <h2><?=($first_name . " " . $last_name) ?></h2>
                     <h3><?=$title ?></h3>
                 </div>

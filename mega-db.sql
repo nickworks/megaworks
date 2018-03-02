@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 01, 2018 at 04:29 AM
+-- Generation Time: Mar 02, 2018 at 08:25 PM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.1
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `announcements`
 --
 
+DROP TABLE IF EXISTS `announcements`;
 CREATE TABLE `announcements` (
   `id` int(11) NOT NULL,
   `title` int(64) NOT NULL,
@@ -40,6 +41,7 @@ CREATE TABLE `announcements` (
 -- Table structure for table `comments_announcements`
 --
 
+DROP TABLE IF EXISTS `comments_announcements`;
 CREATE TABLE `comments_announcements` (
   `id` int(11) NOT NULL,
   `announcement_id` int(11) NOT NULL,
@@ -54,6 +56,7 @@ CREATE TABLE `comments_announcements` (
 -- Table structure for table `comments_events`
 --
 
+DROP TABLE IF EXISTS `comments_events`;
 CREATE TABLE `comments_events` (
   `id` int(11) NOT NULL,
   `event_id` int(11) NOT NULL,
@@ -68,6 +71,7 @@ CREATE TABLE `comments_events` (
 -- Table structure for table `comments_projects`
 --
 
+DROP TABLE IF EXISTS `comments_projects`;
 CREATE TABLE `comments_projects` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -82,11 +86,7 @@ CREATE TABLE `comments_projects` (
 
 INSERT INTO `comments_projects` (`id`, `user_id`, `project_id`, `date_posted`, `comment`) VALUES
 (1, 1, 1, '2018-02-23 13:10:24', 'This project sucks. Get good.'),
-(2, 1, 1, '2018-02-23 13:43:38', 'This is awesome!!!!'),
-(9, 1, 1, '2018-02-27 22:49:50', 'This is a test.'),
-(10, 1, 1, '2018-02-27 22:52:10', 'This is a test.'),
-(11, 1, 1, '2018-02-27 22:52:28', 'This is a test.'),
-(12, 1, 1, '2018-02-27 23:15:25', 'So does this work now?');
+(2, 1, 1, '2018-02-23 13:43:38', 'This is awesome!!!!');
 
 -- --------------------------------------------------------
 
@@ -94,6 +94,7 @@ INSERT INTO `comments_projects` (`id`, `user_id`, `project_id`, `date_posted`, `
 -- Table structure for table `comments_projects_tags`
 --
 
+DROP TABLE IF EXISTS `comments_projects_tags`;
 CREATE TABLE `comments_projects_tags` (
   `id` int(11) NOT NULL,
   `comment_id` int(11) NOT NULL,
@@ -105,12 +106,7 @@ CREATE TABLE `comments_projects_tags` (
 --
 
 INSERT INTO `comments_projects_tags` (`id`, `comment_id`, `tag_id`) VALUES
-(1, 1, 5),
-(2, 11, 1),
-(3, 11, 2),
-(4, 11, 3),
-(5, 12, 1),
-(6, 12, 6);
+(1, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -118,6 +114,7 @@ INSERT INTO `comments_projects_tags` (`id`, `comment_id`, `tag_id`) VALUES
 -- Table structure for table `events`
 --
 
+DROP TABLE IF EXISTS `events`;
 CREATE TABLE `events` (
   `id` int(11) NOT NULL,
   `date_start` datetime NOT NULL,
@@ -125,20 +122,8 @@ CREATE TABLE `events` (
   `title` varchar(64) NOT NULL,
   `description` text NOT NULL,
   `location` varchar(128) NOT NULL,
-  `location_link` varchar(128) NOT NULL,
-  `image` varchar(255) NOT NULL
+  `location_link` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `events`
---
-
-INSERT INTO `events` (`id`, `date_start`, `date_end`, `title`, `description`, `location`, `location_link`, `image`) VALUES
-(1, '2018-03-03 12:00:00', '2018-03-03 16:00:00', 'Game Jam', 'We are going to build a game!', 'Room 174, Grand Rapids Campus', 'https://www.google.com/', '../imgs/bulldog.jpg'),
-(2, '2018-04-06 13:00:00', '2018-04-08 13:00:00', '48 Hour Game Jam', 'Come build a game with us! 48 Hours to build a game. Topic released on start of event.', 'Room 172, Grand Rapids Campus', 'https://www.google.com/', '../imgs/placeholder-event.jpg'),
-(3, '2018-04-11 13:00:00', '2018-05-14 13:00:00', 'Another Game Jam', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Room 172, Grand Rapids Campus', 'https://www.google.com/', '../imgs/bulldog.jpg'),
-(4, '2018-03-08 13:00:00', '2018-03-08 16:00:00', 'Board Game Night!', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Room 172, Grand Rapids Campus', 'https://www.google.com/', '../imgs/bulldog.jpg'),
-(5, '2018-06-06 15:00:00', '2018-06-06 18:00:00', 'Pizza Party!', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Room 172, Grand Rapids Campus', 'https://www.google.com/', '../imgs/placeholder-event.jpg');
 
 -- --------------------------------------------------------
 
@@ -146,6 +131,7 @@ INSERT INTO `events` (`id`, `date_start`, `date_end`, `title`, `description`, `l
 -- Table structure for table `licenses`
 --
 
+DROP TABLE IF EXISTS `licenses`;
 CREATE TABLE `licenses` (
   `id` int(11) NOT NULL,
   `title` varchar(32) NOT NULL,
@@ -167,6 +153,7 @@ INSERT INTO `licenses` (`id`, `title`, `copy`, `link`) VALUES
 -- Table structure for table `projects`
 --
 
+DROP TABLE IF EXISTS `projects`;
 CREATE TABLE `projects` (
   `id` int(11) NOT NULL,
   `title` varchar(64) NOT NULL,
@@ -180,16 +167,7 @@ CREATE TABLE `projects` (
 --
 
 INSERT INTO `projects` (`id`, `title`, `description`, `user_id`, `license_id`) VALUES
-(1, 'Tree of Life', 'In a giant tree, Nola embarks on an epic journey.\r\n\r\nIn Fall 2017, the DAGD 355 class created a prototype adventure-platformer in Unity.', 1, 1),
-(2, 'Tree of Life 2', 'In a giant tree, Nola embarks on an epic journey.\r\n\r\nIn Fall 2017, the DAGD 355 class created a prototype adventure-platformer in Unity.', 1, 1),
-(3, 'Wario Ware', 'In a giant tree, Nola embarks on an epic journey.\r\n\r\nIn Fall 2017, the DAGD 355 class created a prototype adventure-platformer in Unity.', 1, 1),
-(4, 'The Legend of Smellda', 'In a giant tree, Nola embarks on an epic journey.\r\n\r\nIn Fall 2017, the DAGD 355 class created a prototype adventure-platformer in Unity.', 1, 1),
-(5, 'Chatty Kathies', 'In a giant tree, Nola embarks on an epic journey.\r\n\r\nIn Fall 2017, the DAGD 355 class created a prototype adventure-platformer in Unity.', 1, 1),
-(6, 'SUPER SQL BROS', 'In a giant tree, Nola embarks on an epic journey.\r\n\r\nIn Fall 2017, the DAGD 355 class created a prototype adventure-platformer in Unity.', 1, 1),
-(7, 'IDK', 'In a giant tree, Nola embarks on an epic journey.\r\n\r\nIn Fall 2017, the DAGD 355 class created a prototype adventure-platformer in Unity.', 1, 1),
-(8, 'spaghetti', 'In a giant tree, Nola embarks on an epic journey.\r\n\r\nIn Fall 2017, the DAGD 355 class created a prototype adventure-platformer in Unity.', 1, 1),
-(9, 'rip Mollie', 'In a giant tree, Nola embarks on an epic journey.\r\n\r\nIn Fall 2017, the DAGD 355 class created a prototype adventure-platformer in Unity.', 1, 1),
-(10, 'woop there it is', 'In a giant tree, Nola embarks on an epic journey.\r\n\r\nIn Fall 2017, the DAGD 355 class created a prototype adventure-platformer in Unity.', 1, 1);
+(1, 'Tree of Life', 'In a giant tree, Nola embarks on an epic journey.\r\n\r\nIn Fall 2017, the DAGD 355 class created a prototype adventure-platformer in Unity.', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -197,6 +175,7 @@ INSERT INTO `projects` (`id`, `title`, `description`, `user_id`, `license_id`) V
 -- Table structure for table `project_attribution`
 --
 
+DROP TABLE IF EXISTS `project_attribution`;
 CREATE TABLE `project_attribution` (
   `id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
@@ -220,6 +199,7 @@ INSERT INTO `project_attribution` (`id`, `project_id`, `work`, `creator`, `user_
 -- Table structure for table `project_imgs`
 --
 
+DROP TABLE IF EXISTS `project_imgs`;
 CREATE TABLE `project_imgs` (
   `id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
@@ -260,6 +240,7 @@ INSERT INTO `project_imgs` (`id`, `project_id`, `url`, `description`, `ordering`
 -- Table structure for table `project_tags`
 --
 
+DROP TABLE IF EXISTS `project_tags`;
 CREATE TABLE `project_tags` (
   `id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
@@ -283,6 +264,7 @@ INSERT INTO `project_tags` (`id`, `project_id`, `tag_id`) VALUES
 -- Table structure for table `tags_comments`
 --
 
+DROP TABLE IF EXISTS `tags_comments`;
 CREATE TABLE `tags_comments` (
   `id` int(11) NOT NULL,
   `text` varchar(32) NOT NULL,
@@ -307,6 +289,7 @@ INSERT INTO `tags_comments` (`id`, `text`, `warn`) VALUES
 -- Table structure for table `tags_projects`
 --
 
+DROP TABLE IF EXISTS `tags_projects`;
 CREATE TABLE `tags_projects` (
   `id` int(11) NOT NULL,
   `text` varchar(32) NOT NULL
@@ -336,6 +319,7 @@ INSERT INTO `tags_projects` (`id`, `text`) VALUES
 -- Table structure for table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `alias` varchar(32) NOT NULL,
@@ -348,19 +332,22 @@ CREATE TABLE `users` (
   `date_signup` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `is_approved` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Whether or not the user has been approved.',
   `is_admin` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Whether or not the user has admin rights.',
-  `is_mod` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Whether or not the user has moderation rights.'
+  `is_mod` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Whether or not the user has moderation rights.',
+  `bio` text NOT NULL COMMENT 'Stores the user''s bio to be displayed on their profile page.',
+  `resume` varchar(256) NOT NULL COMMENT 'Stores the URL to the user''s resume.',
+  `avatar` varchar(256) NOT NULL COMMENT 'Stores the URL to the profile picture.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `alias`, `title`, `first`, `last`, `email`, `hash`, `salt`, `date_signup`, `is_approved`, `is_admin`, `is_mod`) VALUES
-(1, 'Nick', 'Instructor Extraordinaire!', 'Nick', 'Pattison', 'patt41@ferris.edu', 'af3a0b99a3269b516a848b840fdf4c36', 1234, '2018-02-14 13:33:27', 1, 0, 0),
-(2, '', '', '', '', 'nick@ferris.edu', 'bc4586081f58bd9127939f420a298dc0', 52969, '2018-02-14 13:33:27', 0, 0, 0),
-(4, '', '', '', '', 'collin@ferris.edu', '5f9449ba01fb3bf921996d83dd46e9de', 17704, '2018-02-14 13:33:27', 0, 0, 0),
-(5, '', '', '', '', 'collin@ferris.edu', 'ef926983fef6f9c7f1207289ac8a0331', 21318, '2018-02-14 13:33:27', 0, 0, 0),
-(7, '', '', '', '', 'ethan@ferris.edu', '93a024e69eb89715828f6bc799ea966d', 19442, '2018-02-14 13:33:27', 0, 0, 0);
+INSERT INTO `users` (`id`, `alias`, `title`, `first`, `last`, `email`, `hash`, `salt`, `date_signup`, `is_approved`, `is_admin`, `is_mod`, `bio`, `resume`, `avatar`) VALUES
+(1, 'Nick', '', 'Nick', 'Pattison', 'patt41@ferris.edu', 'af3a0b99a3269b516a848b840fdf4c36', 1234, '2018-02-14 13:33:27', 1, 0, 0, '', '', ''),
+(2, '', '', '', '', 'nick@ferris.edu', 'bc4586081f58bd9127939f420a298dc0', 52969, '2018-02-14 13:33:27', 0, 0, 0, '', '', ''),
+(4, '', '', '', '', 'collin@ferris.edu', '5f9449ba01fb3bf921996d83dd46e9de', 17704, '2018-02-14 13:33:27', 0, 0, 0, '', '', ''),
+(5, '', '', '', '', 'collin@ferris.edu', 'ef926983fef6f9c7f1207289ac8a0331', 21318, '2018-02-14 13:33:27', 0, 0, 0, '', '', ''),
+(7, '', '', '', '', 'ethan@ferris.edu', '93a024e69eb89715828f6bc799ea966d', 19442, '2018-02-14 13:33:27', 0, 0, 0, '', '', '');
 
 --
 -- Indexes for dumped tables
