@@ -28,14 +28,21 @@ function endPage(){?>
         <div class="box">
             
         <div class="top">
+            <ul>
+                <li>about</li>
+                <li>projects</li>
+                <li>talk</li>   
+                <li>events</li> 
+            </ul>
         </div>
             
         <div class="bottom">
-        </div>     
-        
-        
-        
-        
+              <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>    
         
         
         
