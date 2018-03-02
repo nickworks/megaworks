@@ -44,7 +44,7 @@ function endPage(){?>
         </div>    
             <div class="hr"><h3></h3></div>
         <div class="copyright">
-            <div> <li class="copy_list">Use of this site constitutes acceptance of our <a href="about.php">User Agreement</a> and <a href="about.php">User Agreement</a>. all rights reserved </li></div>
+            <div> <li class="copy_list">Use of this site constitutes acceptance of our <a href="about.php">User Agreement</a> and <a href="about.php">Private Policy</a>. all rights reserved </li></div>
         
               
         </div> 
