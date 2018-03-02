@@ -58,13 +58,6 @@ mainMenu();
                     </div>
                 </div>
             </aside>
-            <section>
-                <div class="hr"><h3><span>Comments</span></h3></div>
-                
-                <?
-                doThingMany(3, "addComment", array("imgs/placeholder-avatar1.jpg", "Lorem ipsum. lots of text goes here. This is the comment that the other user has typed in. Neat."));
-                ?>
-            </section>
             <section id="allProjectsSection">
                 <h3 id="allProjects">All Projects</h3>
                 <div class="hr"></div>
