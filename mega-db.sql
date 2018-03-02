@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 02, 2018 at 08:39 PM
+-- Generation Time: Mar 02, 2018 at 09:24 PM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.1
 
@@ -157,9 +157,16 @@ DROP TABLE IF EXISTS `profile_contacts`;
 CREATE TABLE `profile_contacts` (
   `id` int(11) NOT NULL COMMENT 'I.D. for this array.',
   `user_id` int(11) NOT NULL COMMENT 'The id of the user who this information belongs to.',
-  `text` text NOT NULL COMMENT 'The hyperlink text to show on the page.',
+  `text` varchar(64) NOT NULL COMMENT 'The hyperlink text to show on the page.',
   `url` varchar(256) NOT NULL COMMENT 'The URL the link leads to.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `profile_contacts`
+--
+
+INSERT INTO `profile_contacts` (`id`, `user_id`, `text`, `url`) VALUES
+(1, 1, 'Email', 'mailto: patt41@ferris.edu');
 
 -- --------------------------------------------------------
 
@@ -171,9 +178,16 @@ DROP TABLE IF EXISTS `profile_links`;
 CREATE TABLE `profile_links` (
   `id` int(11) NOT NULL COMMENT 'I.D. for this array.',
   `user_id` int(11) NOT NULL COMMENT 'I.D. of the user this row belongs to.',
-  `text` text NOT NULL COMMENT 'The hyperlink text to show on the page.',
+  `text` varchar(64) NOT NULL COMMENT 'The hyperlink text to show on the page.',
   `url` varchar(256) NOT NULL COMMENT 'The URL the link leads to.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `profile_links`
+--
+
+INSERT INTO `profile_links` (`id`, `user_id`, `text`, `url`) VALUES
+(1, 1, 'My DeviantArt', '#');
 
 -- --------------------------------------------------------
 
@@ -494,6 +508,16 @@ ALTER TABLE `events`
 --
 ALTER TABLE `licenses`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `profile_contacts`
+--
+ALTER TABLE `profile_contacts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'I.D. for this array.', AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `profile_links`
+--
+ALTER TABLE `profile_links`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'I.D. for this array.', AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `projects`
 --
