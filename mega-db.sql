@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 02, 2018 at 09:03 PM
+-- Generation Time: Mar 02, 2018 at 07:01 PM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.1
 
@@ -191,6 +191,48 @@ INSERT INTO `licenses` (`id`, `title`, `copy`, `link`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `profile_contacts`
+--
+
+DROP TABLE IF EXISTS `profile_contacts`;
+CREATE TABLE `profile_contacts` (
+  `id` int(11) NOT NULL COMMENT 'I.D. for this array.',
+  `user_id` int(11) NOT NULL COMMENT 'The id of the user who this information belongs to.',
+  `text` varchar(64) NOT NULL COMMENT 'The hyperlink text to show on the page.',
+  `url` varchar(256) NOT NULL COMMENT 'The URL the link leads to.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `profile_contacts`
+--
+
+INSERT INTO `profile_contacts` (`id`, `user_id`, `text`, `url`) VALUES
+(1, 1, 'Email', 'mailto: patt41@ferris.edu');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `profile_links`
+--
+
+DROP TABLE IF EXISTS `profile_links`;
+CREATE TABLE `profile_links` (
+  `id` int(11) NOT NULL COMMENT 'I.D. for this array.',
+  `user_id` int(11) NOT NULL COMMENT 'I.D. of the user this row belongs to.',
+  `text` varchar(64) NOT NULL COMMENT 'The hyperlink text to show on the page.',
+  `url` varchar(256) NOT NULL COMMENT 'The URL the link leads to.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `profile_links`
+--
+
+INSERT INTO `profile_links` (`id`, `user_id`, `text`, `url`) VALUES
+(1, 1, 'My DeviantArt', '#');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `projects`
 --
 
@@ -237,6 +279,18 @@ INSERT INTO `project_attribution` (`id`, `project_id`, `work`, `creator`, `user_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `project_faves`
+--
+
+CREATE TABLE `project_faves` (
+  `id` int(20) NOT NULL,
+  `user_id` int(35) NOT NULL,
+  `project_id` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `project_imgs`
 --
 
@@ -247,6 +301,44 @@ CREATE TABLE `project_imgs` (
   `url` varchar(128) NOT NULL,
   `description` text NOT NULL,
   `ordering` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `project_imgs`
+--
+
+INSERT INTO `project_imgs` (`id`, `project_id`, `url`, `description`, `ordering`) VALUES
+(1, 1, 'imgs/gallery/bloodborne.jpg', 'pictochat', 1),
+(2, 1, 'imgs/gallery/scalebound.jpg', 'pictochat', 2),
+(17, 2, 'imgs/gallery/codmw2.jpg', 'pictochat', 1),
+(18, 2, 'imgs/gallery/scalebound.jpg', 'pictochat', 2),
+(19, 3, 'imgs/gallery/darksouls.jpg', 'pictochat', 1),
+(20, 3, 'imgs/gallery/scalebound.jpg', 'pictochat', 2),
+(21, 4, 'imgs/gallery/deliverance.jpg', 'pictochat', 1),
+(22, 4, 'imgs/gallery/scalebound.jpg', 'pictochat', 2),
+(23, 5, 'imgs/gallery/destiny.jpg', 'pictochat', 1),
+(24, 5, 'imgs/gallery/scalebound.jpg', 'pictochat', 2),
+(25, 6, 'imgs/gallery/few.jpg', 'pictochat', 1),
+(26, 6, 'imgs/gallery/scalebound.jpg', 'pictochat', 2),
+(27, 7, 'imgs/gallery/galaxy.jpg', 'pictochat', 1),
+(28, 7, 'imgs/gallery/scalebound.jpg', 'pictochat', 2),
+(29, 8, 'imgs/gallery/gdq.png', 'pictochat', 1),
+(30, 8, 'imgs/gallery/scalebound.jpg', 'pictochat', 2),
+(31, 9, 'imgs/gallery/honor.jpg', 'pictochat', 1),
+(32, 9, 'imgs/gallery/scalebound.jpg', 'pictochat', 2),
+(33, 10, 'imgs/gallery/journey.jpg', 'pictochat', 1),
+(34, 10, 'imgs/gallery/scalebound.jpg', 'pictochat', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `project_likes`
+--
+
+CREATE TABLE `project_likes` (
+  `id` int(20) NOT NULL,
+  `user_id` int(35) NOT NULL,
+  `project_id` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -347,19 +439,22 @@ CREATE TABLE `users` (
   `date_signup` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `is_approved` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Whether or not the user has been approved.',
   `is_admin` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Whether or not the user has admin rights.',
-  `is_mod` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Whether or not the user has moderation rights.'
+  `is_mod` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Whether or not the user has moderation rights.',
+  `bio` text NOT NULL COMMENT 'Stores the user''s bio to be displayed on their profile page.',
+  `resume` varchar(256) NOT NULL COMMENT 'Stores the URL to the user''s resume.',
+  `avatar` varchar(256) NOT NULL COMMENT 'Stores the URL to the profile picture.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `alias`, `title`, `first`, `last`, `email`, `hash`, `salt`, `date_signup`, `is_approved`, `is_admin`, `is_mod`) VALUES
-(1, 'Nick', 'Instructor Extraordinaire!', 'Nick', 'Pattison', 'patt41@ferris.edu', 'af3a0b99a3269b516a848b840fdf4c36', 1234, '2018-02-14 13:33:27', 1, 0, 0),
-(2, '', '', '', '', 'nick@ferris.edu', 'bc4586081f58bd9127939f420a298dc0', 52969, '2018-02-14 13:33:27', 0, 0, 0),
-(4, '', '', '', '', 'collin@ferris.edu', '5f9449ba01fb3bf921996d83dd46e9de', 17704, '2018-02-14 13:33:27', 0, 0, 0),
-(5, '', '', '', '', 'collin@ferris.edu', 'ef926983fef6f9c7f1207289ac8a0331', 21318, '2018-02-14 13:33:27', 0, 0, 0),
-(7, '', '', '', '', 'ethan@ferris.edu', '93a024e69eb89715828f6bc799ea966d', 19442, '2018-02-14 13:33:27', 0, 0, 0);
+INSERT INTO `users` (`id`, `alias`, `title`, `first`, `last`, `email`, `hash`, `salt`, `date_signup`, `is_approved`, `is_admin`, `is_mod`, `bio`, `resume`, `avatar`) VALUES
+(1, 'Nick', '', 'Nick', 'Pattison', 'patt41@ferris.edu', 'af3a0b99a3269b516a848b840fdf4c36', 1234, '2018-02-14 13:33:27', 1, 0, 0, '', '', ''),
+(2, '', '', '', '', 'nick@ferris.edu', 'bc4586081f58bd9127939f420a298dc0', 52969, '2018-02-14 13:33:27', 0, 0, 0, '', '', ''),
+(4, '', '', '', '', 'collin@ferris.edu', '5f9449ba01fb3bf921996d83dd46e9de', 17704, '2018-02-14 13:33:27', 0, 0, 0, '', '', ''),
+(5, '', '', '', '', 'collin@ferris.edu', 'ef926983fef6f9c7f1207289ac8a0331', 21318, '2018-02-14 13:33:27', 0, 0, 0, '', '', ''),
+(7, '', '', '', '', 'ethan@ferris.edu', '93a024e69eb89715828f6bc799ea966d', 19442, '2018-02-14 13:33:27', 0, 0, 0, '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -399,6 +494,18 @@ ALTER TABLE `events`
 -- Indexes for table `licenses`
 --
 ALTER TABLE `licenses`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `profile_contacts`
+--
+ALTER TABLE `profile_contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `profile_links`
+--
+ALTER TABLE `profile_links`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -478,10 +585,20 @@ ALTER TABLE `events`
 ALTER TABLE `licenses`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `profile_contacts`
+--
+ALTER TABLE `profile_contacts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'I.D. for this array.', AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `profile_links`
+--
+ALTER TABLE `profile_links`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'I.D. for this array.', AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `project_attribution`
 --
@@ -491,7 +608,7 @@ ALTER TABLE `project_attribution`
 -- AUTO_INCREMENT for table `project_imgs`
 --
 ALTER TABLE `project_imgs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `project_tags`
 --
