@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 02, 2018 at 08:35 PM
+-- Generation Time: Mar 02, 2018 at 08:39 PM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.1
 
@@ -157,6 +157,20 @@ DROP TABLE IF EXISTS `profile_contacts`;
 CREATE TABLE `profile_contacts` (
   `id` int(11) NOT NULL COMMENT 'I.D. for this array.',
   `user_id` int(11) NOT NULL COMMENT 'The id of the user who this information belongs to.',
+  `text` text NOT NULL COMMENT 'The hyperlink text to show on the page.',
+  `url` varchar(256) NOT NULL COMMENT 'The URL the link leads to.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `profile_links`
+--
+
+DROP TABLE IF EXISTS `profile_links`;
+CREATE TABLE `profile_links` (
+  `id` int(11) NOT NULL COMMENT 'I.D. for this array.',
+  `user_id` int(11) NOT NULL COMMENT 'I.D. of the user this row belongs to.',
   `text` text NOT NULL COMMENT 'The hyperlink text to show on the page.',
   `url` varchar(256) NOT NULL COMMENT 'The URL the link leads to.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -401,6 +415,12 @@ ALTER TABLE `licenses`
 -- Indexes for table `profile_contacts`
 --
 ALTER TABLE `profile_contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `profile_links`
+--
+ALTER TABLE `profile_links`
   ADD PRIMARY KEY (`id`);
 
 --
