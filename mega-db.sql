@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 02, 2018 at 09:24 PM
+-- Generation Time: Mar 02, 2018 at 07:01 PM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.1
 
@@ -279,6 +279,18 @@ INSERT INTO `project_attribution` (`id`, `project_id`, `work`, `creator`, `user_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `project_faves`
+--
+
+CREATE TABLE `project_faves` (
+  `id` int(20) NOT NULL,
+  `user_id` int(35) NOT NULL,
+  `project_id` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `project_imgs`
 --
 
@@ -316,6 +328,18 @@ INSERT INTO `project_imgs` (`id`, `project_id`, `url`, `description`, `ordering`
 (32, 9, 'imgs/gallery/scalebound.jpg', 'pictochat', 2),
 (33, 10, 'imgs/gallery/journey.jpg', 'pictochat', 1),
 (34, 10, 'imgs/gallery/scalebound.jpg', 'pictochat', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `project_likes`
+--
+
+CREATE TABLE `project_likes` (
+  `id` int(20) NOT NULL,
+  `user_id` int(35) NOT NULL,
+  `project_id` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
