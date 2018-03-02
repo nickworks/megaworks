@@ -388,6 +388,9 @@ nav.secondary a {
 
 .top {
    display: flex;
+    flex-direction:row;
+    flex-wrap:nowrap;
+    justify-content:space-around;
 }
 
 .hr {
@@ -402,6 +405,10 @@ nav.secondary a {
 
 .bottom {
    display: flex; 
+    flex-direction:row;
+    flex-wrap:nowrap;
+    justify-content:space-around;
+
 }
 
 .box {
@@ -415,3 +422,27 @@ nav.secondary a {
     list-style:none;
 }
 
+
+.copyright {
+      display: flex; 
+    flex-direction:row;
+    flex-wrap:nowrap;
+    justify-content:space-around;
+
+}
+
+.copy_list {
+     list-style:none;
+}
+.copy_list a  {    
+    line-height:55px;
+    margin:0 0px 0 0px;
+    font-size:14px;
+    font-weight:bold;
+   
+    color:#000;
+}
+.copy_list a:hover{
+    color:#9c9c9c;;
+    
+}

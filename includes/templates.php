@@ -33,12 +33,7 @@ function endPage(){?>
             <div> <li class="top_list"><a href="Projects.php">Projects</a></li></div>
             <div> <li class="top_list"><a href="talk.php">Talk</a></li> </div>
             <div> <li class="top_list"><a href="events.php">Events</a></li> </div>
-            <ul>
-               
-                
-                  
-                
-            </ul>
+            
         </div>
             <div class="hr"><h3></h3></div>
         <div class="bottom">
@@ -47,7 +42,12 @@ function endPage(){?>
             <div> <li class="bottom_list"><a href="about.php">nickbook</a></li></div>
               
         </div>    
+            <div class="hr"><h3></h3></div>
+        <div class="copyright">
+            <div> <li class="copy_list">Use of this site constitutes acceptance of our <a href="about.php">User Agreement</a> and <a href="about.php">User Agreement</a>. all rights reserved </li></div>
         
+              
+        </div> 
         
         
         

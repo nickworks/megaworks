@@ -30,6 +30,6 @@ mainMenu();
                     <img class="crop" src="imgs/about_img.jpg" alt="An image of ferris students">
                 </div>
             </div>
-            <footer>neat</footer>
+            <footer></footer>
         </div>
 <? endPage(); ?>

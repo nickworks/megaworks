@@ -122,8 +122,9 @@ footer.main {
 .bubble .arrow {
     position:absolute;
 }
-.bubble.bottom {
+s.bubble.bottom {
     margin-bottom: 20px;
+    
 }
 .bubble .arrow.bottom-left {
     left:15px;

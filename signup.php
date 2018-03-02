@@ -64,7 +64,8 @@ mainMenu();
             </div>
         </form>
         <? } ?>
-    </section>        
+    </section>   
+    <footer></footer>
 </div>
 
 <? endPage(); ?>   

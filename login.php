@@ -55,7 +55,7 @@ mainMenu();
                     </a>
                 </div>
             </section>
-
+<footer></footer>
         </div>
 
 <? endPage(); ?> 
