@@ -30,7 +30,7 @@ function endPage(){?>
         <div class="top">
             
             <div> <li class="top_list"><a href="about.php">About</a></li></div>
-            <div> <li class="top_list"><a href="Projects.php">Projects</a></li></div>
+            <div> <li class="top_list"><a href="projects.php">Projects</a></li></div>
             <div> <li class="top_list"><a href="talk.php">Talk</a></li> </div>
             <div> <li class="top_list"><a href="events.php">Events</a></li> </div>
             
