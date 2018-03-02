@@ -213,11 +213,15 @@ mainMenu();
             <script>
                 function swapThumb() {
                     var element = document.getElementById("thumb");
-                    element.style.backgroundPositionX = (element.style.backgroundPositionX == '0px')?'-100%':'0';
+                    
+                    if(element.classList.contains("like-activate"))element.classList.remove("like-activate");
+                    else element.classList.add("like-activate");
                 }
                 function swapHeart() {
                     var element = document.getElementById("heart");
-                    element.style.backgroundPositionX = (element.style.backgroundPositionX == '0px')?'-100%':'0';
+                    
+                    if(element.classList.contains("like-activate"))element.classList.remove("like-activate");
+                    else element.classList.add("like-activate");
                 }
             </script>
         </div>

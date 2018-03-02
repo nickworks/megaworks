@@ -376,6 +376,6 @@ nav.secondary a {
     float:right;
 }
 
-.like-activate {
+#thumb.like-activate, #heart.like-activate {
     background-position: -100%;
 }
