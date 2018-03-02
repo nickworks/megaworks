@@ -29,18 +29,18 @@ function endPage(){?>
             
         <div class="top">
             <ul>
-                <li>about</li>
-                <li>projects</li>
-                <li>talk</li>   
-                <li>events</li> 
+                <li class="top_list">about</li>
+                <li class="top_list">projects</li>
+                <li class="top_list">talk</li>   
+                <li class="top_list">events</li> 
             </ul>
         </div>
-            
+            <div class="hr"><h3></h3></div>
         <div class="bottom">
               <ul>
-                <li></li>
-                <li></li>
-                <li></li>
+                <li class="bottom_list">nickstagram</li>
+                <li class="bottom_list">nicktube</li>
+                <li class="bottom_list">nickbook</li>
             </ul>
         </div>    
         

@@ -350,3 +350,43 @@ nav.secondary a {
 .tag-picker input[type="checkbox"]:checked + label {
     border:1px solid #FFF;
 }
+
+.top_list {
+     list-style: none;
+      float:left;
+    line-height:55px;
+    margin-left:20px;
+    font-size:14px;
+    font-weight:bold;
+    text-decoration:none;
+    color:#9c9c9c;
+}
+
+.bottom_list {
+    list-style: none;
+     float:left;
+    line-height:55px;
+    margin-left:20px;
+    font-size:14px;
+    font-weight:bold;
+    text-decoration:none;
+    color:#9c9c9c;
+}
+
+.top {
+    margin: 0px 35% 0 35%;
+}
+
+.hr {
+     border-bottom:1px solid #DDD;
+    margin:0px px 20px;
+    padding:20px 0px 0px;
+    clear:both;
+    position:relative;
+}
+
+
+
+.bottom {
+     margin: 0px 35% 0 35%;
+}
