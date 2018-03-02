@@ -565,7 +565,6 @@ ALTER TABLE `announcements`
 ALTER TABLE `comments_events`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
---
 -- AUTO_INCREMENT for table `comments_projects`
 --
 ALTER TABLE `comments_projects`
