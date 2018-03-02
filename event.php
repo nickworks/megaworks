@@ -14,10 +14,12 @@ $id = intval(get("id"));
 if($id <= 0 || empty($id)) redirectToEvents();
 
 // creates a sql query to access the information for the desired page
-$sql = "SELECT * FROM `events` WHERE `id` = ?";
+$event_sql = "SELECT * FROM `events` WHERE `id` = ?";
+$comment_sql = "SELECT * FROM `comments_events` WHERE `event_id` = ? ORDER BY `comments_events`.`date_posted` DESC";
 
 // grabs the information from the database
-$event = $db->query($sql, array($id));
+$event = $db->query($event_sql, array($id));
+$comments = $db->query($comment_sql, array($id));
 $event = $event[0];
 
 // formatting the date
@@ -43,7 +45,7 @@ if($psd['year'] == $ped['year'] && $psd['month'] == $ped['month']&& $psd['day'] 
     $time = date_format($sd, 'gA')." - ".date_format($ed, 'gA');
 }
 
-//print_r($ped); exit;
+//print_r($comments); exit;
 beginPage("event", "styles/event.css");
 mainMenu();
 ?>
@@ -57,7 +59,7 @@ mainMenu();
             <div>34 likes</div>
             <div>6 faves</div>
             <div>240 views</div>
-            <div>8 comments</div>
+            <div><?=count($comments)?> comments</div>
         </div>
         <div class="hr"><!--<h3><span>Downloads</span></h3>--></div>
         <div class="split">
@@ -82,7 +84,7 @@ mainMenu();
             <div>Location</div>
             <div>
                 <ul>
-                    <li><a href="#" class="work"><?=$event['location']?></a></li>
+                    <li><a href="<?=$event['location_link']?>" class="work"><?=$event['location']?></a></li>
                     <li><address><?=$event['address'].","?></address></li>
                     <li><address><?=$event['city_state_zip']?></address></li>
                 </ul>
@@ -134,10 +136,9 @@ mainMenu();
     <section>
         <div class="hr"><h3><span>Comments</span></h3></div>
         <? 
-        comment();
-        comment();
-        comment();
-        comment();
+        foreach ($comments as $comment) {
+            comment($comment['comment']);
+        }
         ?>
     </section>
     <footer></footer>
