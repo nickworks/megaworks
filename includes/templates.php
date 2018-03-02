@@ -51,13 +51,13 @@ $showProfile = User::isLoggedIn();
 </nav>
 <?}
 
-function event(string $time, string $title, string $location, string $location_link, string $description, string $eventImage){?>
+function event(string $id, string $time, string $title, string $location, string $location_link, string $description, string $eventImage){?>
 <li>
     <figure>
-        <a href="event.php" id="eventPicture" style="background-image: url('<? echo $eventImage?>');"></a>
+        <a href="<? echo "event.php?id=".$id; ?>" id="eventPicture" style="background-image: url('<? echo $eventImage?>');"></a>
     </figure>
     <div>
-        <h2><a href="event.php"><? echo $title; ?></a></h2>
+        <h2><a href="<? echo "event.php?id=".$id; ?>"><? echo $title; ?></a></h2>
         <time><? echo "Time: ".$time; ?></time>
         <h3><a href="<? echo $location_link;?>"><? echo "Location: ".$location; ?></a></h3>
     <!--

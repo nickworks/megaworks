@@ -1,6 +1,27 @@
 <?
-include"includes/templates.php";
+include_once "api/functions.php";
+include_once "includes/templates.php";
+include_once "api/class.CoolDB.php";
 
+// redirects to events page
+function redirectToEvents() { header("location:events.php"); }
+
+$db = new CoolDB();
+
+// gets the event id its trying to access
+$id = intval(get("id"));
+// checks to see if the id exists/ if not redirects back to the events page
+if($id <= 0 || empty($id)) redirectToEvents();
+
+// creates a sql query to access the information for the desired page
+$sql = "SELECT * FROM `events` WHERE `id` = ?";
+
+// grabs the information from the database
+$event = $db->query($sql, array($id));
+
+
+
+//print_r($event); exit;
 beginPage("event", "styles/event.css");
 mainMenu();
 ?>

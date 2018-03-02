@@ -37,7 +37,7 @@ mainMenu();
             //print_r($psd); exit; // month day, year time
             //print_r(date_format($t, 'Y-m-d H:i:s')); 
             //print_r(date_format($t, 'M d, Y h:i A ')); exit;
-            event($fsd." - ".$fed, $event["title"], $event["location"], $event["location_link"], $event["description"], $event["image"]);
+            event($event["id"], $fsd." - ".$fed, $event["title"], $event["location"], $event["location_link"], $event["description"], $event["image"]);
         }
         ?>
     </ul>
