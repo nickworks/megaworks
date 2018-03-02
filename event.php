@@ -19,7 +19,31 @@ $sql = "SELECT * FROM `events` WHERE `id` = ?";
 // grabs the information from the database
 $event = $db->query($sql, array($id));
 $event = $event[0];
-//print_r($event); exit;
+
+// formatting the date
+$sd = new DateTime($event["date_start"]);
+$fsd = date_format($sd, 'M d, Y h:i');
+$psd = date_parse($fsd);
+$ed = new DateTime($event["date_end"]);
+$fed = date_format($ed, 'M d, Y h:i');
+$ped = date_parse($fed);
+
+// checks the start date to the end date and formats the dates accordingly
+if($psd['year'] == $ped['year'] && $psd['month'] == $ped['month']&& $psd['day'] == $ped['day']) {
+    $mdy = date_format($sd, 'M d, Y');
+    $time = date_format($sd, 'gA')." - ".date_format($ed, 'gA');
+} else if($psd['year'] == $ped['year'] && $psd['month'] == $ped['month']&& $psd['day'] != $ped['day']) {
+    $mdy = date_format($sd, 'M d').' - '.date_format($ed, 'd').', '.date_format($sd, 'Y');
+    $time = date_format($sd, 'gA')." - ".date_format($ed, 'gA');
+} else if($psd['year'] == $ped['year'] && $psd['month'] != $ped['month']) {
+    $mdy = date_format($sd, 'M d').' - '.date_format($ed, 'M d').', '.date_format($sd, 'Y');
+    $time = date_format($sd, 'gA')." - ".date_format($ed, 'gA');
+} else if($psd['year'] != $ped['year']) {
+    $mdy = date_format($sd, 'M d, Y').' - '.date_format($ed, 'M d, Y');
+    $time = date_format($sd, 'gA')." - ".date_format($ed, 'gA');
+}
+
+//print_r($ped); exit;
 beginPage("event", "styles/event.css");
 mainMenu();
 ?>
@@ -47,9 +71,9 @@ mainMenu();
             <div>Date</div>
             <div>
                 <ul>
-                    <li><a href="#"><time datetime="2018-01-01 20:00">Month 01, 2018</time></a></li>
+                    <li><a href="#"><time datetime="2018-01-01 20:00"><?=$mdy?></time></a></li>
                     
-                    <li><time>6pm - 8pm</time></li>
+                    <li><time><?=$time?></time></li>
                 </ul>
             </div>
         </div>
