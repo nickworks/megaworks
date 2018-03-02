@@ -53,22 +53,35 @@ img {
     opacity: .0;
     transition: all .25s ease-in-out;
     transition-property: opacity, bottom;
+    list-style: none;
+    overflow: hidden;
 }
 
-.popup h1{
-    margin: 10px;
+.popup ul {
+    margin: 5px;
+    padding: 0;
+}
+
+.title{
+    padding: 0;
+    margin: 0px;
     margin-bottom: 0;
     font-size: 20px;
+    display: inline-block;
 }
 
-.popup h2{
-    margin: 10px;
+.creator{
+    padding: 0;
+    margin: 0px;
     font-size: 15px;
+    display: inline-block;
 }
 
-.popup h3{
-    margin: 10px;
+.other{
+    padding: 0;
+    margin: 0px;
     font-size: 10px;
+    display: inline-block;
 }
 
 [class^="img"]:hover .popup{

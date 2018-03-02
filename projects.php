@@ -59,11 +59,11 @@ while($num_files > 0)
 {
    ?>
             <a href="<?php echo 'project.php?id='.$num_files; ?>"  class="<?=assignCssClass()?>"><img src="<?php echo $imageURL[$num_files - 1]['url']; ?>" />
-                <span class="popup">
-                    <h1><? echo $projects[count($projects) - $num_files]["title"]?></h1>
-                    <h2><? echo $projects[count($projects) - $num_files]["alias"]?></h2>
-                    <h3>Other</h3>
-                </span>
+                <li class="popup">
+                    <ul><span class="title"><? echo $projects[count($projects) - $num_files]["title"]?></span></ul>
+                    <ul><span class="creator"><? echo $projects[count($projects) - $num_files]["alias"]?></span></ul>
+                    <ul><span class="other">Other</span></ul>
+                </li>
             </a>
             <?php
     $num_files--;
