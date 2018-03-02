@@ -18,9 +18,7 @@ $sql = "SELECT * FROM `events` WHERE `id` = ?";
 
 // grabs the information from the database
 $event = $db->query($sql, array($id));
-
-
-
+$event = $event[0];
 //print_r($event); exit;
 beginPage("event", "styles/event.css");
 mainMenu();
@@ -81,9 +79,9 @@ mainMenu();
     </aside>
     <section>
         <div class="description">
-            <h1>Event Title and Date go here.</h1>
+            <h1><?=$event["title"]?></h1>
             <article>
-                Description of the event goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proi
+                <?=$event["description"]?>
             </article>
         </div>
     </section>

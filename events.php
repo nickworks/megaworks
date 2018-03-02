@@ -7,7 +7,7 @@ $db = new CoolDB();
 
 $events = $db->query("SELECT * FROM `events` ORDER BY `events`.`date_start` ASC;", array());
 
-//print_r($t); exit;
+//print_r($events); exit;
 
 beginPage("events", "styles/events.css");
 mainMenu();
