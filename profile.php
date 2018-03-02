@@ -1,11 +1,38 @@
 <?
 
-include "includes/templates.php";
-include "includes/profileFunctions.php";
+include_once "includes/templates.php";
+include_once "includes/profileFunctions.php";
+include_once "api/class.CoolDB.php";
 
+// GET USER DATA FROM DATABASES:
+$user_id = 1;
+
+$sql = "SELECT * FROM `users` WHERE id=?";
+$db = new CoolDB();
+$user_row = $db->query($sql, array($user_id));
+
+$sql = "SELECT * FROM `profile_contacts` WHERE user_id=?";
+$db = new CoolDB();
+$contacts_row = $db->query($sql, array($user_id));
+
+$sql = "SELECT * FROM `profile_links` WHERE user_id=?";
+$db = new CoolDB();
+$links_row = $db->query($sql, array($user_id));
+
+//STORE DATABASE DATA TO USEFUL VARS:
+$avatar = $user_row[0]["avatar"];
+$first_name = $user_row[0]["first"];
+$last_name = $user_row[0]["last"];
+$title = $user_row[0]["title"];
+$bio = $user_row[0]["bio"];
+$resume = $user_row[0]["resume"];
+
+// BUILD THE PAGE:
 beginPage("home", array("styles/profile.css"));
 mainMenu();
+
 ?>
+
         <div class="tray">
             <div class="carasol">
                     <?
@@ -16,12 +43,12 @@ mainMenu();
         <div class="content">
             <article>
                 <div class="creator">
-                    <div class="avatar"><img src="imgs/placeholder-avatar1.jpg"></div>
-                    <h2>Namey McStudent</h2>
-                    <h3>Texture Artist</h3>
+                    <div class="avatar"><img src="<?=$avatar ?>"></div>
+                    <h2><?=($first_name . " " . $last_name) ?></h2>
+                    <h3><?=$title ?></h3>
                 </div>
                 <div class="bubble top">
-                    <p>My bio goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in </p>
+                    <p><? echo $bio; ?></p>
                     <div class="arrow top-left">
                         <div class="blocker"></div>
                         <div class="pointer"></div>
@@ -32,7 +59,7 @@ mainMenu();
                 <div class="split">
                     <div>My Resume</div>
                     <div>
-                        <a href="#" class="button">Download</a>
+                        <a href="<?=$resume ?>" class="button">Download</a>
                     </div>
                 </div>
                 <div class="hr"></div>
@@ -40,9 +67,9 @@ mainMenu();
                     <div>Contact Me</div>
                     <div>
                         <ul>
-                            <li><a href="#" class="work">Email</a></li>
-                            <li><a href="#" class="work">Twitter</a></li>
-                            <li><a href="#" class="work">Facebook</a></li>
+                            <? foreach($contacts_row as $contact){ ?>
+                                <li><a href="<?=$contact["url"]?>" class="work"><?=$contact["text"]?></a></li>
+                            <? } ?>
                         </ul>
                     </div>
                 </div>
@@ -51,9 +78,9 @@ mainMenu();
                     <div>My Links</div>
                     <div>
                         <ul>
-                            <li><a href="#" class="work">My DeviantArt</a></li>
-                            <li><a href="#" class="work">My Grandma’s Etsy</a></li>
-                            <li><a href="#" class="work">My Tumbler</a></li>
+                            <? foreach($links_row as $link){ ?>
+                            <li><a href="<?=$link["url"]?>" class="work"><?=$link["text"]?></a></li>
+                            <? } ?>
                         </ul>
                     </div>
                 </div>
