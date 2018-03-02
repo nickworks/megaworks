@@ -73,8 +73,7 @@ mainMenu();
             <div>Date</div>
             <div>
                 <ul>
-                    <li><a href="#"><time datetime="2018-01-01 20:00"><?=$mdy?></time></a></li>
-                    
+                    <li><time><?=$mdy?></time></li>
                     <li><time><?=$time?></time></li>
                 </ul>
             </div>
@@ -84,7 +83,13 @@ mainMenu();
             <div>Location</div>
             <div>
                 <ul>
-                    <li><a href="<?=$event['location_link']?>" class="work"><?=$event['location']?></a></li>
+                    <?
+                    if (empty($event['location_link'])) {
+                        ?><li class="work"><?=$event['location']?></li><?
+                    } else {
+                         ?><li><a href="<?=$event['location_link']?>" class="work"><?=$event['location']?></a></li><?
+                    }
+                    ?>
                     <li><address><?=$event['address'].","?></address></li>
                     <li><address><?=$event['city_state_zip']?></address></li>
                 </ul>
