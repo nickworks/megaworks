@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 02, 2018 at 08:56 PM
+-- Generation Time: Mar 02, 2018 at 09:03 PM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.1
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `announcements`
 --
 
+DROP TABLE IF EXISTS `announcements`;
 CREATE TABLE `announcements` (
   `id` int(11) NOT NULL,
   `title` int(64) NOT NULL,
@@ -40,6 +41,7 @@ CREATE TABLE `announcements` (
 -- Table structure for table `comments_announcements`
 --
 
+DROP TABLE IF EXISTS `comments_announcements`;
 CREATE TABLE `comments_announcements` (
   `id` int(11) NOT NULL,
   `announcement_id` int(11) NOT NULL,
@@ -54,6 +56,7 @@ CREATE TABLE `comments_announcements` (
 -- Table structure for table `comments_events`
 --
 
+DROP TABLE IF EXISTS `comments_events`;
 CREATE TABLE `comments_events` (
   `id` int(11) NOT NULL,
   `event_id` int(11) NOT NULL,
@@ -86,6 +89,7 @@ INSERT INTO `comments_events` (`id`, `event_id`, `user_id`, `date_posted`, `comm
 -- Table structure for table `comments_projects`
 --
 
+DROP TABLE IF EXISTS `comments_projects`;
 CREATE TABLE `comments_projects` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -112,6 +116,7 @@ INSERT INTO `comments_projects` (`id`, `user_id`, `project_id`, `date_posted`, `
 -- Table structure for table `comments_projects_tags`
 --
 
+DROP TABLE IF EXISTS `comments_projects_tags`;
 CREATE TABLE `comments_projects_tags` (
   `id` int(11) NOT NULL,
   `comment_id` int(11) NOT NULL,
@@ -136,6 +141,7 @@ INSERT INTO `comments_projects_tags` (`id`, `comment_id`, `tag_id`) VALUES
 -- Table structure for table `events`
 --
 
+DROP TABLE IF EXISTS `events`;
 CREATE TABLE `events` (
   `id` int(11) NOT NULL,
   `date_start` datetime NOT NULL,
@@ -166,6 +172,7 @@ INSERT INTO `events` (`id`, `date_start`, `date_end`, `title`, `description`, `l
 -- Table structure for table `licenses`
 --
 
+DROP TABLE IF EXISTS `licenses`;
 CREATE TABLE `licenses` (
   `id` int(11) NOT NULL,
   `title` varchar(32) NOT NULL,
@@ -187,6 +194,7 @@ INSERT INTO `licenses` (`id`, `title`, `copy`, `link`) VALUES
 -- Table structure for table `projects`
 --
 
+DROP TABLE IF EXISTS `projects`;
 CREATE TABLE `projects` (
   `id` int(11) NOT NULL,
   `title` varchar(64) NOT NULL,
@@ -208,6 +216,7 @@ INSERT INTO `projects` (`id`, `title`, `description`, `user_id`, `license_id`) V
 -- Table structure for table `project_attribution`
 --
 
+DROP TABLE IF EXISTS `project_attribution`;
 CREATE TABLE `project_attribution` (
   `id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
@@ -231,6 +240,7 @@ INSERT INTO `project_attribution` (`id`, `project_id`, `work`, `creator`, `user_
 -- Table structure for table `project_imgs`
 --
 
+DROP TABLE IF EXISTS `project_imgs`;
 CREATE TABLE `project_imgs` (
   `id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
@@ -245,6 +255,7 @@ CREATE TABLE `project_imgs` (
 -- Table structure for table `project_tags`
 --
 
+DROP TABLE IF EXISTS `project_tags`;
 CREATE TABLE `project_tags` (
   `id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
@@ -268,6 +279,7 @@ INSERT INTO `project_tags` (`id`, `project_id`, `tag_id`) VALUES
 -- Table structure for table `tags_comments`
 --
 
+DROP TABLE IF EXISTS `tags_comments`;
 CREATE TABLE `tags_comments` (
   `id` int(11) NOT NULL,
   `text` varchar(32) NOT NULL,
@@ -292,6 +304,7 @@ INSERT INTO `tags_comments` (`id`, `text`, `warn`) VALUES
 -- Table structure for table `tags_projects`
 --
 
+DROP TABLE IF EXISTS `tags_projects`;
 CREATE TABLE `tags_projects` (
   `id` int(11) NOT NULL,
   `text` varchar(32) NOT NULL
@@ -321,6 +334,7 @@ INSERT INTO `tags_projects` (`id`, `text`) VALUES
 -- Table structure for table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `alias` varchar(32) NOT NULL,
