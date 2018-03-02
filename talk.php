@@ -16,6 +16,8 @@ mainMenu();
                 <a href="https://discordapp.com/">Our Discord</a>
             </nav>
             
+            <iframe src="https://discordapp.com/widget?id=401488026489978880&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
+            <iframe src="https://discordapp.com/widget?id=223170046019633162&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
         </div>
 
 
