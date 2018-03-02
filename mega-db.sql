@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 28, 2018 at 04:41 AM
+-- Generation Time: Mar 02, 2018 at 07:05 PM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.1
 
@@ -26,7 +26,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `announcements`
 --
 
-DROP TABLE IF EXISTS `announcements`;
 CREATE TABLE `announcements` (
   `id` int(11) NOT NULL,
   `title` int(64) NOT NULL,
@@ -41,7 +40,6 @@ CREATE TABLE `announcements` (
 -- Table structure for table `comments_announcements`
 --
 
-DROP TABLE IF EXISTS `comments_announcements`;
 CREATE TABLE `comments_announcements` (
   `id` int(11) NOT NULL,
   `announcement_id` int(11) NOT NULL,
@@ -56,7 +54,6 @@ CREATE TABLE `comments_announcements` (
 -- Table structure for table `comments_events`
 --
 
-DROP TABLE IF EXISTS `comments_events`;
 CREATE TABLE `comments_events` (
   `id` int(11) NOT NULL,
   `event_id` int(11) NOT NULL,
@@ -71,7 +68,6 @@ CREATE TABLE `comments_events` (
 -- Table structure for table `comments_projects`
 --
 
-DROP TABLE IF EXISTS `comments_projects`;
 CREATE TABLE `comments_projects` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -98,7 +94,6 @@ INSERT INTO `comments_projects` (`id`, `user_id`, `project_id`, `date_posted`, `
 -- Table structure for table `comments_projects_tags`
 --
 
-DROP TABLE IF EXISTS `comments_projects_tags`;
 CREATE TABLE `comments_projects_tags` (
   `id` int(11) NOT NULL,
   `comment_id` int(11) NOT NULL,
@@ -123,7 +118,6 @@ INSERT INTO `comments_projects_tags` (`id`, `comment_id`, `tag_id`) VALUES
 -- Table structure for table `events`
 --
 
-DROP TABLE IF EXISTS `events`;
 CREATE TABLE `events` (
   `id` int(11) NOT NULL,
   `date_start` datetime NOT NULL,
@@ -132,6 +126,8 @@ CREATE TABLE `events` (
   `description` text NOT NULL,
   `location` varchar(128) NOT NULL,
   `location_link` varchar(128) NOT NULL,
+  `address` varchar(128) NOT NULL,
+  `city_state_zip` varchar(128) NOT NULL,
   `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -139,12 +135,12 @@ CREATE TABLE `events` (
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`id`, `date_start`, `date_end`, `title`, `description`, `location`, `location_link`, `image`) VALUES
-(1, '2018-03-03 12:00:00', '2018-03-03 16:00:00', 'Game Jam', 'We are going to build a game!', 'Room 174, Grand Rapids Campus', 'https://www.google.com/', '../imgs/bulldog.jpg'),
-(2, '2018-04-06 13:00:00', '2018-04-08 13:00:00', '48 Hour Game Jam', 'Come build a game with us! 48 Hours to build a game. Topic released on start of event.', 'Room 172, Grand Rapids Campus', 'https://www.google.com/', '../imgs/placeholder-event.jpg'),
-(3, '2018-04-11 13:00:00', '2018-05-14 13:00:00', 'Another Game Jam', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Room 172, Grand Rapids Campus', 'https://www.google.com/', '../imgs/bulldog.jpg'),
-(4, '2018-03-08 13:00:00', '2018-03-08 16:00:00', 'Board Game Night!', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Room 172, Grand Rapids Campus', 'https://www.google.com/', '../imgs/bulldog.jpg'),
-(5, '2018-06-06 15:00:00', '2018-06-06 18:00:00', 'Pizza Party!', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Room 172, Grand Rapids Campus', 'https://www.google.com/', '../imgs/placeholder-event.jpg');
+INSERT INTO `events` (`id`, `date_start`, `date_end`, `title`, `description`, `location`, `location_link`, `address`, `city_state_zip`, `image`) VALUES
+(1, '2018-03-03 12:00:00', '2018-03-03 16:00:00', 'Game Jam', 'We are going to build a game!', 'Ferris State University', 'https://www.google.com/', '1201 S State St', 'Big Rapids, MI 49307', '../imgs/bulldog.jpg'),
+(2, '2018-04-06 13:00:00', '2018-04-08 13:00:00', '48 Hour Game Jam', 'Come build a game with us! 48 Hours to build a game. Topic released on start of event.', 'Room 172, Grand Rapids Campus', 'https://www.google.com/', '1201 S State St', 'Big Rapids, MI 49307', '../imgs/placeholder-event.jpg'),
+(3, '2018-04-11 13:00:00', '2018-05-14 13:00:00', 'Another Game Jam', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Room 172, Grand Rapids Campus', 'https://www.google.com/', '1201 S State St', 'Big Rapids, MI 49307', '../imgs/bulldog.jpg'),
+(4, '2018-03-08 13:00:00', '2018-03-08 16:00:00', 'Board Game Night!', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Room 172, Grand Rapids Campus', 'https://www.google.com/', '1201 S State St', 'Big Rapids, MI 49307', '../imgs/bulldog.jpg'),
+(5, '2018-06-06 15:00:00', '2018-06-06 18:00:00', 'Pizza Party!', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Room 172, Grand Rapids Campus', 'https://www.google.com/', '1201 S State St', 'Big Rapids, MI 49307', '../imgs/placeholder-event.jpg');
 
 -- --------------------------------------------------------
 
@@ -152,7 +148,6 @@ INSERT INTO `events` (`id`, `date_start`, `date_end`, `title`, `description`, `l
 -- Table structure for table `licenses`
 --
 
-DROP TABLE IF EXISTS `licenses`;
 CREATE TABLE `licenses` (
   `id` int(11) NOT NULL,
   `title` varchar(32) NOT NULL,
@@ -174,7 +169,6 @@ INSERT INTO `licenses` (`id`, `title`, `copy`, `link`) VALUES
 -- Table structure for table `projects`
 --
 
-DROP TABLE IF EXISTS `projects`;
 CREATE TABLE `projects` (
   `id` int(11) NOT NULL,
   `title` varchar(64) NOT NULL,
@@ -196,7 +190,6 @@ INSERT INTO `projects` (`id`, `title`, `description`, `user_id`, `license_id`) V
 -- Table structure for table `project_attribution`
 --
 
-DROP TABLE IF EXISTS `project_attribution`;
 CREATE TABLE `project_attribution` (
   `id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
@@ -220,7 +213,6 @@ INSERT INTO `project_attribution` (`id`, `project_id`, `work`, `creator`, `user_
 -- Table structure for table `project_imgs`
 --
 
-DROP TABLE IF EXISTS `project_imgs`;
 CREATE TABLE `project_imgs` (
   `id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
@@ -235,7 +227,6 @@ CREATE TABLE `project_imgs` (
 -- Table structure for table `project_tags`
 --
 
-DROP TABLE IF EXISTS `project_tags`;
 CREATE TABLE `project_tags` (
   `id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
@@ -259,7 +250,6 @@ INSERT INTO `project_tags` (`id`, `project_id`, `tag_id`) VALUES
 -- Table structure for table `tags_comments`
 --
 
-DROP TABLE IF EXISTS `tags_comments`;
 CREATE TABLE `tags_comments` (
   `id` int(11) NOT NULL,
   `text` varchar(32) NOT NULL,
@@ -284,7 +274,6 @@ INSERT INTO `tags_comments` (`id`, `text`, `warn`) VALUES
 -- Table structure for table `tags_projects`
 --
 
-DROP TABLE IF EXISTS `tags_projects`;
 CREATE TABLE `tags_projects` (
   `id` int(11) NOT NULL,
   `text` varchar(32) NOT NULL
@@ -314,7 +303,6 @@ INSERT INTO `tags_projects` (`id`, `text`) VALUES
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `alias` varchar(32) NOT NULL,

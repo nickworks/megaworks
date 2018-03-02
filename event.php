@@ -58,9 +58,9 @@ mainMenu();
             <div>Location</div>
             <div>
                 <ul>
-                    <li><a href="#" class="work">Ferris State University</a></li>
-                    <li><address>1201 S State St,</address></li>
-                    <li><address>Big Rapids, MI 49307</address></li>
+                    <li><a href="#" class="work"><?=$event['location']?></a></li>
+                    <li><address><?=$event['address'].","?></address></li>
+                    <li><address><?=$event['city_state_zip']?></address></li>
                 </ul>
             </div>
         </div>
