@@ -18,9 +18,6 @@ beginPage("projects", ["styles/projects.css"]);
 mainMenu();
 
 
-?>
-
-<?
 function assignCssClass(){
     
     $random = rand(1, 10);
@@ -47,11 +44,7 @@ function assignCssClass(){
 
 <div class="grid">
 <?php
-//$folder_path = 'imgs/gallery/'; //image's folder path
-
-//$num_files = $projects[0]["id"];
-
-//$folder = opendir($folder_path);
+    
  
 foreach($projects as $pro)
 {

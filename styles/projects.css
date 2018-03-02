@@ -58,7 +58,6 @@ img {
     transition: all .25s ease-in-out;
     transition-property: opacity, bottom;
     list-style: none;
-    overflow: hidden;
 }
 
 .title{
@@ -90,4 +89,5 @@ img {
 
 .grid a{
     position: relative;
+    overflow: hidden;
 }
