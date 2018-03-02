@@ -1,34 +1,35 @@
 <?
 
-include "includes/templates.php";
-include "includes/profileFunctions.php";
+include_once "includes/templates.php";
+include_once "includes/profileFunctions.php";
+include_once "api/class.CoolDB.php";
 
-// GET USER DATA:
+// GET USER DATA FROM DATABASES:
 $user_id = 1;
-$avatar = "imgs/placeholder-avatar1.jpg";
-$first_name = "Firstname";
-$last_name = "Lastname";
-$title = "Title";
-$bio = "This is my bio.";
 
-$resume = "#";
-$contact_email = "#";
-$contact_twitter = "#";
-$contact_facebook = "#";
+$sql = "SELECT * FROM `users` WHERE id=?";
+$db = new CoolDB();
+$user_row = $db->query($sql, array($user_id));
 
-$links1_name = "My DeviantArt";
-$links1_html = "#";
+$sql = "SELECT * FROM `profile_contacts` WHERE user_id=?";
+$db = new CoolDB();
+$contacts_row = $db->query($sql, array($user_id));
 
-$links2_name = "My Grandma's Etsy";
-$links2_html = "#";
+$sql = "SELECT * FROM `profile_links` WHERE user_id=?";
+$db = new CoolDB();
+$links_row = $db->query($sql, array($user_id));
 
-$links3_name = "My Tumblr";
-$links3_html = "#";
+//STORE DATABASE DATA TO USEFUL VARS:
+$avatar = $user_row[0]["avatar"];
+$first_name = $user_row[0]["first"];
+$last_name = $user_row[0]["last"];
+$title = $user_row[0]["title"];
+$bio = $user_row[0]["bio"];
+$resume = $user_row[0]["resume"];
 
 // BUILD THE PAGE:
 beginPage("home", array("styles/profile.css"));
 mainMenu();
-
 
 ?>
 
@@ -66,9 +67,9 @@ mainMenu();
                     <div>Contact Me</div>
                     <div>
                         <ul>
-                            <li><a href="<?=$contact_email ?>" class="work">Email</a></li>
-                            <li><a href="<?=$contact_twitter ?>" class="work">Twitter</a></li>
-                            <li><a href="<?=$contact_facebook ?>" class="work">Facebook</a></li>
+                            <? foreach($contacts_row as $contact){ ?>
+                                <li><a href="<?=$contact["url"]?>" class="work"><?=$contact["text"]?></a></li>
+                            <? } ?>
                         </ul>
                     </div>
                 </div>
@@ -77,9 +78,9 @@ mainMenu();
                     <div>My Links</div>
                     <div>
                         <ul>
-                            <li><a href="<?=$links1_html ?>" class="work"><?=$links1_name ?></a></li>
-                            <li><a href="<?=$links2_html ?>" class="work"><?=$links2_name ?></a></li>
-                            <li><a href="<?=$links3_html ?>" class="work"><?=$links3_name ?></a></li>
+                            <? foreach($links_row as $link){ ?>
+                            <li><a href="<?=$link["url"]?>" class="work"><?=$link["text"]?></a></li>
+                            <? } ?>
                         </ul>
                     </div>
                 </div>
