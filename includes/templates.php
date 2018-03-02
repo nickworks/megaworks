@@ -79,13 +79,13 @@ $showProfile = User::isLoggedIn();
 </nav>
 <?}
 
-function event(string $time, string $title, string $location, string $location_link, string $description, string $eventImage){?>
+function event(string $id, string $time, string $title, string $location, string $location_link, string $description, string $eventImage){?>
 <li>
     <figure>
-        <a href="event.php" id="eventPicture" style="background-image: url('<? echo $eventImage?>');"></a>
+        <a href="<? echo "event.php?id=".$id; ?>" id="eventPicture" style="background-image: url('<? echo $eventImage?>');"></a>
     </figure>
     <div>
-        <h2><a href="event.php"><? echo $title; ?></a></h2>
+        <h2><a href="<? echo "event.php?id=".$id; ?>"><? echo $title; ?></a></h2>
         <time><? echo "Time: ".$time; ?></time>
         <h3><a href="<? echo $location_link;?>"><? echo "Location: ".$location; ?></a></h3>
     <!--
@@ -99,21 +99,17 @@ function event(string $time, string $title, string $location, string $location_l
 </li>
 <?}
 
-function comment(){?>
+function comment(string $comment){?>
 <div class="comment">
     <div class="avatar">
         <img src="imgs/placeholder-avatar1.jpg">
     </div>
     <div class="bubble">
-        <p>Lorem ipsum. lots of text goes here. This is the comment that the other user has typed in. Neat.</p>
+        <p><?=$comment?></p>
         <div class="arrow left-top">
             <div class="blocker"></div>
             <div class="pointer"></div>
         </div>
-    </div>
-    <div class="tags">
-        <a href="#" class="button tag">awesome!</a>
-        <a href="#" class="button tag issue">possible license issues</a>
     </div>
 </div>
 <?}
