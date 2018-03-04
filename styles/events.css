@@ -10,6 +10,7 @@
 #upcomingEvents {
     padding: 80px 50px 30px 50px;
     background-color: #fff;
+    box-shadow: 1px 1px 20px #000;
 }
 
 #upcomingEvents h1 {
