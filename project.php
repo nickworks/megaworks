@@ -1,6 +1,9 @@
 <?
     include "includes/templates.php";
 
+    $comments = "";
+    //$comments = array("comment();");
+
     beginPage("project", "styles/project.css");
     mainMenu();
 ?>
@@ -77,8 +80,10 @@
                     </div>
                 </div>
             </aside>
+            <? if($comments != "") { ?>
             <section>
-                <div class="hr"><h3><span>Comments</span></h3></div>  
-                <? comment(); ?>
+                <div class="hr"><h3><span>Comments</span></h3></div>
+                <? //TODO: Loop through and post each comment in the comments array. ?>
             </section>
+            <? } ?>
 <? endPage(); ?>
