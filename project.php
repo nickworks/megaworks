@@ -97,8 +97,12 @@ mainMenu();
             </article>
             <aside>
                 <div class="stats">
-                    <button class="like-button" onclick="swapThumb()">34 likes<div id="thumb"></div></button>
-                    <button class="like-button" onclick="swapHeart()">6 faves<div id="heart"></div></button>
+                    <button class="like-button" onclick="swapThumb()">34 likes<div id="thumb" <?
+                                                                                   
+                                                                                   ?> ></div></button>
+                    <button class="like-button" onclick="swapHeart()">6 faves<div id="heart" <?
+                                                                                  
+                                                                                  ?> ></div></button>
                     <?
                     //<div>34 likes</div>
                     //<div>6 faves</div>
@@ -213,6 +217,8 @@ mainMenu();
             <script>
                 function swapThumb() {
                     var element = document.getElementById("thumb");
+                    
+                    //INSERT INTO project_likes(user_id, project_id) VALUES(1, 5)
                     
                     if(element.classList.contains("like-activate"))element.classList.remove("like-activate");
                     else element.classList.add("like-activate");
