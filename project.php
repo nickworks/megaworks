@@ -97,11 +97,14 @@ mainMenu();
             </article>
             <aside>
                 <div class="stats">
+                    <?
+                    $likefave;
+                    ?>
                     <button class="like-button" onclick="swapThumb()">34 likes<div id="thumb" <?
-                                                                                   
+                    $myLike;
                                                                                    ?> ></div></button>
                     <button class="like-button" onclick="swapHeart()">6 faves<div id="heart" <?
-                                                                                  
+                    $myFave;
                                                                                   ?> ></div></button>
                     <?
                     //<div>34 likes</div>
