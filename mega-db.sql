@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 02, 2018 at 07:01 PM
+-- Generation Time: Apr 20, 2018 at 09:22 PM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.1
 
@@ -169,6 +169,48 @@ INSERT INTO `events` (`id`, `date_start`, `date_end`, `title`, `description`, `l
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `event_downloads`
+--
+
+DROP TABLE IF EXISTS `event_downloads`;
+CREATE TABLE `event_downloads` (
+  `id` int(11) NOT NULL COMMENT 'I.D. for this array.',
+  `event_id` int(11) NOT NULL COMMENT 'I.D of the event.',
+  `text` varchar(256) NOT NULL COMMENT 'The text that shows on the page.',
+  `url` varchar(256) NOT NULL COMMENT 'The URL the link leads to.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `event_downloads`
+--
+
+INSERT INTO `event_downloads` (`id`, `event_id`, `text`, `url`) VALUES
+(1, 1, 'Game Jam Rules PDF', 'https://itch.io/jams');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event_links`
+--
+
+DROP TABLE IF EXISTS `event_links`;
+CREATE TABLE `event_links` (
+  `id` int(11) NOT NULL COMMENT 'I.D. for this array.',
+  `event_id` int(11) NOT NULL COMMENT 'I.D of the event.',
+  `text` varchar(256) NOT NULL COMMENT 'The text that shows on the page.',
+  `url` varchar(256) NOT NULL COMMENT 'The URL the link leads to.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `event_links`
+--
+
+INSERT INTO `event_links` (`id`, `event_id`, `text`, `url`) VALUES
+(1, 1, 'Itch.io Game Jams', 'https://itch.io/jams');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `licenses`
 --
 
@@ -282,6 +324,7 @@ INSERT INTO `project_attribution` (`id`, `project_id`, `work`, `creator`, `user_
 -- Table structure for table `project_faves`
 --
 
+DROP TABLE IF EXISTS `project_faves`;
 CREATE TABLE `project_faves` (
   `id` int(20) NOT NULL,
   `user_id` int(35) NOT NULL,
@@ -335,6 +378,7 @@ INSERT INTO `project_imgs` (`id`, `project_id`, `url`, `description`, `ordering`
 -- Table structure for table `project_likes`
 --
 
+DROP TABLE IF EXISTS `project_likes`;
 CREATE TABLE `project_likes` (
   `id` int(20) NOT NULL,
   `user_id` int(35) NOT NULL,
@@ -491,6 +535,18 @@ ALTER TABLE `events`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `event_downloads`
+--
+ALTER TABLE `event_downloads`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `event_links`
+--
+ALTER TABLE `event_links`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `licenses`
 --
 ALTER TABLE `licenses`
@@ -580,6 +636,16 @@ ALTER TABLE `comments_projects_tags`
 ALTER TABLE `events`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
+-- AUTO_INCREMENT for table `event_downloads`
+--
+ALTER TABLE `event_downloads`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'I.D. for this array.', AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `event_links`
+--
+ALTER TABLE `event_links`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'I.D. for this array.', AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `licenses`
 --
 ALTER TABLE `licenses`
@@ -598,7 +664,7 @@ ALTER TABLE `profile_links`
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `project_attribution`
 --

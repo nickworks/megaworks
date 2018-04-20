@@ -16,11 +16,13 @@ if($id <= 0 || empty($id)) redirectToEvents();
 // creates a sql query to access the information for the desired page
 $event_sql = "SELECT * FROM `events` WHERE `id` = ?";
 $comment_sql = "SELECT * FROM `comments_events` WHERE `event_id` = ? ORDER BY `comments_events`.`date_posted` DESC";
+$event_links_sql = "SELECT * FROM `event_links` WHERE `event_id` = ?";
 
 // grabs the information from the database
 $event = $db->query($event_sql, array($id));
 $comments = $db->query($comment_sql, array($id));
 $event = $event[0];
+$event_links = $db->query($event_links_sql, array($id));
 
 // formatting the date
 $sd = new DateTime($event["date_start"]);
@@ -100,10 +102,11 @@ mainMenu();
             <div>Links</div>
             <div>
                 <ul>
-                    <li><a href="#">Additional Information</a></li>
-                    <li><a href="#">Additional Information</a></li>
-                    <li><a href="#">Additional Information</a></li>
-                    <li><a href="#">Additional Information</a></li>
+                    <? 
+                        foreach ($event_links as $link) {
+                            
+                        }
+                    ?>
                 </ul>
             </div>
         </div>
