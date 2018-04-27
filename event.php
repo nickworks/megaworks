@@ -17,12 +17,14 @@ if($id <= 0 || empty($id)) redirectToEvents();
 $event_sql = "SELECT * FROM `events` WHERE `id` = ?";
 $comment_sql = "SELECT * FROM `comments_events` WHERE `event_id` = ? ORDER BY `comments_events`.`date_posted` DESC";
 $event_links_sql = "SELECT * FROM `event_links` WHERE `event_id` = ?";
+$event_downloads_sql = "SELECT * FROM `event_downloads` WHERE `event_id` = ?";
 
 // grabs the information from the database
 $event = $db->query($event_sql, array($id));
 $comments = $db->query($comment_sql, array($id));
 $event = $event[0];
 $event_links = $db->query($event_links_sql, array($id));
+$event_downloads = $db->query($event_downloads_sql, array($id));
 
 // formatting the date
 $sd = new DateTime($event["date_start"]);
@@ -67,7 +69,9 @@ mainMenu();
         <div class="split">
             <div>Downloads</div>
             <div>
-                <a href="#" class="button">Additional Information</a>
+                 <? foreach ($event_downloads as $download) { ?>
+                    <li><a href="<?=$download["url"]?>" class="work"><?=$download["text"]?></a></li>
+                <?  } ?>
             </div>
         </div>
         <div class="hr"><!--<h3><span>License</span></h3>--></div>
