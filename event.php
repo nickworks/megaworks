@@ -102,11 +102,9 @@ mainMenu();
             <div>Links</div>
             <div>
                 <ul>
-                    <? 
-                        foreach ($event_links as $link) {
-                            
-                        }
-                    ?>
+                    <? foreach ($event_links as $link) { ?>
+                            <li><a href="<?=$link["url"]?>" class="work"><?=$link["text"]?></a></li>
+                      <?  } ?>
                 </ul>
             </div>
         </div>
