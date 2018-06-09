@@ -4,16 +4,18 @@ body {
 }
 #login {
     display:flex;
-    margin: 70px auto 0 auto;
-    width:600px;
+    margin: 55px auto auto auto;
+    width: auto;
     background:#2b2b2b;
-    border-radius:4px;
+    
+    
 }
 #login section {
     color:#fff;
-    position:relative;
-    width: 50%;
-}
+    position: relative;
+   }
+
+
 #login h1 {
     margin:auto;
     font-size:18px;
@@ -55,10 +57,14 @@ body {
     border:0px;
 }
 #login .left {
-    padding:25px 30px;
+    padding:25px 30px; 
+    width: 200px;
+    margin-left: auto;
 }
 #login .right {
     padding:25px 30px;
+    width: 200px;
+    margin-right: auto;
 }
 #login .centerLine {
     height:80%;

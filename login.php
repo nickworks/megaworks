@@ -27,6 +27,7 @@ mainMenu();
 ?>
 
 <div id="login">
+        
             <section class="left">
                 <h1>Login</h1>
                 <form class="login" action="login.php?redirect=<?=htmlentities($redirect)?>" method="post">
@@ -48,13 +49,15 @@ mainMenu();
             </section>
             <section class="right">
                 <div class="centerLine"></div>
-                <h1>I don't have an account</h1>
+                <h1>Don't have an account?</h1>
                 <div class="button" id="create-account">
                     <a href="signup.php">
                         <button id="CreateAnAccount" href="signup.php">Create an account</button>
                     </a>
                 </div>
             </section>
+        
+    
 <footer></footer>
         </div>
 
