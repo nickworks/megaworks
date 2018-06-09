@@ -47,6 +47,8 @@ mainMenu();
                     </div>
                 </form>
             </section>
+    
+    
             <section class="right">
                 <div class="centerLine"></div>
                 <h1>Don't have an account?</h1>
