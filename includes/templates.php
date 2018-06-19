@@ -2,25 +2,19 @@
 
 include_once "api/class.User.php";
 
-function beginPage(string $class, $css = null){
+function beginPage(string $class = "", $css = null){
     
     if(is_string($css)) $css = array($css);
     
-?><!doctype html>
-    
-<html lang="en-US">
-    
-    <head>
-        <link href="styles/main.css" rel="stylesheet">
-<?
-if(is_array($css)){
-    foreach($css as $file){
-        echo "<link href='{$file}' rel='stylesheet'>";
-    }
-}
-?>
-    </head>
-    <body class="<? echo $class; ?>">  
+    ?><!doctype html><html lang="en-US">
+    <head><link href="styles/main.css" rel="stylesheet">
+    <? if(is_array($css)){
+        foreach($css as $file){
+            echo "<link href='{$file}' rel='stylesheet'>";
+        }
+    } ?>
+    </head><body class="<? echo $class; ?>">
+    <div id="bug-issues"><a href="https://github.com/nickworks/megaworks/issues" target="_blank">give us feedback</a></div>
 <?}
 
 function endPage(){?>
