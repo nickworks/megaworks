@@ -34,7 +34,17 @@ nav ul a {
     text-decoration:none;
     color:#9c9c9c;
 }
-nav ul a:hover {
+nav ul a:hover,
+body.about nav.main ul li a.about,
+body.talk nav.main ul li a.talk,
+body.projects nav.main ul li a.projects,
+body.project nav.main ul li a.projects,
+body.events nav.main ul li a.events,
+body.event nav.main ul li a.event,
+body.home nav.main ul li a.profile,
+body.signup nav.main ul li a.login,
+body.login nav.main ul li a.login
+{
     color:#000;
 }
 nav ul li:last-child a {
