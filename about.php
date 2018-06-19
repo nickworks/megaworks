@@ -6,6 +6,7 @@ beginPage("about");
 mainMenu();
 
 ?>
+        
         <div class="tray">
             <h2>What is Mega?</h2>
             <p>Lorem ipsum dolor sit amet, mauris placerat ac sit cras, suspendisse convallis metus nonummy sapien, arcu conubia at, felis lectus, consectetuer lacus tempor.</p>

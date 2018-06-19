@@ -66,14 +66,14 @@ $showProfile = User::isLoggedIn();
 <nav class="main">
     <a href="index.php"><div id="logo"></div></a>
     <ul>
-        <li><a href="about.php">about</a></li>
-        <li><a href="projects.php">projects</a></li>
-        <li><a href="talk.php">talk</a></li>
-        <li><a href="events.php">events</a></li>
+        <li><a class="about" href="about.php">about</a></li>
+        <li><a class="projects" href="projects.php">projects</a></li>
+        <li><a class="talk" href="talk.php">talk</a></li>
+        <li><a class="events" href="events.php">events</a></li>
         <? if($showProfile) { ?>
-        <li><a href="profile.php">profile</a></li>
+        <li><a class="profile" href="profile.php">profile</a></li>
         <? } else { ?>
-        <li><a href="login.php">login</a></li>
+        <li><a class="login" href="login.php">login</a></li>
         <? } ?>
     </ul>
 </nav>
