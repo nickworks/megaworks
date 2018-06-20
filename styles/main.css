@@ -41,6 +41,10 @@ nav ul li:last-child a {
     float:right;
     margin-right:20px;
 }
+nav .loggedIn{
+    display: flex;
+    float: right;
+}
 #logo {
     background:url(../imgs/logo.png);
     width:112px;

@@ -62,14 +62,17 @@ $showProfile = User::isLoggedIn();
 <nav class="main">
     <a href="index.php"><div id="logo"></div></a>
     <ul>
-        <li><a href="about.php">about</a></li>
-        <li><a href="projects.php">projects</a></li>
-        <li><a href="talk.php">talk</a></li>
-        <li><a href="events.php">events</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="projects.php">Projects</a></li>
+        <li><a href="talk.php">Talk</a></li>
+        <li><a href="events.php">Events</a></li>
         <? if($showProfile) { ?>
-        <li><a href="profile.php">profile</a></li>
+        <section class="loggedIn">
+        <li><a href="profile.php">My Account</a></li>
+        <li><a href="logout.php">Log Off</a></li>
+        </section>
         <? } else { ?>
-        <li><a href="login.php">login</a></li>
+        <li><a href="login.php">Login</a></li>
         <? } ?>
     </ul>
 </nav>
