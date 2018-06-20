@@ -36,6 +36,7 @@ body {
     font-size:15px;
     font-weight:normal;
     color:#aaa;
+    text-align: left;
 }
 #signup input {
     position: relative;
