@@ -97,8 +97,19 @@ mainMenu();
             </article>
             <aside>
                 <div class="stats">
-                    <div>34 likes</div>
-                    <div>6 faves</div>
+                    <?
+                    $likefave;
+                    ?>
+                    <button class="like-button" onclick="swapThumb()">34 likes<div id="thumb" <?
+                    $myLike;
+                                                                                   ?> ></div></button>
+                    <button class="like-button" onclick="swapHeart()">6 faves<div id="heart" <?
+                    $myFave;
+                                                                                  ?> ></div></button>
+                    <?
+                    //<div>34 likes</div>
+                    //<div>6 faves</div>
+                    ?>
                     <div>240 views</div>
                     <div><?=count($comments)?> comments</div>
                 </div>
@@ -205,6 +216,22 @@ mainMenu();
                 <? } ?>
                 
             </section>
-            <footer></footer>
+            <footer>neat</footer>
+            <script>
+                function swapThumb() {
+                    var element = document.getElementById("thumb");
+                    
+                    //INSERT INTO project_likes(user_id, project_id) VALUES(1, 5)
+                    
+                    if(element.classList.contains("like-activate"))element.classList.remove("like-activate");
+                    else element.classList.add("like-activate");
+                }
+                function swapHeart() {
+                    var element = document.getElementById("heart");
+                    
+                    if(element.classList.contains("like-activate"))element.classList.remove("like-activate");
+                    else element.classList.add("like-activate");
+                }
+            </script>
         </div>
 <? endPage(); ?>

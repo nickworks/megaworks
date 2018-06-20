@@ -2,52 +2,43 @@
 
 include_once "api/class.User.php";
 
-function beginPage(string $class, $css = null){
+function beginPage(string $class = "", $css = null){
     
     if(is_string($css)) $css = array($css);
     
-?><!doctype html>
-    
-<html lang="en-US">
-    
-    <head>
-        <link href="styles/main.css" rel="stylesheet">
-<?
-if(is_array($css)){
-    foreach($css as $file){
-        echo "<link href='{$file}' rel='stylesheet'>";
-    }
-}
-?>
-    </head>
-    <body class="<? echo $class; ?>">  
+    ?><!doctype html><html lang="en-US">
+    <head><link href="styles/main.css" rel="stylesheet">
+    <? if(is_array($css)){
+        foreach($css as $file){
+            echo "<link href='{$file}' rel='stylesheet'>";
+        }
+    } ?>
+    </head><body class="<? echo $class; ?>">
+    <div id="bug-issues"><a href="https://github.com/nickworks/megaworks/issues" target="_blank">give us feedback</a></div>
 <?}
 
 function endPage(){?>
-    <footer class="footer">        
-        <div class="box">
-            
-        <div class="top">
-            
-            <div> <li class="top_list"><a href="about.php">About</a></li></div>
-            <div class="top_list"> <a href="projects.php">Projects</a></div>            
-            <div class="top_list"> <a href="events.php">Events</a> </div>
-            <div class="top_list"> <a href="talk.php">Discord</a> </div>
-            <div class="top_list"> <a href="about.php">Youtube</a></div>
-            <div class="top_list"> <a href="about.php">Facebook</a></div>
-            
-        </div>
-            <div class="hr"><h3></h3></div>
-
+    <footer class="footer">
+        <nav>
+            <ul>
+                <li><a class="about" href="about.php">About</a></li>
+                <li><a class="about" href="projects.php">Projects</a></li>            
+                <li><a class="about" href="events.php">Events</a> </li>
+            </ul>
+            <ul>
+                <li><a class="profile" href="profile.php">My Account</a> </li>
+                <li><a href="logout.php">Sign Out</a></li>
+            </ul>
+            <ul class="social">  
+                <li><a href="#">Discord</a> </li>
+                <li><a href="#">Youtube</a></li>
+                <li><a href="#">Facebook</a></li>
+            </ul>
+        </nav>
+        <div class="hr"><h3></h3></div>
         <div class="copyright">
-            <div class="copy_list"> Use of this site constitutes acceptance of our <a href="about.php">User Agreement</a> and <a href="about.php">Private Policy</a>. all rights reserved </div>
-        
-              
-        </div> 
-        
-        
-        
-        </div>       
+            <p> Use of this site constitutes acceptance of our <a href="about.php">User Agreement</a> and <a href="about.php">Private Policy</a>. all rights reserved </p>
+        </div>
         </footer>
     </body>
 </html>
@@ -62,17 +53,16 @@ $showProfile = User::isLoggedIn();
 <nav class="main">
     <a href="index.php"><div id="logo"></div></a>
     <ul>
-        <li><a href="about.php">About</a></li>
-        <li><a href="projects.php">Projects</a></li>
-        <li><a href="talk.php">Talk</a></li>
-        <li><a href="events.php">Events</a></li>
+        <li><a class="about" href="about.php">About</a></li>
+        <li><a class="projects" href="projects.php">Projects</a></li>
+        <li><a class="talk" href="talk.php">Talk</a></li>
+        <li><a class="events" href="events.php">Events</a></li>
+        <li class="spacer"></li>
         <? if($showProfile) { ?>
-        <section class="loggedIn">
-        <li><a href="profile.php">My Account</a></li>
-        <li><a href="logout.php">Log Off</a></li>
-        </section>
+            <li><a class="profile" href="profile.php">My Account</a></li>
+            <li><a class="" href="logout.php">Log Off</a></li>
         <? } else { ?>
-        <li><a href="login.php">Login</a></li>
+            <li><a class="" href="login.php">Login</a></li>
         <? } ?>
     </ul>
 </nav>
@@ -87,12 +77,6 @@ function event(string $id, string $time, string $title, string $location, string
         <h2><a href="<? echo "event.php?id=".$id; ?>"><? echo $title; ?></a></h2>
         <time><? echo "Time: ".$time; ?></time>
         <h3><a href="<? echo $location_link;?>"><? echo "Location: ".$location; ?></a></h3>
-    <!--
-    title
-    time
-    location
-    description
-    -->
         <p><? echo $description; ?></p>
     </div>
 </li>

@@ -3,6 +3,20 @@ body {
     font-family:"Helvetica", "Arial", sans-serif;
     background:#333;
 }
+#bug-issues {
+    position:fixed;
+    top:35px;
+    left:-90px;
+    width:300px;
+    height:50px;
+    background:#FF0;
+    z-index:99999;
+    transform:rotate(-45deg);
+    line-height:50px;
+    text-align:center;
+    box-shadow:0px 1px 5px #000;
+    font-weight:bold;
+}
 nav.main {
     position:fixed;
     left:0;
@@ -14,19 +28,16 @@ nav.main {
     min-width:480px;
     z-index:9999;
 }
-nav ul {
+nav.main ul {
     list-style:none;
     margin:0;
     padding:0;
+    display:flex;
 }
-aside .split ul {
-    margin:0;
-    padding:0;
-    list-style:none;
-    line-height: 20px;
+nav.main li.spacer {
+    flex-grow:1;
 }
-nav ul a {
-    float:left;
+nav.main ul a {
     line-height:55px;
     margin-left:20px;
     font-size:14px;
@@ -34,17 +45,26 @@ nav ul a {
     text-decoration:none;
     color:#9c9c9c;
 }
-nav ul a:hover {
+aside .split ul {
+    margin:0;
+    padding:0;
+    list-style:none;
+    line-height: 20px;
+}
+nav.main ul a:hover,
+body.about nav.main ul li a.about,
+body.talk nav.main ul li a.talk,
+body.projects nav.main ul li a.projects,
+body.project nav.main ul li a.projects,
+body.events nav.main ul li a.events,
+body.event nav.main ul li a.event,
+body.home nav.main ul li a.profile,
+body.signup nav.main ul li a.login,
+body.login nav.main ul li a.login
+{
     color:#000;
 }
-nav ul li:last-child a {
-    float:right;
-    margin-right:20px;
-}
-nav .loggedIn{
-    display: flex;
-    float: right;
-}
+
 #logo {
     background:url(../imgs/logo.png);
     width:112px;
@@ -357,103 +377,80 @@ nav.secondary a {
 .tag-picker input[type="checkbox"]:checked + label {
     border:1px solid #FFF;
 }
-
-.top {
-   display: flex;
-    flex-direction:row;
-    flex-wrap:nowrap;
-    
-    
-}
-
-.top_list {
+footer.footer ul{
+    width:100px;
+    float:left;
     list-style:none;
-    float: left;
+    padding:20px;
+    margin:0;
+    line-height:150%;
+    float:left;
 }
-
-.top_list  a  {
-
-   
-   
-    line-height:55px;
-    margin:0 30px 0 30px;
-    font-size:14px;
-    font-weight:bold;
-    text-decoration:none;
-    color:#9c9c9c;
-    float: left;
+footer.footer ul.social {
+    float:right;
+    text-align:right;
 }
-.top_list a:hover{
-      color:#000;
-    
-    
-    
+footer.footer {
+    padding:50px 20px;
+    font-size:70%;
 }
-.bottom_list {
-    list-style:none;
+footer.footer a{
+    color:#666;
+    transition:color .2s;
 }
-
-.bottom_list a  {
-   
-    
-    line-height:55px;
-    margin:0 30px 0 30px;
-    font-size:14px;
-    font-weight:bold;
-    text-decoration:none;
-    color:#9c9c9c;
+footer.footer a:hover{
+    color:#fff;
 }
-.bottom_list a:hover{
-    color:#000;
-    
-}
-
-
-
 .hr {
-     border-bottom:1px solid gray;
-    margin:0px px 20px;
-    padding:0px 0px 0px;
+    border-bottom:1px solid gray;
+    margin:0px 20px;
+    padding:0;
     clear:both;
-    position:relative;
 }
-
-
-
-.bottom {
-   display: flex; 
-    flex-direction:row;
-    flex-wrap:nowrap;
-    justify-content:space-around;
-
+.copyright p {
+    margin:0;
 }
-
-.box {
-    margin: auto;
-}
-
-
-
 .copyright {
-      display: flex; 
-    flex-direction:row;
-    flex-wrap:nowrap;
-    margin-left: 30px;
-
+    margin:20px;
 }
-
-.copy_list {
-     list-style:none;
-}
-.copy_list a  {    
-    line-height:55px;
-    margin:0 0px 0 0px;
-    font-size:14px;
-    font-weight:bold;
-   
+.copyright a {
     color:#000;
 }
-.copy_list a:hover{
-    color:#9c9c9c;;
-    
+.copyright a:hover{
+    color:#9c9c9c;
+}
+.like-button {
+    margin:0 5px 5px 0;
+    font-size:10px;
+    letter-spacing:0.5px;
+    background:#00aeef;
+    padding:8px 10px;
+    border-radius:4px;
+    text-decoration:none;
+    color:#FFF;
+    text-shadow:1px 1px 2px rgba(0, 0, 0, .5);
+    transform: translateY(-25%);
+    border: none;
+}
+
+#thumb{
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+    background: url(../imgs/like.png);
+    background-size: cover;
+    float: right;
+}
+
+#heart{
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+    background: url(../imgs/fave.png);
+    background-size: cover;
+    float:right;
+}
+
+#heart.like-activate, #thumb.like-activate {
+    background-position: -100%;
 }
