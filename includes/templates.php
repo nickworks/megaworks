@@ -26,16 +26,14 @@ function endPage(){
                 <li><a class="projects" href="projects.php">Projects</a></li>
                 <li><a class="talk" href="talk.php">Talk</a></li>
                 <li><a class="events" href="events.php">Events</a> </li>
-            </ul>
-            <ul>
+                <li>|</li>
                 <? if($showProfile) { ?>
                     <li><a class="profile" href="profile.php">My Account</a></li>
                     <li><a href="logout.php">Sign Out</a></li>
                 <? } else { ?>
                     <li><a class="login" href="login.php">Login</a></li>
                 <? } ?>
-            </ul>
-            <ul class="social">  
+                <li class="spacer"></li>
                 <li><a href="#">Discord</a> </li>
                 <li><a href="#">Youtube</a></li>
                 <li><a href="#">Facebook</a></li>

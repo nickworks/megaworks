@@ -378,17 +378,16 @@ nav.secondary a {
     border:1px solid #FFF;
 }
 footer.footer ul{
-    width:100px;
-    float:left;
     list-style:none;
     padding:20px;
     margin:0;
-    line-height:150%;
-    float:left;
+    display:flex;
 }
-footer.footer ul.social {
-    float:right;
-    text-align:right;
+footer.footer ul li.spacer {
+    flex-grow:1;
+}
+footer.footer ul li {
+    padding:0 10px;
 }
 footer.footer {
     padding:50px 20px;
@@ -399,6 +398,7 @@ footer.footer a{
     transition:color .2s;
     text-decoration:none;
 }
+
 footer.footer a:hover,
 body.about footer.footer a.about,
 body.talk footer.footer a.talk,
@@ -410,13 +410,13 @@ body.login footer.footer a.login{
     text-decoration:underline;
 }
 .hr {
-    border-bottom:1px solid gray;
+    border-bottom:1px solid #444;
     margin:0px 20px;
     padding:0;
     clear:both;
 }
 .copyright p {
-    margin:0;
+    margin:0 10px;
 }
 .copyright {
     margin:20px;
