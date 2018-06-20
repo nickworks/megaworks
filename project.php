@@ -71,7 +71,7 @@ $creator = $db->query("SELECT * FROM `users` WHERE `id`=?;", array($project['use
 
 // TODO: we need to make a way to "like" and/or "fave" a project
 
-beginPage("project");
+beginPage("projects");
 mainMenu();
 ?>
         <div class="tray">

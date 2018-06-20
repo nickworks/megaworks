@@ -96,5 +96,4 @@ mainMenu();
             </section>
             <footer></footer>
         </div>
-        <footer class="main"></footer>
 <? endPage(); ?>        

@@ -50,7 +50,7 @@ if($psd['year'] == $ped['year'] && $psd['month'] == $ped['month']&& $psd['day'] 
 }
 
 //print_r($comments); exit;
-beginPage("event", "styles/event.css");
+beginPage("events", "styles/event.css");
 mainMenu();
 ?>
 <div class="tray">

@@ -17,17 +17,23 @@ function beginPage(string $class = "", $css = null){
     <div id="bug-issues"><a href="https://github.com/nickworks/megaworks/issues" target="_blank">give us feedback</a></div>
 <?}
 
-function endPage(){?>
-    <footer class="footer">
+function endPage(){
+    $showProfile = User::isLoggedIn();
+    ?><footer class="footer">
         <nav>
             <ul>
                 <li><a class="about" href="about.php">About</a></li>
-                <li><a class="about" href="projects.php">Projects</a></li>            
-                <li><a class="about" href="events.php">Events</a> </li>
+                <li><a class="projects" href="projects.php">Projects</a></li>
+                <li><a class="talk" href="talk.php">Talk</a></li>
+                <li><a class="events" href="events.php">Events</a> </li>
             </ul>
             <ul>
-                <li><a class="profile" href="profile.php">My Account</a> </li>
-                <li><a href="logout.php">Sign Out</a></li>
+                <? if($showProfile) { ?>
+                    <li><a class="profile" href="profile.php">My Account</a></li>
+                    <li><a href="logout.php">Sign Out</a></li>
+                <? } else { ?>
+                    <li><a class="login" href="login.php">Login</a></li>
+                <? } ?>
             </ul>
             <ul class="social">  
                 <li><a href="#">Discord</a> </li>
@@ -60,9 +66,9 @@ $showProfile = User::isLoggedIn();
         <li class="spacer"></li>
         <? if($showProfile) { ?>
             <li><a class="profile" href="profile.php">My Account</a></li>
-            <li><a class="" href="logout.php">Log Off</a></li>
+            <li><a href="logout.php">Log Off</a></li>
         <? } else { ?>
-            <li><a class="" href="login.php">Login</a></li>
+            <li><a class="login" href="login.php">Login</a></li>
         <? } ?>
     </ul>
 </nav>

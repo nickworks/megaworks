@@ -52,15 +52,15 @@ aside .split ul {
     line-height: 20px;
 }
 nav.main ul a:hover,
-body.about nav.main ul li a.about,
-body.talk nav.main ul li a.talk,
-body.projects nav.main ul li a.projects,
-body.project nav.main ul li a.projects,
-body.events nav.main ul li a.events,
-body.event nav.main ul li a.event,
-body.home nav.main ul li a.profile,
-body.signup nav.main ul li a.login,
-body.login nav.main ul li a.login
+body.about nav.main a.about,
+body.talk nav.main a.talk,
+body.projects nav.main a.projects,
+body.project nav.main a.projects,
+body.events nav.main a.events,
+body.event nav.main a.event,
+body.home nav.main a.profile,
+body.signup nav.main a.login,
+body.login nav.main a.login
 {
     color:#000;
 }
@@ -397,9 +397,17 @@ footer.footer {
 footer.footer a{
     color:#666;
     transition:color .2s;
+    text-decoration:none;
 }
-footer.footer a:hover{
+footer.footer a:hover,
+body.about footer.footer a.about,
+body.talk footer.footer a.talk,
+body.projects footer.footer a.projects,
+body.events footer.footer a.events,
+body.home footer.footer a.profile,
+body.login footer.footer a.login{
     color:#fff;
+    text-decoration:underline;
 }
 .hr {
     border-bottom:1px solid gray;
@@ -412,12 +420,6 @@ footer.footer a:hover{
 }
 .copyright {
     margin:20px;
-}
-.copyright a {
-    color:#000;
-}
-.copyright a:hover{
-    color:#9c9c9c;
 }
 .like-button {
     margin:0 5px 5px 0;
