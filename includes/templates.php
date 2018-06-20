@@ -30,19 +30,15 @@ function endPage(){?>
         <div class="top">
             
             <div> <li class="top_list"><a href="about.php">About</a></li></div>
-            <div class="top_list"> <a href="projects.php">Projects</a></div>
-            <div class="top_list"> <a href="talk.php">Talk</a> </div>
+            <div class="top_list"> <a href="projects.php">Projects</a></div>            
             <div class="top_list"> <a href="events.php">Events</a> </div>
+            <div class="top_list"> <a href="talk.php">Discord</a> </div>
+            <div class="top_list"> <a href="about.php">Youtube</a></div>
+            <div class="top_list"> <a href="about.php">Facebook</a></div>
             
         </div>
             <div class="hr"><h3></h3></div>
-        <div class="bottom">
-            <div class="bottom_list"><a href="about.php">nickstagram</a></div>
-            <div class="bottom_list"> <a href="about.php">nicktube</a></div>
-            <div class="bottom_list"> <a href="about.php">nickbook</a></div>
-              
-        </div>    
-            <div class="hr"><h3></h3></div>
+
         <div class="copyright">
             <div class="copy_list"> Use of this site constitutes acceptance of our <a href="about.php">User Agreement</a> and <a href="about.php">Private Policy</a>. all rights reserved </div>
         
