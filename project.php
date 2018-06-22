@@ -189,7 +189,7 @@ mainMenu();
                                 <span><?=$comment["user_title"]?></span>
                             </h1>
                             <p><?=$comment["comment"]?></p>
-                            <time><?=$comment["date_posted"]?></time>
+                            <time><?=easyDate($comment["date_posted"])?></time>
                             <div class="clear"></div>
                         </div>
                         <div class="arrow left-top">
