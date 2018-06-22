@@ -1,14 +1,8 @@
-
-body {
-    background:#fff;
-}
 #login {
     display:flex;
     margin: 55px auto auto auto;
-    width: auto;
-    background:#2b2b2b;
-    
-    
+    width: 100%;
+    background:#2b2b2b;      
 }
 #login section {
     color:#fff;
@@ -56,15 +50,19 @@ body {
     margin:35px 10px 10px 0;
     border:0px;
 }
+#login{
+    border-bottom: 5px;
+    border-bottom-color: white;
+}
 #login .left {
-    padding:25px 30px; 
-    width: 200px;
+    padding:80px 30px; 
     margin-left: auto;
+    width: 200px;
 }
 #login .right {
-    padding:25px 30px;
-    width: 200px;
+    padding:80px 30px; 
     margin-right: auto;
+    width: 200px;
 }
 #login .centerLine {
     height:80%;
