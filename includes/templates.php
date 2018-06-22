@@ -33,7 +33,9 @@ function endPage(){
                 <? } else { ?>
                     <li><a class="login" href="login.php">Login</a></li>
                 <? } ?>
-                <li class="spacer"></li>
+                <li>|</li>
+                <li><a id="feedback" href="https://github.com/nickworks/megaworks/issues">Leave Feedback</a> </li>
+                <li class="spacer"></li>                
                 <li><a class="discord" href="#"><span class="hide">Discord</span></a> </li>
                 <li><a class="youtube" href="#"><span class="hide">Youtube</span></a></li>
                 <li><a class="facebook" href="#"><span class="hide">Facebook</span></a></li>
