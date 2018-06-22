@@ -1,4 +1,8 @@
-
+p{
+    margin: 0px;
+    padding-bottom: 20px;
+    
+}
 #signup {
     display:flex;
     top: 500px;
@@ -18,8 +22,7 @@
 #signup .form{
     color:#fff;
     position:relative;
-    width: 100%;    
-    text-align: center;
+    width: 100%;   
 }
 
 #signup h1 {
@@ -47,7 +50,7 @@
     font-size:14px;
 }
 #divider {
-    display:flex;    
+    clear:both;    
     width: 100%;
     
 }
@@ -59,9 +62,10 @@
     
 }
 #signup .right{
-    padding:0 0 0 25px;
+    
     width: 204px;    
-    margin-right: auto;
+    float: right;
+    
 }
 #signup .centerLine{
     height:80%;
@@ -76,6 +80,10 @@
     color:#2e79a8;
 }
 
+#confirm-signup{
+    padding: 20px 0px;
+}
+
 #confirm-signup button{
    position: relative;
     background-color:#53c025;
@@ -85,6 +93,7 @@
     font-size:12px;
     border-radius:5px;
     border:0px;
+    
 }
 #confirm-signup button:hover {
    
@@ -98,14 +107,21 @@
 }
 
 #signup .left .haveText{
-        position: relative;
+    position: relative;    
+}
+
+.haveText{
+    text-align:center;
 }
 
 .input{
-    width:204px;
+    width:450px;
     margin: auto;
 }
-
+#formDiv{
+    border-top: 1px solid white;
+    text-align:center;
+}
 
 .errorMessage {
     color:#ff3838;
