@@ -49,39 +49,38 @@ mainMenu();
         <form class="signup" action="signup.php" method="post">
             
             <h1>Create an Account</h1>
-            <div id="divider">
+            <div class="input">
+                <div>
+                    <h1>Personal Information</h1>
+                    <h2>Username</h2>
+                        <input type ="text" id ="username" name="user-name">
+                    <h2>First Name</h2>
+                        <input type ="text" id ="firstname" name="user-firstname">
+                    <h2>Last Name</h2>
+                        <input type ="text" id ="lastname" name="user-lastname">
+                </div>
                 
-                <section class="left">
-                    <div>
-                        <h1>Personal Information</h1>
-                        <h2>Username</h2>
-                            <input type ="text" id ="username" name="user-name">
-                        <h2>First Name</h2>
-                            <input type ="text" id ="firstname" name="user-firstname">
-                        <h2>Last Name</h2>
-                            <input type ="text" id ="lastname" name="user-lastname">
-                    </div>
-                    
-                    <h2>Title</h2>
-                        <input type ="text" id ="title" name="user-occupation">
-                    
+                <div>
+                        <h2>Title</h2>
+                        <input type ="text" id ="title" name="user-occupation">  
+                </div>
+                 
+                <div>
                     <h1>Contact Information</h1>
                     <h2>Email</h2>
                         <input type ="text" id ="email" name="user-email">
                     <h2>Confirm Email</h2>
                         <input type ="text" id ="email" name="user-email">
-                    
+                </div>
+                
+                <div>
                     <h1>Security</h1>
                     <h2>Password</h2>
                         <input type ="password" id ="password" name="user-password">
                     <h2>Confirm Password</h2>
                         <input type ="password" id ="password" name="user-password"> 
-                </section>
-                
-                <section class="right">
-                    
-                    <p>Placeholder descriptive text.</p>
-                    </section>
+                </div>
+
             </div>
             <div class="button" id="confirm-signup">
                 <button type="submit">Create Account</button>

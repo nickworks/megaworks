@@ -101,6 +101,10 @@
         position: relative;
 }
 
+.input{
+    width:204px;
+    margin: auto;
+}
 
 
 .errorMessage {
