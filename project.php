@@ -54,7 +54,7 @@ processCommentForm($id);
 //////////////////////////////////////////////// BEGIN PULLING DATA FROM DB:
 
 
-$comments = $db->query("SELECT c.*, GROUP_CONCAT(t.text) AS 'tags' FROM comments_projects c, comments_projects_tags j, tags_comments t WHERE c.project_id=? AND t.id = j.tag_id AND j.comment_id = c.id GROUP BY c.id", array($id));
+$comments = $db->query("SELECT u.alias AS 'user_name', u.title AS 'user_title', u.avatar AS 'user_avatar', c.*, GROUP_CONCAT(t.text) AS 'tags' FROM comments_projects c, comments_projects_tags j, tags_comments t, users u WHERE c.project_id=? AND t.id = j.tag_id AND j.comment_id = c.id AND u.id=c.user_id GROUP BY c.id", array($id));
 
 $tags = $db->query("SELECT t.* FROM project_tags j, tags_projects t WHERE j.project_id=? AND j.tag_id = t.id;", array($id));
 
@@ -62,7 +62,7 @@ $attribution = $db->query("SELECT * FROM `project_attribution` WHERE `project_id
 
 $creator = $db->query("SELECT * FROM `users` WHERE `id`=?;", array($project['user_id']))[0];
 
-//print_r($creator); exit;
+//print_r($comments); exit;
 
 // TODO: we need to pull media
 // TODO: we need to pull "likes", "faves", and "views" data
@@ -124,7 +124,6 @@ mainMenu();
                 
                 
                 <? if(!empty($project["license_id"])) { ?>
-                <div class="hr"></div>
                 <div class="split">
                     <div>License</div>
                     <div><a href="<?=$project["license_link"]?>" target="_blank" class="button license"><?=$project["license_title"]?>
@@ -142,7 +141,6 @@ mainMenu();
                 <? } ?>
                 
                 <? if(count($attribution) > 0){ ?>
-                <div class="hr"></div>
                 <div class="split">
                     <div>Attribution</div>
                     <div>
@@ -154,8 +152,7 @@ mainMenu();
                     </div>
                 </div>
                 <? } ?>
-                
-                <div class="hr"></div>
+
                 <div class="split">
                     <div>Tags</div>
                     <div>
@@ -166,31 +163,45 @@ mainMenu();
                 </div>
             </aside>
             <section>
-                <div class="hr"><h3><span>Comments</span></h3></div>
+                <div class="hr text"><h3><span>Comments</span></h3></div>
                 
                 <? foreach($comments as $comment){  ?>
                 
                 <div class="comment">
                     <div class="avatar">
-                        <img src="imgs/placeholder-avatar1.jpg">
+                        <? if (!empty($comment["user_avatar"])){ ?>
+                            <img src="<?=$comment["user_avatar"]?>">
+                        <? } else { ?>
+                            <img src="imgs/placeholder-avatar1.jpg">
+                        <? } ?>
                     </div>
                     <div class="bubble">
-                        <p><?=$comment["comment"]?></p>
+                        
+                        <div class="infront">
+                            <div class="tags">
+                                <? $tags = explode(',', $comment['tags']);
+                                foreach($tags as $tag) { ?>
+                                    <a class="button tag"><?=$tag?></a>
+                                <? } ?>
+                            </div>
+                            <h1>
+                                <a href="profile.php?id=<?=$comment['user_id']?>"><?=$comment["user_name"]?></a>
+                                <span><?=$comment["user_title"]?></span>
+                            </h1>
+                            <p><?=$comment["comment"]?></p>
+                            <time><?=$comment["date_posted"]?></time>
+                            <div class="clear"></div>
+                        </div>
                         <div class="arrow left-top">
                             <div class="blocker"></div>
                             <div class="pointer"></div>
                         </div>
                     </div>
-                    <div class="tags">
-                        <? $tags = explode(',', $comment['tags']);
-                        foreach($tags as $tag) { ?>
-                            <a class="button tag"><?=$tag?></a>
-                        <? } ?>
-                    </div>
+                    
                 </div>
                 
                 <? } ?>
-                <div class="hr"><h3><span>New Comment</span></h3></div>
+                <div class="hr text"><h3><span>New Comment</span></h3></div>
                 <? if(User::isLoggedIn()) { ?>
                 <form method="post" action="project.php?id=<?=$id?>">
                     <p>Choose some tags to accompany your comment:</p>
