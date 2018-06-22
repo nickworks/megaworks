@@ -34,9 +34,10 @@ function endPage(){
                     <li><a class="login" href="login.php">Login</a></li>
                 <? } ?>
                 <li class="spacer"></li>
-                <li><a href="#">Discord</a> </li>
-                <li><a href="#">Youtube</a></li>
-                <li><a href="#">Facebook</a></li>
+                <li><a class="discord" href="#"><span class="hide">Discord</span></a> </li>
+                <li><a class="youtube" href="#"><span class="hide">Youtube</span></a></li>
+                <li><a class="facebook" href="#"><span class="hide">Facebook</span></a></li>
+                <li><a class="steam" href="#"><span class="hide">Steam</span></a></li>
             </ul>
         </nav>
         <div class="hr"><h3></h3></div>

@@ -126,17 +126,13 @@ body.login nav.main a.login
     clear:both;
     
 }
-
 footer.main {
-       
-  
     width:100%;
     height:55px;
     background:#FFF;
     box-shadow:1px 1px 10px #000;
     min-width:480px;
     z-index:9999;
-    
 }
 
 .bubble {
@@ -388,6 +384,9 @@ footer.footer ul li.spacer {
 }
 footer.footer ul li {
     padding:0 10px;
+    min-width:16px;
+    text-align:center;
+    position:relative; /* this allows <a> positioning */
 }
 footer.footer {
     padding:50px 20px;
@@ -420,6 +419,22 @@ body.login footer.footer a.login{
 }
 .copyright {
     margin:20px;
+}
+a.discord, a.facebook, a.youtube, a.steam {
+    display:inline-block;
+    background:url(../imgs/discord.ico);
+    width:16px;
+    height:16px;
+    position:absolute;
+    left:0;
+    bottom:0;
+}
+a.discord { background:url(../imgs/icon-discord.png); }
+a.facebook { background:url(../imgs/icon-facebook.png); }
+a.youtube { background:url(../imgs/icon-youtube.png); }
+a.steam { background:url(../imgs/icon-steam.png); }
+a .hide {
+    display:none;
 }
 .like-button {
     margin:0 5px 5px 0;
