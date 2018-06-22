@@ -45,6 +45,9 @@ nav.main ul a {
     text-decoration:none;
     color:#9c9c9c;
 }
+nav.main ul li:last-child{
+	padding-right: 30px;
+}
 aside .split {
     clear:both;
     padding:15px 0;
@@ -459,11 +462,20 @@ body.login footer.footer a.login{
     color:#fff;
     text-decoration:underline;
 }
+.formHR{
+    margin: 0px;
+    border-bottom:1px solid #444;
+    padding:0;
+    clear:both;
+}
 .hr {
     border-bottom:1px solid #444;
     margin:0px 20px;
     padding:0;
     clear:both;
+}
+#form{
+    margin: 0;
 }
 .copyright p {
     margin:0 10px;
@@ -486,6 +498,9 @@ a.youtube { background:url(../imgs/icon-youtube.png); }
 a.steam { background:url(../imgs/icon-steam.png); }
 a .hide {
     display:none;
+}
+button{
+    cursor: pointer;
 }
 .like-button {
     margin:0 5px 5px 0;

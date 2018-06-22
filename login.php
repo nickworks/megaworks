@@ -26,8 +26,8 @@ beginPage("login", "styles/login.css");
 mainMenu();
 ?>
 
-<div id="login">
-        
+<div>
+        <div id="login">
             <section class="left">
                 <h1>Login</h1>
                 <form class="login" action="login.php?redirect=<?=htmlentities($redirect)?>" method="post">
@@ -58,9 +58,11 @@ mainMenu();
                     </a>
                 </div>
             </section>
+    </div>
         
+    <div class="formHR"></div>
     
 <footer></footer>
-        </div>
+</div>
 
 <? endPage(); ?> 

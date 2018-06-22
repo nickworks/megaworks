@@ -1,6 +1,4 @@
-body {
-    background:#fff;
-}
+
 #signup {
     display:flex;
     top: 500px;
@@ -103,6 +101,10 @@ body {
         position: relative;
 }
 
+.input{
+    width:204px;
+    margin: auto;
+}
 
 
 .errorMessage {
