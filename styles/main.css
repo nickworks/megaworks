@@ -118,6 +118,10 @@ body.login nav.main a.login
     width:66%;
     float:left;
 }
+.content > section {
+    clear:both;
+}
+
 .content .hr {
     border-bottom:1px solid #CCC;
     margin:0 auto 20px;

@@ -86,8 +86,7 @@ mainMenu();
                 </div>
             </aside>
             <section id="allProjectsSection">
-                <h3 id="allProjects">All Projects</h3>
-                <div class="hr"></div>
+                <div class="hr text"><h3><span>All Projects</span></h3></div>
                 <div class="more">
                     <? 
                     doThingMany(16, "addThumbnail", array("imgs/placeholder-gallery-image.png", "Project Name"));
