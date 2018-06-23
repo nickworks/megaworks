@@ -46,6 +46,9 @@ nav.main ul a {
     text-decoration:none;
     color:#9c9c9c;
 }
+nav.main ul li:last-child{
+	padding-right: 30px;
+}
 aside .split {
     clear:both;
     padding:15px 0;
