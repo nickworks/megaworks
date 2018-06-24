@@ -14,7 +14,7 @@ mainMenu();
         </div>
         <div class="content">
             <nav class="secondary">
-                <a href="#">Our Bylaws</a>
+                <a href="bylaws.php">Our Bylaws</a>
                 <a href="#">Our Event Calendar</a>
             </nav>
             <div class="flex">
