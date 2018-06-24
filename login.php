@@ -52,6 +52,7 @@ mainMenu();
             <section class="right">
                 <div class="centerLine"></div>
                 <h1>Don't have an account?</h1>
+                <h2>Signing up is easy!</h2>
                 <div class="button" id="create-account">
                     <a href="signup.php">
                         <button id="CreateAnAccount" href="signup.php">Create an account</button>

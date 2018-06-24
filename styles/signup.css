@@ -3,6 +3,11 @@ p{
     padding-bottom: 20px;
     
 }
+p.desc{
+    text-align: left;
+    vertical-align: middle;
+    color: #aaa;
+}
 #signup {
     display:flex;
     top: 500px;

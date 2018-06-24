@@ -36,6 +36,7 @@ function endPage(){
                     <li><a href="logout.php">Sign Out</a></li>
                 <? } else { ?>
                     <li><a class="login" href="login.php">Login</a></li>
+                    <li><a class="signup" href="signup.php">Sign Up</a></li>
                 <? } ?>
                 <li>|</li>
                 <li><a id="feedback" href="https://github.com/nickworks/megaworks/issues">Leave Feedback</a> </li>

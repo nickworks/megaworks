@@ -67,8 +67,13 @@ mainMenu();
                     </section>
                     
                     <section class="right">
-                    <h1></h1>
-                        <p>Lorem ipsum dolor sit amet, mauris placerat ac sit cras, suspendisse convallis metus nonummy sapien, arcu conubia at, felis lectus, consectetuer lacus tempor.</p>
+                    <h1>Who are you?</h1>
+                        <p class="desc">Let the world know who is behind the brilliant work shared on this site!
+                        <br><br>
+                        Username only allows alphanumeric characters. 
+                        <br><br>
+                        All fields allow a maximum of ?? characters.                        
+                        </p>
                     </section>
                     
                     
@@ -84,7 +89,7 @@ mainMenu();
                     </section>  
                     <section class="right">
                         <h1></h1>
-                        <p>Are you a Programmer? Artist? Gamer? Dancer? Alien? TELL US ALREADY!</p>
+                        <p class="desc">Are you a Programmer? Artist? Gamer? Dancer? Alien? TELL US ALREADY!</p>
                     </section>
                 </div>
                 
@@ -99,8 +104,10 @@ mainMenu();
                             <input type ="text" id ="email" name="user-email">
                     </section>
                     <section class="right">
-                        <h1></h1>
-                        <p>Lorem ipsum dolor sit amet, mauris placerat ac sit cras, suspendisse convallis metus nonummy sapien, arcu conubia at, felis lectus, consectetuer lacus tempor.</p>
+                        <h1>How can we reach you?</h1>
+                        <p class="desc">We need your email for account verification purposes and notifications if you chose to opt in.
+                      
+                        </p>
                     </section>
                 </div>
                 
@@ -115,8 +122,10 @@ mainMenu();
                             <input type ="password" id ="password" name="user-password"> 
                     </section>
                     <section class="right">
-                        <h1></h1>
-                        <p>Lorem ipsum dolor sit amet, mauris placerat ac sit cras, suspendisse convallis metus nonummy sapien, arcu conubia at, felis lectus, consectetuer lacus tempor.</p>
+                        <h1>Don't be lazy!</h1>
+                        <p class="desc">Choose a strong, complex, but easy to remember password.<br><br>
+                        It is best to use a mixture of capitals, numbers, and symbols.
+                        </p>
                     </section>
                 </div>
                 <div id="divider"></div>
