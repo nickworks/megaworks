@@ -13,7 +13,7 @@ mainMenu();
         <div class="content">
             <nav class="secondary">
                 <a href="https://www.facebook.com/groups/31875193841/">Our Facebook</a>
-                <a href="https://discordapp.com/">Our Discord</a>
+                <a href="https://discord.gg/jySFz6V">Our Discord</a>
             </nav>
 
             <iframe src="https://discordapp.com/widget?id=223170046019633162&theme=dark" width="450" height="500" allowtransparency="true" frameborder="0"></iframe>

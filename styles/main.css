@@ -469,7 +469,8 @@ body.projects footer.footer a.projects,
 body.events footer.footer a.events,
 body.home footer.footer a.profile,
 body.login footer.footer a.login,
-body.signup footer.footer a.signup{
+body.signup footer.footer a.signup,
+body.bylaws footer.footer a.bylaws{
     color:#fff;
     text-decoration:underline;
 }
