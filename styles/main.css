@@ -367,6 +367,9 @@ a.button.tag, .tag-picker label {
     text-shadow:none;
     color:#000;
 }
+.comment a.button.flagged{
+    background:#F00;
+}
 .comment a.button.tag {
     background:#FFF;
     float:right;
