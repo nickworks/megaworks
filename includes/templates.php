@@ -28,7 +28,7 @@ function endPage(){
             <ul>
                 <li><a class="about" href="about.php">About</a></li>
                 <li><a class="projects" href="projects.php">Projects</a></li>
-                <li><a class="talk" href="talk.php">Talk</a></li>
+                <li><a class="talk" href="talk.php">Community</a></li>
                 <li><a class="events" href="events.php">Events</a> </li>
                 <li>|</li>
                 <li><a class="bylaws" href="bylaws.php">Bylaws</a></li>
@@ -70,7 +70,7 @@ $showProfile = User::isLoggedIn();
     <ul>
         <li><a class="about" href="about.php">About</a></li>
         <li><a class="projects" href="projects.php">Projects</a></li>
-        <li><a class="talk" href="talk.php">Talk</a></li>
+        <li><a class="talk" href="talk.php">Community</a></li>
         <li><a class="events" href="events.php">Events</a></li>
         <li class="spacer"></li>
         <? if($showProfile) { ?>

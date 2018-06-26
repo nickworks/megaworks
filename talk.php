@@ -7,17 +7,17 @@ mainMenu();
 ?>
 
 <div class="tray">
-            <h2>Join us on Social Media!</h2>
-            <p>Lorem ipsum dolor sit amet, mauris placerat ac sit cras, suspendisse convallis metus nonummy sapien, arcu conubia at, felis lectus, consectetuer lacus tempor.</p>
+            <h2>Join our community groups!</h2>
+            <p>You can find our community all over the place! Follow us on Facebook, chat it up on Discord, or "research" games with others on our Steam group!</p>
+            <a href="https://www.facebook.com/groups/31875193841/">Facebook Group</a>
+            <a href="https://discord.gg/jySFz6V">Discord Server</a>
+            
+            <div class="discordEmbed"><iframe src="https://discordapp.com/widget?id=223170046019633162&theme=dark" width="300px" height="600" allowtransparency="true" frameborder="0"></iframe></div>
         </div>
-        <div class="content">
-            <nav class="secondary">
-                <a href="https://www.facebook.com/groups/31875193841/">Our Facebook</a>
-                <a href="https://discord.gg/jySFz6V">Our Discord</a>
-            </nav>
-
-            <iframe src="https://discordapp.com/widget?id=223170046019633162&theme=dark" width="450" height="500" allowtransparency="true" frameborder="0"></iframe>
+            <div class="formHR"></div>
+            
           
             <footer></footer>
-        </div>
+        
+
 <? endPage(); ?>   
