@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 20, 2018 at 09:22 PM
+-- Generation Time: Jun 28, 2018 at 06:04 PM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.1
 
@@ -478,8 +478,7 @@ CREATE TABLE `users` (
   `first` varchar(32) NOT NULL,
   `last` varchar(32) NOT NULL,
   `email` varchar(32) NOT NULL,
-  `hash` varchar(32) NOT NULL,
-  `salt` int(11) NOT NULL,
+  `hash` varchar(64) NOT NULL,
   `date_signup` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `is_approved` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Whether or not the user has been approved.',
   `is_admin` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Whether or not the user has admin rights.',
@@ -493,12 +492,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `alias`, `title`, `first`, `last`, `email`, `hash`, `salt`, `date_signup`, `is_approved`, `is_admin`, `is_mod`, `bio`, `resume`, `avatar`) VALUES
-(1, 'Nick', '', 'Nick', 'Pattison', 'patt41@ferris.edu', 'af3a0b99a3269b516a848b840fdf4c36', 1234, '2018-02-14 13:33:27', 1, 0, 0, '', '', ''),
-(2, '', '', '', '', 'nick@ferris.edu', 'bc4586081f58bd9127939f420a298dc0', 52969, '2018-02-14 13:33:27', 0, 0, 0, '', '', ''),
-(4, '', '', '', '', 'collin@ferris.edu', '5f9449ba01fb3bf921996d83dd46e9de', 17704, '2018-02-14 13:33:27', 0, 0, 0, '', '', ''),
-(5, '', '', '', '', 'collin@ferris.edu', 'ef926983fef6f9c7f1207289ac8a0331', 21318, '2018-02-14 13:33:27', 0, 0, 0, '', '', ''),
-(7, '', '', '', '', 'ethan@ferris.edu', '93a024e69eb89715828f6bc799ea966d', 19442, '2018-02-14 13:33:27', 0, 0, 0, '', '', '');
+INSERT INTO `users` (`id`, `alias`, `title`, `first`, `last`, `email`, `hash`, `date_signup`, `is_approved`, `is_admin`, `is_mod`, `bio`, `resume`, `avatar`) VALUES
+(1, 'Nick', 'DAGD Faculty', 'Nick', 'Pattison', 'patt41@ferris.edu', '$2y$10$9Bv8NMeF46Z4yBD6sdt11ua61FAUZxBIRTMgy/we3buGSoOcZf./O', '2018-02-14 13:33:27', 1, 0, 0, 'This is my bio!!', '', '');
 
 --
 -- Indexes for dumped tables

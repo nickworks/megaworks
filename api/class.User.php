@@ -15,7 +15,6 @@ class User {
         if($uid == 0) return;
         
         unset($user['hash']);
-        unset($user['salt']);
 
         User::sessionStart();
         $_SESSION['userid'] = $uid;
@@ -140,7 +139,6 @@ class User {
             'last' =>  $last,
             'email' => $email,
             'hash' => $hash,
-            'salt' => $salt,
             'is_approved' => false
         ];
 
