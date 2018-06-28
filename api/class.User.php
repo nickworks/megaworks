@@ -68,6 +68,15 @@ class User {
         $user = User::current();
         return (!empty($user));
     }
+    static function avatar($user):string{
+        $default = "imgs/placeholder-avatar1.jpg";
+        $email = "";
+        if(is_string($user)) $email = $user;
+        if(is_array($user) && array_key_exists('email', $user)) $email = $user['email'];
+        if(empty($email)) return $default;
+        $url = "media/avatars/$email.png";
+        return file_exists($url) ? $url : $default;
+    }
     static function isAdmin():bool {
         $user = User::current();
         if(!is_array($user)) return false;

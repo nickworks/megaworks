@@ -54,7 +54,7 @@ processCommentForm($id);
 //////////////////////////////////////////////// BEGIN PULLING DATA FROM DB:
 
 
-$comments = $db->query("SELECT u.alias AS 'user_name', u.title AS 'user_title', u.avatar AS 'user_avatar', c.*, GROUP_CONCAT(t.text) AS 'tags' FROM comments_projects c, comments_projects_tags j, tags_comments t, users u WHERE c.project_id=? AND t.id = j.tag_id AND j.comment_id = c.id AND u.id=c.user_id GROUP BY c.id", array($id));
+$comments = $db->query("SELECT u.alias AS 'user_name', u.title AS 'user_title', u.avatar AS 'user_avatar', u.email AS 'user_email', c.*, GROUP_CONCAT(t.text) AS 'tags' FROM comments_projects c, comments_projects_tags j, tags_comments t, users u WHERE c.project_id=? AND t.id = j.tag_id AND j.comment_id = c.id AND u.id=c.user_id GROUP BY c.id", array($id));
 
 $tags = $db->query("SELECT t.* FROM project_tags j, tags_projects t WHERE j.project_id=? AND j.tag_id = t.id;", array($id));
 
@@ -90,8 +90,8 @@ mainMenu();
                     </div>
                 </div>
                 <div class="creator">
-                    <div class="avatar"><img src="imgs/placeholder-avatar1.jpg"></div>
-                    <h2><a href='profile.php?id=<?=$creator['id']?>' ><?=$creator['first'].' '.$creator['last']?></a></h2>
+                    <div class="avatar"><img src="<?=User::avatar($creator)?>"></div>
+                    <h2><a href='profile.php?id=<?=$creator['id']?>' ><?=$creator['alias']?></a></h2>
                     <h3><?=$creator['title']?></h3>
                 </div>
             </article>
@@ -121,8 +121,7 @@ mainMenu();
                         <a href="#" class="button">Source Code</a>
                     </div>
                 </div>
-                
-                
+
                 <? if(!empty($project["license_id"])) { ?>
                 <div class="split">
                     <div>License</div>
@@ -168,21 +167,16 @@ mainMenu();
                 <? foreach($comments as $comment){  ?>
                 
                 <div class="comment">
-                    <div class="avatar">
-                        <? if (!empty($comment["user_avatar"])){ ?>
-                            <img src="<?=$comment["user_avatar"]?>">
-                        <? } else { ?>
-                            <img src="imgs/placeholder-avatar1.jpg">
-                        <? } ?>
-                    </div>
+                    <div class="avatar"><img src="<?=User::avatar($comment['user_email'])?>"></div>
                     <div class="bubble">
-                        
                         <div class="infront">
                             <div class="tags">
-                                <? $tags = explode(',', $comment['tags']);
-                                foreach($tags as $tag) { ?>
-                                    <a class="button tag"><?=$tag?></a>
-                                <? } ?>
+                                <?
+                                $tags = explode(',', $comment['tags']);
+                                foreach($tags as $tag) {
+                                    echo "<a class=\"button tag\">$tag</a>";
+                                }
+                                ?>
                             </div>
                             <h1>
                                 <a href="profile.php?id=<?=$comment['user_id']?>"><?=$comment["user_name"]?></a>
@@ -227,7 +221,7 @@ mainMenu();
                 <? } ?>
                 
             </section>
-            <footer>neat</footer>
+            <footer></footer>
             <script>
                 function swapThumb() {
                     var element = document.getElementById("thumb");
