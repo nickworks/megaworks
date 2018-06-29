@@ -3,6 +3,11 @@ p{
     padding-bottom: 20px;
     
 }
+p.desc{
+    text-align: left;
+    vertical-align: middle;
+    color: #aaa;
+}
 #signup {
     display:flex;
     top: 500px;
@@ -28,8 +33,11 @@ p{
 #signup h1 {
     font-size:18px;
     font-weight:normal;
+    text-align:left;    
+}
+
+#signup h1.pageHeader{
     text-align:center;
-    
 }
 
 #signup h2 {
@@ -63,7 +71,7 @@ p{
 }
 #signup .right{
     
-    width: 204px;    
+    width: 300px;    
     float: right;
     
 }
@@ -115,7 +123,7 @@ p{
 }
 
 .input{
-    width:450px;
+    width:550px;
     margin: auto;
 }
 #formDiv{

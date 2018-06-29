@@ -1,0 +1,16 @@
+.content{
+    display:flex;
+}
+.discordEmbed{
+    float:left;
+}
+.group1{
+    float:left;
+}
+.groupIcon{
+    height: 210px;
+    width: 210px;
+    border-radius:5px;
+    border: 1px solid black;
+    margin: 0 0 25px 25px;
+}

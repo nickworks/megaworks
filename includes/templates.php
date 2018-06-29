@@ -28,27 +28,31 @@ function endPage(){
             <ul>
                 <li><a class="about" href="about.php">About</a></li>
                 <li><a class="projects" href="projects.php">Projects</a></li>
-                <li><a class="talk" href="talk.php">Talk</a></li>
+                <li><a class="talk" href="talk.php">Community</a></li>
                 <li><a class="events" href="events.php">Events</a> </li>
+                <li>|</li>
+                <li><a class="bylaws" href="https://docs.google.com/document/d/1GaI0X1x5A0B0OwSkmx-xA56ebZ8_UZMd-PDjs18u9YQ/edit?usp=sharing">Bylaws</a></li>
+                <li><a id="feedback" href="https://github.com/nickworks/megaworks/issues">Leave Feedback</a> </li>
                 <li>|</li>
                 <? if($showProfile) { ?>
                     <li><a class="profile" href="profile.php">My Account</a></li>
                     <li><a href="logout.php">Sign Out</a></li>
                 <? } else { ?>
                     <li><a class="login" href="login.php">Login</a></li>
+                    <li><a class="signup" href="signup.php">Sign Up</a></li>
                 <? } ?>
-                <li>|</li>
-                <li><a id="feedback" href="https://github.com/nickworks/megaworks/issues">Leave Feedback</a> </li>
+                
+                
                 <li class="spacer"></li>                
-                <li><a class="discord" href="#"><span class="hide">Discord</span></a> </li>
-                <li><a class="youtube" href="#"><span class="hide">Youtube</span></a></li>
-                <li><a class="facebook" href="#"><span class="hide">Facebook</span></a></li>
-                <li><a class="steam" href="#"><span class="hide">Steam</span></a></li>
+                <li><a class="discord" href="https://discord.gg/jySFz6V" target="_blank"><span class="hide">Discord</span></a> </li>
+                <li><a class="youtube" href="https://youtu.be/cSGKClvHmrI" target="_blank"><span class="hide">Youtube</span></a></li>
+                <li><a class="facebook" href="https://www.facebook.com/groups/31875193841/" target="_blank"><span class="hide">Facebook</span></a></li>
+                <li><a class="steam" href="https://steamcommunity.com/groups/fsu-dagd" target="_blank"><span class="hide">Steam</span></a></li>
             </ul>
         </nav>
         <div class="hr"><h3></h3></div>
         <div class="copyright">
-            <p>Use of this site constitutes acceptance of our <a href="about.php">User Agreement</a> and <a href="about.php">Private Policy</a>. all rights reserved </p>
+            <p>Use of this site constitutes acceptance of our <a href="about.php">User Agreement</a> and <a href="about.php">Private Policy</a>. all rights reserved.</p>
         </div>
         </footer>
     </body>
@@ -66,7 +70,7 @@ $showProfile = User::isLoggedIn();
     <ul>
         <li><a class="about" href="about.php">About</a></li>
         <li><a class="projects" href="projects.php">Projects</a></li>
-        <li><a class="talk" href="talk.php">Talk</a></li>
+        <li><a class="talk" href="talk.php">Community</a></li>
         <li><a class="events" href="events.php">Events</a></li>
         <li class="spacer"></li>
         <? if($showProfile) { ?>

@@ -1,0 +1,32 @@
+#bylaws{
+    margin: 55px auto auto auto;
+    width: 100%;
+    background:#2b2b2b;
+    color: #fff;
+}
+#bylaws h2{
+    padding-left: 30px;
+    padding-top: 15px;
+}
+#bylaws h3{
+    padding-left: 30px;
+    margin-bottom: 5px;
+}
+#bylaws h4{
+    padding-left: 30px;
+    margin-bottom: 5px;
+}
+#bylaws h4.sec1{
+    margin-top: 5px;
+}
+#bylaws p{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 30px;
+    color:#aaa;
+}
+#bylaws ol{
+    color:#aaa;
+    padding-left: 80px;
+    margin-top: 0;
+}

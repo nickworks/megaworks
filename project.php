@@ -181,8 +181,12 @@ mainMenu();
                             <div class="tags">
                                 <? $tags = explode(',', $comment['tags']);
                                 foreach($tags as $tag) { ?>
+                                    <?if($tag =="Questionable Content" || $tag =="Possible Infringment"){ ?>
+                                    <a class="button flagged"><?=$tag?></a>
+                                    <? } else {?>
                                     <a class="button tag"><?=$tag?></a>
-                                <? } ?>
+                                <? }
+                                              } ?>
                             </div>
                             <h1>
                                 <a href="profile.php?id=<?=$comment['user_id']?>"><?=$comment["user_name"]?></a>
@@ -223,11 +227,11 @@ mainMenu();
                     <input type="submit">
                 </form>
                 <? } else { ?>
-                <p>To add a new comment, please sign in!</p>
+                <p>To add a new comment, please <a href="login.php">log in</a>!</p>
                 <? } ?>
                 
             </section>
-            <footer>neat</footer>
+            <footer></footer>
             <script>
                 function swapThumb() {
                     var element = document.getElementById("thumb");
