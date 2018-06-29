@@ -27,33 +27,35 @@ $title = $user["title"];
 $bio = $user["bio"];
 $resume = $user["resume"];
 
+/**
+ * This function creates a bunch of thumbnails.
+ * $projects    An array of projects.
+ */
+function thumbnails($projects){
+    foreach($projects as $project){
+        $image = "imgs/placeholder-gallery-image.png";
+        $title = $project['title'];
+        $id = $project['id'];
+        echo "<a class='thumbnail' href='project.php?id={$id}'>";
+        echo "<img src=\"{$image}\">";
+        if(!empty($title)) echo "<span class='title'>{$title}</span>"; 
+        echo "</a>";
+    }
+}
+
 // BUILD THE PAGE:
 beginPage("home", array("styles/profile.css"));
 mainMenu();
 ?>
-
         <div class="tray">
-            <div class="carasol">
-                <?
-                    foreach($projects as $project){
-                        $image = "imgs/placeholder-gallery-image.png";
-                        $title = $project['title'];
-                        echo "<div class='thumbnail'>";
-                        echo "<img src=\"{$image}\">";
-                        if(!empty($title)) echo "<h1>{$title}</h1>"; 
-                        echo "</div>";
-                    }
-                ?>
-            </div>
-        </div>
-        <div class="content">
             <article>
                 <div class="creator">
                     <div class="avatar"><img src="<?=$avatar ?>"></div>
-                    <h2><?=($first_name . " " . $last_name) ?></h2>
+                    <h2><?=$first_name?> <?=$last_name?> <em><?=$user['alias']?></em></h2>
                     <h3><?=$title ?></h3>
+                    <div class="clear"></div>
                 </div>
-                <div class="bubble top">
+                <div class="bubble">
                     <p><? echo $bio; ?></p>
                     <div class="arrow top-left">
                         <div class="blocker"></div>
@@ -91,20 +93,19 @@ mainMenu();
                     </div>
                 </div>
             </aside>
-            <section id="allProjectsSection">
+            <footer></footer>
+        </div>
+        <div class="content">
+            <h1>My Portfolio</h1>
+            <section>
+                <div class="hr text"><h3><span>My Faves</span></h3></div>
+                <? thumbnails($projects); ?>
+                <div class="clear"></div>
+            </section>
+            <section>
                 <div class="hr text"><h3><span>All Projects</span></h3></div>
-                <div class="more">
-                    <?
-                    foreach($projects as $project){
-                        $image = "imgs/placeholder-gallery-image.png";
-                        $title = $project['title'];
-                        echo "<div class='thumbnail'>";
-                        echo "<img src=\"{$image}\">";
-                        if(!empty($title)) echo "<h1>{$title}</h1>"; 
-                        echo "</div>";
-                    }
-                    ?>
-                </div>
+                <? thumbnails($projects); ?>
+                <div class="clear"></div>
             </section>
             <footer></footer>
         </div>
