@@ -9,7 +9,8 @@ $user_id = 1;
 
 $sql = "SELECT * FROM `users` WHERE id=?";
 $db = new CoolDB();
-$user_row = $db->query($sql, array($user_id));
+$user_rows = $db->query($sql, array($user_id));
+$user = $user_rows[0];
 
 $sql = "SELECT * FROM `profile_contacts` WHERE user_id=?";
 $db = new CoolDB();
@@ -20,12 +21,12 @@ $db = new CoolDB();
 $links_row = $db->query($sql, array($user_id));
 
 //STORE DATABASE DATA TO USEFUL VARS:
-$avatar = $user_row[0]["avatar"];
-$first_name = $user_row[0]["first"];
-$last_name = $user_row[0]["last"];
-$title = $user_row[0]["title"];
-$bio = $user_row[0]["bio"];
-$resume = $user_row[0]["resume"];
+$avatar = User::avatar($user);
+$first_name = $user["first"];
+$last_name = $user["last"];
+$title = $user["title"];
+$bio = $user["bio"];
+$resume = $user["resume"];
 
 // BUILD THE PAGE:
 beginPage("home", array("styles/profile.css"));
