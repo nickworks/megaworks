@@ -12,7 +12,7 @@ $id = intval(get("id"));
 if($id <= 0 || empty($id)) redirect(); // invalid is, so redirect
 
 $db = new CoolDB();
-$sql = "SELECT projects.*, licenses.title AS 'license_title', licenses.copy AS 'license_copy', licenses.link AS 'license_link' FROM projects, licenses WHERE projects.id = ? AND licenses.id = projects.license_id;";
+$sql = "SELECT p.*, COUNT(DISTINCT pl.user_id) AS 'likes', COUNT(DISTINCT pf.user_id) AS 'faves', l.title AS 'license_title', l.copy AS 'license_copy', l.link AS 'license_link' FROM projects p, licenses l, project_likes pl, project_faves pf WHERE p.id=? AND l.id=p.license_id AND pl.project_id=p.id AND pf.project_id=p.id;";
 
 $rows = $db->query($sql, array($id));
 if(count($rows) == 0) redirect(); // no rows were returned, so redirect
@@ -95,8 +95,8 @@ mainMenu();
             </article>
             <aside>
                 <div class="stats">
-                    <a class="button like">34 likes<span class="icon"></span></a>
-                    <a class="button fave">6 faves<span class="icon"></span></a>
+                    <a class="button like"><?=$project['likes']?> likes<span class="icon"></span></a>
+                    <a class="button fave"><?=$project['faves']?> faves<span class="icon"></span></a>
                     <div>240 views</div>
                     <div><?=count($comments)?> comments</div>
                 </div>
