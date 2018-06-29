@@ -15,13 +15,13 @@ if($id <= 0 || empty($id)) redirectToEvents();
 
 // creates a sql query to access the information for the desired page
 $event_sql = "SELECT * FROM `events` WHERE `id` = ?";
-$comment_sql = "SELECT * FROM `comments_events` WHERE `event_id` = ? ORDER BY `comments_events`.`date_posted` DESC";
 $event_links_sql = "SELECT * FROM `event_links` WHERE `event_id` = ?";
 $event_downloads_sql = "SELECT * FROM `event_downloads` WHERE `event_id` = ?";
 
 // grabs the information from the database
 $event = $db->query($event_sql, array($id));
-$comments = $db->query($comment_sql, array($id));
+$comments = $db->query("SELECT u.alias AS 'user_name', u.title AS 'user_title', u.avatar AS 'user_avatar', u.email AS 'user_email', c.* FROM comments_events c, users u WHERE c.event_id=? AND u.id=c.user_id", array($id));
+
 $event = $event[0];
 $event_links = $db->query($event_links_sql, array($id));
 $event_downloads = $db->query($event_downloads_sql, array($id));
@@ -144,10 +144,10 @@ mainMenu();
         </div>
     </section>
     <section>
-        <div class="hr"><h3><span>Comments</span></h3></div>
+        <div class="hr text"><h3><span>Comments</span></h3></div>
         <? 
         foreach ($comments as $comment) {
-            comment($comment['comment']);
+            comment($comment);
         }
         ?>
     </section>

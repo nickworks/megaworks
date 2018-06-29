@@ -6,6 +6,10 @@ function easyDate($mysql){
     return date('M d @ h:i a', strtotime($mysql));
 }
 
+function array_key($arr, $key){
+    return array_key_exists($key, $arr) ? $arr[$key] : '';
+}
+
 function beginPage(string $class = "", $css = null){
     
     if(is_string($css)) $css = array($css);
@@ -59,7 +63,6 @@ function endPage(){
 </html>
 <?}
 
-
 function mainMenu(){
 
 $showProfile = User::isLoggedIn();
@@ -97,20 +100,37 @@ function event(string $id, string $time, string $title, string $location, string
 </li>
 <?}
 
-function comment(string $comment){?>
+function comment(array $comment){
+
+$avatar = array_key($comment, 'user_email');
+$avatar = User::avatar($avatar);
+?>
 <div class="comment">
-    <div class="avatar">
-        <img src="imgs/placeholder-avatar1.jpg">
-    </div>
+    <div class="avatar"><img src="<?=$avatar?>"></div>
     <div class="bubble">
-        <p><?=$comment?></p>
+        <div class="infront">
+            <div class="tags">
+                <?
+                if(array_key_exists('tags', $comment)){
+                    $tags = explode(',', $comment['tags']);
+                    foreach($tags as $tag) {
+                        echo "<a class=\"button tag\">$tag</a>";
+                    }
+                }
+                ?>
+            </div>
+            <h1>
+                <a href="profile.php?id=<?=$comment['user_id']?>"><?=$comment["user_name"]?></a>
+                <span><?=$comment["user_title"]?></span>
+            </h1>
+            <p><?=$comment["comment"]?></p>
+            <time><?=easyDate($comment["date_posted"])?></time>
+            <div class="clear"></div>
+        </div>
         <div class="arrow left-top">
             <div class="blocker"></div>
             <div class="pointer"></div>
         </div>
     </div>
-</div>
-<?}
-
-
-?>
+    </div><!-- end comment -->
+<? } ?>

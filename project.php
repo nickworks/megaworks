@@ -152,34 +152,11 @@ mainMenu();
         <div class="content">
             <section>
                 <div class="hr text"><h3><span>Comments</span></h3></div>
-                <? foreach($comments as $comment){ ?> 
-                <div class="comment">
-                    <div class="avatar"><img src="<?=User::avatar($comment['user_email'])?>"></div>
-                    <div class="bubble">
-                        <div class="infront">
-                            <div class="tags">
-                                <?
-                                $tags = explode(',', $comment['tags']);
-                                foreach($tags as $tag) {
-                                    echo "<a class=\"button tag\">$tag</a>";
-                                }
-                                ?>
-                            </div>
-                            <h1>
-                                <a href="profile.php?id=<?=$comment['user_id']?>"><?=$comment["user_name"]?></a>
-                                <span><?=$comment["user_title"]?></span>
-                            </h1>
-                            <p><?=$comment["comment"]?></p>
-                            <time><?=easyDate($comment["date_posted"])?></time>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="arrow left-top">
-                            <div class="blocker"></div>
-                            <div class="pointer"></div>
-                        </div>
-                    </div>
-                </div><!-- end comment -->
-                <? } ?>
+                <?
+                foreach($comments as $comment){ 
+                    comment($comment);
+                }
+                ?>
             </section>
             <section>
                 <div class="hr text"><h3><span>New Comment</span></h3></div>
