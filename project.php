@@ -78,8 +78,6 @@ mainMenu();
             <div class="feature">
                 <img src="imgs/placeholder-gallery-image.png">
             </div>
-        </div>
-        <div class="content">
             <article>
                 <h1><?=$project["title"]?></h1>
                 <div class="bubble bottom">
@@ -97,19 +95,8 @@ mainMenu();
             </article>
             <aside>
                 <div class="stats">
-                    <?
-                    $likefave;
-                    ?>
-                    <button class="like-button" onclick="swapThumb()">34 likes<div id="thumb" <?
-                    $myLike;
-                                                                                   ?> ></div></button>
-                    <button class="like-button" onclick="swapHeart()">6 faves<div id="heart" <?
-                    $myFave;
-                                                                                  ?> ></div></button>
-                    <?
-                    //<div>34 likes</div>
-                    //<div>6 faves</div>
-                    ?>
+                    <a class="button like">34 likes<span class="icon"></span></a>
+                    <a class="button fave">6 faves<span class="icon"></span></a>
                     <div>240 views</div>
                     <div><?=count($comments)?> comments</div>
                 </div>
@@ -121,7 +108,6 @@ mainMenu();
                         <a href="#" class="button">Source Code</a>
                     </div>
                 </div>
-
                 <? if(!empty($project["license_id"])) { ?>
                 <div class="split">
                     <div>License</div>
@@ -161,11 +147,12 @@ mainMenu();
                     </div>
                 </div>
             </aside>
+            <footer></footer>
+        </div> <!-- end .tray -->
+        <div class="content">
             <section>
                 <div class="hr text"><h3><span>Comments</span></h3></div>
-                
-                <? foreach($comments as $comment){  ?>
-                
+                <? foreach($comments as $comment){ ?> 
                 <div class="comment">
                     <div class="avatar"><img src="<?=User::avatar($comment['user_email'])?>"></div>
                     <div class="bubble">
@@ -191,10 +178,10 @@ mainMenu();
                             <div class="pointer"></div>
                         </div>
                     </div>
-                    
-                </div>
-                
+                </div><!-- end comment -->
                 <? } ?>
+            </section>
+            <section>
                 <div class="hr text"><h3><span>New Comment</span></h3></div>
                 <? if(User::isLoggedIn()) { ?>
                 <form method="post" action="project.php?id=<?=$id?>">
@@ -219,24 +206,7 @@ mainMenu();
                 <? } else { ?>
                 <p>To add a new comment, please <a href="login.php">log in</a>!</p>
                 <? } ?>
-                
             </section>
             <footer></footer>
-            <script>
-                function swapThumb() {
-                    var element = document.getElementById("thumb");
-                    
-                    //INSERT INTO project_likes(user_id, project_id) VALUES(1, 5)
-                    
-                    if(element.classList.contains("like-activate"))element.classList.remove("like-activate");
-                    else element.classList.add("like-activate");
-                }
-                function swapHeart() {
-                    var element = document.getElementById("heart");
-                    
-                    if(element.classList.contains("like-activate"))element.classList.remove("like-activate");
-                    else element.classList.add("like-activate");
-                }
-            </script>
-        </div>
+        </div> <!-- end .content -->
 <? endPage(); ?>

@@ -70,7 +70,6 @@ mainMenu();
                         <a href="<?=$resume ?>" class="button">Download</a>
                     </div>
                 </div>
-                <div class="hr"></div>
                 <div class="split">
                     <div>Contact Me</div>
                     <div>
@@ -81,7 +80,6 @@ mainMenu();
                         </ul>
                     </div>
                 </div>
-                <div class="hr"></div>
                 <div class="split">
                     <div>My Links</div>
                     <div>
