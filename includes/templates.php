@@ -31,7 +31,7 @@ function endPage(){
                 <li><a class="talk" href="talk.php">Community</a></li>
                 <li><a class="events" href="events.php">Events</a> </li>
                 <li>|</li>
-                <li><a class="bylaws" href="bylaws.php">Bylaws</a></li>
+                <li><a class="bylaws" href="https://docs.google.com/document/d/1GaI0X1x5A0B0OwSkmx-xA56ebZ8_UZMd-PDjs18u9YQ/edit?usp=sharing">Bylaws</a></li>
                 <li><a id="feedback" href="https://github.com/nickworks/megaworks/issues">Leave Feedback</a> </li>
                 <li>|</li>
                 <? if($showProfile) { ?>

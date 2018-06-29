@@ -78,6 +78,7 @@ body.login nav.main a.login
 
 #logo {
     background:url(../imgs/logo.png);
+    background-repeat:no-repeat;
     width:112px;
     height:29px;
     float:left;

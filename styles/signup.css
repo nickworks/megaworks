@@ -33,8 +33,11 @@ p.desc{
 #signup h1 {
     font-size:18px;
     font-weight:normal;
+    text-align:left;    
+}
+
+#signup h1.pageHeader{
     text-align:center;
-    
 }
 
 #signup h2 {
@@ -68,7 +71,7 @@ p.desc{
 }
 #signup .right{
     
-    width: 204px;    
+    width: 300px;    
     float: right;
     
 }
@@ -120,7 +123,7 @@ p.desc{
 }
 
 .input{
-    width:450px;
+    width:550px;
     margin: auto;
 }
 #formDiv{

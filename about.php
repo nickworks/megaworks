@@ -14,7 +14,7 @@ mainMenu();
         </div>
         <div class="content">
             <nav class="secondary">
-                <a href="bylaws.php">Our Bylaws</a>
+                <a href="https://docs.google.com/document/d/1GaI0X1x5A0B0OwSkmx-xA56ebZ8_UZMd-PDjs18u9YQ/edit?usp=sharing">Our Bylaws</a>
                 <a href="#">Our Event Calendar</a>
             </nav>
             <div class="flex">
