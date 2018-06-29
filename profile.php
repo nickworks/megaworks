@@ -1,7 +1,6 @@
 <?
 
 include_once "includes/templates.php";
-include_once "includes/profileFunctions.php";
 include_once "api/class.CoolDB.php";
 
 // GET USER DATA FROM DATABASES:
@@ -9,35 +8,42 @@ $user_id = 1;
 
 $sql = "SELECT * FROM `users` WHERE id=?";
 $db = new CoolDB();
-$user_row = $db->query($sql, array($user_id));
+$user = $db->query($sql, array($user_id))[0];
 
 $sql = "SELECT * FROM `profile_contacts` WHERE user_id=?";
-$db = new CoolDB();
-$contacts_row = $db->query($sql, array($user_id));
+$contacts = $db->query($sql, array($user_id));
 
 $sql = "SELECT * FROM `profile_links` WHERE user_id=?";
-$db = new CoolDB();
-$links_row = $db->query($sql, array($user_id));
+$links = $db->query($sql, array($user_id));
+
+$sql = "SELECT * FROM `projects` WHERE user_id=?";
+$projects = $db->query($sql, array($user_id));
 
 //STORE DATABASE DATA TO USEFUL VARS:
-$avatar = $user_row[0]["avatar"];
-$first_name = $user_row[0]["first"];
-$last_name = $user_row[0]["last"];
-$title = $user_row[0]["title"];
-$bio = $user_row[0]["bio"];
-$resume = $user_row[0]["resume"];
+$avatar = User::avatar($user);
+$first_name = $user["first"];
+$last_name = $user["last"];
+$title = $user["title"];
+$bio = $user["bio"];
+$resume = $user["resume"];
 
 // BUILD THE PAGE:
 beginPage("home", array("styles/profile.css"));
 mainMenu();
-
 ?>
 
         <div class="tray">
             <div class="carasol">
-                    <?
-                     doThingMany(5, "addThumbnail", array("imgs/placeholder-gallery-image.png"));
-                    ?>
+                <?
+                    foreach($projects as $project){
+                        $image = "imgs/placeholder-gallery-image.png";
+                        $title = $project['title'];
+                        echo "<div class='thumbnail'>";
+                        echo "<img src=\"{$image}\">";
+                        if(!empty($title)) echo "<h1>{$title}</h1>"; 
+                        echo "</div>";
+                    }
+                ?>
             </div>
         </div>
         <div class="content">
@@ -67,7 +73,7 @@ mainMenu();
                     <div>Contact Me</div>
                     <div>
                         <ul>
-                            <? foreach($contacts_row as $contact){ ?>
+                            <? foreach($contacts as $contact){ ?>
                                 <li><a href="<?=$contact["url"]?>" class="work"><?=$contact["text"]?></a></li>
                             <? } ?>
                         </ul>
@@ -78,8 +84,8 @@ mainMenu();
                     <div>My Links</div>
                     <div>
                         <ul>
-                            <? foreach($links_row as $link){ ?>
-                            <li><a href="<?=$link["url"]?>" class="work"><?=$link["text"]?></a></li>
+                            <? foreach($links as $link){ ?>
+                                <li><a href="<?=$link["url"]?>" class="work"><?=$link["text"]?></a></li>
                             <? } ?>
                         </ul>
                     </div>
@@ -88,8 +94,15 @@ mainMenu();
             <section id="allProjectsSection">
                 <div class="hr text"><h3><span>All Projects</span></h3></div>
                 <div class="more">
-                    <? 
-                    doThingMany(16, "addThumbnail", array("imgs/placeholder-gallery-image.png", "Project Name"));
+                    <?
+                    foreach($projects as $project){
+                        $image = "imgs/placeholder-gallery-image.png";
+                        $title = $project['title'];
+                        echo "<div class='thumbnail'>";
+                        echo "<img src=\"{$image}\">";
+                        if(!empty($title)) echo "<h1>{$title}</h1>"; 
+                        echo "</div>";
+                    }
                     ?>
                 </div>
             </section>

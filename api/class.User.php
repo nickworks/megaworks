@@ -15,16 +15,22 @@ class User {
         if($uid == 0) return;
         
         unset($user['hash']);
-        unset($user['salt']);
 
-        if(session_status() !== PHP_SESSION_ACTIVE) session_start();
+        User::sessionStart();
         $_SESSION['userid'] = $uid;
         User::$current = $user;
+    }
+    static function sessionStart(){
+        if(session_status() !== PHP_SESSION_ACTIVE)
+            session_start([
+                'cookie_httponly' => true,
+                'cookie_secure' => true
+            ]);
     }
     static function current(){
         if(!empty(User::$current)) return User::$current;
 
-        if(session_status() !== PHP_SESSION_ACTIVE) session_start();
+        User::sessionStart();
         //if(array_key_exists('user', $_SESSION)) return $_SESSION['user'];
         if(array_key_exists('userid', $_SESSION)) {
             $id = intval($_SESSION['userid']);
@@ -40,7 +46,7 @@ class User {
     }
     
     static function logout(){
-        if(session_status() !== PHP_SESSION_ACTIVE) session_start();
+        User::sessionStart();
         unset($_SESSION['userid']);
     }
     static function login(string $email, string $pass){
@@ -50,11 +56,9 @@ class User {
         if(count($res) < 1) return ["err" => "Couldn't find that email address."];
 
         $user = $res[0];
-
-        $salt = $user['salt'];
         $hash = $user['hash'];
 
-        if(md5($pass.$salt) !== $hash) return ["err" => "Password incorrect"];
+        if(!password_verify($pass, $hash)) return ["err" => "Password incorrect"];
 
         User::setCurrent($user);
 
@@ -63,6 +67,15 @@ class User {
     static function isLoggedIn():bool {
         $user = User::current();
         return (!empty($user));
+    }
+    static function avatar($user):string{
+        $default = "imgs/placeholder-avatar1.jpg";
+        $email = "";
+        if(is_string($user)) $email = $user;
+        if(is_array($user) && array_key_exists('email', $user)) $email = $user['email'];
+        if(empty($email)) return $default;
+        $url = "media/avatars/$email.png";
+        return file_exists($url) ? $url : $default;
     }
     static function isAdmin():bool {
         $user = User::current();
@@ -123,10 +136,9 @@ class User {
         if(!preg_match('/[^a-zA-Z0-9\s]/', $pass)) return ["err"=>"Your password must have at least one special character."];
         
         ///////////////////////////////////// MAKE HASH:
-
-        $salt = rand(10000, 99999);
-        $hash = md5($pass.$salt);
-
+        
+        $hash = password_hash($pass);
+        
         ///////////////////////////////////// INSERT:
 
         $values = [
@@ -136,7 +148,6 @@ class User {
             'last' =>  $last,
             'email' => $email,
             'hash' => $hash,
-            'salt' => $salt,
             'is_approved' => false
         ];
 
