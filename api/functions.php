@@ -1,12 +1,20 @@
 <?
 
+function easyDate($mysql){
+    return date('M d @ h:i a', strtotime($mysql));
+}
+function array_key($arr, $key){
+    return array_key_exists($key, $arr) ? $arr[$key] : '';
+}
 function get(string $str){
-    if(array_key_exists($str, $_GET)) return $_GET[$str];
-    return '';
+    $res=array_key($_GET, $str);
+    if (get_magic_quotes_gpc()) $res=stripslashes($res);
+    return $res;
 }
 function post(string $str){
-    if(array_key_exists($str, $_POST)) return $_POST[$str];
-    return '';
+    $res=array_key($_POST, $str);
+    if (get_magic_quotes_gpc()) $res=stripslashes($res);
+    return $res;
 }
 
 ?>

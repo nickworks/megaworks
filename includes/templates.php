@@ -2,14 +2,6 @@
 
 include_once "api/class.User.php";
 
-function easyDate($mysql){
-    return date('M d @ h:i a', strtotime($mysql));
-}
-
-function array_key($arr, $key){
-    return array_key_exists($key, $arr) ? $arr[$key] : '';
-}
-
 function beginPage(string $class = "", $css = null){
     
     if(is_string($css)) $css = array($css);

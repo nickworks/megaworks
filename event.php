@@ -3,33 +3,26 @@ include_once "api/functions.php";
 include_once "includes/templates.php";
 include_once "api/class.CoolDB.php";
 
-// redirects to events page
-function redirectToEvents() { header("location:events.php"); }
-
-$db = new CoolDB();
-
 // gets the event id its trying to access
 $id = intval(get("id"));
 // checks to see if the id exists/ if not redirects back to the events page
-if($id <= 0 || empty($id)) redirectToEvents();
-
-// creates a sql query to access the information for the desired page
-$event_sql = "SELECT * FROM `events` WHERE `id` = ?";
-$event_links_sql = "SELECT * FROM `event_links` WHERE `event_id` = ?";
-$event_downloads_sql = "SELECT * FROM `event_downloads` WHERE `event_id` = ?";
+if($id <= 0) header("location:events.php");
 
 // grabs the information from the database
-$event = $db->query($event_sql, array($id));
+$db = new CoolDB();
+$event = $db->query("SELECT * FROM `events` WHERE `id`=?", array($id))[0];
 $comments = $db->query("SELECT u.alias AS 'user_name', u.title AS 'user_title', u.avatar AS 'user_avatar', u.email AS 'user_email', c.* FROM comments_events c, users u WHERE c.event_id=? AND u.id=c.user_id", array($id));
+$event_links = $db->query("SELECT * FROM `event_links` WHERE `event_id` = ?", array($id));
+$event_downloads = $db->query("SELECT * FROM `event_downloads` WHERE `event_id` = ?", array($id));
 
-$event = $event[0];
-$event_links = $db->query($event_links_sql, array($id));
-$event_downloads = $db->query($event_downloads_sql, array($id));
+//print_r($comments); exit;
 
-// formatting the date
+// START DATETIME:
 $sd = new DateTime($event["date_start"]);
 $fsd = date_format($sd, 'M d, Y h:i');
 $psd = date_parse($fsd);
+
+// END DATETIME:
 $ed = new DateTime($event["date_end"]);
 $fed = date_format($ed, 'M d, Y h:i');
 $ped = date_parse($fed);
@@ -49,15 +42,14 @@ if($psd['year'] == $ped['year'] && $psd['month'] == $ped['month']&& $psd['day'] 
     $time = date_format($sd, 'gA')." - ".date_format($ed, 'gA');
 }
 
-//print_r($comments); exit;
-beginPage("events", "styles/event.css");
+beginPage("events");
 mainMenu();
 ?>
 <div class="tray">
-    <div class="feature">
-    </div>
-</div>
-<div class="content">
+    <article>
+        <h1><?=$event["title"]?></h1>
+        <div class="bubble"><div class="inner"><?=$event["description"]?></div></div>
+    </article>
     <aside>
         <div class="stats">
             <div>34 likes</div>
@@ -65,43 +57,27 @@ mainMenu();
             <div>240 views</div>
             <div><?=count($comments)?> comments</div>
         </div>
-        <div class="hr"><!--<h3><span>Downloads</span></h3>--></div>
-        <div class="split">
-            <div>Downloads</div>
-            <div>
-                 <? foreach ($event_downloads as $download) { ?>
-                    <li><a href="<?=$download["url"]?>" class="work"><?=$download["text"]?></a></li>
-                <?  } ?>
-            </div>
-        </div>
-        <div class="hr"><!--<h3><span>License</span></h3>--></div>
+        <div class="hr"></div>
         <div class="split">
             <div>Date</div>
-            <div>
-                <ul>
-                    <li><time><?=$mdy?></time></li>
-                    <li><time><?=$time?></time></li>
-                </ul>
-            </div>
+            <div><time><?=$mdy?><br><?=$time?></time></div>
         </div>
-        <div class="hr"><!--<h3><span>Attribution</span></h3>--></div>
         <div class="split">
             <div>Location</div>
             <div>
-                <ul>
-                    <?
-                    if (empty($event['location_link'])) {
-                        ?><li class="work"><?=$event['location']?></li><?
-                    } else {
-                         ?><li><a href="<?=$event['location_link']?>" class="work"><?=$event['location']?></a></li><?
-                    }
-                    ?>
-                    <li><address><?=$event['address'].","?></address></li>
-                    <li><address><?=$event['city_state_zip']?></address></li>
-                </ul>
+                <?
+                if (empty($event['location_link'])) {
+                    echo $event['location'];
+                } else {
+                    echo '<a href="'.$event['location_link'].'" class="work">';
+                    echo $event['location'];
+                    echo '</a>';
+                }
+                echo "<address>".$event['address'].",<br>";
+                echo $event['city_state_zip']."</address>";
+                ?>
             </div>
         </div>
-        <div class="hr"><!--<h3><span>Tags</span></h3>--></div>
         <div class="split">
             <div>Links</div>
             <div>
@@ -112,45 +88,24 @@ mainMenu();
                 </ul>
             </div>
         </div>
+        <div class="split">
+            <div>Downloads</div>
+            <div>
+                 <? foreach ($event_downloads as $download) { ?>
+                    <li><a href="<?=$download["url"]?>" class="work"><?=$download["text"]?></a></li>
+                <?  } ?>
+            </div>
+        </div>
     </aside>
-    <section>
-        <div class="description">
-            <h1><?=$event["title"]?></h1>
-            <article>
-                <?=$event["description"]?>
-            </article>
-        </div>
-    </section>
-    <section>
-        <div class="rsvp">
-            <h1>RSVP</h1>
-            <form>
-                <div>
-                    <h1>Your Name</h1>
-                    <input type="text">
-                </div>
-                <div>
-                    <h1>Additional People</h1>
-                    <input type="text">
-                </div>
-                <div>
-                    <h1>Special Notes (allergies, accomidations, etc)</h1>
-                    <input type="text">
-                </div>
-                <div>
-                    <button>Submit RSVP</button>
-                </div>
-            </form>
-        </div>
-    </section>
-    <section>
-        <div class="hr text"><h3><span>Comments</span></h3></div>
-        <? 
-        foreach ($comments as $comment) {
-            comment($comment);
-        }
-        ?>
-    </section>
+    <footer></footer>
+</div>
+<div class="content">
+    <div class="hr text"><h3><span>Comments</span></h3></div>
+    <? 
+    foreach ($comments as $comment) {
+        comment($comment);
+    }
+    ?>
   <footer></footer>
 </div>
 <? endPage(); ?> 
