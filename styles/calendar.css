@@ -1,0 +1,66 @@
+.month .title {
+    font-size:16px;
+    text-align: center;
+    padding:5px 0;
+    line-height:20px;
+}
+.month .title em {
+    font-style:italic;
+    color:#555;
+    font-weight:normal;
+}
+.month .title a {
+    text-decoration:none;
+    padding:0 10px;
+    color:#006d96;
+    font-size:20px;
+}
+.month .title a:hover {
+    color:#FFF;
+}
+.week {
+    display: flex;
+    flex-direction: row;
+}
+.week > * {
+    flex-grow:1;
+}
+.week.head .day{
+    font-size:8px;
+    text-align:center;
+    color:#CCC;
+    min-height:auto;
+    background:#555;
+    padding:5px;
+}
+.week .day {
+    color:#666;
+    min-width:100px;
+    min-height:20px;
+    font-size:9px;
+    text-align:right;
+    background:#444;
+    margin:1px;
+    padding:5px 5px 10px;
+}
+.week .day.empty {
+    background:#383838;
+}
+.week .day.today {
+    
+}
+.week .day.special {
+    color:#fff;
+    background:#006d96;
+    text-shadow:0px 0px 5px rgba(0, 0, 0, .5)
+}
+.week .day a {
+    display:block;
+    text-align:center;
+    text-decoration:none;
+    padding:5px 0;
+    color:rgba(255, 255, 255, .5);
+}
+.week .day a:hover {
+    color:#FFF;
+}
