@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 28, 2018 at 06:04 PM
+-- Generation Time: Jul 01, 2018 at 08:25 PM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.1
 
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `mega`
@@ -31,7 +31,7 @@ CREATE TABLE `announcements` (
   `id` int(11) NOT NULL,
   `title` int(64) NOT NULL,
   `copy` text NOT NULL,
-  `date_publish` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_publish` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -46,7 +46,7 @@ CREATE TABLE `comments_announcements` (
   `id` int(11) NOT NULL,
   `announcement_id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
-  `date_posted` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_posted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `comment` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -61,7 +61,7 @@ CREATE TABLE `comments_events` (
   `id` int(11) NOT NULL,
   `event_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `date_posted` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_posted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `comment` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -70,18 +70,18 @@ CREATE TABLE `comments_events` (
 --
 
 INSERT INTO `comments_events` (`id`, `event_id`, `user_id`, `date_posted`, `comment`) VALUES
-(1, 3, 1, '2018-03-02 15:09:50', 'I can\'t wait for this! I\'m so excited'),
-(2, 3, 1, '2018-03-02 15:09:50', 'This is going to be great!'),
-(3, 2, 1, '2018-03-02 15:49:54', 'Yay!!'),
-(4, 2, 1, '2018-03-02 15:49:54', 'Woo!'),
-(5, 1, 1, '2018-03-02 15:50:41', 'I can\'t believe this is happening!'),
-(6, 1, 1, '2018-03-02 15:50:41', 'This sucks...'),
-(7, 3, 1, '2018-03-02 15:52:53', 'I hate this'),
-(8, 4, 1, '2018-03-02 15:53:47', 'This could be fun'),
-(9, 4, 1, '2018-03-02 15:53:47', ''),
-(10, 4, 1, '2018-03-02 15:54:01', 'It\'s not going to be'),
-(11, 5, 1, '2018-03-02 15:54:36', 'I can\'t wait!'),
-(13, 5, 1, '2018-03-02 15:54:54', 'Me either!');
+(1, 3, 1, '2018-03-02 20:09:50', 'I can\'t wait for this! I\'m so excited'),
+(2, 3, 1, '2018-03-02 20:09:50', 'This is going to be great!'),
+(3, 2, 1, '2018-03-02 20:49:54', 'Yay!!'),
+(4, 2, 1, '2018-03-02 20:49:54', 'Woo!'),
+(5, 1, 1, '2018-03-02 20:50:41', 'I can\'t believe this is happening!'),
+(6, 1, 1, '2018-03-02 20:50:41', 'This sucks...'),
+(7, 3, 1, '2018-03-02 20:52:53', 'I hate this'),
+(8, 4, 1, '2018-03-02 20:53:47', 'This could be fun'),
+(9, 4, 1, '2018-03-02 20:53:47', ''),
+(10, 4, 1, '2018-03-02 20:54:01', 'It\'s not going to be'),
+(11, 5, 1, '2018-03-02 20:54:36', 'I can\'t wait!'),
+(13, 5, 1, '2018-03-02 20:54:54', 'Me either!');
 
 -- --------------------------------------------------------
 
@@ -94,7 +94,7 @@ CREATE TABLE `comments_projects` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
-  `date_posted` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_posted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `comment` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -103,12 +103,12 @@ CREATE TABLE `comments_projects` (
 --
 
 INSERT INTO `comments_projects` (`id`, `user_id`, `project_id`, `date_posted`, `comment`) VALUES
-(1, 1, 1, '2018-02-23 13:10:24', 'This project sucks. Get good.'),
-(2, 1, 1, '2018-02-23 13:43:38', 'This is awesome!!!!'),
-(9, 1, 1, '2018-02-27 22:49:50', 'This is a test.'),
-(10, 1, 1, '2018-02-27 22:52:10', 'This is a test.'),
-(11, 1, 1, '2018-02-27 22:52:28', 'This is a test.'),
-(12, 1, 1, '2018-02-27 23:15:25', 'So does this work now?');
+(1, 1, 1, '2018-02-23 18:10:24', 'This project sucks. Get good.'),
+(2, 1, 1, '2018-02-23 18:43:38', 'This is awesome!!!!'),
+(9, 1, 1, '2018-02-28 03:49:50', 'This is a test.'),
+(10, 1, 1, '2018-02-28 03:52:10', 'This is a test.'),
+(11, 1, 1, '2018-02-28 03:52:28', 'This is a test.'),
+(12, 1, 1, '2018-02-28 04:15:25', 'So does this work now?');
 
 -- --------------------------------------------------------
 
@@ -144,8 +144,8 @@ INSERT INTO `comments_projects_tags` (`id`, `comment_id`, `tag_id`) VALUES
 DROP TABLE IF EXISTS `events`;
 CREATE TABLE `events` (
   `id` int(11) NOT NULL,
-  `date_start` datetime NOT NULL,
-  `date_end` datetime NOT NULL,
+  `date_start` timestamp NOT NULL,
+  `date_end` timestamp NOT NULL,
   `title` varchar(64) NOT NULL,
   `description` text NOT NULL,
   `location` varchar(128) NOT NULL,
@@ -160,11 +160,11 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`id`, `date_start`, `date_end`, `title`, `description`, `location`, `location_link`, `address`, `city_state_zip`, `image`) VALUES
-(1, '2018-03-03 12:00:00', '2018-03-03 16:00:00', 'Game Jam', 'We are going to build a game!', 'Ferris State University', 'https://ferris.edu/', '1201 S State St', 'Big Rapids, MI 49307', '../imgs/bulldog.jpg'),
-(2, '2018-04-06 13:00:00', '2018-04-08 13:00:00', '48 Hour Game Jam', 'Come build a game with us! 48 Hours to build a game. Topic released on start of event.', 'Ferris State University', 'https://ferris.edu/', '1201 S State St', 'Big Rapids, MI 49307', '../imgs/placeholder-event.jpg'),
-(3, '2018-04-11 13:00:00', '2018-05-14 13:00:00', 'Another Game Jam', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Ferris State University', 'https://ferris.edu/', '1201 S State St', 'Big Rapids, MI 49307', '../imgs/bulldog.jpg'),
-(4, '2018-03-08 13:00:00', '2018-03-08 16:00:00', 'Board Game Night!', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Ferris State University', 'https://ferris.edu/', '1201 S State St', 'Big Rapids, MI 49307', '../imgs/bulldog.jpg'),
-(5, '2018-06-06 15:00:00', '2018-06-06 18:00:00', 'Pizza Party!', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Ferris State University', 'https://ferris.edu/', '1201 S State St', 'Big Rapids, MI 49307', '../imgs/placeholder-event.jpg');
+(1, '2018-03-03 17:00:00', '2018-03-03 21:00:00', 'Game Jam', 'We are going to build a game!', 'Ferris State University', 'https://ferris.edu/', '1201 S State St', 'Big Rapids, MI 49307', '../imgs/bulldog.jpg'),
+(2, '2018-04-06 17:00:00', '2018-04-08 17:00:00', '48 Hour Game Jam', 'Come build a game with us! 48 Hours to build a game. Topic released on start of event.', 'Ferris State University', 'https://ferris.edu/', '1201 S State St', 'Big Rapids, MI 49307', '../imgs/placeholder-event.jpg'),
+(3, '2018-04-11 17:00:00', '2018-05-14 17:00:00', 'Another Game Jam', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Ferris State University', 'https://ferris.edu/', '1201 S State St', 'Big Rapids, MI 49307', '../imgs/bulldog.jpg'),
+(4, '2018-03-08 18:00:00', '2018-03-08 21:00:00', 'Board Game Night!', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Ferris State University', 'https://ferris.edu/', '1201 S State St', 'Big Rapids, MI 49307', '../imgs/bulldog.jpg'),
+(5, '2018-06-06 19:00:00', '2018-06-06 22:00:00', 'Pizza Party!', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Ferris State University', 'https://ferris.edu/', '1201 S State St', 'Big Rapids, MI 49307', '../imgs/placeholder-event.jpg');
 
 -- --------------------------------------------------------
 
@@ -326,10 +326,17 @@ INSERT INTO `project_attribution` (`id`, `project_id`, `work`, `creator`, `user_
 
 DROP TABLE IF EXISTS `project_faves`;
 CREATE TABLE `project_faves` (
-  `id` int(20) NOT NULL,
-  `user_id` int(35) NOT NULL,
-  `project_id` int(20) NOT NULL
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `project_faves`
+--
+
+INSERT INTO `project_faves` (`id`, `user_id`, `project_id`) VALUES
+(1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -380,10 +387,18 @@ INSERT INTO `project_imgs` (`id`, `project_id`, `url`, `description`, `ordering`
 
 DROP TABLE IF EXISTS `project_likes`;
 CREATE TABLE `project_likes` (
-  `id` int(20) NOT NULL,
-  `user_id` int(35) NOT NULL,
-  `project_id` int(20) NOT NULL
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `project_likes`
+--
+
+INSERT INTO `project_likes` (`id`, `user_id`, `project_id`) VALUES
+(1, 1, 1),
+(2, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -479,7 +494,7 @@ CREATE TABLE `users` (
   `last` varchar(32) NOT NULL,
   `email` varchar(32) NOT NULL,
   `hash` varchar(64) NOT NULL,
-  `date_signup` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_signup` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `is_approved` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Whether or not the user has been approved.',
   `is_admin` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Whether or not the user has admin rights.',
   `is_mod` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Whether or not the user has moderation rights.',
@@ -493,7 +508,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `alias`, `title`, `first`, `last`, `email`, `hash`, `date_signup`, `is_approved`, `is_admin`, `is_mod`, `bio`, `resume`, `avatar`) VALUES
-(1, 'Nick', 'DAGD Faculty', 'Nick', 'Pattison', 'patt41@ferris.edu', '$2y$10$9Bv8NMeF46Z4yBD6sdt11ua61FAUZxBIRTMgy/we3buGSoOcZf./O', '2018-02-14 13:33:27', 1, 0, 0, 'This is my bio!!', '', '');
+(1, 'Nick', 'DAGD Faculty', 'Nick', 'Pattison', 'patt41@ferris.edu', '$2y$10$9Bv8NMeF46Z4yBD6sdt11ua61FAUZxBIRTMgy/we3buGSoOcZf./O', '2018-02-14 18:33:27', 1, 0, 0, 'This is my bio!!', '', '');
 
 --
 -- Indexes for dumped tables
@@ -572,9 +587,21 @@ ALTER TABLE `project_attribution`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `project_faves`
+--
+ALTER TABLE `project_faves`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `project_imgs`
 --
 ALTER TABLE `project_imgs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `project_likes`
+--
+ALTER TABLE `project_likes`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -666,10 +693,20 @@ ALTER TABLE `projects`
 ALTER TABLE `project_attribution`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT for table `project_faves`
+--
+ALTER TABLE `project_faves`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `project_imgs`
 --
 ALTER TABLE `project_imgs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+--
+-- AUTO_INCREMENT for table `project_likes`
+--
+ALTER TABLE `project_likes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `project_tags`
 --
@@ -689,7 +726,7 @@ ALTER TABLE `tags_projects`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
