@@ -1,6 +1,8 @@
 <?
 include_once "class.CoolDB.php";
 
+User::sessionStart();
+
 /**
  * This class provides simple methods for interacting with user model.
  */
@@ -16,7 +18,6 @@ class User {
         
         unset($user['hash']);
 
-        User::sessionStart();
         $_SESSION['userid'] = $uid;
         User::$current = $user;
     }
@@ -30,7 +31,6 @@ class User {
     static function current(){
         if(!empty(User::$current)) return User::$current;
 
-        User::sessionStart();
         //if(array_key_exists('user', $_SESSION)) return $_SESSION['user'];
         if(array_key_exists('userid', $_SESSION)) {
             $id = intval($_SESSION['userid']);
@@ -46,7 +46,6 @@ class User {
     }
     
     static function logout(){
-        User::sessionStart();
         unset($_SESSION['userid']);
     }
     static function login(string $email, string $pass){
