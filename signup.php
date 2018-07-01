@@ -35,11 +35,7 @@ mainMenu();
 <div>
     
 <div id="signup">   
-    <? if ($email !== ''){ 
-        if($errors['err'] != ''){ ?>
-            <p class="errorMessage">Error: <?= $errors['err'] ?></p>
-        <? }
-    } ?>
+    
     
     <section class="form">
         <? if ($was_user_created) { ?>
@@ -49,7 +45,11 @@ mainMenu();
         <form class="signup" action="signup.php" method="post">
             
             <h1 class="pageHeader">Create an Account</h1>
-            
+            <? if ($email !== ''){ 
+                if($errors['err'] != ''){ ?>
+                <p class="errorMessage">Error: <?= $errors['err'] ?></p>
+                <? }
+            } ?>
             <div class="haveText" >
                     <p>Already have an account? <a class="linkText" href="login.php">Login!</a></p>
                 </div>
@@ -59,9 +59,9 @@ mainMenu();
                     <h1>Account Information</h1>
                     <section class="left">                        
                         <h2>Username</h2>
-                            <input type ="text" id ="username" name="user-name">
+                            <input type ="text" id ="username" name="user-name" value="<?if(isset($_POST["user-name"])) echo $_POST["user-name"]; ?>">
                         <h2>Title</h2>
-                        <input type ="text" id ="title" name="user-occupation"> 
+                        <input type ="text" id ="title" name="user-occupation" value="<?if(isset($_POST["user-occupation"])) echo $_POST["user-occupation"]; ?>"> 
                         
                     </section>
                     
@@ -83,9 +83,9 @@ mainMenu();
                     <h1>Personal Information</h1>
                     <section class="left">                         
                         <h2>First Name</h2>
-                            <input type ="text" id ="firstname" name="user-firstname">
+                            <input type ="text" id ="firstname" name="user-firstname" value="<?if(isset($_POST["user-firstname"])) echo $_POST["user-firstname"]; ?>">
                         <h2>Last Name</h2>
-                            <input type ="text" id ="lastname" name="user-lastname">
+                            <input type ="text" id ="lastname" name="user-lastname" value="<?if(isset($_POST["user-lastname"])) echo $_POST["user-lastname"]; ?>">
                     </section>  
                     <section class="right">
                         
@@ -100,7 +100,7 @@ mainMenu();
                     <section class="left">
                         
                         <h2>Email</h2>
-                            <input type ="text" id ="email" name="user-email1">
+                            <input type ="text" id ="email" name="user-email1" value="<?if(isset($_POST["user-email1"])) echo $_POST["user-email1"]; ?>">
                         <h2>Confirm Email</h2>
                             <input type ="text" id ="email" name="user-email2">
                     </section>
@@ -135,7 +135,11 @@ mainMenu();
                 <div class="button" id="confirm-signup">
                     <button type="submit">Create Account</button>
                 </div>
-                
+                <? if ($email !== ''){ 
+        if($errors['err'] != ''){ ?>
+            <p class="errorMessage">Error: <?= $errors['err'] ?></p>
+        <? }
+    } ?>
                 <div class="haveText" >
                     <p>Already have an account? <a class="linkText" href="login.php">Login!</a></p>
                 </div>
