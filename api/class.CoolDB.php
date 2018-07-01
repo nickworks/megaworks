@@ -37,7 +37,13 @@ class CoolDB {
      * Connects to the database, instantiating the PDO singleton if necessary.
      */
     function connect(){
-        if(empty(CoolDB::$pdo)) CoolDB::$pdo = new PDO(DB::HOST, DB::USER, DB::PASS);
+        if(empty(CoolDB::$pdo)) {
+            try {
+                CoolDB::$pdo = new PDO(DB::HOST, DB::USER, DB::PASS);
+            } catch (Exception $e){
+                die("uh oh! it looks like our database is down...");
+            }
+        }
         
         return CoolDB::$pdo ? true : false;
     }
