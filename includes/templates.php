@@ -15,6 +15,7 @@ function beginPage(string $class = "", $css = null){
     } ?>
     </head><body class="<? echo $class; ?>">
     <div id="bug-issues"><a href="https://github.com/nickworks/megaworks/issues" target="_blank">give us feedback</a></div>
+    
 <?}
 
 function endPage(){
@@ -58,7 +59,7 @@ function endPage(){
 function mainMenu(){
 
 $showProfile = User::isLoggedIn();
-
+$cURL = $_SERVER['REQUEST_URI'];
 ?>
 <nav class="main">
     <a href="index.php"><div id="logo"></div></a>
@@ -72,7 +73,7 @@ $showProfile = User::isLoggedIn();
             <li><a class="profile" href="profile.php">My Account</a></li>
             <li><a href="logout.php">Log Off</a></li>
         <? } else { ?>
-            <li><a class="login" href="login.php">Login</a></li>
+            <li><a class="login" href="login.php?<?echo urlencode($cURL);?>">Login <? echo urldecode($cURL); ?></a></li>
         <? } ?>
     </ul>
 </nav>
