@@ -1,6 +1,6 @@
 <?
 
-include_once "api/class.User.php";
+include_once "class.User.php";
 
 function beginPage(string $class = "", $css = null){
     

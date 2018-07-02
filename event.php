@@ -1,7 +1,7 @@
 <?
-include_once "api/functions.php";
+include_once "includes/functions.php";
 include_once "includes/templates.php";
-include_once "api/class.CoolDB.php";
+include_once "includes/class.CoolDB.php";
 
 // gets the event id its trying to access
 $id = intval(get("id"));

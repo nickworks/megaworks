@@ -1,5 +1,5 @@
 <?
-include "api/class.User.php";
+include "includes/class.User.php";
 
 User::logout();
 

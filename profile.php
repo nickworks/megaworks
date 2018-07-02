@@ -1,7 +1,7 @@
 <?
 
 include_once "includes/templates.php";
-include_once "api/class.CoolDB.php";
+include_once "includes/class.CoolDB.php";
 
 // GET USER DATA FROM DATABASES:
 $user_id = 1;
