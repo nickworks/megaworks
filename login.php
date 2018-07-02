@@ -4,6 +4,8 @@ include_once "includes/templates.php";
 include_once "api/class.User.php";
 include_once "api/functions.php";
 
+$cURL = $_SERVER['QUERY_STRING'];
+
 // GET FORM DATA:
 $mail = post("user-email");
 $pass = post("user-password");
@@ -58,6 +60,7 @@ mainMenu();
                         <button id="CreateAnAccount" href="signup.php">Create an account</button>
                     </a>
                 </div>
+                <p>--Prior Page--<br> <? echo urldecode($cURL); ?></p>
             </section>
     </div>
         
