@@ -12,9 +12,9 @@ $alias = post('user-name');
 $title = post('');
 $was_user_created = false;
 
+$errors = array();
 
 if ($email !== ''){
-    echo $email;
    $errors = (User::new(
                 $email,
                 $pass,
@@ -32,10 +32,9 @@ beginPage("signup", "styles/signup.css");
 mainMenu();
 ?>
        
-<div>
+<div class="tray">
     
 <div id="signup">   
-    
     
     <section class="form">
         <? if ($was_user_created) { ?>
@@ -44,105 +43,99 @@ mainMenu();
         
         <form class="signup" action="signup.php" method="post">
             
-            <h1 class="pageHeader">Create an Account</h1>
-            <? if ($email !== ''){ 
-                if($errors['err'] != ''){ ?>
-                <p class="errorMessage">Error: <?= $errors['err'] ?></p>
-                <? }
-            } ?>
-            <div class="haveText" >
-                    <p>Already have an account? <a class="linkText" href="login.php">Login!</a></p>
-                </div>
+            <h1>Create an Account</h1>
+                <? if (!empty($errors)){ 
+                    echo "<p class='errorMessage'>Error:".$errors['err']."</p>";  
+                } ?>
+            <p>Already have an account? <a href="login.php">Login!</a></p>
             
             <div>
-                <div class="input" id="formDiv">
-                    <h1>Account Information</h1>
-                    <section class="left">                        
-                        <h2>Username</h2>
-                            <input type ="text" id ="username" name="user-name" value="<?if(isset($_POST["user-name"])) echo $_POST["user-name"]; ?>">
-                        <h2>Title</h2>
-                        <input type ="text" id ="title" name="user-occupation" value="<?if(isset($_POST["user-occupation"])) echo $_POST["user-occupation"]; ?>"> 
-                        
+                <div class="input">
+                    <h1>Account Identity</h1>
+                    <section class="left">
+                        <label>Username</label>
+                        <input type="text" name="user-name" value="<?if(isset($_POST["user-name"])) echo $_POST["user-name"]; ?>">
+                    </section>
+                    <section class="right">                    
+                        <p>Username is how others will see you on the site. Only alphanumeric characters are allowed.</p>
+                    </section>
+                    <section class="left">
+                        <label>Title</label>
+                        <input type="text" name="user-occupation" value="<?if(isset($_POST["user-occupation"])) echo $_POST["user-occupation"]; ?>"> 
+                    </section>
+                    <section class="right">                    
+                        <p>Are you a Programmer? Artist? Gamer? Dancer? Alien? TELL US!</p>
                     </section>
                     
-                    <section class="right">
-                    
-                        <p class="desc">Username is how others will see you on the site. Only alphanumeric characters are allowed. 
-                        <br><br><br>
-                        Are you a Programmer? Artist? Gamer? Dancer? Alien? TELL US!
-                                             
-                        </p>
-                    </section>
-                    
-                    
+                    <div class="clear"></div>
                 </div>
                 
-                <div id="divider"></div>
-                
-                <div class="input" id="formDiv">
+                <div class="input">
                     <h1>Personal Information</h1>
-                    <section class="left">                         
-                        <h2>First Name</h2>
-                            <input type ="text" id ="firstname" name="user-firstname" value="<?if(isset($_POST["user-firstname"])) echo $_POST["user-firstname"]; ?>">
-                        <h2>Last Name</h2>
-                            <input type ="text" id ="lastname" name="user-lastname" value="<?if(isset($_POST["user-lastname"])) echo $_POST["user-lastname"]; ?>">
+                    <section class="left">
+                        <label>First Name</label>
+                        <input type="text" name="user-firstname" value="<?if(isset($_POST["user-firstname"])) echo $_POST["user-firstname"]; ?>">
+                        </section>  
+                    <section class="right">
+                        <p>Let the world know who is behind the brilliant work shared on this site!
+                    </section>
+                    <section class="left">
+                        <label>Last Name</label>
+                        <input type="text" name="user-lastname" value="<?if(isset($_POST["user-lastname"])) echo $_POST["user-lastname"]; ?>">
                     </section>  
                     <section class="right">
-                        
-                        <p class="desc">Let the world know who is behind the brilliant work shared on this site!
+                        <p>Let the world know who is behind the brilliant work shared on this site!
                     </section>
+                    <div class="clear"></div>
+                
                 </div>
                 
-                <div id="divider"></div>
-                
-                <div class="input" id="formDiv">
+                <div class="input">
                     <h1>Contact Information</h1>
                     <section class="left">
-                        
-                        <h2>Email</h2>
-                            <input type ="text" id ="email" name="user-email1" value="<?if(isset($_POST["user-email1"])) echo $_POST["user-email1"]; ?>">
-                        <h2>Confirm Email</h2>
-                            <input type ="text" id ="email" name="user-email2">
+                        <label>Email</label>
+                        <input type="text" name="user-email1" value="<?if(isset($_POST["user-email1"])) echo $_POST["user-email1"]; ?>">
+                    </section>
+                    <section class="right">    
+                        <p>We need your email for account verification purposes and notifications if you choose to opt in.</p>
+                    </section>
+                    <section class="left">
+                        <label>Confirm Email</label>
+                        <input type="text" name="user-email2">
                     </section>
                     <section class="right">
-                        
-                        <p class="desc">We need your email for account verification purposes and notifications if you choose to opt in.
-                      
-                        </p>
+                        <p>We need your email for account verification purposes and notifications if you choose to opt in.</p>
                     </section>
+                    <div class="clear"></div>
                 </div>
                 
-                <div id="divider"></div>
-                
-                <div class="input" id="formDiv">
+                <div class="input">
                     <h1>Security</h1>
                     <section class="left">
-                        
-                        <h2>Password</h2>
-                            <input type ="password" id ="password" name="user-password1">
-                        <h2>Confirm Password</h2>
-                            <input type ="password" id ="password" name="user-password2"> 
+                        <label>Password</label>
+                        <input type="password" name="user-password1">
                     </section>
                     <section class="right">
-                        <p class="desc">Choose a strong, complex, but easy to remember password.<br><br>
-                        It is best to use a mixture of capitals, numbers, and symbols.
-                        </p>
+                        <p>Choose a strong, complex, but easy to remember password.<br><br>
+                        It is best to use a mixture of capitals, numbers, and symbols.</p>
                     </section>
+                    <section class="left">
+                        <label>Confirm Password</label>
+                        <input type="password" name="user-password2"> 
+                    </section>
+                    <section class="right">
+                        <p>Choose a strong, complex, but easy to remember password.<br><br>
+                        It is best to use a mixture of capitals, numbers, and symbols.</p>
+                    </section>
+                    <div class="clear"></div>
                 </div>
-                <div id="divider"></div>
-            <div class="input" id="formDiv">
                 
-                <div class="button" id="confirm-signup">
-                    <button type="submit">Create Account</button>
-                </div>
-                <? if ($email !== ''){ 
-        if($errors['err'] != ''){ ?>
-            <p class="errorMessage">Error: <?= $errors['err'] ?></p>
-        <? }
-    } ?>
-                <div class="haveText" >
-                    <p>Already have an account? <a class="linkText" href="login.php">Login!</a></p>
-                </div>
+                <div class="input">
+                
+                <input type="submit" value="Create Account">
+
+                <p>Already have an account? <a class="linkText" href="login.php">Login!</a></p>
+
             </div>
             </div>
             
@@ -150,10 +143,9 @@ mainMenu();
         <? } ?>
     </section>
     </div>
-    <div class="formHR"></div>
-    <footer></footer>
-    
-    
-</div>
+
+<footer></footer>
+
+</div> <!-- end .tray -->
 
 <? endPage(); ?>   
