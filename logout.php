@@ -1,5 +1,6 @@
 <?
-include "includes/class.User.php";
+include_once "includes/class.User.php";
+include_once "includes/functions.php";
 
 $redirect = get("redirect");
 
