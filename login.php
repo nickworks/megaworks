@@ -60,7 +60,7 @@ mainMenu();
                         <button id="CreateAnAccount" href="signup.php">Create an account</button>
                     </a>
                 </div>
-                <p>--Prior Page--<br> <? echo urldecode($cURL); ?></p>
+                
             </section>
     </div>
         

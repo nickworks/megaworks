@@ -20,6 +20,7 @@ function beginPage(string $class = "", $css = null){
 
 function endPage(){
     $showProfile = User::isLoggedIn();
+    $cURL = $_SERVER['REQUEST_URI'];
     ?><footer class="footer">
         <nav>
             <ul>
@@ -33,9 +34,9 @@ function endPage(){
                 <li>|</li>
                 <? if($showProfile) { ?>
                     <li><a class="profile" href="profile.php">My Account</a></li>
-                    <li><a href="logout.php">Sign Out</a></li>
+                    <li><a href="logout.php?redirect=<?echo urlencode($cURL);?>">Sign Out</a></li>
                 <? } else { ?>
-                    <li><a class="login" href="login.php">Login</a></li>
+                    <li><a class="login" href="login.php?redirect=<?echo urlencode($cURL);?>">Login</a></li>
                     <li><a class="signup" href="signup.php">Sign Up</a></li>
                 <? } ?>
                 
@@ -71,9 +72,9 @@ $cURL = $_SERVER['REQUEST_URI'];
         <li class="spacer"></li>
         <? if($showProfile) { ?>
             <li><a class="profile" href="profile.php">My Account</a></li>
-            <li><a href="logout.php">Log Off</a></li>
+            <li><a href="logout.php?redirect=<?echo urlencode($cURL);?>">Log Off</a></li>
         <? } else { ?>
-            <li><a class="login" href="login.php?redirect=<?echo urlencode($cURL);?>">Login <? echo urldecode($cURL);  ?></a></li>
+            <li><a class="login" href="login.php?redirect=<?echo urlencode($cURL);?>">Login</a></li>
         <? } ?>
     </ul>
 </nav>

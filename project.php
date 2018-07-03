@@ -10,7 +10,7 @@ function redirect() { header("location:projects.php"); }
 
 $id = intval(get("id"));
 if($id <= 0 || empty($id)) redirect(); // invalid is, so redirect
-
+$cURL = $_SERVER['REQUEST_URI'];
 $db = new CoolDB();
 $sql = "SELECT p.*, COUNT(DISTINCT pl.user_id) AS 'likes', COUNT(DISTINCT pf.user_id) AS 'faves', l.title AS 'license_title', l.copy AS 'license_copy', l.link AS 'license_link' FROM projects p, licenses l, project_likes pl, project_faves pf WHERE p.id=? AND l.id=p.license_id AND pl.project_id=p.id AND pf.project_id=p.id;";
 
@@ -181,7 +181,7 @@ mainMenu();
                     <input type="submit">
                 </form>
                 <? } else { ?>
-                <p>To add a new comment, please <a href="login.php">log in</a>!</p>
+                <p>To add a new comment, please <a href="login.php?redirect=<?echo urlencode($cURL);?>">log in</a>!</p>
                 <? } ?>
             </section>
             <footer></footer>

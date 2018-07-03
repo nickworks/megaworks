@@ -25,7 +25,7 @@ class User {
         if(session_status() !== PHP_SESSION_ACTIVE)
             session_start([
                 'cookie_httponly' => true,
-                'cookie_secure' => true
+                //'cookie_secure' => true
             ]);
     }
     static function current(){
