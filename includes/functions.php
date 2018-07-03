@@ -16,5 +16,8 @@ function post(string $str){
     if (get_magic_quotes_gpc()) $res=stripslashes($res);
     return $res;
 }
+function formData(string $key){
+    return htmlentities(post($key));
+}
 
 ?>

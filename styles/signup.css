@@ -2,7 +2,18 @@
     background:#2b2b2b;
     border-bottom:1px solid #444;
 }
-.signup .tray label {
+#signup {
+    width:550px;
+    margin:0 auto;
+}
+#signup h2 {
+    margin:25px 0 0;
+}
+#signup p {
+    color:#555;
+    margin:5px 0 15px;
+}
+#signup label {
     margin:0 0 5px;
     font-size:15px;
     font-weight:normal;
@@ -10,32 +21,20 @@
     text-align: left;
     display:block;
 }
+.fields {
+    display:flex;
+    justify-content:space-between;
+    margin:20px 0 40px;
+}
 #signup input:not([type='submit']) {  
-    height: 25px;
-    width: 200px;
+    height:25px;
+    width:260px;
 }
 .tray a {
     color:#46b7ff;
 }
-#signup .left{
-    width:204px;
-    float:left;
-    clear:both;
-    padding-bottom:15px;
-}
-#signup .right{
-    width:300px;    
-    float:right;
-    font-size:12px;
-    line-height:16px;
-    padding-bottom:15px;
-}
-#signup .right p {
-    margin-top:15px;
-}
-
 #signup input[type="submit"]{
-    padding:20px 15px;
+    padding:12px 15px;
     background:#53c025;
     color:#fff;
     font-size:12px;
@@ -46,18 +45,11 @@
 #signup input[type="submit"]:hover {
     background:#168342;
 }
-.input{
-    width:550px;
-    margin: auto;
-    float:left;
-    padding:10px 20px;
-    margin:10px;
-    border:1px solid #555;
+#signup p.errorMessage {
+    color:#FFF;
+    font-weight:bold;
+    background:#ff3838;
+    text-align:center;
+    padding:20px;
     border-radius:5px;
 }
-
-.errorMessage {
-    color:#ff3838;
-    text-align: center;
-}
-
