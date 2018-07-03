@@ -1,7 +1,7 @@
 <?
 include_once "includes/templates.php";
-include_once "api/functions.php";
-include_once "api/class.CoolDB.php";
+include_once "includes/functions.php";
+include_once "includes/class.CoolDB.php";
 
 $db = new CoolDB();
 //TODO: only get events for the selected month...
