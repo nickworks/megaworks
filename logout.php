@@ -1,8 +1,12 @@
 <?
 include "api/class.User.php";
+include "api/functions.php";
+
+$redirect = get("redirect");
 
 User::logout();
 
-header("location:index.php");
+if(empty($redirect)) $redirect = "index.php";
+header("location:{$redirect}");
 
 ?>
