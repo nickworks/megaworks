@@ -4,7 +4,7 @@ include_once "includes/templates.php";
 include_once "api/class.User.php";
 include_once "api/functions.php";
 
-$cURL = $_SERVER['QUERY_STRING'];
+$cURL = get('redirect');
 
 // GET FORM DATA:
 $mail = post("user-email");

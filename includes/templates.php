@@ -73,7 +73,7 @@ $cURL = $_SERVER['REQUEST_URI'];
             <li><a class="profile" href="profile.php">My Account</a></li>
             <li><a href="logout.php">Log Off</a></li>
         <? } else { ?>
-            <li><a class="login" href="login.php?<?echo urlencode($cURL);?>">Login <? echo urldecode($cURL); ?></a></li>
+            <li><a class="login" href="login.php?redirect=<?echo urlencode($cURL);?>">Login <? echo urldecode($cURL);  ?></a></li>
         <? } ?>
     </ul>
 </nav>
