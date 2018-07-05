@@ -87,6 +87,8 @@ body.login nav.main a.login
 .tray {
     padding:120px 30px 50px;
     color:#DDD;
+    font-size:13px;
+    line-height:18px;
 }
 .tray a {
     color:#DDD;
@@ -97,7 +99,8 @@ body.login nav.main a.login
 }
 .tray h2 {
     color:#FFF;
-    font-size:20px;
+    font-size:18px;
+    font-weight:normal;
 }
 .avatar img {
     object-fit:cover;

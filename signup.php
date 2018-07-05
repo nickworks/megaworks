@@ -48,52 +48,45 @@ mainMenu();
                 echo "<p class='errorMessage'>Error: ".$errors['err']."</p>";  
             } ?>
             
-            <div>                
-
-                <h2>Your Name</h2>
-                <p>Who are you? We use this information to verify your account. Also, your full name is displayed on your profile page (if you want it to be).</p>
+            <div class='bubble'>
+                <h2>Your Full Name</h2>
                 <div class='fields'>
+                    <div>
+                        <p>Who are you? We use this information to verify your account. Also, your full name is displayed on your profile page (if you want it to be).</p>
+                    </div>  
                     <div>
                         <label>First Name</label>
                         <input type="text" name="user-firstname" value="<?=formData("user-firstname")?>">
-                    </div>  
-                    <div>
                         <label>Last Name</label>
                         <input type="text" name="user-lastname" value="<?=formData("user-lastname")?>">
                     </div>
                 </div>
-                
-                <h2>Your Email</h2>
-                <p>In order to make an account, you must use a valid Ferris email address.</p>
+                <h2>Email Address</h2>
                 <div class='fields'>
+                    <div>
+                        <p>In order to make an account, you must use a valid Ferris email address.</p>
+                    </div>  
                     <div>
                         <label>Email</label>
                         <input type="text" name="user-email1" value="<?=formData("user-email1");?>">
-                    </div>  
-                    <div>
                         <label>Confirm Email</label>
                         <input type="text" name="user-email2">
                     </div>
                 </div>
-                
                 <h2>Password</h2>
-                <p>Choose a strong password!</p>
                 <div class='fields'>
+                    <div>
+                        <p>Choose a strong password!</p>
+                    </div>
                     <div>
                         <label>Password</label>
                         <input type="password" name="user-password1">
-                    </div>  
-                    <div>
                         <label>Confirm Password</label>
                         <input type="password" name="user-password2"> 
                     </div>
                 </div>
-                
-                <input type="submit" value="Create Account">
-                <p>Already have an account? <a href="login.php">Login!</a></p>
-                
-            </div>
-            
+            </div><!-- end .bubble -->
+            <input type="submit" value="Create Account">
         </form>
         <? } ?>
     </section>
@@ -102,4 +95,4 @@ mainMenu();
 
 </div> <!-- end .tray -->
 
-<? endPage(); ?>   
+<? endPage(); ?>

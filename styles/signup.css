@@ -6,16 +6,21 @@
     width:550px;
     margin:0 auto;
 }
+#signup .bubble {
+    padding:10px 20px;
+}
 #signup h2 {
-    margin:25px 0 0;
+    margin:20px 0 10px;
+    padding:0 0 5px;
+    border-bottom:1px solid #555;
 }
 #signup p {
-    color:#555;
+    color:#999;
     margin:5px 0 15px;
 }
 #signup label {
-    margin:0 0 5px;
-    font-size:15px;
+    margin:0 0 2px;
+    font-size:12px;
     font-weight:normal;
     color:#aaa;
     text-align: left;
@@ -24,14 +29,23 @@
 .fields {
     display:flex;
     justify-content:space-between;
-    margin:20px 0 40px;
+}
+.fields div:first-child{
+    padding-right:40px;
 }
 #signup input:not([type='submit']) {  
     height:25px;
-    width:260px;
+    width:150px;
+    margin:0 0 10px;
 }
 .tray a {
     color:#46b7ff;
+}
+#signup p em {
+    color:#FFF;
+    font-style:normal;
+    font-weight:bold;
+    font-size:20px;
 }
 #signup input[type="submit"]{
     padding:12px 15px;
