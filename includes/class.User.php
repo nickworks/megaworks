@@ -136,7 +136,7 @@ class User {
         
         ///////////////////////////////////// MAKE HASH:
         
-        $hash = password_hash($pass);
+        $hash = password_hash($pass, PASSWORD_DEFAULT);
         
         ///////////////////////////////////// INSERT:
 

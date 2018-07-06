@@ -20,7 +20,7 @@ if ($email !== ''){
                 $pass,
                 $first,
                 $last,
-                $alias,
+                $alias = "Noob",
                 $title
             ));
     if($errors['err'] === ''){
