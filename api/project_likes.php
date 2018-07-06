@@ -21,10 +21,10 @@ if(User::isLoggedIn()){
     }
     $likes = $db->query("SELECT COUNT(*) AS 'num' FROM project_likes WHERE project_id=?;", array($id));
     $likes = intval($likes[0]['num']);
-    die("{project: $id, likes: $likes, userLikes:".($userLikes?"true":"false")."}");
+    die("{\"project\": $id, \"likes\": $likes, \"userLikes\":".($userLikes?"true":"false")."}");
     
 } else {
-    die("{error:'You must be logged in to like projects!'}");
+    die('{"error":"You must be logged in to like projects!"}');
 }
 
 

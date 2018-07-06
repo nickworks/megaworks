@@ -62,6 +62,16 @@ $attribution = $db->query("SELECT * FROM `project_attribution` WHERE `project_id
 
 $creator = $db->query("SELECT * FROM `users` WHERE `id`=?;", array($project['user_id']))[0];
 
+$likesThis=false;
+$favesThis=false;
+
+if(User::isLoggedIn()){
+    $uid=User::current()['id'];
+    $temp=$db->query("SELECT COUNT(pl.id) AS 'likes_this', COUNT(pf.id) AS 'faves_this' FROM project_likes pl, project_faves pf WHERE pl.project_id=? AND pl.user_id=? AND pf.project_id=? AND pf.user_id=?;", array($id, $uid, $id, $uid));
+    $likesThis=!empty($temp[0]['likes_this']);
+    $favesThis=!empty($temp[0]['faves_this']);
+}
+
 //print_r($comments); exit;
 
 // TODO: we need to pull media
@@ -95,8 +105,8 @@ mainMenu();
             </article>
             <aside>
                 <div class="stats">
-                    <a class="button like"><?=$project['likes']?> likes<span class="icon"></span></a>
-                    <a class="button fave"><?=$project['faves']?> faves<span class="icon"></span></a>
+                    <a id="bttnLike" class="button like <?if($likesThis)echo"active";?>"><span class='count'><?=$project['likes']?></span> likes<span class="icon"></span></a>
+                    <a id="bttnFave" class="button fave <?if($favesThis)echo"active";?>"><?=$project['faves']?> faves<span class="icon"></span></a>
                     <div>240 views</div>
                     <div><?=count($comments)?> comments</div>
                 </div>
@@ -186,4 +196,8 @@ mainMenu();
             </section>
             <footer></footer>
         </div> <!-- end .content -->
+    <script>
+        var projectID=<?=$id?>;
+    </script>
+    <script src="js/project.js"></script>
 <? endPage(); ?>
