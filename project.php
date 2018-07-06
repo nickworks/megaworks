@@ -72,7 +72,7 @@ if(User::isLoggedIn()){
     $favesThis=!empty($temp[0]['faves_this']);
 }
 
-//print_r($comments); exit;
+//print_r($project); exit;
 
 // TODO: we need to pull media
 // TODO: we need to pull "likes", "faves", and "views" data
@@ -106,7 +106,7 @@ mainMenu();
             <aside>
                 <div class="stats">
                     <a id="bttnLike" class="button like <?if($likesThis)echo"active";?>"><span class='count'><?=$project['likes']?></span> likes<span class="icon"></span></a>
-                    <a id="bttnFave" class="button fave <?if($favesThis)echo"active";?>"><?=$project['faves']?> faves<span class="icon"></span></a>
+                    <a id="bttnFave" class="button fave <?if($favesThis)echo"active";?>"><span class='count'><?=$project['faves']?></span> faves<span class="icon"></span></a>
                     <div>240 views</div>
                     <div><?=count($comments)?> comments</div>
                 </div>
