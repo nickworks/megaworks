@@ -12,15 +12,16 @@ mainMenu();
            </div>  
         
         <div class="content">
-            <div class="discordEmbed"><iframe src="https://discordapp.com/widget?id=223170046019633162&theme=dark" width="300px" height="450" allowtransparency="true" frameborder="0"></iframe></div>
+            <div class="discordEmbed"><iframe src="https://discordapp.com/widget?id=223170046019633162&theme=dark" width="300px" height="474" allowtransparency="true" frameborder="0"></iframe></div>
             
             <div class="group1">
-                <div class=groupIcon><a href="#">MEGA FACEBOOK</a></div>
-                <div class=groupIcon><a href="#">DAGD FACEBOOK</a></div>                
+                <div class=groupIcon><a href="https://www.facebook.com/groups/135662413450556/"><div id="mega-facebook"></div></a></div>
+                <div class=groupIcon><a href="https://www.facebook.com/groups/31875193841/"><div id="dagd-facebook"></div></a></div>  
+                <div class=groupIcon><a href="https://steamcommunity.com/groups/fsu-dagd"><div id="dagd-steam"></div></a></div>
             </div>
+            
             <div class="group1">
-                <div class=groupIcon><a href="#">STEAM</a></div>
-                <div class=groupIcon><a href="#">YOUTUBE</a></div>                
+                <? //Creates a second coloumn for icons ?>                              
             </div>
             
         </div>
