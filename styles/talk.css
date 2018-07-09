@@ -7,34 +7,59 @@
 .group1{
     float:left;
 }
-.groupIcon{
+
+.groupIcon p{
+    margin-top: 43px;    
+    padding-left: 160px;
+    font-size: 24px;
+}
+
+.groupIcon #facebook{
     height: 144px;
     width: 350px;    
     margin: 0 0 20px 25px;
+    border: 1px solid #4267b2;
+    color: #4267b2;
+    border-radius:5px;
+    text-shadow:1px 1px 2px rgba(66, 103, 178, .5);
+    background-color: #eee;
+    transition: background-color .2s;
 }
 
-#dagd-facebook {
-    background:url(../imgs/wide-bttn-dagd-facebook.png);
-    height:144px;
-    width:350px;
-    border: 1px solid #4267b2;
-    border-radius:5px;
-    background-repeat:no-repeat;
+.groupIcon #facebook:hover{
+    background-color: #bad1ff; 
+    transition: background-color .2s;
 }
-#mega-facebook{
-    background:url(../imgs/wide-bttn-mega-facebook.png);
+
+#facebook{
+    background:url(../imgs/facebook-logo.png);
     height:144px;
-    width:350px;
-    border: 1px solid #4267b2;
-    border-radius:5px;
+    width:150px;    
+    float:left;
     background-repeat:no-repeat;
 }
 
-#dagd-steam{
-    background:url(../imgs/wide-bttn-steam.png);
-    height:144px;
-    width:350px;
+.groupIcon #steam{
+    height: 144px;
+    width: 350px;    
+    margin: 0 0 20px 25px;
     border: 1px solid black;
+    color: black;
+    background-color: #eee;
+    transition: background-color .2s;
+    text-shadow:1px 1px 2px rgba(0, 0, 0, .5);
     border-radius:5px;
+}
+
+.groupIcon #steam:hover{
+    background-color:#bbb;
+    transition: background-color .2s;
+}
+
+#steam{
+    background:url(../imgs/steam-logo.png);
+    height:144px;
+    width:150px;
+    float: left;
     background-repeat:no-repeat;
 }
