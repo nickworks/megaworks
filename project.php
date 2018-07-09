@@ -26,6 +26,8 @@ $project = $rows[0]; // <- project info
 
 //////////////////////////////////////////////// PROCESS COMMENT FORM:
 
+// putting all of this in its own function encapsulates it
+// and protects variables from leaking out into global scope
 function processCommentForm($project_id){
     $comment = post("comment");
     
@@ -50,9 +52,6 @@ function processCommentForm($project_id){
         $db->query($sql, array());
     }
 }
-
-// putting all of this in its own function encapsulates it
-// and protects variables from leaking out into global scope
 
 processCommentForm($id);
 
@@ -84,11 +83,9 @@ if(User::isLoggedIn()){
 //print_r($project); exit;
 
 // TODO: we need to pull media
-// TODO: we need to pull "likes", "faves", and "views" data
+// TODO: we need to store/pull "views" data
 
 //////////////////////////////////////////////// BUILD PAGE:
-
-// TODO: we need to make a way to "like" and/or "fave" a project
 
 beginPage("projects");
 mainMenu();
