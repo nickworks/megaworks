@@ -359,16 +359,21 @@ article .bubble {
     margin:0 5px;
     vertical-align:sub;
 }
-.button.like .icon{
+.button.disabled {
+    cursor:default;
+    background:transparent;
+    border:1px solid rgba(255, 255, 255, .25);
+}
+#bttnLike .icon{
     background:url(../imgs/like.png);
     background-size:cover;
 }
-.button.fave .icon{
+#bttnFave .icon{
     background: url(../imgs/fave.png);
     background-size: cover;
 }
 .button.active .icon {
-    background-position: -100%;
+    background-position: -100% !important;
 }
 .split > div {
     width:60%;

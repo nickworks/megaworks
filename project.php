@@ -12,9 +12,14 @@ $id = intval(get("id"));
 if($id <= 0 || empty($id)) redirect(); // invalid is, so redirect
 $cURL = $_SERVER['REQUEST_URI'];
 $db = new CoolDB();
-$sql = "SELECT p.*, COUNT(DISTINCT pl.user_id) AS 'likes', COUNT(DISTINCT pf.user_id) AS 'faves', l.title AS 'license_title', l.copy AS 'license_copy', l.link AS 'license_link' FROM projects p, licenses l, project_likes pl, project_faves pf WHERE p.id=? AND l.id=p.license_id AND pl.project_id=p.id AND pf.project_id=p.id;";
+$sql = "SELECT p.*, likes.num_likes, faves.num_faves, l.title AS 'license_title', l.copy AS 'license_copy', l.link AS 'license_link'
+FROM
+	projects p, licenses l,
+	(SELECT COUNT(user_id) AS num_likes FROM project_likes WHERE project_id=?) likes,
+    (SELECT COUNT(user_id) AS num_faves FROM project_faves WHERE project_id=?) faves
+WHERE p.id=? AND l.id=p.license_id";
 
-$rows = $db->query($sql, array($id));
+$rows = $db->query($sql, array($id, $id, $id));
 if(count($rows) == 0) redirect(); // no rows were returned, so redirect
 
 $project = $rows[0]; // <- project info
@@ -62,14 +67,18 @@ $attribution = $db->query("SELECT * FROM `project_attribution` WHERE `project_id
 
 $creator = $db->query("SELECT * FROM `users` WHERE `id`=?;", array($project['user_id']))[0];
 
-$likesThis=false;
-$favesThis=false;
+$likeButtonClass="button";
+$faveButtonClass="button";
+$showButtons=false;
 
 if(User::isLoggedIn()){
+    $showButtons=true;
     $uid=User::current()['id'];
-    $temp=$db->query("SELECT COUNT(pl.id) AS 'likes_this', COUNT(pf.id) AS 'faves_this' FROM project_likes pl, project_faves pf WHERE pl.project_id=? AND pl.user_id=? AND pf.project_id=? AND pf.user_id=?;", array($id, $uid, $id, $uid));
-    $likesThis=!empty($temp[0]['likes_this']);
-    $favesThis=!empty($temp[0]['faves_this']);
+    $temp=$db->query("SELECT p1.likes, p2.faves FROM
+        (SELECT COUNT(user_id) AS 'likes' FROM project_likes WHERE project_id=? AND user_id=?) p1,
+        (SELECT COUNT(user_id) AS 'faves' FROM project_faves WHERE project_id=? AND user_id=?) p2;", array($id, $uid, $id, $uid));
+    $likeButtonClass.=empty($temp[0]['likes'])?"":" active";
+    $faveButtonClass.=empty($temp[0]['faves'])?"":" active";
 }
 
 //print_r($project); exit;
@@ -104,11 +113,17 @@ mainMenu();
                 </div>
             </article>
             <aside>
-                <div class="stats">
-                    <a id="bttnLike" class="button like <?if($likesThis)echo"active";?>"><span class='count'><?=$project['likes']?></span> likes<span class="icon"></span></a>
-                    <a id="bttnFave" class="button fave <?if($favesThis)echo"active";?>"><span class='count'><?=$project['faves']?></span> faves<span class="icon"></span></a>
+                <div class="stats">  
+                    <? if($showButtons){ ?>
+                    <a id="bttnLike" class="<?=$likeButtonClass?>"><span class='count'><?=$project['num_likes']?></span> likes<span class="icon"></span></a>
+                    <a id="bttnFave" class="<?=$faveButtonClass?>"><span class='count'><?=$project['num_faves']?></span> faves<span class="icon"></span></a>
+                    <? } else { ?>
+                    <div><?=$project['num_likes']?> likes</div>
+                    <div><?=$project['num_faves']?> faves</div>
+                    <? } ?>
                     <div>240 views</div>
                     <div><?=count($comments)?> comments</div>
+                    
                 </div>
                 <div class="hr"></div>
                 <div class="split">

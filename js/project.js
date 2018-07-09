@@ -9,7 +9,7 @@ function doAjax(url,success){
     var bttnLike=document.getElementById("bttnLike");
     var bttnFave=document.getElementById("bttnFave");
     
-    bttnLike.addEventListener("mousedown", function(){
+    if(bttnLike)bttnLike.addEventListener("mousedown", function(){
         doAjax("/api/project_likes.php?id="+projectID,function(e){
             try{
                 var res=JSON.parse(e.target.responseText);
@@ -23,7 +23,7 @@ function doAjax(url,success){
         });
     });
                 
-    bttnFave.addEventListener("mousedown", function(){
+    if(bttnFave)bttnFave.addEventListener("mousedown", function(){
         doAjax("/api/project_faves.php?id="+projectID,function(e){
             try{
                 var res=JSON.parse(e.target.responseText);
