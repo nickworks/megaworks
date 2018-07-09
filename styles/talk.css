@@ -1,16 +1,44 @@
-.content{
+iframe {
+    display:block;
+}
+.rows {
     display:flex;
+    justify-content:space-between;
+    flex-direction:column;
 }
-.discordEmbed{
-    float:left;
+.cols {
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
 }
-.group1{
-    float:left;
+.cols > * {
+    margin:0 10px;
 }
-.groupIcon{
-    height: 210px;
-    width: 210px;
+.bigbttn {
+    width:150px;
+    max-height:50px;
+    transition: background-color .2s;
     border-radius:5px;
-    border: 1px solid black;
-    margin: 0 0 25px 25px;
+    background-position:left center;
+    padding:55px 20px 55px 160px;
+    text-decoration:none;
+}
+.bigbttn.facebook{
+    border: 1px solid #4267b2;
+    color: #4267b2;
+    text-shadow:1px 1px 2px rgba(66, 103, 178, .5);
+    background-color: #eee;
+    background:url(../imgs/facebook-logo.png) no-repeat;
+}
+.bigbttn.facebook:hover{
+    background-color: #bad1ff;
+}
+.bigbttn.steam{    
+    border:1px solid black;
+    color:black;
+    background: #eee url(../imgs/steam-logo.png) no-repeat;
+    text-shadow:1px 1px 2px rgba(0, 0, 0, .5);
+}
+.bigbttn.steam:hover{
+    background-color:#bbb;
 }

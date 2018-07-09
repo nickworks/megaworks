@@ -563,7 +563,10 @@ body.bylaws footer.footer a.bylaws{
 .copyright {
     margin:20px;
 }
-a.discord, a.facebook, a.youtube, a.steam {
+footer.footer a.discord,
+footer.footer a.facebook,
+footer.footer a.youtube,
+footer.footer a.steam {
     display:inline-block;
     background:url(../imgs/discord.ico);
     width:16px;
@@ -572,10 +575,10 @@ a.discord, a.facebook, a.youtube, a.steam {
     left:0;
     bottom:0;
 }
-a.discord { background:url(../imgs/icon-discord.png); }
-a.facebook { background:url(../imgs/icon-facebook.png); }
-a.youtube { background:url(../imgs/icon-youtube.png); }
-a.steam { background:url(../imgs/icon-steam.png); }
+footer.footer a.discord { background:url(../imgs/icon-discord.png); }
+footer.footer a.facebook { background:url(../imgs/icon-facebook.png); }
+footer.footer a.youtube { background:url(../imgs/icon-youtube.png); }
+footer.footer a.steam { background:url(../imgs/icon-steam.png); }
 a .hide {
     display:none;
 }
