@@ -90,6 +90,10 @@ body.login nav.main a.login
     font-size:13px;
     line-height:18px;
 }
+.tray.dark {
+    background:#2b2b2b;
+    border-bottom:1px solid #444;
+}
 .tray a {
     color:#DDD;
 }
@@ -546,12 +550,6 @@ body.signup footer.footer a.signup,
 body.bylaws footer.footer a.bylaws{
     color:#fff;
     text-decoration:underline;
-}
-.formHR{
-    margin: 0px;
-    border-bottom:1px solid #444;
-    padding:0;
-    clear:both;
 }
 .hr {
     border-bottom:1px solid #444;

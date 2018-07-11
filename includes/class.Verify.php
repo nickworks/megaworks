@@ -14,9 +14,9 @@ class Verify {
     }
     // returns true if a valid verification code exists
     static function check(string $key){
+        if(empty($key)||!is_string($key))return false;
         $db = new CoolDB();
-        $res=$db->query("SELECT * FROM user_verify_codes WHERE code=? AND expires>NOW();", array($key));
-        return (count($res)>0);
+        return $db->query("SELECT * FROM user_verify_codes WHERE code=? AND expires>NOW();", array($key));
     }
     // deletes matching (and expired) verification codes
     static function close(string $key){

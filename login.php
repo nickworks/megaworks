@@ -28,7 +28,7 @@ beginPage("login", "styles/login.css");
 mainMenu();
 ?>
 
-<div>
+<div class="tray dark">
         <div id="login">
             <section class="left">
                 <h1>Login</h1>
@@ -62,11 +62,8 @@ mainMenu();
                 </div>
                 
             </section>
-    </div>
-        
-    <div class="formHR"></div>
-    
-<footer></footer>
+    </div>    
+    <footer></footer>
 </div>
 
 <? endPage(); ?> 
