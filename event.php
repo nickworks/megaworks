@@ -2,12 +2,13 @@
 include_once "includes/functions.php";
 include_once "includes/templates.php";
 include_once "includes/class.CoolDB.php";
+include_once "includes/class.User.php";
 
 // gets the event id its trying to access
 $id = intval(get("id"));
 // checks to see if the id exists/ if not redirects back to the events page
 if($id <= 0) header("location:events.php");
-
+$cURL = htmlentities($_SERVER['REQUEST_URI']);
 // grabs the information from the database
 $db = new CoolDB();
 $event = $db->query("SELECT * FROM `events` WHERE `id`=?", array($id))[0];
@@ -106,6 +107,28 @@ mainMenu();
         comment($comment);
     }
     ?>
+    
+    <div class="hr text"><h3><span>New Comment</span></h3></div>
+    <?   //TODO: FORM IS NON FUNCTIONAL
+    if(User::isLoggedIn()) { 
+    ?>
+    
+    <form method="post" action="event.php?id=<?=$id?>">
+        
+        <div class="clear"></div>    
+
+        <p>What would you like to say?</p>
+        
+        <textarea name="comment" style="width:100%;max-width:100%;min-width:100%;min-height:50px;height:100px;max-height:300px;"></textarea>
+        
+        <button type="submit" id="submit-bttn">Submit</button>
+        
+        
+    </form>
+    <? } else { ?>
+        <p>To add a new comment, please <a href="login.php?redirect=<?echo urlencode($cURL);?>">log in</a>!</p>
+    <? } ?>
+    
   <footer></footer>
 </div>
 <? endPage(); ?> 

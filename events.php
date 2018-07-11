@@ -110,6 +110,7 @@ mainMenu();
 ?>
 
 <div class="tray">
+    <h1>Event Calendar</h1>
     <div class="feature">
         <? buildCalendar(); ?>
     </div>

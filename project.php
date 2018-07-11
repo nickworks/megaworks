@@ -10,7 +10,7 @@ function redirect() { header("location:projects.php"); }
 
 $id = intval(get("id"));
 if($id <= 0 || empty($id)) redirect(); // invalid is, so redirect
-$cURL = $_SERVER['REQUEST_URI'];
+$cURL = htmlentities($_SERVER['REQUEST_URI']);
 $db = new CoolDB();
 $sql = "SELECT p.*, likes.num_likes, faves.num_faves, l.title AS 'license_title', l.copy AS 'license_copy', l.link AS 'license_link'
 FROM
@@ -200,7 +200,7 @@ mainMenu();
                     <div class="clear"></div>
                     <p>What would you like to say?</p>
                     <textarea name="comment" style="width:100%;max-width:100%;min-width:100%;min-height:50px;height:100px;max-height:300px;"></textarea>
-                    <input type="submit">
+                    <button type="submit" id="submit-bttn">Submit</button>
                 </form>
                 <? } else { ?>
                 <p>To add a new comment, please <a href="login.php?redirect=<?echo urlencode($cURL);?>">log in</a>!</p>
