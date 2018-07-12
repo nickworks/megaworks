@@ -8,7 +8,7 @@ include_once "includes/class.User.php";
 $id = intval(get("id"));
 // checks to see if the id exists/ if not redirects back to the events page
 if($id <= 0) header("location:events.php");
-$cURL = htmlentities($_SERVER['REQUEST_URI']);
+$cURL = $_SERVER['REQUEST_URI'];
 // grabs the information from the database
 $db = new CoolDB();
 $event = $db->query("SELECT * FROM `events` WHERE `id`=?", array($id))[0];

@@ -10,7 +10,7 @@ function redirect() { header("location:projects.php"); }
 
 $id = intval(get("id"));
 if($id <= 0 || empty($id)) redirect(); // invalid is, so redirect
-$cURL = htmlentities($_SERVER['REQUEST_URI']);
+$cURL = $_SERVER['REQUEST_URI'];
 $db = new CoolDB();
 $sql = "SELECT p.*, likes.num_likes, faves.num_faves, l.title AS 'license_title', l.copy AS 'license_copy', l.link AS 'license_link'
 FROM

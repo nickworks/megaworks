@@ -20,7 +20,7 @@ function beginPage(string $class = "", $css = null){
 
 function endPage(){
     $showProfile = User::isLoggedIn();
-    $cURL = htmlentities($_SERVER['REQUEST_URI']);
+    $cURL = $_SERVER['REQUEST_URI'];
     ?><footer class="footer">
         <nav>
             <ul>
@@ -60,7 +60,7 @@ function endPage(){
 function mainMenu(){
 
 $showProfile = User::isLoggedIn();
-$cURL = htmlentities($_SERVER['REQUEST_URI']);
+$cURL = $_SERVER['REQUEST_URI'];
 ?>
 <nav class="main">
     <a href="index.php"><div id="logo"></div></a>
