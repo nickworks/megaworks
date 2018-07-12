@@ -200,7 +200,7 @@ mainMenu();
                     <div class="clear"></div>
                     <p>What would you like to say?</p>
                     <textarea name="comment" style="width:100%;max-width:100%;min-width:100%;min-height:50px;height:100px;max-height:300px;"></textarea>
-                    <input type="submit">
+                    <button type="submit" id="submit-bttn">Submit</button>
                 </form>
                 <? } else { ?>
                 <p>To add a new comment, please <a href="login.php?redirect=<?echo urlencode($cURL);?>">log in</a>!</p>
