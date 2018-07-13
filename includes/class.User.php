@@ -47,13 +47,6 @@ class User {
         unset($_SESSION['userid']);
         return null;
     }
-    
-    static function userExists($uid){
-        $db = new CoolDB();      
-        $rows = $db->query("SELECT COUNT(*) AS 'check' FROM users WHERE id=?", array($uid));
-        return ($rows[0]['check'] == 1);
-    }
-    
     static function logout(){
         unset($_SESSION['userid']);
     }
@@ -121,6 +114,12 @@ class User {
         if(!preg_match('/[A-Z]/', $pass1)) return ["err"=>"Your password must use at least one uppercase character."];
         if(!preg_match('/[0-9]/', $pass1)) return ["err"=>"Your password must use at least one number."];
         if(!preg_match('/[^a-zA-Z0-9\s]/', $pass1)) return ["err"=>"Your password must have at least one special character."];
+    }
+    static function doesExist($uid):bool{
+        $uid = intval($uid);
+        $db = new CoolDB();      
+        $rows = $db->query("SELECT COUNT(*) AS 'check' FROM users WHERE id=?", array($uid));
+        return ($rows[0]['check'] == 1);
     }
     
     //////////////////////////////////////// MANIPULATING OTHER USERS:

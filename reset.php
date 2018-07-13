@@ -56,9 +56,14 @@ mainMenu();
     <? } else { ?>
     <h1>Check your inbox!</h1>
     <p>If we found you in our database, then you should receive an email from us soon!</p>
-        <? if(isLocal()){   ?>
+        <? if(isLocal()){ ?>
+            <div class="hr"></div>
+            <? if(!empty($message)){ ?>
             <p>Since you seem to be running this site locally, an email *probably* wasn't sent. But if it had, it would say:</p>
             <pre><?=$message?></pre>
+            <? } else { ?>
+            <p>Since you seem to be running this site locally, it's safe to let you know: that email address was NOT found in the database. Just FYI.</p>
+            <? } ?>
         <? } ?>
     <? } ?>
 </div>
