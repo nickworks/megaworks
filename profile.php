@@ -4,20 +4,18 @@ include_once "includes/templates.php";
 include_once "includes/class.CoolDB.php";
 include_once "includes/class.User.php";
 
-$user_id = '';
+
 // GET USER DATA FROM DATABASES:
-if(htmlentities($_GET["id"] != "")){
+
     $user_id = htmlentities($_GET["id"]);
     
     if(User::userExists($user_id) == false){
-        //print_r("YAYA"); exit;
+        header('location: 404.php');
     } 
     
     
     
-} else {
-    header('location: 404.php');
-}
+
 
 
 $sql = "SELECT * FROM `users` WHERE id=?";
