@@ -1,5 +1,6 @@
 <?
 include_once "class.CoolDB.php";
+include_once "functions.php";
 
 User::sessionStart();
 
@@ -43,6 +44,22 @@ class User {
         }
         unset($_SESSION['userid']);
         return null;
+    }
+    
+    static function userExists($user){
+        $db = new CoolDB();
+        
+        $count = $db->query("SELECT COUNT (*) AS 'check' FROM users WHERE id=?", array(get($user)));
+        
+        
+        //print_r($rows[0]['check']); exit;
+        
+        if($count == 1) {
+            return true;            
+        } else {
+            return false;
+        }
+        
     }
     
     static function logout(){

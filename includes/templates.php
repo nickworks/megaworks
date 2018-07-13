@@ -21,6 +21,8 @@ function beginPage(string $class = "", $css = null){
 function endPage(){
     $showProfile = User::isLoggedIn();
     $cURL = $_SERVER['REQUEST_URI'];
+    $uid = User::current()['id'];
+    
     ?><footer class="footer">
         <nav>
             <ul>
@@ -33,7 +35,7 @@ function endPage(){
                 <li><a id="feedback" href="https://github.com/nickworks/megaworks/issues">Leave Feedback</a> </li>
                 <li>|</li>
                 <? if($showProfile) { ?>
-                    <li><a class="profile" href="profile.php">My Account</a></li>
+                    <li><a class="profile" href="profile.php?id=<? echo $uid; ?>">My Account</a></li>
                     <li><a href="logout.php?redirect=<?echo urlencode($cURL);?>">Sign Out</a></li>
                 <? } else { ?>
                     <li><a class="login" href="login.php?redirect=<?echo urlencode($cURL);?>">Login</a></li>
@@ -61,6 +63,7 @@ function mainMenu(){
 
 $showProfile = User::isLoggedIn();
 $cURL = $_SERVER['REQUEST_URI'];
+$uid = User::current()['id'];
 ?>
 <nav class="main">
     <a href="index.php"><div id="logo"></div></a>
@@ -71,7 +74,7 @@ $cURL = $_SERVER['REQUEST_URI'];
         <li><a class="events" href="events.php">Events</a></li>
         <li class="spacer"></li>
         <? if($showProfile) { ?>
-            <li><a class="profile" href="profile.php">My Account</a></li>
+            <li><a class="profile" href="profile.php?id=<? echo $uid ?>">My Account</a></li>
             <li><a href="logout.php?redirect=<?echo urlencode($cURL);?>">Log Off</a></li>
         <? } else { ?>
             <li><a class="login" href="login.php?redirect=<?echo urlencode($cURL);?>">Login</a></li>
