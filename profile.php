@@ -11,8 +11,9 @@ $user_id = get('id');
     
 $sql = "SELECT * FROM `users` WHERE id=?";
 $db = new CoolDB();
-$user = $db->query($sql, array($user_id))[0];
+$user = $db->query($sql, array($user_id));
 if(empty ($user) )header('location: 404.php');
+$user = $user[0];
 
 $sql = "SELECT * FROM `profile_contacts` WHERE user_id=?";
 $contacts = $db->query($sql, array($user_id));
