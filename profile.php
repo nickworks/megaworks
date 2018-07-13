@@ -7,20 +7,12 @@ include_once "includes/class.User.php";
 
 // GET USER DATA FROM DATABASES:
 
-    $user_id = htmlentities($_GET["id"]);
+$user_id = get('id');
     
-    if(User::userExists($user_id) == false){
-        header('location: 404.php');
-    } 
-    
-    
-    
-
-
-
 $sql = "SELECT * FROM `users` WHERE id=?";
 $db = new CoolDB();
 $user = $db->query($sql, array($user_id))[0];
+if(empty ($user) )header('location: 404.php');
 
 $sql = "SELECT * FROM `profile_contacts` WHERE user_id=?";
 $contacts = $db->query($sql, array($user_id));

@@ -46,19 +46,10 @@ class User {
         return null;
     }
     
-    static function userExists($user){
-        $db = new CoolDB();        
-        
-        $rows = $db->query("SELECT COUNT(*) AS 'check' FROM users WHERE id=?", array(get('id')));
-                
-        //print_r($rows[0]['check']); exit;
-        
-        if($rows[0]['check'] == 1) {
-            return true;            
-        } else {
-            return false;
-        }
-        
+    static function userExists($uid){
+        $db = new CoolDB();      
+        $rows = $db->query("SELECT COUNT(*) AS 'check' FROM users WHERE id=?", array($uid));
+        return ($rows[0]['check'] == 1);
     }
     
     static function logout(){
