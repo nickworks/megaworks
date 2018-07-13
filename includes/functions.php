@@ -1,5 +1,8 @@
 <?
 
+function isLocal(){
+    return $_SERVER['SERVER_ADDR'] === $_SERVER['REMOTE_ADDR'];
+}
 function easyDate($mysql){
     return date('M d @ h:i a', strtotime($mysql));
 }

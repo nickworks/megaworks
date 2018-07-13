@@ -8,6 +8,8 @@ User::sessionStart();
  */
 class User {
     
+    //////////////////////////////////////// WORKING W/ THE "CURRENT USER":
+    
     private static $current;
     private static function setCurrent(array $row){
         
@@ -44,7 +46,6 @@ class User {
         unset($_SESSION['userid']);
         return null;
     }
-    
     static function logout(){
         unset($_SESSION['userid']);
     }
@@ -94,10 +95,34 @@ class User {
         if(!array_key_exists('is_approved', $user)) return false;
         return ($user['is_approved'] === '1');
     }
+    
+    //////////////////////////////////////// CONVENIENCE FUNCS:
+    
     static function validEmail(string $email):bool {
         return preg_match("/^[a-zA-Z0-9\._]{4,20}@ferris\.edu$/", $email);
     }
+    static function validPass($pass1, $pass2):bool {
+        
+        if($pass1 != $pass2) return ["err"=>"Your two passwords do NOT match."];
+        
+        if(strlen($pass1) < 8) return ["err"=>"Your password must be at least 8 characters."];
+        
+        //if(!preg_match('/^[a-zA-Z0-9\s\[\]\{\}\;:\'\"\<\>\.\,\?\`\~\!\@\#\$\%\^\&\*\(\)\_\-\+\=\/\\\\|]+$/', $pass)) return ["err"=>"Your password can't use non-ascii characters."];
+        
+        if(!preg_match('/[a-z]/', $pass1)) return ["err"=>"Your password must use at least one lowercase character."];
+        if(!preg_match('/[A-Z]/', $pass1)) return ["err"=>"Your password must use at least one uppercase character."];
+        if(!preg_match('/[0-9]/', $pass1)) return ["err"=>"Your password must use at least one number."];
+        if(!preg_match('/[^a-zA-Z0-9\s]/', $pass1)) return ["err"=>"Your password must have at least one special character."];
+    }
     
+    //////////////////////////////////////// MANIPULATING OTHER USERS:
+    
+    static function resetPass($uid, $pass1, $pass2){
+        
+    }
+    static function changePass($uid, $oldpass, $pass1, $pass2){
+        
+    }
     static function new($email, $pass, $first, $last, $alias, $title){
 
         if(!is_string($email)) $email = "";

@@ -3,6 +3,11 @@ body {
     font-family:"Helvetica", "Arial", sans-serif;
     background:#333;
 }
+.tray pre {
+    padding:15px;
+    background:#444;
+    border-radius:5px;
+}
 #bug-issues {
     position:fixed;
     top:90px;
