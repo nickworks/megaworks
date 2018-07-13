@@ -32,7 +32,7 @@ beginPage("signup", "styles/signup.css");
 mainMenu();
 ?>
        
-<div class="tray">
+<div class="tray dark">
     
     <section class="form">
         <? if ($was_user_created) { ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 01, 2018 at 08:25 PM
+-- Generation Time: Jul 11, 2018 at 06:31 PM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.1
 
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `mega`
@@ -108,7 +108,8 @@ INSERT INTO `comments_projects` (`id`, `user_id`, `project_id`, `date_posted`, `
 (9, 1, 1, '2018-02-28 03:49:50', 'This is a test.'),
 (10, 1, 1, '2018-02-28 03:52:10', 'This is a test.'),
 (11, 1, 1, '2018-02-28 03:52:28', 'This is a test.'),
-(12, 1, 1, '2018-02-28 04:15:25', 'So does this work now?');
+(12, 1, 1, '2018-02-28 04:15:25', 'So does this work now?'),
+(13, 1, 1, '2018-07-11 14:25:51', 'testing');
 
 -- --------------------------------------------------------
 
@@ -133,7 +134,10 @@ INSERT INTO `comments_projects_tags` (`id`, `comment_id`, `tag_id`) VALUES
 (3, 11, 2),
 (4, 11, 3),
 (5, 12, 1),
-(6, 12, 6);
+(6, 12, 6),
+(7, 13, 6),
+(8, 13, 3),
+(9, 13, 4);
 
 -- --------------------------------------------------------
 
@@ -331,13 +335,6 @@ CREATE TABLE `project_faves` (
   `project_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `project_faves`
---
-
-INSERT INTO `project_faves` (`id`, `user_id`, `project_id`) VALUES
-(1, 1, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -397,8 +394,9 @@ CREATE TABLE `project_likes` (
 --
 
 INSERT INTO `project_likes` (`id`, `user_id`, `project_id`) VALUES
-(1, 1, 1),
-(2, 2, 1);
+(2, 2, 1),
+(3, 3, 3),
+(49, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -509,6 +507,21 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `alias`, `title`, `first`, `last`, `email`, `hash`, `date_signup`, `is_approved`, `is_admin`, `is_mod`, `bio`, `resume`, `avatar`) VALUES
 (1, 'Nick', 'DAGD Faculty', 'Nick', 'Pattison', 'patt41@ferris.edu', '$2y$10$9Bv8NMeF46Z4yBD6sdt11ua61FAUZxBIRTMgy/we3buGSoOcZf./O', '2018-02-14 18:33:27', 1, 0, 0, 'This is my bio!!', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_verify_codes`
+--
+
+DROP TABLE IF EXISTS `user_verify_codes`;
+CREATE TABLE `user_verify_codes` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `code` varchar(32) NOT NULL,
+  `expires` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `reset_password` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
@@ -629,6 +642,12 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user_verify_codes`
+--
+ALTER TABLE `user_verify_codes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -646,12 +665,12 @@ ALTER TABLE `comments_events`
 -- AUTO_INCREMENT for table `comments_projects`
 --
 ALTER TABLE `comments_projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `comments_projects_tags`
 --
 ALTER TABLE `comments_projects_tags`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `events`
 --
@@ -696,7 +715,7 @@ ALTER TABLE `project_attribution`
 -- AUTO_INCREMENT for table `project_faves`
 --
 ALTER TABLE `project_faves`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `project_imgs`
 --
@@ -706,7 +725,7 @@ ALTER TABLE `project_imgs`
 -- AUTO_INCREMENT for table `project_likes`
 --
 ALTER TABLE `project_likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT for table `project_tags`
 --
@@ -727,6 +746,11 @@ ALTER TABLE `tags_projects`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `user_verify_codes`
+--
+ALTER TABLE `user_verify_codes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

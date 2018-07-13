@@ -3,6 +3,11 @@ body {
     font-family:"Helvetica", "Arial", sans-serif;
     background:#333;
 }
+.tray pre {
+    padding:15px;
+    background:#444;
+    border-radius:5px;
+}
 #bug-issues {
     position:fixed;
     top:90px;
@@ -89,6 +94,10 @@ body.login nav.main a.login
     color:#DDD;
     font-size:13px;
     line-height:18px;
+}
+.tray.dark {
+    background:#2b2b2b;
+    border-bottom:1px solid #444;
 }
 .tray a {
     color:#DDD;
@@ -561,12 +570,6 @@ body.signup footer.footer a.signup,
 body.bylaws footer.footer a.bylaws{
     color:#fff;
     text-decoration:underline;
-}
-.formHR{
-    margin: 0px;
-    border-bottom:1px solid #444;
-    padding:0;
-    clear:both;
 }
 .hr {
     border-bottom:1px solid #444;
