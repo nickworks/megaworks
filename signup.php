@@ -5,11 +5,10 @@ include_once "includes/class.User.php";
 include_once "includes/functions.php";
 
 $email = post('user-email1');
-$pass = post('user-password1');
+$pass1 = post('user-password1');
+$pass2 = post('user-password2');
 $first = post('user-firstname');
 $last = post('user-lastname');
-$alias = post('user-name');
-$title = post('');
 $was_user_created = false;
 
 $errors = array();
@@ -17,15 +16,12 @@ $errors = array();
 if ($email !== ''){
    $errors = (User::new(
                 $email,
-                $pass,
+                $pass1,
+                $pass2,
                 $first,
-                $last,
-                $alias = "Noob",
-                $title
-            ));
-    if($errors['err'] === ''){
-        $was_user_created = true;
-    }
+                $last
+    ));
+    $was_user_created = empty($errors);
 }
 
 beginPage("signup", "styles/signup.css");
@@ -44,8 +40,12 @@ mainMenu();
             <h1>Create an Account</h1>
             <p>Already have an account? <a href="login.php">Login!</a></p>
             
-            <? if (!empty($errors)){ 
-                echo "<p class='errorMessage'>Error: ".$errors['err']."</p>";  
+            <? if (is_array($errors) && !empty($errors)){
+                echo "<ul class='errorMessage'>";
+                foreach($errors as $err){
+                    echo "<li>$err</li>";
+                }
+                echo "</ul>";
             } ?>
             
             <div class='bubble'>

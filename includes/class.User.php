@@ -101,18 +101,17 @@ class User {
     static function validEmail(string $email):bool {
         return preg_match("/^[a-zA-Z0-9\._]{4,20}@ferris\.edu$/", $email);
     }
-    static function validPass($pass1, $pass2):bool {
+    static function validPass($pass1, $pass2):array {
         
-        if($pass1 != $pass2) return ["err"=>"Your two passwords do NOT match."];
-        
-        if(strlen($pass1) < 8) return ["err"=>"Your password must be at least 8 characters."];
-        
-        //if(!preg_match('/^[a-zA-Z0-9\s\[\]\{\}\;:\'\"\<\>\.\,\?\`\~\!\@\#\$\%\^\&\*\(\)\_\-\+\=\/\\\\|]+$/', $pass)) return ["err"=>"Your password can't use non-ascii characters."];
-        
-        if(!preg_match('/[a-z]/', $pass1)) return ["err"=>"Your password must use at least one lowercase character."];
-        if(!preg_match('/[A-Z]/', $pass1)) return ["err"=>"Your password must use at least one uppercase character."];
-        if(!preg_match('/[0-9]/', $pass1)) return ["err"=>"Your password must use at least one number."];
-        if(!preg_match('/[^a-zA-Z0-9\s]/', $pass1)) return ["err"=>"Your password must have at least one special character."];
+        $errs = array();
+        if($pass1 != $pass2) array_push($errs, "Your two passwords do NOT match.");
+        if(strlen($pass1) < 8) array_push($errs, "Your password must be at least 8 characters.");
+        if(!preg_match('/[a-z]/', $pass1)) array_push($errs, "Your password must use at least one lowercase character.");
+        if(!preg_match('/[A-Z]/', $pass1)) array_push($errs, "Your password must use at least one uppercase character.");
+        if(!preg_match('/[0-9]/', $pass1)) array_push($errs, "Your password must use at least one number.");
+        if(!preg_match('/[^a-zA-Z0-9\s]/', $pass1)) array_push($errs, "Your password must have at least one special character.");
+        //if(!preg_match('/^[a-zA-Z0-9\s\[\]\{\}\;:\'\"\<\>\.\,\?\`\~\!\@\#\$\%\^\&\*\(\)\_\-\+\=\/\\\\|]+$/', $pass)) array_push($errs, "Your password can't use non-ascii characters.");
+        return $errs;
     }
     static function doesExist($uid):bool{
         $uid = intval($uid);
@@ -128,48 +127,41 @@ class User {
     static function changePass($uid, $oldpass, $pass1, $pass2){
         
     }
-    static function new($email, $pass, $first, $last, $alias, $title){
+    static function new($email, $pass1, $pass2, $first, $last){
 
+        $errs = array();
+        
         if(!is_string($email)) $email = "";
-        if(!is_string($pass)) $pass = "";
+        if(!is_string($pass1)) $pass1 = "";
+        if(!is_string($pass2)) $pass2 = "";
         if(!is_string($first)) $first = "";
         if(!is_string($last)) $last = "";
-        if(!is_string($alias)) $alias = "";
-        if(!is_string($title)) $title = "";
 
         ///////////////////////////////////// CHECK email:
 
-        $email = strtolower($email);
-        
-        if(!User::validEmail($email))
-            return ["err" => "Your email must be a Ferris email address."];
-
-        $res = MegaDB::query('SELECT `id` FROM `users` WHERE `email`=?;', [$email]);
-        
-        if(count($res) > 0)
-            return ["err" => "That email address is already registered."];
-
+        $email = strtolower($email); 
+        if(!User::validEmail($email)) {
+            array_push($errs, "Your email must be a Ferris email address.");
+        } else {
+            $res = MegaDB::query('SELECT `id` FROM `users` WHERE `email`=?;', [$email]);
+            if(count($res) > 0) array_push($errs, "That email address is already registered.");
+        }
         ///////////////////////////////////// CHECK password:
         
-        if(strlen($pass) < 8) return ["err"=>"Your password must be at least 8 characters."];
+        $errs = array_merge($errs, User::validPass($pass1, $pass2));
         
-        //if(!preg_match('/^[a-zA-Z0-9\s\[\]\{\}\;:\'\"\<\>\.\,\?\`\~\!\@\#\$\%\^\&\*\(\)\_\-\+\=\/\\\\|]+$/', $pass)) return ["err"=>"Your password can't use non-ascii characters."];
-        
-        if(!preg_match('/[a-z]/', $pass)) return ["err"=>"Your password must use at least one lowercase character."];
-        if(!preg_match('/[A-Z]/', $pass)) return ["err"=>"Your password must use at least one uppercase character."];
-        if(!preg_match('/[0-9]/', $pass)) return ["err"=>"Your password must use at least one number."];
-        if(!preg_match('/[^a-zA-Z0-9\s]/', $pass)) return ["err"=>"Your password must have at least one special character."];
-        
+        if(!empty($errs)) return $errs; // FAIL
+                                         
         ///////////////////////////////////// MAKE HASH:
         
-        $hash = password_hash($pass, PASSWORD_DEFAULT);
+        $hash = password_hash($pass1, PASSWORD_DEFAULT);
         
         ///////////////////////////////////// INSERT:
 
-        $values = array($alias, $title, $first, $last, $email, $hash);
+        $values = array('', 'Newbie', $first, $last, $email, $hash);
         MegaDB::query("INSERT INTO `users` (`alias`,`title`,`first`,`last`,`email`,`hash`) VALUES(?, ?, ?, ?, ?, ?);", $values);
         
-        return ["err" => ""];
+        return $errs;
     }
 }
 ?>

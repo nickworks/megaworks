@@ -55,11 +55,13 @@
 #signup input[type="submit"]:hover {
     background:#168342;
 }
-#signup p.errorMessage {
+.errorMessage {
     color:#FFF;
     font-weight:bold;
     background:#ff3838;
-    text-align:center;
     padding:20px;
     border-radius:5px;
+}
+.errorMessage li {
+    margin-left:15px;
 }
