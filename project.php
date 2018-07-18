@@ -101,12 +101,12 @@ mainMenu();
         <div class="tray">
             <div class="feature">
                <? if (!empty($images)) {?>
-                    <img src ="<?= $images[0]["url"] ?>">
+                    <img id="bigImage" src  ="<?= $images[0]["url"] ?>">
                     <!--Create for loop here -->
                 <!-- create a thumbnail bar -->
                 <div class="thumbnail"> 
                     <? foreach ($images as $img){ ?>
-                    <div class=thumbnailBox><img  src ="<?= $img["url"] ?>"></div>
+                    <div class=thumbnailBox><img class="thumbnailImg" src ="<?= $img["url"] ?>"></div>
                     <? } ?> <!-- end of for loop -->
                 
                <? } ?><!-- end of if statement loop -->

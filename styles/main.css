@@ -535,8 +535,11 @@ nav.secondary a {
    
     
      display: flex;
-    
-
+    position: relative;
+    justify-content: center;
+    cursor: pointer;
+    margin: 0 auto;
+    flex-wrap: wrap;
    
      
 }
@@ -544,12 +547,14 @@ nav.secondary a {
     overflow: hidden;
      max-height:  50px;
     max-width: 50px;
+    margin: 5px;
 }
  .thumbnailBox img {
     height: 100%;
      width: 100%;
      object-fit: cover;
      object-position: center;
+     
 }
 footer.footer ul{
     list-style:none;
