@@ -530,7 +530,7 @@ nav.secondary a {
 }
 
 
-.thumbnail {
+.thumbnailWrapper {
 
    
     
@@ -543,7 +543,7 @@ nav.secondary a {
    
      
 }
-.thumbnail .thumbnailBox{
+.thumbnailWrapper .thumbnailBox{
     overflow: hidden;
      max-height:  50px;
     max-width: 50px;

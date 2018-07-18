@@ -8,7 +8,7 @@ function doAjax(url,success){
 (function(){
     var bttnLike=document.getElementById("bttnLike");
     var bttnFave=document.getElementById("bttnFave");
-    var bigImage=document.getElementById("bigImage");
+    var mainImage =document.getElementById("mainImage");
     var images = document.getElementsByClassName("thumbnailImg");
 
     if(bttnLike)bttnLike.addEventListener("mousedown", function(){
@@ -45,7 +45,7 @@ function doAjax(url,success){
        
         images[i].addEventListener("mousedown", function(e){
             
-           bigImage.setAttribute("src", e.target.getAttribute("src"));
+           mainImage.setAttribute("src", e.target.getAttribute("src"));
         });
         
        
