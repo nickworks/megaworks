@@ -1,5 +1,5 @@
 <?
-include_once "class.CoolDB.php";
+include_once "class.MegaDB.php";
 include_once "functions.php";
 
 User::sessionStart();
@@ -36,9 +36,9 @@ class User {
 
         //if(array_key_exists('user', $_SESSION)) return $_SESSION['user'];
         if(array_key_exists('userid', $_SESSION)) {
-            $id = intval($_SESSION['userid']);
-            $db = new CoolDB();
-            $res = $db->table('users')->select()->where(['id' => $id])->execute();
+            $id = intval($_SESSION['userid']);            
+            $res = MegaDB::query("SELECT * FROM `users` WHERE `id`=?;", array($id));
+            
             if(count($res) > 0) {
                 User::setCurrent($res[0]);
                 return User::$current;
@@ -51,9 +51,8 @@ class User {
         unset($_SESSION['userid']);
     }
     static function login(string $email, string $pass){
-        $db = new CoolDB();
-        $db->table('users');
-        $res = $db->select()->where(['email' => $email])->execute();
+        $res = MegaDB::query("SELECT * FROM `users` WHERE `email`=?;", array($email));
+        
         if(count($res) < 1) return ["err" => "Couldn't find that email address."];
 
         $user = $res[0];
@@ -117,8 +116,7 @@ class User {
     }
     static function doesExist($uid):bool{
         $uid = intval($uid);
-        $db = new CoolDB();      
-        $rows = $db->query("SELECT COUNT(*) AS 'check' FROM users WHERE id=?", array($uid));
+        MegaDB::query("SELECT COUNT(*) AS 'check' FROM users WHERE id=?", array($uid));
         return ($rows[0]['check'] == 1);
     }
     
@@ -138,9 +136,6 @@ class User {
         if(!is_string($last)) $last = "";
         if(!is_string($alias)) $alias = "";
         if(!is_string($title)) $title = "";
-        
-        $db = new CoolDB();
-        $db->table('users');
 
         ///////////////////////////////////// CHECK email:
 
@@ -149,8 +144,7 @@ class User {
         if(!User::validEmail($email))
             return ["err" => "Your email must be a Ferris email address."];
 
-        //$res = $db->select('id')->where(['email' => $email])->execute();
-        $res = $db->query('SELECT `id` FROM `users` WHERE `email`=?', [$email]);
+        $res = MegaDB::query('SELECT `id` FROM `users` WHERE `email`=?;', [$email]);
         
         if(count($res) > 0)
             return ["err" => "That email address is already registered."];
@@ -172,17 +166,9 @@ class User {
         
         ///////////////////////////////////// INSERT:
 
-        $values = [
-            'alias' => $alias,
-            'title' => $title,
-            'first' => $first,
-            'last' =>  $last,
-            'email' => $email,
-            'hash' => $hash,
-            'is_approved' => false
-        ];
-
-        $db->insert($values)->execute();
+        $values = array($alias, $title, $first, $last, $email, $hash);
+        MegaDB::query("INSERT INTO `users` (`alias`,`title`,`first`,`last`,`email`,`hash`) VALUES(?, ?, ?, ?, ?, ?);", $values);
+        
         return ["err" => ""];
     }
 }

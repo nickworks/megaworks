@@ -1,7 +1,7 @@
 <?
 
 include_once "includes/templates.php";
-include_once "includes/class.CoolDB.php";
+include_once "includes/class.MegaDB.php";
 include_once "includes/class.User.php";
 
 
@@ -10,19 +10,19 @@ include_once "includes/class.User.php";
 $user_id = get('id');
     
 $sql = "SELECT * FROM `users` WHERE id=?";
-$db = new CoolDB();
-$user = $db->query($sql, array($user_id));
+
+$user = MegaDB::query($sql, array($user_id));
 if(empty ($user) )header('location: 404.php');
 $user = $user[0];
 
 $sql = "SELECT * FROM `profile_contacts` WHERE user_id=?";
-$contacts = $db->query($sql, array($user_id));
+$contacts = MegaDB::query($sql, array($user_id));
 
 $sql = "SELECT * FROM `profile_links` WHERE user_id=?";
-$links = $db->query($sql, array($user_id));
+$links = MegaDB::query($sql, array($user_id));
 
 $sql = "SELECT * FROM `projects` WHERE user_id=?";
-$projects = $db->query($sql, array($user_id));
+$projects = MegaDB::query($sql, array($user_id));
 
 //STORE DATABASE DATA TO USEFUL VARS:
 $avatar = User::avatar($user);

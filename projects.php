@@ -2,14 +2,14 @@
 
 include_once "includes/templates.php";
 include_once "includes/functions.php";
-include_once "includes/class.CoolDB.php";
+include_once "includes/class.MegaDB.php";
 
 
 
-$db = new CoolDB();
+
 $sql = "SELECT p.id, p.title, u.alias, i.url FROM projects p, users u, project_imgs i WHERE u.id = p.user_id AND i.project_id = p.id GROUP BY p.id ORDER BY p.id DESC;";
 
-$projects = $db->query($sql, array(""));
+$projects = MegaDB::query($sql, array(""));
 
 //print_r($projects);die;
 

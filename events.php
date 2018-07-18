@@ -1,11 +1,11 @@
 <?
 include_once "includes/templates.php";
 include_once "includes/functions.php";
-include_once "includes/class.CoolDB.php";
+include_once "includes/class.MegaDB.php";
 
-$db = new CoolDB();
+
 //TODO: only get events for the selected month...
-$events = $db->query("SELECT * FROM `events` ORDER BY `events`.`date_start` ASC;", array());
+$events = MegaDB::query("SELECT * FROM `events` ORDER BY `events`.`date_start` ASC;", array());
 
 foreach($events as &$event){
     $event['datetime_start']=new DateTime($event['date_start']);

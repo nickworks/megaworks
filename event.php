@@ -1,7 +1,7 @@
 <?
 include_once "includes/functions.php";
 include_once "includes/templates.php";
-include_once "includes/class.CoolDB.php";
+include_once "includes/class.MegaDB.php";
 include_once "includes/class.User.php";
 
 // gets the event id its trying to access
@@ -10,11 +10,11 @@ $id = intval(get("id"));
 if($id <= 0) header("location:events.php");
 $cURL = $_SERVER['REQUEST_URI'];
 // grabs the information from the database
-$db = new CoolDB();
-$event = $db->query("SELECT * FROM `events` WHERE `id`=?", array($id))[0];
-$comments = $db->query("SELECT u.alias AS 'user_name', u.title AS 'user_title', u.avatar AS 'user_avatar', u.email AS 'user_email', c.* FROM comments_events c, users u WHERE c.event_id=? AND u.id=c.user_id", array($id));
-$event_links = $db->query("SELECT * FROM `event_links` WHERE `event_id` = ?", array($id));
-$event_downloads = $db->query("SELECT * FROM `event_downloads` WHERE `event_id` = ?", array($id));
+
+$event = MegaDB::query("SELECT * FROM `events` WHERE `id`=?", array($id))[0];
+$comments = MegaDB::query("SELECT u.alias AS 'user_name', u.title AS 'user_title', u.avatar AS 'user_avatar', u.email AS 'user_email', c.* FROM comments_events c, users u WHERE c.event_id=? AND u.id=c.user_id", array($id));
+$event_links = MegaDB::query("SELECT * FROM `event_links` WHERE `event_id` = ?", array($id));
+$event_downloads = MegaDB::query("SELECT * FROM `event_downloads` WHERE `event_id` = ?", array($id));
 
 //print_r($comments); exit;
 

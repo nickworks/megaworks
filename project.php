@@ -1,7 +1,7 @@
 <?
 include_once "includes/functions.php";
 include_once "includes/templates.php";
-include_once "includes/class.CoolDB.php";
+include_once "includes/class.MegaDB.php";
 include_once "includes/class.User.php";
 
 //////////////////////////////////////////////// CHECK FOR VALID PROJECT ID:
@@ -11,7 +11,7 @@ function redirect() { header("location:projects.php"); }
 $id = intval(get("id"));
 if($id <= 0 || empty($id)) redirect(); // invalid is, so redirect
 $cURL = $_SERVER['REQUEST_URI'];
-$db = new CoolDB();
+
 $sql = "SELECT p.*, likes.num_likes, faves.num_faves, l.title AS 'license_title', l.copy AS 'license_copy', l.link AS 'license_link'
 FROM
 	projects p, licenses l,
@@ -19,7 +19,7 @@ FROM
     (SELECT COUNT(user_id) AS num_faves FROM project_faves WHERE project_id=?) faves
 WHERE p.id=? AND l.id=p.license_id";
 
-$rows = $db->query($sql, array($id, $id, $id));
+$rows = MegaDB::query($sql, array($id, $id, $id));
 if(count($rows) == 0) redirect(); // no rows were returned, so redirect
 
 $project = $rows[0]; // <- project info
@@ -36,8 +36,8 @@ function processCommentForm($project_id){
     
     if(!empty($comment) && $user_id > 0){
         
-        $db = new CoolDB();
-        $db->query("INSERT INTO `comments_projects` (`user_id`, `project_id`, `comment`) VALUES (?, ?, ?);", array($user_id, $project_id, $comment));
+        
+        MegaDB::query("INSERT INTO `comments_projects` (`user_id`, `project_id`, `comment`) VALUES (?, ?, ?);", array($user_id, $project_id, $comment));
         $comment_id = $db::$pdo->lastInsertId();        
         
         $values = '';
@@ -49,7 +49,7 @@ function processCommentForm($project_id){
             }
         }
         $sql = "INSERT INTO `comments_projects_tags` (`comment_id`, `tag_id`) VALUES {$values};";
-        $db->query($sql, array());
+        MegaDB::query($sql, array());
     }
 }
 
@@ -58,13 +58,13 @@ processCommentForm($id);
 //////////////////////////////////////////////// BEGIN PULLING DATA FROM DB:
 
 
-$comments = $db->query("SELECT u.alias AS 'user_name', u.title AS 'user_title', u.avatar AS 'user_avatar', u.email AS 'user_email', c.*, GROUP_CONCAT(t.text) AS 'tags' FROM comments_projects c, comments_projects_tags j, tags_comments t, users u WHERE c.project_id=? AND t.id = j.tag_id AND j.comment_id = c.id AND u.id=c.user_id GROUP BY c.id", array($id));
+$comments = MegaDB::query("SELECT u.alias AS 'user_name', u.title AS 'user_title', u.avatar AS 'user_avatar', u.email AS 'user_email', c.*, GROUP_CONCAT(t.text) AS 'tags' FROM comments_projects c, comments_projects_tags j, tags_comments t, users u WHERE c.project_id=? AND t.id = j.tag_id AND j.comment_id = c.id AND u.id=c.user_id GROUP BY c.id", array($id));
 
-$tags = $db->query("SELECT t.* FROM project_tags j, tags_projects t WHERE j.project_id=? AND j.tag_id = t.id;", array($id));
+$tags = MegaDB::query("SELECT t.* FROM project_tags j, tags_projects t WHERE j.project_id=? AND j.tag_id = t.id;", array($id));
 
-$attribution = $db->query("SELECT * FROM `project_attribution` WHERE `project_id` = ?;", array($id));
+$attribution = MegaDB::query("SELECT * FROM `project_attribution` WHERE `project_id` = ?;", array($id));
 
-$creator = $db->query("SELECT * FROM `users` WHERE `id`=?;", array($project['user_id']))[0];
+$creator = MegaDB::query("SELECT * FROM `users` WHERE `id`=?;", array($project['user_id']))[0];
 
 $likeButtonClass="button";
 $faveButtonClass="button";
@@ -73,7 +73,7 @@ $showButtons=false;
 if(User::isLoggedIn()){
     $showButtons=true;
     $uid=User::current()['id'];
-    $temp=$db->query("SELECT p1.likes, p2.faves FROM
+    $temp=MegaDB::query("SELECT p1.likes, p2.faves FROM
         (SELECT COUNT(user_id) AS 'likes' FROM project_likes WHERE project_id=? AND user_id=?) p1,
         (SELECT COUNT(user_id) AS 'faves' FROM project_faves WHERE project_id=? AND user_id=?) p2;", array($id, $uid, $id, $uid));
     $likeButtonClass.=empty($temp[0]['likes'])?"":" active";
@@ -187,7 +187,7 @@ mainMenu();
                     <p>Choose some tags to accompany your comment:</p>
                     <div class='tag-picker'>
                     <?
-                    $commentTags = $db->query("SELECT * FROM `tags_comments` ORDER BY `warn` ASC;", array());
+                    $commentTags = MegaDB::query("SELECT * FROM `tags_comments` ORDER BY `warn` ASC;", array());
                     foreach($commentTags as $tag){
                         $name = "commentFormTag".$tag['id'];
                         $value = $tag['text'];

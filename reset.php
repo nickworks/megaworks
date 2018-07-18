@@ -6,8 +6,8 @@ $message='';
 $email = post("email");
 if(!empty($email)){
     // lookup user
-    $db=new CoolDB();
-    $res=$db->query("SELECT * FROM users WHERE email=?;",array($email));
+    
+    $res=MegaDB::query("SELECT * FROM users WHERE email=?;",array($email));
     if(!empty($res)){
         $email = $res[0]['email'];
         $uid = $res[0]['id'];
