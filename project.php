@@ -38,7 +38,7 @@ function processCommentForm($project_id){
         
         
         MegaDB::query("INSERT INTO `comments_projects` (`user_id`, `project_id`, `comment`) VALUES (?, ?, ?);", array($user_id, $project_id, $comment));
-        $comment_id = $db::$pdo->lastInsertId();        
+        $comment_id = MegaDB::lastInsertId();
         
         $values = '';
         foreach($_POST as $key => $val) {

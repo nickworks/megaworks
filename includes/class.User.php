@@ -1,5 +1,6 @@
 <?
 include_once "class.MegaDB.php";
+include_once "class.Verify.php";
 include_once "functions.php";
 
 User::sessionStart();
@@ -121,8 +122,32 @@ class User {
     
     //////////////////////////////////////// MANIPULATING OTHER USERS:
     
-    static function resetPass($uid, $pass1, $pass2){
+    static function resetPass(string $key, string $pass1, string $pass2){
+        $errs = array();
         
+        if(!is_string($key)) $key = "";
+        if(!is_string($pass1)) $pass1 = "";
+        if(!is_string($pass2)) $pass2 = "";
+        
+        $res = Verify::check($key);
+        
+        if(empty($res)) return ["Verification key invalid."];
+        $uid = intval($res[0]['user_id']);
+        
+        $errs = array_merge($errs, User::validPass($pass1, $pass2));
+        
+        if(!empty($errs)) return $errs; // FAIL
+        
+        $hash = password_hash($pass1, PASSWORD_DEFAULT);
+        
+        $res = MegaDB::query("UPDATE `users` SET `hash`=? WHERE id=?;", [$hash, $uid]);
+        
+        $errCode = intval(MegaDB::errs());
+        if(!empty($errCode)) return ["Uh oh. Something went wrong on our end. Please let us know so we can fix it. Error code: $errCode"];
+        
+        Verify::close($key);
+        
+        return [];
     }
     static function changePass($uid, $oldpass, $pass1, $pass2){
         

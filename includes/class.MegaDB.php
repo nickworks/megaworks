@@ -23,7 +23,7 @@ class MegaDB {
         }
         return MegaDB::$pdo ? true : false;
     }
-    static function query(string $query, array $params){
+    static function query(string $query, array $params=[], $returnPDO = false){
         
         if(DB::DEBUG){
             echo "\n $query -- PARAMS: (";
@@ -35,7 +35,16 @@ class MegaDB {
         
         $stmt = MegaDB::$pdo->prepare($query); // returns a PDOStatement object
         $stmt->execute($params);
+        if($returnPDO) return $stmt;
         return (array) $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    static function lastInsertId(){
+        MegaDB::connect();
+        return MegaDB::$pdo->lastInsertId();
+    }
+    static function errs(){
+        MegaDB::connect();
+        return MegaDB::$pdo->errorCode();
     }
 }
 
