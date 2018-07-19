@@ -12,8 +12,8 @@ class Verify {
         MegaDB::query("INSERT INTO user_verify_codes (id, user_id, code, expires, reset_password) VALUES(NULL,?,?,NOW() + INTERVAL 3 HOUR,?);", array($uid, $key, $pass_reset));
         return $key;
     }
-    // returns true if a valid verification code exists
-    static function check(string $key){
+    // returns matching row if a valid verification code exists
+    static function lookup(string $key){
         if(empty($key)||!is_string($key))return false;
         
         return MegaDB::query("SELECT * FROM user_verify_codes WHERE code=? AND expires>NOW();", array($key));

@@ -20,7 +20,7 @@ class User {
         
         if($uid == 0) return;
         
-        unset($user['hash']);
+        //unset($user['hash']);
 
         $_SESSION['userid'] = $uid;
         User::$current = $user;
@@ -96,6 +96,26 @@ class User {
         if(!array_key_exists('is_approved', $user)) return false;
         return ($user['is_approved'] === '1');
     }
+    static function changePass($oldpass, $pass1, $pass2){
+        
+        $user = User::current();
+        
+        if(empty($user)) return ['You must be logged in to change your password.'];
+        if(!password_verify($oldpass, $user['hash'])) return ["Your old password is incorrect."];
+        
+        $errs = User::validPass($pass1, $pass2);
+        if(!empty($errs)) return $errs;
+        
+        $hash=User::hash($pass1);
+        $uid = intval($user['id']);
+        
+        MegaDB::query("UPDATE `users` SET `hash`=? WHERE id=?;", array($hash, $uid));
+        
+        $errCode = intval(MegaDB::errs()); // convert error code into int, if it's not 0:
+        if(!empty($errCode)) return ["Uh oh. Something went wrong on our end. Please let us know so we can fix it. Error code: $errCode"];
+        
+        return [];
+    }
     
     //////////////////////////////////////// CONVENIENCE FUNCS:
     
@@ -119,6 +139,9 @@ class User {
         MegaDB::query("SELECT COUNT(*) AS 'check' FROM users WHERE id=?", array($uid));
         return ($rows[0]['check'] == 1);
     }
+    static function hash($pass){
+        return password_hash($pass, PASSWORD_DEFAULT);
+    }
     
     //////////////////////////////////////// MANIPULATING OTHER USERS:
     
@@ -129,28 +152,22 @@ class User {
         if(!is_string($pass1)) $pass1 = "";
         if(!is_string($pass2)) $pass2 = "";
         
-        $res = Verify::check($key);
-        
+        $res = Verify::lookup($key); // get user matching verification key
         if(empty($res)) return ["Verification key invalid."];
-        $uid = intval($res[0]['user_id']);
         
         $errs = array_merge($errs, User::validPass($pass1, $pass2));
-        
         if(!empty($errs)) return $errs; // FAIL
         
-        $hash = password_hash($pass1, PASSWORD_DEFAULT);
-        
+        $hash = User::hash($pass1);
+        $uid = intval($res[0]['user_id']);
         $res = MegaDB::query("UPDATE `users` SET `hash`=? WHERE id=?;", [$hash, $uid]);
         
-        $errCode = intval(MegaDB::errs());
+        $errCode = intval(MegaDB::errs()); // convert error code into int, if it's not 0:
         if(!empty($errCode)) return ["Uh oh. Something went wrong on our end. Please let us know so we can fix it. Error code: $errCode"];
         
-        Verify::close($key);
+        Verify::close($key); // close verification code (delete from DB)
         
         return [];
-    }
-    static function changePass($uid, $oldpass, $pass1, $pass2){
-        
     }
     static function new($email, $pass1, $pass2, $first, $last){
 
@@ -179,7 +196,7 @@ class User {
                                          
         ///////////////////////////////////// MAKE HASH:
         
-        $hash = password_hash($pass1, PASSWORD_DEFAULT);
+        $hash = User::hash($pass1);
         
         ///////////////////////////////////// INSERT:
 

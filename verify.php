@@ -3,7 +3,7 @@ include_once("includes/templates.php");
 include_once("includes/class.Verify.php");
 
 $key=get('key');
-$res=Verify::check($key);
+$res=Verify::lookup($key);
 $keyValid = !empty($res);
 
 if($keyValid){
