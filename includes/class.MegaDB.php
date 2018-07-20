@@ -18,7 +18,8 @@ class MegaDB {
             try {
                 MegaDB::$pdo = new PDO(DB::HOST, DB::USER, DB::PASS);
             } catch (Exception $e){
-                die("uh oh! it looks like our database is down...");
+                //echo "Error: ".$e->getMessage()."<br>";
+                die("uh oh! it looks like our database is down.");
             }
         }
         return MegaDB::$pdo ? true : false;

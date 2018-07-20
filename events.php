@@ -3,7 +3,6 @@ include_once "includes/templates.php";
 include_once "includes/functions.php";
 include_once "includes/class.MegaDB.php";
 
-
 //TODO: only get events for the selected month...
 $events = MegaDB::query("SELECT * FROM `events` ORDER BY `events`.`date_start` ASC;", array());
 

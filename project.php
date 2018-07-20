@@ -82,7 +82,6 @@ if(User::isLoggedIn()){
 
 //print_r($project); exit;
 
-// TODO: we need to pull media
 // TODO: we need to store/pull "views" data
 
 //////////////////////////////////////////////// BUILD PAGE:
