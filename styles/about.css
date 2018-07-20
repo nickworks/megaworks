@@ -1,0 +1,26 @@
+.bigbttn {
+    transition: all .2s;
+    width:150px;
+    max-height:50px;
+    margin-right:10px;    
+    border: 1px solid #444;
+    text-align: center;
+    border-radius: 5px;
+    background-color:#333;    
+    background-position:left center;
+    padding:10px;
+    text-decoration:none;
+}
+.bigbttn:hover{
+    transition: all .2s;
+    background-color: #444;   
+    border: 1px solid #DDD;
+}
+.rows {
+    display:flex;
+    justify-content:flex-start;
+    flex-direction:row;
+}
+.first_header{
+    margin-top:0px;   
+}
