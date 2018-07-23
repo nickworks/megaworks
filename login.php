@@ -13,9 +13,7 @@ $redirect = get("redirect");
 if($redirect !== htmlentities($redirect)) $redirect = "";
 
 // LOGIN THE USER:
-if(!empty($mail)){
-    $result = User::login($mail, $pass);
-}
+$errs = empty($mail) ? null : User::login($mail, $pass);
 
 // REDIRECT:
 if(User::isLoggedIn()) {
@@ -29,40 +27,33 @@ mainMenu();
 ?>
 
 <div class="tray dark">
-        <div id="login">
-            <section class="left">
+    <div id="login">
+
+        <? errors($errs); ?>
+        <div class="flex">
+            <section>
                 <h1>Login</h1>
                 <form class="login" action="login.php?redirect=<?=htmlentities($redirect)?>" method="post">
                     <div>
-                        <h2>Email*</h2>
+                        <label>Email</label>
                         <input type="text" id="name" name="user-email">
                     </div>
                     <div>
-                        <h2>Password*</h2>
+                        <label>Password</label>
                         <input type="password" id="password" name="user-password">
                     </div>
-                    <div>
-                        <p id="forgot-password"><a href="#">Forgot your password?</a></p>
-                    </div>
-                    <div class="button" id="confirm-login">
-                        <button id="submitB" type="submit">Log In</button>
-                    </div>
+                    <p><a href="#">Forgot your password?</a></p>
+                    <input type="submit" value="Log In" id="confirm-login">
                 </form>
             </section>
-    
-    
-            <section class="right">
-                <div class="centerLine"></div>
+            <section><div class="centerLine"></div></section>
+            <section>
                 <h1>Don't have an account?</h1>
                 <h2>Signing up is easy!</h2>
-                <div class="button" id="create-account">
-                    <a href="signup.php">
-                        <button id="CreateAnAccount" href="signup.php">Create an account</button>
-                    </a>
-                </div>
-                
+                <a href="signup.php" id="create-account" href="signup.php">Create an account</a>
             </section>
-    </div>    
+        </div><!-- .flex -->
+    </div><!-- #login -->
     <footer></footer>
 </div>
 

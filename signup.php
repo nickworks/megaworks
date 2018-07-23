@@ -40,13 +40,7 @@ mainMenu();
             <h1>Create an Account</h1>
             <p>Already have an account? <a href="login.php">Login!</a></p>
             
-            <? if (is_array($errors) && !empty($errors)){
-                echo "<ul class='errorMessage'>";
-                foreach($errors as $err){
-                    echo "<li>$err</li>";
-                }
-                echo "</ul>";
-            } ?>
+            <? errors($errors); ?>
             
             <div class='bubble'>
                 <h2>Your Full Name</h2>

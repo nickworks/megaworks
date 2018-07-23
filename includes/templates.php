@@ -130,4 +130,15 @@ $avatar = User::avatar($avatar);
         </div>
     </div>
     </div><!-- end comment -->
-<? } ?>
+<? }
+
+function errors($errs){
+    if (is_array($errs) && !empty($errs)){
+        echo "<ul class='errorMessage'>";
+        foreach($errs as $err){
+            echo "<li>$err</li>";
+        }
+        echo "</ul>";
+    }
+}
+?>

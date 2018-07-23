@@ -1,15 +1,10 @@
 #login {
-    display:flex;
-}
-#login section {
-    color:#fff;
-    position: relative;
+    width:450px;
+    margin:0 auto;
 }
 #login h1 {
-    margin:auto;
     font-size:18px;
     font-weight:normal;
-    text-align:left;
 }
 #login h2 {
     margin:15px 0 10px 0;
@@ -18,57 +13,47 @@
     font-weight:normal;
     color:#aaa;
 }
-#login input {
-    height:25px;
-    width:200px;
-}
 #forgot-password a {
     color:#46b7ff;
     font-size:14px;
 }
-#confirm-login button {
-    background-color:#53c025;
+#login .flex section {
+    padding:40px 0;
     color:#fff;
-    height:30px;
-    width:60px;
-    font-size:12px;
-    border-radius:5px;
-    border:0px;
-}
-#create-account button {
-    background:#118edb;
-    color:#fff;
-    height:37px;
-    width:122px;
-    font-size:12px;
-    border-radius:5px;
-    margin:10px 10px 0px 0;
-    border:0px;
-}
-#login .left {
-    padding:80px 30px; 
-    margin-left: auto;
-    width: 200px;
-}
-#login .right {
-    padding:80px 30px; 
-    margin-right: auto;
-    width: 200px;
+    position: relative;
 }
 #login .centerLine {
     height:80%;
     width:1px;
-    background:rgba(255, 255, 255, .5);
-    border-radius:10px;
+    background:rgba(255, 255, 255, .25);
     position: absolute;
     left:0;
     top:10%;
 }
-
-#submitB:hover{
+#confirm-login {
+    background-color:#53c025;
+    color:#fff;
+    text-shadow:1px 1px 2px rgba(0,0,0,.5);
+    border-radius:5px;
+    border:0px;
+    cursor:pointer;
+    padding:8px 15px;
+}
+#confirm-login:hover{
     background-color:#168342;
 }
-
-#CreateAnAccount:hover{
+#create-account {
+    display:inline-block;
+    background:#118edb;
+    color:#fff;
+    font-size:12px;
+    border-radius:5px;
+    margin:10px 10px 0px 0;
+    border:0px;
+    text-decoration:none;
+    cursor:pointer;
+    padding:8px 15px;
+}
+#create-account:hover{
     background-color: #303f8c;
 }

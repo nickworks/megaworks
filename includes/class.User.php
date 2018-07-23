@@ -54,16 +54,21 @@ class User {
     static function login(string $email, string $pass){
         $res = MegaDB::query("SELECT * FROM `users` WHERE `email`=?;", array($email));
         
-        if(count($res) < 1) return ["err" => "Couldn't find that email address."];
+        $err = "We couldn't find that email/password in our database.";
+        
+        if(count($res) < 1) return [$err];
 
         $user = $res[0];
         $hash = $user['hash'];
 
-        if(!password_verify($pass, $hash)) return ["err" => "Password incorrect"];
+        if(!password_verify($pass, $hash)) return [$err];
 
+        // check if validated
+        if($user['is_approved']!==1) return ["Your email isn't validated yet!"];
+        
         User::setCurrent($user);
 
-        return ["err"=>""];
+        return [];
     }   
     static function isLoggedIn():bool {
         $user = User::current();

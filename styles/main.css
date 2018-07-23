@@ -605,3 +605,26 @@ footer.footer a.steam { background:url(../imgs/icon-steam.png); }
 a .hide {
     display:none;
 }
+.errorMessage {
+    color:#FFF;
+    font-weight:bold;
+    background:#ff3838;
+    padding:20px;
+    border-radius:5px;
+}
+.errorMessage li {
+    margin-left:15px;
+}
+form input:not([type='submit']) {  
+    height:25px;
+    width:150px;
+    margin:0 0 10px;
+}
+form label {
+    margin:0 0 2px;
+    font-size:12px;
+    font-weight:normal;
+    color:#aaa;
+    text-align: left;
+    display:block;
+}
