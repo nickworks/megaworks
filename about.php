@@ -26,22 +26,38 @@ mainMenu();
         <div class="content">
             
     
-            <div class="flex">
-                <article style="padding-right:20px">
+            <div>                
                     <h2>Board of Directors</h2>
                     <h3>The Leaders that make the club possible!</h3>
-                    <p>*Future Content*</p>
                     
-                    <h2>Featured Members</h2>
-                    <h3>### members strong and growing!</h3>
-                    <p>*Future Content*</p>
-                    
-                    
-                    
-                </article>
-                
-                
+                    <div class="board-profile">
+                    <h2>President</h2>
+                    <div class="pImg">Profile Image</div>
+                    <h3>[First Name] [Last Name]</h3>
+                    </div>
+                    <div class="board-profile">
+                    <h2>Vice President</h2>
+                    <div class="pImg">Profile Image</div>
+                    <h3>[First Name] [Last Name]</h3>    
+                    </div>
+                    <div class="board-profile">
+                    <h2>Secretary</h2>
+                    <div class="pImg">Profile Image</div>
+                    <h3>[First Name] [Last Name]</h3>   
+                    </div>
+                    <div class="board-profile">
+                    <h2>Treasurer</h2>
+                    <div class="pImg">Profile Image</div>
+                    <h3>[First Name] [Last Name]</h3>   
+                    </div>
+                    <div class="board-profile">
+                    <h3>Director of Communications</h3>
+                    <div class="pImg">Profile Image</div>
+                    <h3>[First Name] [Last Name]</h3>       
+                    </div>
             </div>
+                   <div class=profileHr></div>
+            
             <footer></footer>
         </div>
 <? endPage(); ?>
