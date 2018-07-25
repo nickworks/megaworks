@@ -24,6 +24,11 @@ if(count($rows) == 0) redirect(); // no rows were returned, so redirect
 
 $project = $rows[0]; // <- project info
 
+
+// Query database for images
+$sql = "SELECT * FROM project_imgs WHERE project_id=? ORDER BY ordering";
+    
+    
 //////////////////////////////////////////////// PROCESS COMMENT FORM:
 
 // putting all of this in its own function encapsulates it
@@ -82,6 +87,9 @@ if(User::isLoggedIn()){
 
 //print_r($project); exit;
 
+//Creating an array to hold image data for the user
+$images = MegaDB::query("SELECT * FROM project_imgs where project_id=? ORDER BY ordering", array($id));
+
 // TODO: we need to store/pull "views" data
 
 //////////////////////////////////////////////// BUILD PAGE:
@@ -91,7 +99,17 @@ mainMenu();
 ?>
         <div class="tray">
             <div class="feature">
-                <img src="imgs/placeholder-gallery-image.png">
+               <? if (!empty($images)) {?>
+                    <img id="mainImage" src  ="<?= $images[0]["url"] ?>">
+                    <!--Create for loop here -->
+                <!-- create a thumbnail bar -->
+                <div class="thumbnailWrapper"> 
+                    <? foreach ($images as $img){ ?>
+                    <div class=thumbnailBox><img class="thumbnailImg" src ="<?= $img["url"] ?>"></div>
+                    <? } ?> <!-- end of for loop -->
+                
+               <? } ?><!-- end of if statement loop -->
+                </div>
             </div>
             <article>
                 <h1><?=$project["title"]?></h1>

@@ -141,7 +141,10 @@ aside {
     max-height:50vh;
     margin:0 auto 40px;
     display:flex;
+    float: center;
 }
+
+
 .content {
     background:#FFF;
     box-shadow: 1px 1px 20px #000;
@@ -524,6 +527,34 @@ nav.secondary a {
 }
 .tag-picker input[type="checkbox"]:checked + label {
     border:1px solid #FFF;
+}
+
+
+.thumbnailWrapper {
+
+   
+    
+     display: flex;
+    position: relative;
+    justify-content: center;
+    cursor: pointer;
+    margin: 0 auto;
+    flex-wrap: wrap;
+   
+     
+}
+.thumbnailWrapper .thumbnailBox{
+    overflow: hidden;
+     max-height:  50px;
+    max-width: 50px;
+    margin: 5px;
+}
+ .thumbnailBox img {
+    height: 100%;
+     width: 100%;
+     object-fit: cover;
+     object-position: center;
+     
 }
 footer.footer ul{
     list-style:none;

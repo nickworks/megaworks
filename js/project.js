@@ -8,7 +8,9 @@ function doAjax(url,success){
 (function(){
     var bttnLike=document.getElementById("bttnLike");
     var bttnFave=document.getElementById("bttnFave");
-    
+    var mainImage =document.getElementById("mainImage");
+    var images = document.getElementsByClassName("thumbnailImg");
+
     if(bttnLike)bttnLike.addEventListener("mousedown", function(){
         doAjax("/api/project_likes.php?id="+projectID,function(e){
             try{
@@ -36,5 +38,21 @@ function doAjax(url,success){
             } catch{}
         });
     });
+                
+                
+                
+    for(var i = 0; i<images.length; i++){
+       
+        images[i].addEventListener("mousedown", function(e){
+            
+           mainImage.setAttribute("src", e.target.getAttribute("src"));
+        });
+        
+       
+    }
+    //reference the big image
+    //get reference to every thumbnail image 
+    //add a mousedown event to each
+    //change the big image SRC attribute to whatever was clicked on
     
 })();

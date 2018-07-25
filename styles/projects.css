@@ -75,6 +75,13 @@ img {
     display: block;
 }
 
+
+.thumbnail{
+   height: 10px;
+    width: 50%;
+    
+}
+
 .other{
     padding: 0;
     margin: 7px;
