@@ -4,9 +4,9 @@ include_once "includes/class.MegaDB.php";
 
 class Verify {
     
-    const MSG_FORGOT = 'Hello, human!\n\nThis message is coming from your friends at megaworks.org. You are receiving this message because you\'ve requested to reset your account.\n\nTo verify your email address and reset your password';
+    const MSG_FORGOT = '<p>Hello, human!</p><p>This message is coming from your friends at megaworks.org. You are receiving this message because you\'ve requested to reset your account.</p><p>To verify your email address and reset your password';
     
-    const MSG_SIGNUP = 'Hello, human!\n\nThanks for signing up for megaworks.org. You are receiving this message so that we may verify your email address.\n\nTo verify your email address and complete the registration process';
+    const MSG_SIGNUP = '<p>Hello, human!</p><p>nThanks for signing up for megaworks.org. You are receiving this message so that we may verify your email address.</p><p>To verify your email address and complete the registration process';
     
     // creates and returns new verification code
     static function open(string $email, $pass_reset = false){
@@ -40,10 +40,15 @@ class Verify {
         
         $message = $pass_reset ? Verify::MSG_FORGOT : Verify::MSG_SIGNUP;
 
-        $message .= ', please <a href="'.$url.'">click here</a> OR copy and paste this link into your web browser: '.$url.' \n\nThanks!\nThe MEGA team';
+        $message .= ', please <a href="'.$url.'">click here</a> OR copy and paste this link into your web browser: '.$url.' </p> <p>Thanks!<br>The MEGA team</p>';
         
         if(!isLocal()){
-            mail($email, "MEGA // Verify your Account", $message, "from:auto@megaworks.org");
+            $headers = implode("\r\n", [
+                'MIME-Version: 1.0',
+                'Content-type: text/html; charset=iso-8859-1',
+                'From: MEGA <auto@megaworks.org>'
+            ]);
+            mail($email, "MEGA // Verify your Account", $message, $headers);
         }
         return $message; // mostly for debugging
     } // end emailCode()
