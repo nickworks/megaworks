@@ -36,7 +36,7 @@ class Verify {
     }
     // sends a verification code to the specified email addres
     private static function emailCode($email, $key, $pass_reset = false){
-        $url = "https://megaworks.org/verify.php?key=$key";
+        $url = "https://www.megaworks.org/verify.php?key=$key";
         
         $message = $pass_reset ? Verify::MSG_FORGOT : Verify::MSG_SIGNUP;
 

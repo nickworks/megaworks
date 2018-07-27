@@ -42,7 +42,7 @@ mainMenu();
                         <label>Password</label>
                         <input type="password" id="password" name="user-password">
                     </div>
-                    <p><a href="#">Forgot your password?</a></p>
+                    <p><a href="reset.php">Forgot your password?</a></p>
                     <input type="submit" value="Log In" id="confirm-login">
                 </form>
             </section>

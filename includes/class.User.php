@@ -64,9 +64,9 @@ class User {
         if(!password_verify($pass, $hash)) return [$err];
 
         // check if validated
-        if($user['is_approved']!==1) return ["Your email isn't validated yet. <a href='reset.php'>Click here</a> to verify your account."];
+        if($user['is_approved']!=1) return ["Your email isn't validated yet. <a href='reset.php'>Click here</a> to verify your account."];
         
-        User::setCurrent($user);
+        User::setCurrent($user); // log in
 
         return [];
     }   
@@ -150,6 +150,9 @@ class User {
     
     //////////////////////////////////////// MANIPULATING OTHER USERS:
     
+    static function approve(int $uid){
+        MegaDB::query("UPDATE users SET is_approved=1 WHERE id=?;", array($uid));
+    }
     static function resetPass(string $key, string $pass1, string $pass2){
         $errs = array();
         
