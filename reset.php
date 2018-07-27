@@ -2,37 +2,8 @@
 include_once("includes/templates.php");
 include_once("includes/class.Verify.php");
 
-$message='';
 $email = post("email");
-if(!empty($email)){
-    // lookup user
-    
-    $res=MegaDB::query("SELECT * FROM users WHERE email=?;",array($email));
-    if(!empty($res)){
-        $email = $res[0]['email'];
-        $uid = $res[0]['id'];
-        
-        // create a verification code
-        $key = Verify::open($uid, true);
-        $url = "https://megaworks.org/verify.php?key=$key";
-        
-        $message='
-Hello, human!
-
-This message is coming from your friends at megaworks.org. You are receiving this message because you\'ve requested to reset your account.
-
-To verify your email address and reset your password, please <a href="'.$url.'">click here</a> OR copy and paste this link into your web browser: '.$url.'
-
-Thanks!
-The MEGA team';
-        
-        if(!isLocal()){
-            mail($email, "MEGA // Verify your Account", $message, "from:auto@megaworks.org");
-        }
-    }
-}
-
-
+$message = empty($email) ? '' : Verify::open($email, true);
 
 beginPage("");
 mainMenu();

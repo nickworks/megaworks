@@ -208,7 +208,11 @@ class User {
         $values = array('', 'Newbie', $first, $last, $email, $hash);
         MegaDB::query("INSERT INTO `users` (`alias`,`title`,`first`,`last`,`email`,`hash`) VALUES(?, ?, ?, ?, ?, ?);", $values);
         
-        return $errs;
+        $errCode = intval(MegaDB::errs()); // convert error code into int, if it's not 0:
+        if(!empty($errCode)) return ["Uh oh. Something went wrong on our end. Please let us know so we can fix it. Error code: $errCode"];
+        
+        
+        return [];
     }
 }
 ?>
