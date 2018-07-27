@@ -3,6 +3,11 @@ include_once "includes/functions.php";
 include_once "includes/class.MegaDB.php";
 
 class Verify {
+    
+    const MSG_FORGOT = 'Hello, human!\n\nThis message is coming from your friends at megaworks.org. You are receiving this message because you\'ve requested to reset your account.\n\nTo verify your email address and reset your password';
+    
+    const MSG_SIGNUP = 'Hello, human!\n\nThanks for signing up for megaworks.org. You are receiving this message so that we may verify your email address.\n\nTo verify your email address and complete the registration process';
+    
     // creates and returns new verification code
     static function open(string $email, $pass_reset = false){
         
@@ -16,7 +21,7 @@ class Verify {
         
         MegaDB::query("INSERT INTO user_verify_codes (id, user_id, code, expires, reset_password) VALUES(NULL,?,?,NOW() + INTERVAL 3 HOUR,?);", array($uid, $key, $pass_reset));
         
-        return Verify::emailCode($email, $key);
+        return Verify::emailCode($email, $key, $pass_reset);
     }
     // returns matching row if a valid verification code exists
     static function lookup(string $key){
@@ -29,17 +34,13 @@ class Verify {
         
         $res=MegaDB::query("DELETE FROM user_verify_codes WHERE code=? OR expires<NOW();", array($key));
     }
-    
-    static function emailCode($email, $key){
+    // sends a verification code to the specified email addres
+    private static function emailCode($email, $key, $pass_reset = false){
         $url = "https://megaworks.org/verify.php?key=$key";
-        $message='Hello, human!
+        
+        $message = $pass_reset ? Verify::MSG_FORGOT : Verify::MSG_SIGNUP;
 
-This message is coming from your friends at megaworks.org. You are receiving this message because you\'ve requested to reset your account.
-
-To verify your email address and reset your password, please <a href="'.$url.'">click here</a> OR copy and paste this link into your web browser: '.$url.'
-
-Thanks!
-The MEGA team';
+        $message .= ', please <a href="'.$url.'">click here</a> OR copy and paste this link into your web browser: '.$url.' \n\nThanks!\nThe MEGA team';
         
         if(!isLocal()){
             mail($email, "MEGA // Verify your Account", $message, "from:auto@megaworks.org");

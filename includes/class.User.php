@@ -64,7 +64,7 @@ class User {
         if(!password_verify($pass, $hash)) return [$err];
 
         // check if validated
-        if($user['is_approved']!==1) return ["Your email isn't validated yet!"];
+        if($user['is_approved']!==1) return ["Your email isn't validated yet. <a href='reset.php'>Click here</a> to verify your account."];
         
         User::setCurrent($user);
 
@@ -211,6 +211,7 @@ class User {
         $errCode = intval(MegaDB::errs()); // convert error code into int, if it's not 0:
         if(!empty($errCode)) return ["Uh oh. Something went wrong on our end. Please let us know so we can fix it. Error code: $errCode"];
         
+        Verify::open($email, false);
         
         return [];
     }

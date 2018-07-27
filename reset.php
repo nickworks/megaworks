@@ -10,7 +10,7 @@ mainMenu();
 ?>
 <div class="tray darker">
     <? if(empty($email)){ ?>
-    <h1>Reset your account</h1>
+    <h1>Verify / reset your account</h1>
     <p>To reset your account, follow these easy steps:</p>
     <ul>
         <li>Below, type in the email address that is tied to your account.</li>
