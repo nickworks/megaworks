@@ -7,7 +7,7 @@ mainMenu();
 ?>
 
 <div class="tray">
-    <h2>Join our community groups!</h2>
+    <h1>Join our community groups!</h1>
     <p>You can find our community all over the place! Follow us on Facebook, chat it up on Discord, or "research" games with others on our Steam group!</p>
 </div>
 

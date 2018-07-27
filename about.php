@@ -26,22 +26,60 @@ mainMenu();
         <div class="content">
             
     
-            <div class="flex">
-                <article style="padding-right:20px">
+            <div>                
                     <h2>Board of Directors</h2>
                     <h3>The Leaders that make the club possible!</h3>
-                    <p>*Future Content*</p>
                     
-                    <h2>Featured Members</h2>
-                    <h3>### members strong and growing!</h3>
-                    <p>*Future Content*</p>
-                    
-                    
-                    
-                </article>
+                    <div class="board-profile">
+                    <div class="avatar">Profile Image</div>
+                    <h2>President</h2> 
+                    <h3>[First Name] [Last Name]<em>Alias</em></h3>
+                    <h4>[Title/Occupation]</h4>
+                    </div>
                 
+                    <div class="board-profile">
+                    <div class="avatar">Profile Image</div>
+                    <h2>Vice President</h2>
+                    <h3>[First Name] [Last Name]<em>Alias</em></h3>
+                    <h4>[Title/Occupation]</h4>    
+                    </div>
+                    <div class="board-profile">
+                    <div class="avatar">Profile Image</div>
+                    <h2>Secretary</h2>
+                    <h3>[First Name] [Last Name]<em>Alias</em></h3>
+                    <h4>[Title/Occupation]</h4>  
+                    </div>
+                    <div class="board-profile">
+                    <div class="avatar">Profile Image</div>
+                    <h2>Treasurer</h2>
+                    <h3>[First Name] [Last Name]<em>Alias</em></h3>
+                    <h4>[Title/Occupation]</h4>  
+                    </div>
+                    <div class="board-profile">
+                    <div class="avatar">Profile Image</div>
+                    <h2>Director of Communications</h2>
+                    <h3>[First Name] [Last Name]<em>Alias</em></h3>
+                    <h4>[Title/Occupation]</h4>       
+                    </div>
+                
+                <h2>Past Board Members</h2>
+                <h3>Spring 2018</h3>
+                <li><b>President:</b> Name</li>
+                <li><b>Vice President:</b> Name</li>
+                <li><b>Treasurer:</b> Name</li>
+                <li><b>Secratery:</b> Name</li>
+                <li><b>Director of Communications:</b> Name</li>
+                
+                <h3>Fall 2017</h3>
+                <li><b>President:</b> Name</li>
+                <li><b>Vice President:</b> Name</li>
+                <li><b>Treasurer:</b> Name</li>
+                <li><b>Secratery:</b> Name</li>
+                <li><b>Director of Communications:</b> Name</li>
                 
             </div>
+                   
+            
             <footer></footer>
         </div>
 <? endPage(); ?>
