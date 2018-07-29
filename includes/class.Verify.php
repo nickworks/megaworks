@@ -40,7 +40,9 @@ class Mail {
         $headers = implode($rn, [
             'MIME-Version: 1.0',
             'Content-type: multipart/alternative;boundary='.$split,
-            'From: MEGA <auto@megaworks.org>'
+            'From: MEGA <auto@megaworks.org>',
+            'Reply-To: mega.gr@ferris.edu',
+            'X-Mailer: PHP/'.phpversion()
         ]);
         
         $message = "$rn$rn--$split{$rn}Content-type:text/plain;charset=utf-8$rn$rn";
@@ -55,12 +57,12 @@ class Mail {
         $url = "https://www.megaworks.org/verify.php?key=$key";
         
         $msg_html = ($forgot)
-            ? '<!doctype html><html><body><p>Hello, human!</p><p>This message is coming from your friends at megaworks.org. You are receiving this message because you\'ve requested to reset your account.</p><p>To verify your email address and reset your password, please <a href="'.$url.'">click here</a> OR copy and paste this link into your web browser: '.$url.' </p> <p>Thanks!<br>The MEGA team</p></body></html>'
-            : '<!doctype html<html><body><p>Hello, human!</p><p>nThanks for signing up for megaworks.org. You are receiving this message so that we may verify your email address.</p><p>To verify your email address and complete the registration process, please <a href="'.$url.'">click here</a> OR copy and paste this link into your web browser: '.$url.' </p> <p>Thanks!<br>The MEGA team</p></body></html>';
+            ? '<!doctype html><html><body><p>Hello, human!</p><p>This message is coming from your friends at megaworks.org. You are receiving this message because you\'ve requested to reset your account.</p><p>To verify your email address and reset your password, please click or copy the following link: <a href="'.$url.'">'.$url.'</a> </p> <p>Thanks!<br>The MEGA team</p></body></html>'
+            : '<!doctype html<html><body><p>Hello, human!</p><p>Thanks for signing up for megaworks.org. You are receiving this message so that we may verify your email address.</p><p>To verify your email address and complete the registration process, please click or copy the following link: <a href="'.$url.'">'.$url.'</a> </p> <p>Thanks!<br>The MEGA team</p></body></html>';
         
         $msg_text = ($forgot)
-            ? 'Hello, human!\nThis message is coming from your friends at megaworks.org. You are receiving this message because you\'ve requested to reset your account.\n\nTo verify your email address and reset your password, please copy and paste this link into your web browser: '.$url.' \n\nThanks!\nThe MEGA team'
-            : 'Hello, human!\nThanks for signing up for megaworks.org. You are receiving this message so that we may verify your email address.\n\nTo verify your email address and complete the registration process, please copy and paste this link into your web browser: '.$url.' \n\nThanks!\nThe MEGA team';
+            ? 'Hello, human!\r\nThis message is coming from your friends at megaworks.org. You are receiving this message because you\'ve requested to reset your account.\r\n\r\nTo verify your email address and reset your password, please click or copy the following link: '.$url.' \r\n\r\nThanks!\r\nThe MEGA team'
+            : 'Hello, human!\r\nThanks for signing up for megaworks.org. You are receiving this message so that we may verify your email address.\r\n\r\nTo verify your email address and complete the registration process, please click or copy the following link: '.$url.' \r\n\r\nThanks!\r\nThe MEGA team';
         
         Mail::send($to, $msg_text, $msg_html);
     }
