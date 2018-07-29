@@ -33,7 +33,7 @@ mainMenu();
     <section class="form">
         <? if ($was_user_created) { ?>
             <h1>Thanks for signing up!</h1>
-            <p>We've sent you an email to verify your address. Once your address is verified, you'll be able to log in.</p>
+            <p>We've sent you an email to verify your address. You'll probably receive it in the next few minutes! Once your address is verified, you'll be able to log in.</p>
         <? } else { ?>
         
         <form id="signup" action="signup.php" method="post">

@@ -26,7 +26,7 @@ mainMenu();
     </form>
     <? } else { ?>
     <h1>Check your inbox!</h1>
-    <p>If we found you in our database, then you should receive an email from us soon!</p>
+    <p>If we found you in our database, then you should receive an email from us soon.</p>
         <? if(isLocal()){ ?>
             <div class="hr"></div>
             <? if(!empty($message)){ ?>
