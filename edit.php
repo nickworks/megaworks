@@ -1,62 +1,106 @@
 <?
 
-include "includes/templates.php";
+include_once "includes/templates.php";
+include_once "includes/class.User.php";
+include_once "includes/functions.php";
 
-beginPage("signup", "styles/edit.css");
+beginPage("edit", "styles/edit.css");
 mainMenu();
 ?>
 
 
+<div class="tray dark">
+    
+    <section class="form">
+
         
-  <div class="content">         
-         
-            <section>
-                <div id="name">
-            <section class="left">
+        <form id="signup" action="signup.php" method="post">
+            
+            <h1>Edit Profile</h1>
+            <p>Edit your user information here.</p>
+            
+
+            
+            <div class='bubble'>
+                <h2>Profile Picture</h2>
                 
-                <form class="edit" action="#" method="post">
+                <div class="fields">
+                    <button>Select File</button>                     
+                </div>
+                <h2>Resume</h2>
+                
+                <div class="fields">
+                    <button>Select File</button>                     
+                </div>
+                <h2>Links</h2>
+                
+                <div class="fields">
+                    <label>Portfolio</label>    
+                </div>
+                
+                <input type="text" name="user-portfolio-link" value="<?=formData("user-portfolio-link")?>">
+                
+                <h2>User Bio</h2>
+                
+                <div class="fields">
+                    <label>Bio</label>    
+                </div>
+                
+                <input type="text" name="user-bio" value="<?=formData("user-bio")?>">
+                
+                
+                <h2>Your Full Name</h2>
+                <div class='fields'>
                     <div>
-                         <div class="avatar"><img src="imgs/placeholder-avatar1.jpg"></div>
-                        <h2>Picture</h2>   
-                        
-                        <input type="text" id="picture" name="Picture">
-                        <button type="submit">File</button>
-                        <button type="submit">Submit</button>
-                    
-                         <div class="hr"><h3></h3></div>
+                    </div>  
+                    <div>
+                        <label>First Name</label>
+                        <input type="text" name="user-firstname" value="<?=formData("user-firstname")?>">
+                        <label>Last Name</label>
+                        <input type="text" name="user-lastname" value="<?=formData("user-lastname")?>">
+                        <label>Hide Personal Info?</label>
+                        <input type="checkbox" name="user-privacy">                        
                     </div>
+                </div>
+                <h2>Title</h2>
+                <div class='fields'>
                     <div>
-                        <h2>Screen Name</h2>                        
-                        <input type="text" id="screenName" name="user-name">
-                        <button type="submit">Submit</button>  
-                        <a id="nametext">jimbolemons</a>
-                         <div class="hr"><h3></h3></div>
+                        <p></p>
+                    </div>  
+                    <div>
+                        <label>New Title</label>
+                        <input type="text" name="user-title" value="<?=formData("user-title");?>">
                     </div>
+                </div>
+                <h2>Alias</h2>
+                <div class='fields'>
                     <div>
-                        <h2>Title</h2>                        
-                        <input type="text" id="title" name="title">
-                        <button type="submit">Submit</button> 
-                        <a id="titletext">Not An Artist</a>
-                         <div class="hr"><h3></h3></div>
+                        <p></p>
+                    </div>  
+                    <div>
+                        <label>New Alias</label>
+                        <input type="text" name="user-alias" value="<?=formData("user-alias");?>">
                     </div>
+                </div>
+                <h2>Contact Info</h2>
+                <div class='fields'>
                     <div>
-                        <h2>Resume</h2>                        
-                        <input type="text" id="resume" name="user-name">
-                        <button type="submit">File</button> 
-                        <button type="submit">Submit</button>
-                        <a id="resumetext">McDonaldsApp.pdf</a>
-                         <div class="hr"><h3></h3></div>
+                        <label>New Email</label>
+                        <input type="text" name="user-email1" value="<?=formData("user-email1");?>">
+                        <label>Confirm New Email</label>
+                        <input type="text" name="user-email2"> 
                     </div>
-                    <div>
-                        <h2>About</h2>                        
-                        <textarea rows="10" cols="65"></textarea>
-                        <div><button id="aboutButt" type="submit">Submit</button> </div>                       
-                         <div class="hr"><h3></h3></div>
-                    </div>
-                    <div>
-                    <button id="finishbutt" type="submit"><h1>Finish</h1></button> 
-                    <footer>neat</footer>
-                    </div>                
+                </div>
+            </div><!-- end .bubble -->
+            <input type="submit" value="Save Changes">
+        </form>
+
+    </section>
+
+<footer></footer>
+
+</div>
+
                     
                
    
